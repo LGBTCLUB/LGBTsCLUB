@@ -4,7 +4,7 @@ android {
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
     defaultConfig {
-        applicationId "com.umeeds.app"
+        applicationId "com.lgbt.LGBTsCLUB"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 25

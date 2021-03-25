@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Umeed</string>
+    <string name="app_name">LGBTsClub</string>
 
     <string name="reset_now"><u>Reset Now</u></string>
     <string name="terms_condition"><u>Terms &amp; Conditions</u></string>
@@ -20,6 +20,7 @@
 
 
     <string-array name="array_gender">
+        <item>I am a</item>
         <item>Male</item>
         <item>Female</item>
     </string-array>

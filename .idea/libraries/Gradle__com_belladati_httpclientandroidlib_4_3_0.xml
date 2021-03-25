@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.belladati:httpclientandroidlib:4.3.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.belladati/httpclientandroidlib/4.3.0/52878ed99f29c70437333f6d847c2dc555e147b9/httpclientandroidlib-4.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.belladati/httpclientandroidlib/4.3.0/d3d7bc25a3b8986536591a9d8c78f7d4cc24925a/httpclientandroidlib-4.3.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.belladati/httpclientandroidlib/4.3.0/d3d7bc25a3b8986536591a9d8c78f7d4cc24925a/httpclientandroidlib-4.3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.umeeds.lgbt">
+    package="com.lgbt.LGBTsCLUB">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -27,7 +27,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.umeeds.lgbt.AppController"
+        android:name="com.lgbt.LGBTsCLUB.AppController"
         android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@drawable/app_logo"
@@ -39,29 +39,29 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
-        <activity android:name="com.umeeds.lgbt.activity.MyProfileVisitorActivity"></activity>
-        <activity android:name="com.umeeds.lgbt.ccAvenue.ForeignPaymentActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.DeleteAccountActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.MyPlanActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.MyProfileVisitorActivity"></activity>
+        <activity android:name="com.lgbt.LGBTsCLUB.ccAvenue.ForeignPaymentActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.DeleteAccountActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.MyPlanActivity" />
         <activity android:name=".activity.SearchSelectActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.SampleActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.ChangePasswordActivity" />
-        <activity android:name="com.umeeds.lgbt.FirebaseChat.ChatInboxActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.MoreInfoActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.BookMarkedActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.SetpreferenceActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.NotificationActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.BuyMemberShipPlanActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.MemberShipPlanActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.TermsConditionActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.AboutUsActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.ContactUsActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.ChatActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.BronzeMembershipActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.TestActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.EditProfileActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.ProfileActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.SplashActivity">
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.SampleActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.ChangePasswordActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.FirebaseChat.ChatInboxActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.MoreInfoActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.BookMarkedActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.SetpreferenceActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.NotificationActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.BuyMemberShipPlanActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.MemberShipPlanActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.TermsConditionActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.AboutUsActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.ContactUsActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.ChatActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.BronzeMembershipActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.TestActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.EditProfileActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.ProfileActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -77,7 +77,7 @@
             android:value="true" />
 
         <service
-            android:name="com.umeeds.lgbt.notification.MyFirebaseMessagingService"
+            android:name="com.lgbt.LGBTsCLUB.notification.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -113,18 +113,18 @@
         <!-- </intent-filter> -->
         <!-- </activity> -->
         <activity
-            android:name="com.umeeds.lgbt.MainActivity"
+            android:name="com.lgbt.LGBTsCLUB.MainActivity"
             android:label="@string/app_name" />
 
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="@string/YOUR_KEY_ID" />
 
-        <activity android:name="com.umeeds.lgbt.activity.TellusaboutActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.RegistrationActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.ForgetPasswordActivity" />
-        <activity android:name="com.umeeds.lgbt.activity.LoginActivity" />
-        <activity android:name="com.umeeds.lgbt.utility.ImagePickerActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.TellusaboutActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.RegistrationActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.ForgetPasswordActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.activity.LoginActivity" />
+        <activity android:name="com.lgbt.LGBTsCLUB.utility.ImagePickerActivity" />
     </application>
 
 </manifest>
