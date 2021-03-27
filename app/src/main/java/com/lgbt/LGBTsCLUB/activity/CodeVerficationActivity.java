@@ -41,7 +41,7 @@ public class CodeVerficationActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        progressBar = findViewById(R.id.progressbar);
+        //progressBar = findViewById(R.id.progressbar);
         editText = findViewById(R.id.editTextCode);
         buttonSignIn = findViewById(R.id.buttonSignIn);
 
@@ -92,14 +92,14 @@ public class CodeVerficationActivity extends AppCompatActivity {
 
                         } else {
                             Toast.makeText(CodeVerficationActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
+                            // progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
     }
 
     private void sendVerificationCode(String number) {
-        progressBar.setVisibility(View.VISIBLE);
+//        progressBar.setVisibility(View.VISIBLE);
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 number,
                 60,
@@ -108,7 +108,7 @@ public class CodeVerficationActivity extends AppCompatActivity {
                 mCallBack
         );
 
-        progressBar.setVisibility(View.GONE);
+        // progressBar.setVisibility(View.GONE);
     }
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks
@@ -132,7 +132,7 @@ public class CodeVerficationActivity extends AppCompatActivity {
         @Override
         public void onVerificationFailed(FirebaseException e) {
             Toast.makeText(CodeVerficationActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-            progressBar.setVisibility(View.GONE);
+            //   progressBar.setVisibility(View.GONE);
         }
     };
 }

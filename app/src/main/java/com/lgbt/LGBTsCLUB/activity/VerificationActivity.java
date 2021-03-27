@@ -15,7 +15,7 @@ import com.lgbt.LGBTsCLUB.R;
 
 public class VerificationActivity extends AppCompatActivity {
 
-   private TextInputEditText editTextCountryCode, editTextPhone;
+    private TextInputEditText editTextCountryCode, editTextPhone;
 
     Button btnverify;
 
@@ -26,7 +26,7 @@ public class VerificationActivity extends AppCompatActivity {
 
         editTextCountryCode = findViewById(R.id.editTextCountryCode);
         editTextPhone = findViewById(R.id.editTextPhone);
-        btnverify = findViewById(R.id.btn_verify);
+        btnverify = findViewById(R.id.btn_get_code);
 
         btnverify.setOnClickListener(new View.OnClickListener() {
             @Override

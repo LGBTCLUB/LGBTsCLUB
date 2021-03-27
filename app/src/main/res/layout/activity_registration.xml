@@ -3,8 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bluebg"
+    android:background="#000"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/linear_one"
+        android:layout_width="match_parent"
+        android:layout_height="520dp"
+        android:background="@drawable/back_screen"
+        />
 
     <TextView
         android:id="@+id/txt_sign_up"
@@ -12,8 +20,8 @@
         android:layout_height="wrap_content"
         android:textColor="#FFF"
         android:text="Sign Up"
-        android:textSize="32sp"
-        android:layout_marginTop="20dp"
+        android:textSize="45sp"
+        android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"/>
 
     <TextView
@@ -42,55 +50,53 @@
 
             <EditText
                 android:id="@+id/edt_first_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_rec_solid_gray"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
-                android:padding="18dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:layout_marginTop="15dp"
                 android:hint="First name"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:drawableLeft="@drawable/icon_user"
                 android:textColorHint="@color/white"
                 android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/edt_last_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_rec_solid_gray"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
-                android:padding="18dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
+                android:padding="8dp"
+                android:layout_marginTop="15dp"
                 android:hint="Last name"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:drawableLeft="@drawable/icon_user"
                 android:textColorHint="@color/white"
                 android:textSize="14sp" />
 
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_rec_solid_gray"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="18dp"
-                android:padding="10dp"
-                android:layout_marginEnd="18dp">
+                android:layout_marginTop="15dp"
+                android:padding="8dp">
 
                 <Spinner
                     android:id="@+id/gender_category"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="320dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
                     android:layout_centerVertical="true"
                     android:textColorHint="@color/white"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginEnd="18dp"
+                    android:layout_marginTop="15dp"
                     android:entries="@array/array_gender"
                     android:textSize="10sp" />
 
@@ -107,23 +113,24 @@
 
             <EditText
                 android:id="@+id/edt_hobbies_interests"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_rec_solid_gray"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
-                android:padding="18dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
+                android:padding="8dp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
                 android:hint="Hobbies and Interests"
                 android:textColorHint="@color/white"
-                android:drawableLeft="@drawable/ic_baseline_dashboard_24"
+                android:drawableLeft="@drawable/hobbies"
                 android:textSize="14sp" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
                 android:visibility="gone"
                 android:weightSum="1">
@@ -179,13 +186,14 @@
 
                     <Spinner
                         android:id="@+id/sp_month"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="320dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
                         android:layout_centerVertical="true"
                         android:background="@null"
                         android:entries="@array/array_month"
                         android:padding="5dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp"
@@ -218,8 +226,8 @@
                         android:layout_centerVertical="true"
                         android:background="@null"
                         android:entries="@array/array_year"
-                        android:padding="5dp"
-                        android:layout_marginTop="10dp"
+                        android:padding="8dp"
+                        android:layout_marginTop="15dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
                         android:textSize="10sp" />
@@ -242,8 +250,9 @@
 
             <RelativeLayout
                 android:id="@+id/li_dob"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="18dp"
                 android:layout_marginEnd="18dp"
@@ -255,9 +264,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
-                    android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
+                    android:drawableLeft="@drawable/dob"
                     android:hint="   Date of Birth"
-                    android:padding="10dp"
+                    android:padding="8dp"
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/white"
                     android:textSize="14sp" />
@@ -275,50 +284,50 @@
 
             <EditText
                 android:id="@+id/edt_phone_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_rec_solid_gray"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
-                android:drawableLeft="@drawable/ic_call_black_24dp"
+                android:drawableLeft="@drawable/icon_phone"
                 android:textColorHint="@color/white"
-                android:padding="18dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
+                android:padding="8dp"
+                android:layout_marginTop="15dp"
                 android:hint="Phone number"
+                android:textStyle="bold"
                 android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/edt_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_rec_solid_gray"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
-                android:padding="18dp"
+                android:layout_marginTop="15dp"
+                android:padding="8dp"
                 android:hint="Email "
+                android:textStyle="bold"
                 android:textColorHint="@color/white"
-                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:drawableLeft="@drawable/mail"
                 android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/edt_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_rec_solid_gray"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
-                android:padding="18dp"
+                android:layout_marginTop="15dp"
+                android:padding="8dp"
+                android:textStyle="bold"
                 android:hint="Password "
                 android:textColorHint="@color/white"
-                android:drawableLeft="@drawable/ic_baseline_lock_24"
+                android:drawableLeft="@drawable/icon_lock"
                 android:textSize="14sp" />
 
             <LinearLayout
@@ -333,6 +342,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginStart="45dp"
                     android:checked="true"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
@@ -352,8 +362,9 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_continue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/bg_white_colour"
                 android:gravity="center"

@@ -7,21 +7,35 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4755558-08fa-467b-8a9b-4b76d2b3fed1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="b4755558-08fa-467b-8a9b-4b76d2b3fed1" name="Default Changelist" comment="initial commit">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/back_screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/facebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon_lock.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/CodeVerficationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/CodeVerficationActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/SplashActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/SplashActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/VerificationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/VerificationActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/bg_rec_solid_gray.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_rec_solid_gray.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/google.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/google.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_code_verfication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_code_verfication.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_registration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_registration.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/popup.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[ZHROEQ59HAKRNR59]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -45,6 +59,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="ZHROEQ59HAKRNR59" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-03-27T09:23:40.441Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -128,7 +144,7 @@
     </configuration>
   </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\shras\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -152,7 +168,21 @@
       <option name="project" value="LOCAL" />
       <updated>1616751205401</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="initial commit">
+      <created>1616761486639</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1616761486639</updated>
+    </task>
+    <task id="LOCAL-00004" summary="initial commit">
+      <created>1616761749217</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1616761749217</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -160,7 +190,8 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="second comit" />
-    <option name="LAST_COMMIT_MESSAGE" value="second comit" />
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="95" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1616740955676">
@@ -171,53 +202,61 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="348" y="254" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.680@0.0.1280.680" timestamp="1616594412462" />
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616856756375">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1616856756375" />
     <state x="221" y="95" key="AndroidCreateResourceFileDialog" timestamp="1616585030214">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="221" y="95" key="AndroidCreateResourceFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1616585030214" />
-    <state x="50" y="0" key="CommitChangelistDialog2" timestamp="1616761484280">
+    <state x="50" y="0" key="CommitChangelistDialog2" timestamp="1616763077994">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="50" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1616761484280" />
-    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1616737158340">
+    <state x="50" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1616763077994" />
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1616761998072">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1616737158340" />
-    <state x="517" y="238" key="Github.ShareDialog" timestamp="1616761425057">
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1616761998072" />
+    <state x="517" y="238" key="Github.ShareDialog" timestamp="1616762319703">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="517" y="238" key="Github.ShareDialog/0.0.1280.680@0.0.1280.680" timestamp="1616761425057" />
-    <state width="1220" height="266" key="GridCell.Tab.0.bottom" timestamp="1616742121166">
+    <state x="517" y="238" key="Github.ShareDialog/0.0.1280.680@0.0.1280.680" timestamp="1616762319703" />
+    <state width="1220" height="266" key="GridCell.Tab.0.bottom" timestamp="1616829262740">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1220" height="266" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1616742121166" />
-    <state width="1220" height="266" key="GridCell.Tab.0.center" timestamp="1616742121166">
+    <state width="1220" height="266" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1616829262740" />
+    <state width="1220" height="266" key="GridCell.Tab.0.center" timestamp="1616829262740">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1220" height="266" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1616742121166" />
-    <state width="1220" height="266" key="GridCell.Tab.0.left" timestamp="1616742121166">
+    <state width="1220" height="266" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1616829262740" />
+    <state width="1220" height="266" key="GridCell.Tab.0.left" timestamp="1616829262739">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1220" height="266" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1616742121166" />
-    <state width="1220" height="266" key="GridCell.Tab.0.right" timestamp="1616742121166">
+    <state width="1220" height="266" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1616829262739" />
+    <state width="1220" height="266" key="GridCell.Tab.0.right" timestamp="1616829262740">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1220" height="266" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1616742121166" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1616761529954">
+    <state width="1220" height="266" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1616829262740" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1616763057132">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1616761529954" />
-    <state x="233" y="73" key="Vcs.Push.Dialog.v2" timestamp="1616761729621">
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1616763057132" />
+    <state x="233" y="73" key="Vcs.Push.Dialog.v2" timestamp="1616761762300">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1616761729621" />
-    <state x="451" y="118" key="chooseDestDirectoryDialog" timestamp="1616585106649">
+    <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1616761762300" />
+    <state x="451" y="118" key="chooseDestDirectoryDialog" timestamp="1616857995611">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="451" y="118" key="chooseDestDirectoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1616585106649" />
+    <state x="451" y="118" key="chooseDestDirectoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1616857995611" />
     <state x="419" y="9" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1616648689733">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="419" y="9" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680@0.0.1280.680" timestamp="1616648689733" />
+    <state x="297" y="153" key="run.anything.popup" timestamp="1616845260745">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="153" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1616845260745" />
   </component>
 </project>
