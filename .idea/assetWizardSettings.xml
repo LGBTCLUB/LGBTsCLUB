@@ -114,7 +114,8 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="000000" />
-                                      <entry key="foregroundLayerName" value="ic_launcher_logo" />
+                                      <entry key="foregroundLayerName" value="ic_launcher_logoo" />
+                                      <entry key="outputName" value="ic_launcher_logo_f" />
                                     </map>
                                   </option>
                                 </PersistentState>

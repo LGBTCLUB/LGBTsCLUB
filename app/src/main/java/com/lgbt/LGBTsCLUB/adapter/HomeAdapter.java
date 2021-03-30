@@ -91,7 +91,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
         } else {
             holder.gifDrawable.setVisibility(View.GONE);
         }
-        holder.total_visit_tv.setText(customerList.getTotalvisit() + " View");
+    //    holder.total_visit_tv.setText(customerList.getTotalvisit() + " View");
 
         if (verify_status.equals("0")) {
             holder.tv_verified.setText("Not Verified");
@@ -275,13 +275,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
         private final TextView tv_age;
         private final TextView tv_verified;
         private final TextView tv_gender;
-        private final TextView total_visit_tv;
         private final LinearLayout layout_item;
         private final Button bt_request;
         private final Button bt_moreInfo;
         private final ImageView likeBtn;
         private final ImageView unlikeBtn;
-        private final ImageView paid_iv;
         RelativeLayout rv_image;
         GifImageView gifDrawable;
 
@@ -291,7 +289,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
             // iv_heart = itemView.findViewById(R.id.iv_heart);
             unlikeBtn = itemView.findViewById(R.id.iv_unlike);
             likeBtn = itemView.findViewById(R.id.iv_like);
-            total_visit_tv = itemView.findViewById(R.id.total_visit_tv);
+
 
             name = itemView.findViewById(R.id.name);
             tv_age = itemView.findViewById(R.id.tv_age);
@@ -302,8 +300,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
             tv_verified = itemView.findViewById(R.id.tv_verified);
             iv_verified = itemView.findViewById(R.id.iv_verified);
             rv_image = itemView.findViewById(R.id.rv_image);
-            paid_iv = itemView.findViewById(R.id.paid_iv);
-            gifDrawable = itemView.findViewById(R.id.gif_iv);
+          gifDrawable = itemView.findViewById(R.id.gif_iv);
         }
     }
 }
