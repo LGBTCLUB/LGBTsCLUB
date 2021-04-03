@@ -12,7 +12,7 @@ public class ApiClient {
 
     //  public static String BASE_URL = "http://clarigoinfotech.co.in/umeed/api/";
 //    public static String BASE_URL = "https://umeed.app/api/";
-    public static String BASE_URL = "https://umeed.app/app/api/";
+    public static String BASE_URL = "https://myteachers.live/app/api/";
     public static String Open311_Base_Url = "http://test311request.cityofchicago.org/open311/v2/";
     private static Retrofit retrofit = null;
     private final ApiInterface apiInterface;

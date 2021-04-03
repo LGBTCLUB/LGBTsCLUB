@@ -67,9 +67,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
     @Override
     public void onBindViewHolder(@NonNull final CustomerViewHolder holder, final int position) {
         final HomeModel.HomeData customerList = homeDataList.get(position);
-        holder.name.setText(customerList.getMatriId());
-        holder.tv_age.setText(customerList.getAge() + " Years");
-        holder.tv_gender.setText(customerList.getGenderUser());
+        holder.name.setText(customerList.getNameUser());
+       // holder.userId.setText(customerList.getAge() + " Years");
+       // holder.tv_gender.setText(customerList.getGenderUser());
         final String matriId = customerList.getMatriId();
         final String sendrequest = customerList.getSendrequest();
 
@@ -78,38 +78,38 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
         String profileStatus = customerList.getProfile_status();
         String verify_status = customerList.getVerify_status();
 
-        if (customerList.getStatus().equals("Paid")) {
-            holder.gifDrawable.setVisibility(View.VISIBLE);
-
-            if (customerList.getPlan_name().equals("UMEED")) {
-                Glide.with(context).load(R.drawable.gold_flag).into(holder.gifDrawable);
-            } else if (customerList.getPlan_name().equals("HOPE")) {
-                Glide.with(context).load(R.drawable.gold_c).into(holder.gifDrawable);
-            } else if (customerList.getPlan_name().equals("TRIAL PACK")) {
-                Glide.with(context).load(R.drawable.silver).into(holder.gifDrawable);
-            }
-        } else {
-            holder.gifDrawable.setVisibility(View.GONE);
-        }
+//        if (customerList.getStatus().equals("Paid")) {
+//            holder.gifDrawable.setVisibility(View.VISIBLE);
+//
+//            if (customerList.getPlan_name().equals("UMEED")) {
+//                Glide.with(context).load(R.drawable.gold_flag).into(holder.gifDrawable);
+//            } else if (customerList.getPlan_name().equals("HOPE")) {
+//                Glide.with(context).load(R.drawable.gold_c).into(holder.gifDrawable);
+//            } else if (customerList.getPlan_name().equals("TRIAL PACK")) {
+//                Glide.with(context).load(R.drawable.silver).into(holder.gifDrawable);
+//            }
+//        } else {
+////            holder.gifDrawable.setVisibility(View.GONE);
+//        }
     //    holder.total_visit_tv.setText(customerList.getTotalvisit() + " View");
 
-        if (verify_status.equals("0")) {
-            holder.tv_verified.setText("Not Verified");
-            holder.iv_verified.setImageDrawable(context.getDrawable(R.drawable.ic_check_circle_black_24dp));
-            DrawableCompat.setTint(holder.iv_verified.getDrawable(), ContextCompat.getColor(context, R.color.black));
-        } else {
-            holder.tv_verified.setText("Verified");
-            holder.iv_verified.setImageDrawable(context.getDrawable(R.drawable.ic_check_circle_black_24dp));
-            DrawableCompat.setTint(holder.iv_verified.getDrawable(), ContextCompat.getColor(context, R.color.blue));
-        }
+//        if (verify_status.equals("0")) {
+//            holder.tv_verified.setText("Not Verified");
+//            holder.iv_verified.setImageDrawable(context.getDrawable(R.drawable.ic_check_circle_black_24dp));
+//            DrawableCompat.setTint(holder.iv_verified.getDrawable(), ContextCompat.getColor(context, R.color.black));
+//        } else {
+//            holder.tv_verified.setText("Verified");
+//            holder.iv_verified.setImageDrawable(context.getDrawable(R.drawable.ic_check_circle_black_24dp));
+//            DrawableCompat.setTint(holder.iv_verified.getDrawable(), ContextCompat.getColor(context, R.color.blue));
+//        }
 
-        if (heartlist.equals("1")) {
-            holder.likeBtn.setVisibility(View.VISIBLE);
-            holder.unlikeBtn.setVisibility(View.GONE);
-        } else {
-            holder.likeBtn.setVisibility(View.GONE);
-            holder.unlikeBtn.setVisibility(View.VISIBLE);
-        }
+//        if (heartlist.equals("1")) {
+//            holder.likeBtn.setVisibility(View.VISIBLE);
+//            holder.unlikeBtn.setVisibility(View.GONE);
+//        } else {
+//            holder.likeBtn.setVisibility(View.GONE);
+//            holder.unlikeBtn.setVisibility(View.VISIBLE);
+//        }
 
         RequestOptions options = new RequestOptions()
                 .centerCrop()
@@ -151,41 +151,41 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
 //                    .into(holder.user_image);
 //        }
 
-        if (customerList.getSendrequest().equals("0")) {
-            holder.bt_request.setText("Send request");
+//        if (customerList.getSendrequest().equals("0")) {
+//            holder.bt_request.setText("Send request");
+//
+//        } else {
+//            holder.bt_request.setText("Requested");
+//        }
 
-        } else {
-            holder.bt_request.setText("Requested");
-        }
+//        holder.bt_request.setOnClickListener(v -> {
+//            if (customerList.getSendrequest().equals("0")) {
+//                holder.bt_request.setText("Requested");
+//                sendRequest(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), position);
+//            }
+//        });
 
-        holder.bt_request.setOnClickListener(v -> {
-            if (customerList.getSendrequest().equals("0")) {
-                holder.bt_request.setText("Requested");
-                sendRequest(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), position);
-            }
-        });
+//        holder.likeBtn.setOnClickListener(v -> {
+//            // ((MainFragment) fragment).sendheartlist(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), "1");
+//            sendheartlist(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), "1", position);
+//            holder.likeBtn.setVisibility(View.GONE);
+//            holder.unlikeBtn.setVisibility(View.VISIBLE);
+//
+//        });
 
-        holder.likeBtn.setOnClickListener(v -> {
-            // ((MainFragment) fragment).sendheartlist(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), "1");
-            sendheartlist(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), "1", position);
-            holder.likeBtn.setVisibility(View.GONE);
-            holder.unlikeBtn.setVisibility(View.VISIBLE);
+//        holder.unlikeBtn.setOnClickListener(v -> {
+//            //   ((MainFragment) fragment).sendheartlist(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), "1");
+//            sendheartlist(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), "1", position);
+//            holder.likeBtn.setVisibility(View.VISIBLE);
+//            holder.unlikeBtn.setVisibility(View.GONE);
+//        });
 
-        });
-
-        holder.unlikeBtn.setOnClickListener(v -> {
-            //   ((MainFragment) fragment).sendheartlist(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), "1");
-            sendheartlist(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), "1", position);
-            holder.likeBtn.setVisibility(View.VISIBLE);
-            holder.unlikeBtn.setVisibility(View.GONE);
-        });
-
-        holder.bt_moreInfo.setOnClickListener(v -> {
-            Intent intent = new Intent(context, MoreInfoActivity.class);
-            intent.putExtra("martId", customerList.getMatriId());
-            //   intent.putExtra("blur_status", profileStatus);
-            context.startActivity(intent);
-        });
+//        holder.bt_moreInfo.setOnClickListener(v -> {
+//            Intent intent = new Intent(context, MoreInfoActivity.class);
+//            intent.putExtra("martId", customerList.getMatriId());
+//            //   intent.putExtra("blur_status", profileStatus);
+//            context.startActivity(intent);
+//        });
     }
 
     @Override
@@ -270,37 +270,39 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
 
     class CustomerViewHolder extends RecyclerView.ViewHolder {
         private final ImageView user_image;
-        private final ImageView iv_verified;
+//        private final ImageView iv_verified;
         private final TextView name;
-        private final TextView tv_age;
-        private final TextView tv_verified;
-        private final TextView tv_gender;
-        private final LinearLayout layout_item;
-        private final Button bt_request;
-        private final Button bt_moreInfo;
-        private final ImageView likeBtn;
-        private final ImageView unlikeBtn;
+        private final TextView userId;
+//        private final TextView tv_age;
+//        private final TextView tv_verified;
+//        private final TextView tv_gender;
+//        private final LinearLayout layout_item;
+//        private final Button bt_request;
+//        private final Button bt_moreInfo;
+//        private final ImageView likeBtn;
+//        private final ImageView unlikeBtn;
         RelativeLayout rv_image;
-        GifImageView gifDrawable;
+//        GifImageView gifDrawable;
 
         CustomerViewHolder(@NonNull View itemView) {
             super(itemView);
             user_image = itemView.findViewById(R.id.user_image);
             // iv_heart = itemView.findViewById(R.id.iv_heart);
-            unlikeBtn = itemView.findViewById(R.id.iv_unlike);
-            likeBtn = itemView.findViewById(R.id.iv_like);
+          //  unlikeBtn = itemView.findViewById(R.id.iv_unlike);
+         //   likeBtn = itemView.findViewById(R.id.iv_like);
 
 
-            name = itemView.findViewById(R.id.name);
-            tv_age = itemView.findViewById(R.id.tv_age);
-            tv_gender = itemView.findViewById(R.id.tv_gender);
-            layout_item = itemView.findViewById(R.id.layout_item);
-            bt_request = itemView.findViewById(R.id.bt_request);
-            bt_moreInfo = itemView.findViewById(R.id.bt_moreInfo);
-            tv_verified = itemView.findViewById(R.id.tv_verified);
-            iv_verified = itemView.findViewById(R.id.iv_verified);
-            rv_image = itemView.findViewById(R.id.rv_image);
-          gifDrawable = itemView.findViewById(R.id.gif_iv);
+            name = itemView.findViewById(R.id.user_name);
+            userId = itemView.findViewById(R.id.user_id);
+//            tv_age = itemView.findViewById(R.id.tv_age);
+//            tv_gender = itemView.findViewById(R.id.tv_gender);
+//            layout_item = itemView.findViewById(R.id.layout_item);
+//            bt_request = itemView.findViewById(R.id.bt_request);
+//            bt_moreInfo = itemView.findViewById(R.id.bt_moreInfo);
+//            tv_verified = itemView.findViewById(R.id.tv_verified);
+//            iv_verified = itemView.findViewById(R.id.iv_verified);
+//            rv_image = itemView.findViewById(R.id.rv_image);
+//          gifDrawable = itemView.findViewById(R.id.gif_iv);
         }
     }
 }

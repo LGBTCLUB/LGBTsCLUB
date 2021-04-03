@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">LGBTsClub</string>
-
     <string name="reset_now"><u>Reset Now</u></string>
     <string name="terms_condition"><u>Terms &amp; Conditions</u></string>
     <string name="not_register"><u>Register Now</u></string>

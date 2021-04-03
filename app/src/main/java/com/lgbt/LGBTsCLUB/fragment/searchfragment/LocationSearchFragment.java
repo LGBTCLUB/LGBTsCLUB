@@ -312,7 +312,7 @@ public class LocationSearchFragment extends Fragment implements View.OnClickList
                     bundle.putString("sexualOrientation", sexualOrientation);
                     MainActivity activity = (MainActivity) getActivity();
                     assert activity != null;
-                    activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
+                  //  activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
                 }
 
 

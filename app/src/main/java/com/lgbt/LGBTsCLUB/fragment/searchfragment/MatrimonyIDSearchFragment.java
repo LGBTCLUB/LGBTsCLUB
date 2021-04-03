@@ -66,7 +66,7 @@ public class MatrimonyIDSearchFragment extends Fragment implements View.OnClickL
 
                     MainActivity activity = (MainActivity) getActivity();
                     assert activity != null;
-                    activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
+                   // activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
 
                 }
 

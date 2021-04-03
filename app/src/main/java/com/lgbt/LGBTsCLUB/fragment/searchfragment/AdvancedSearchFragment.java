@@ -421,7 +421,7 @@ public class AdvancedSearchFragment extends Fragment implements View.OnClickList
 
                     MainActivity activity = (MainActivity) getActivity();
                     assert activity != null;
-                    activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
+                  //  activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
                 }
 
                 break;

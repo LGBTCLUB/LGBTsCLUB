@@ -218,7 +218,7 @@ public class SmartSearchFragment extends Fragment implements View.OnClickListene
 
                 MainActivity activity = (MainActivity) getActivity();
                 assert activity != null;
-                activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
+               // activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
                 break;
 
 

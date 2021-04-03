@@ -193,7 +193,7 @@ public class SpecialSearchFragment extends Fragment implements View.OnClickListe
                     bundle.putString("special", specialCaseArray);
                     MainActivity activity = (MainActivity) getActivity();
                     assert activity != null;
-                    activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
+                   // activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
 
                 }
                 break;

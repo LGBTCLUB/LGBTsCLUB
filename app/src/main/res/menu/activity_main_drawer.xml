@@ -1,39 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/yardList"
-            android:icon="@drawable/ic_menu_share"
-            android:title=""/>
-    </group>
+    <item
+        android:id="@+id/item_profile"
+        android:title="Profile"
+        android:icon="@drawable/icon_user"></item>
+    <item
+        android:id="@+id/item_message"
+        android:title="Message"
+        android:icon="@drawable/icon_user"></item>
+    <item
+        android:id="@+id/item_notification"
+        android:title="Notification"
+        android:icon="@drawable/icon_user"></item>
+    <item
+        android:id="@+id/item_favourite"
+        android:title="Favourite"
+        android:icon="@drawable/icon_user"></item>
+    <item
+        android:id="@+id/item_settings"
+        android:title="Settings"
+        android:icon="@drawable/icon_user"></item>
 
-    <item android:title="">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share"/>
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Send"/>
-        </menu>
-    </item>
 
-
-    <group
-        android:checkableBehavior="single"
-        android:id="@+id/group1">
-
-        <item
-            android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_menu_share"
-            android:title="Logout"
-            />
-
-    </group>
 
 </menu>
+
+<!--<menu xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    tools:showIn="navigation_view">-->
+
+<!--    <group android:checkableBehavior="single">-->
+<!--        <item-->
+<!--            android:id="@+id/yardList"-->
+<!--            android:icon="@drawable/ic_menu_share"-->
+<!--            android:title=""/>-->
+<!--    </group>-->
+
+<!--    <item android:title="">-->
+<!--        <menu>-->
+<!--            <item-->
+<!--                android:id="@+id/nav_share"-->
+<!--                android:icon="@drawable/ic_menu_share"-->
+<!--                android:title="Profile"/>-->
+<!--            <item-->
+<!--                android:id="@+id/nav_send"-->
+<!--                android:icon="@drawable/ic_menu_share"-->
+<!--                android:title="Message"/>-->
+
+<!--            <item-->
+<!--                android:id="@+id/nav_notification"-->
+<!--                android:icon="@drawable/ic_menu_share"-->
+<!--                android:title="Notification"/>-->
+
+<!--            <item-->
+<!--                android:id="@+id/nav_favourite"-->
+<!--                android:icon="@drawable/ic_menu_share"-->
+<!--                android:title="Favourite"/>-->
+
+<!--            <item-->
+<!--                android:id="@+id/nav_setting"-->
+<!--                android:icon="@drawable/ic_menu_share"-->
+<!--                android:title="Settings"/>-->
+<!--        </menu>-->
+<!--    </item>-->
+
+
+<!--    <group-->
+<!--        android:checkableBehavior="single"-->
+<!--        android:id="@+id/group1">-->
+
+<!--        <item-->
+<!--            android:id="@+id/nav_logout"-->
+<!--            android:icon="@drawable/ic_menu_share"-->
+<!--            android:title="Logout"-->
+<!--            />-->
+
+<!--    </group>-->
+
+<!--</menu>-->

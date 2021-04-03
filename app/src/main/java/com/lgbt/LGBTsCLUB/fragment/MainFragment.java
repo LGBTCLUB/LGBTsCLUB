@@ -80,7 +80,7 @@ public class MainFragment extends Fragment {
 
         userId = SharedPrefsManager.getInstance().getString(LOGIN_ID);
 
-        Log.i("user..id", userId);
+       // Log.i("user..id", userId);
         layoutManager = new GridLayoutManager(main_recycler_view.getContext(), 1);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         main_recycler_view.setHasFixedSize(true);
@@ -99,7 +99,7 @@ public class MainFragment extends Fragment {
         progress = new UtilsMethod(getContext());
 
         OFFSET = 0;
-        homeMatch(userId, OFFSET);
+      //  homeMatch(userId, OFFSET);
 
         main_recycler_view.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -118,7 +118,7 @@ public class MainFragment extends Fragment {
                             Log.e("Last Item Wow !", "Last Item Wow !");
                             loading = false;
                             OFFSET = OFFSET + 5;
-                            homeMatch(userId, OFFSET);
+                        //    homeMatch(userId, OFFSET);
                         }
                     }
                 }
@@ -133,8 +133,8 @@ public class MainFragment extends Fragment {
 
 
     private void homeMatch(String userId, final int OFFSET) {
-        Log.i("...userid", userId);
-        Log.i("...of", String.valueOf(OFFSET));
+      //  Log.i("...userid", userId);
+        //Log.i("...of", String.valueOf(OFFSET));
         progress_bar.setVisibility(View.VISIBLE);
         apiInterface.homeMatch(userId, OFFSET + "").enqueue(new Callback<HomeModel>() {
             @Override

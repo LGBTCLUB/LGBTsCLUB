@@ -133,7 +133,7 @@ public class OccupationSearchFragment extends Fragment implements View.OnClickLi
                 bundle.putString("max", ageSelectorRsb.getSelectedMaxValue().toString());
                 MainActivity activity = (MainActivity) getActivity();
                 assert activity != null;
-                activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
+               // activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
                 break;
 
             case R.id.btn_submit_dialog:

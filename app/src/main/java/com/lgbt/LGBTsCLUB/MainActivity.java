@@ -1,20 +1,30 @@
 package com.lgbt.LGBTsCLUB;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -22,6 +32,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.fangxu.allangleexpandablebutton.AllAngleExpandableButton;
 import com.fangxu.allangleexpandablebutton.ButtonData;
 import com.fangxu.allangleexpandablebutton.ButtonEventListener;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
@@ -32,6 +43,7 @@ import com.lgbt.LGBTsCLUB.activity.BookMarkedActivity;
 import com.lgbt.LGBTsCLUB.activity.ChatActivity;
 import com.lgbt.LGBTsCLUB.activity.LoginActivity;
 import com.lgbt.LGBTsCLUB.activity.NotificationActivity;
+import com.lgbt.LGBTsCLUB.fragment.ChatFragment;
 import com.lgbt.LGBTsCLUB.fragment.MainFragment;
 import com.lgbt.LGBTsCLUB.fragment.MyProfileFragment;
 import com.lgbt.LGBTsCLUB.fragment.searchfragment.AdvancedSearchFragment;
@@ -57,37 +69,65 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.graphics.Color.parseColor;
 import static com.google.android.play.core.install.model.AppUpdateType.IMMEDIATE;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.LOGIN_ID;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.NO_CHAT_CONTACT;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.STATUS;
 
-public class MainActivity extends AppCompatActivity {
-    ImageView edit_profile, iv_back;
-    TextView tv_menu;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    private ImageView imageViewHome,imageViewChat,imageViewLike,imageViewAccount;
+    LinearLayout linearLayoutHome,linearLayoutChat,linearLayoutLike,linearLayoutAccount;
+    ActionBarDrawerToggle toggle;
+    private Toolbar toolbar;
     Fragment fragment = null;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     AppUpdateManager appUpdateManager;
     int MY_REQUEST_CODE = 200;
-    private Toolbar toolbar;
     private ApiInterface apiInterface;
+    private ActionBarDrawerToggle drawerToggle;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        apiInterface = ApiClient.getInterface();
+        // Find our drawer view
+//         mDrawer = (DrawerLayout) findViewById(R.id.navDrawer);
+//        drawerToggle = setupDrawerToggle();
 
-        iv_back = findViewById(R.id.iv_back);
-        iv_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        // Setup toggle to display hamburger icon with nice animation
+
+//        drawerToggle.setDrawerIndicatorEnabled(true);
+//        drawerToggle.syncState();
+
+        // Tie DrawerLayout events to the ActionBarToggle
+//        mDrawer.addDrawerListener(drawerToggle);
+
+        apiInterface = ApiClient.getInterface();
+//
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Home");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+
+        imageViewHome = findViewById(R.id.img_home);
+        imageViewChat = findViewById(R.id.img_chat);
+        imageViewLike = findViewById(R.id.img_like);
+        imageViewAccount = findViewById(R.id.img_account);
+
+        linearLayoutHome = findViewById(R.id.linear_home);
+        linearLayoutChat = findViewById(R.id.linear_chat);
+        linearLayoutLike = findViewById(R.id.linear_like);
+        linearLayoutAccount = findViewById(R.id.linear_account);
+
+        linearLayoutHome.setOnClickListener(this);
+        linearLayoutChat.setOnClickListener(this);
+        linearLayoutLike.setOnClickListener(this);
+        linearLayoutAccount.setOnClickListener(this);
 
         fragment = new MainFragment();
         fragmentManager = getSupportFragmentManager();
@@ -96,7 +136,70 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         fragmentTransaction.commit();
 
-        installButton90to90();
+        DrawerLayout drawerLayout=(DrawerLayout)findViewById(R.id.navDrawer);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+//        toolbar.setNavigationIcon(R.drawable.ic_baseline_dehaze_24);
+
+        toggle.setHomeAsUpIndicator(R.color.white);
+//        toggle=new ActionBarDrawerToggle(this,drawerLayout,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+//        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
+      //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+       // installButton90to90();
+
+ //       DrawerLayout drawerLayout=(DrawerLayout)findViewById(R.id.navDrawer);
+//        toggle=new ActionBarDrawerToggle(this,drawerLayout, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+//        drawerLayout.addDrawerListener(toggle);
+//        toggle.syncState();
+//        toggle = setupDrawerToggle();
+//
+//        // Setup toggle to display hamburger icon with nice animation
+//        toggle.setDrawerIndicatorEnabled(true);
+//
+//
+//        // Tie DrawerLayout events to the ActionBarToggle
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+         NavigationView navigationView=(NavigationView)findViewById(R.id.navView);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.item_profile:
+                        pushFragment(new MyProfileFragment());
+                        break;
+                    case R.id.item_message:
+                        pushFragment(new MyProfileFragment());
+                        break;
+                    case R.id.item_notification:
+                        pushFragment(new MyProfileFragment());
+                        break;
+                    case R.id.item_favourite:
+                        pushFragment(new MyProfileFragment());
+                        break;
+                    case R.id.item_settings:
+                        pushFragment(new MyProfileFragment());
+                        break;
+
+                }
+//                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.navDrawer);
+//                drawer.closeDrawer(GravityCompat.START);
+//                return true;
+                DrawerLayout d1=(DrawerLayout)findViewById(R.id.navDrawer);
+                if(d1.isDrawerOpen(GravityCompat.START)){
+                    d1.closeDrawer(GravityCompat.START);
+                }
+                return false;
+            }
+        });
+
 
         String afterLogIn = SharedPrefsManager.getInstance().getString(STATUS);
 
@@ -139,30 +242,72 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        user_status(SharedPrefsManager.getInstance().getString(LOGIN_ID));
-        profileDetailApi(SharedPrefsManager.getInstance().getString(LOGIN_ID));
-        appUpdateManager
-                .getAppUpdateInfo()
-                .addOnSuccessListener(
-                        appUpdateInfo -> {
-
-                            if (appUpdateInfo.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
-                                // If an in-app update is already running, resume the update.
-                                try {
-                                    appUpdateManager.startUpdateFlowForResult(
-                                            appUpdateInfo,
-                                            IMMEDIATE,
-                                            this,
-                                            MY_REQUEST_CODE);
-                                } catch (IntentSender.SendIntentException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        });
+    @Override    public boolean onOptionsItemSelected(MenuItem item) {
+        if (toggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
+//    private ActionBarDrawerToggle setupDrawerToggle() {
+//        return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.navigation_drawer_open,  R.string.navigation_drawer_close);
+//    }
+
+
+//       DrawerLayout drawerLayout=(DrawerLayout)findViewById(R.id.navDrawer);
+////        drawerLayout.addDrawerListener(toggle);
+//    private ActionBarDrawerToggle setupDrawerToggle() {
+//
+//        return new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open,  R.string.navigation_drawer_close);
+//
+//    }
+
+
+    public void onBackPressed() {
+
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.container);
+
+        if (currentFragment == null) {
+            finish();
+        } else if (currentFragment instanceof MainFragment) {
+            finish();
+        }else {
+            pushFragment(new MainFragment());
+
+            imageViewHome.setColorFilter(getResources().getColor(R.color.colorAccent));
+            imageViewChat.setColorFilter(getResources().getColor(R.color.black));
+            imageViewLike.setColorFilter(getResources().getColor(R.color.black));
+            imageViewAccount.setColorFilter(getResources().getColor(R.color.black));
+
+        }
+
+    }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        //user_status(SharedPrefsManager.getInstance().getString(LOGIN_ID));
+//        profileDetailApi(SharedPrefsManager.getInstance().getString(LOGIN_ID));
+//        appUpdateManager
+//                .getAppUpdateInfo()
+//                .addOnSuccessListener(
+//                        appUpdateInfo -> {
+//
+//                            if (appUpdateInfo.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+//                                // If an in-app update is already running, resume the update.
+//                                try {
+//                                    appUpdateManager.startUpdateFlowForResult(
+//                                            appUpdateInfo,
+//                                            IMMEDIATE,
+//                                            this,
+//                                            MY_REQUEST_CODE);
+//                                } catch (IntentSender.SendIntentException e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//                        });
+//    }
+
+
 
 
     @Override
@@ -214,7 +359,7 @@ public class MainActivity extends AppCompatActivity {
             buttonDatas.add(buttonData);
         }
         button.setButtonDatas(buttonDatas);
-        setListener(button);
+       // setListener(button);
     }
 
     private void setListener(AllAngleExpandableButton button) {
@@ -260,93 +405,93 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void loadFragment(String fragmentString, Bundle bundle) {
+//    public void loadFragment(String fragmentString, Bundle bundle) {
+//
+//        switch (fragmentString) {
+//
+//            case Constant.SEARCH_TYPE_FRAGMENT:
+//                callFragment(new ResultSearchFragment(), Constant.SEARCH_TYPE_FRAGMENT, null, null);
+//                break;
+//            case Constant.SMART_SEARCH_FRAGMENT:
+//                getSupportActionBar().setTitle(" Smart Search");
+//                callFragment(new SmartSearchFragment(), Constant.SMART_SEARCH_FRAGMENT, null, null);
+//                break;
+//            case Constant.ADVANCED_SEARCH_FRAGMENT:
+//                getSupportActionBar().setTitle(" Advanced Search");
+//                callFragment(new AdvancedSearchFragment(), Constant.ADVANCED_SEARCH_FRAGMENT, null, null);
+//                break;
+//            case Constant.OCCUP_SEARCH_FRAGMENT:
+//                getSupportActionBar().setTitle("Search by Occupational");
+//                callFragment(new OccupationSearchFragment(), Constant.OCCUP_SEARCH_FRAGMENT, null, null);
+//                break;
+//            case Constant.EDU_SEARCH_FRAGMENT:
+//                getSupportActionBar().setTitle("Search by Educational");
+//                callFragment(new EducationSearchFragment(), Constant.EDU_SEARCH_FRAGMENT, null, null);
+//                break;
+//            case Constant.LOCATION_SEARCH_FRAGMENT:
+//                getSupportActionBar().setTitle("Search by Location");
+//                callFragment(new LocationSearchFragment(), Constant.LOCATION_SEARCH_FRAGMENT, null, null);
+//                break;
+//            case Constant.SPECIAL_SEARCH_FRAGMENT:
+//                getSupportActionBar().setTitle("Search by Special case");
+//                callFragment(new SpecialSearchFragment(), Constant.SPECIAL_SEARCH_FRAGMENT, null, null);
+//                break;
+//            case Constant.MATRIMONIAL_SEARCH_FRAGMENT:
+//                getSupportActionBar().setTitle("Search by Matrimonial ID");
+//                callFragment(new MatrimonyIDSearchFragment(), Constant.MATRIMONIAL_SEARCH_FRAGMENT, null, null);
+//                break;
+//
+//            case Constant.SEARCH_RESULT_FRAGMENT:
+//                callFragment(new ResultSearchFragment(), Constant.SEARCH_TYPE_FRAGMENT, null, bundle);
+//                break;
+//        }
+//    }
 
-        switch (fragmentString) {
-
-            case Constant.SEARCH_TYPE_FRAGMENT:
-                callFragment(new ResultSearchFragment(), Constant.SEARCH_TYPE_FRAGMENT, null, null);
-                break;
-            case Constant.SMART_SEARCH_FRAGMENT:
-                getSupportActionBar().setTitle(" Smart Search");
-                callFragment(new SmartSearchFragment(), Constant.SMART_SEARCH_FRAGMENT, null, null);
-                break;
-            case Constant.ADVANCED_SEARCH_FRAGMENT:
-                getSupportActionBar().setTitle(" Advanced Search");
-                callFragment(new AdvancedSearchFragment(), Constant.ADVANCED_SEARCH_FRAGMENT, null, null);
-                break;
-            case Constant.OCCUP_SEARCH_FRAGMENT:
-                getSupportActionBar().setTitle("Search by Occupational");
-                callFragment(new OccupationSearchFragment(), Constant.OCCUP_SEARCH_FRAGMENT, null, null);
-                break;
-            case Constant.EDU_SEARCH_FRAGMENT:
-                getSupportActionBar().setTitle("Search by Educational");
-                callFragment(new EducationSearchFragment(), Constant.EDU_SEARCH_FRAGMENT, null, null);
-                break;
-            case Constant.LOCATION_SEARCH_FRAGMENT:
-                getSupportActionBar().setTitle("Search by Location");
-                callFragment(new LocationSearchFragment(), Constant.LOCATION_SEARCH_FRAGMENT, null, null);
-                break;
-            case Constant.SPECIAL_SEARCH_FRAGMENT:
-                getSupportActionBar().setTitle("Search by Special case");
-                callFragment(new SpecialSearchFragment(), Constant.SPECIAL_SEARCH_FRAGMENT, null, null);
-                break;
-            case Constant.MATRIMONIAL_SEARCH_FRAGMENT:
-                getSupportActionBar().setTitle("Search by Matrimonial ID");
-                callFragment(new MatrimonyIDSearchFragment(), Constant.MATRIMONIAL_SEARCH_FRAGMENT, null, null);
-                break;
-
-            case Constant.SEARCH_RESULT_FRAGMENT:
-                callFragment(new ResultSearchFragment(), Constant.SEARCH_TYPE_FRAGMENT, null, bundle);
-                break;
-        }
-    }
-
-    private void callFragment(Fragment fragment, String tag, String addBackStack, Bundle bundle) {
-        if (bundle != null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment, tag).addToBackStack(addBackStack).commit();
-            fragment.setArguments(bundle);
-        } else {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment, tag).addToBackStack(addBackStack).commit();
-        }
-    }
-
-    private void showToast(String toast) {
-        Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
-    }
+//    private void callFragment(Fragment fragment, String tag, String addBackStack, Bundle bundle) {
+//        if (bundle != null) {
+//            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment, tag).addToBackStack(addBackStack).commit();
+//            fragment.setArguments(bundle);
+//        } else {
+//            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment, tag).addToBackStack(addBackStack).commit();
+//        }
+//    }
+//
+//    private void showToast(String toast) {
+//        Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
+//    }
 
 
-    private void user_status(String user_id) {
-        apiInterface.user_status(user_id).enqueue(new Callback<UserStatusModel>() {
-            @Override
-            public void onResponse(Call<UserStatusModel> call, Response<UserStatusModel> response) {
-                if (response.isSuccessful()) {
-                    UserStatusModel userStatusModel = response.body();
-                    if (userStatusModel != null) {
-                        String respons = userStatusModel.getResponse();
-                        String status = userStatusModel.getStatus();
-                        if (status.equals("Active") || status.equals("Inactive")) {
-
-                        } else {
-                            SharedPrefsManager.getInstance().clearPrefs();
-                            afterregisContain("Your profile has been rejected due to inappropriate words.More details email : umeedlgbt@gmail.com");
-
-//                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-//                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                            startActivity(intent);
-//                            finish();
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<UserStatusModel> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "something is wrong", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
+//    private void user_status(String user_id) {
+//        apiInterface.user_status(user_id).enqueue(new Callback<UserStatusModel>() {
+//            @Override
+//            public void onResponse(Call<UserStatusModel> call, Response<UserStatusModel> response) {
+//                if (response.isSuccessful()) {
+//                    UserStatusModel userStatusModel = response.body();
+//                    if (userStatusModel != null) {
+//                        String respons = userStatusModel.getResponse();
+//                        String status = userStatusModel.getStatus();
+//                        if (status.equals("Active") || status.equals("Inactive")) {
+//
+//                        } else {
+//                            SharedPrefsManager.getInstance().clearPrefs();
+//                            afterregisContain("Your profile has been rejected due to inappropriate words.More details email : umeedlgbt@gmail.com");
+//
+////                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+////                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+////                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+////                            startActivity(intent);
+////                            finish();
+//                        }
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<UserStatusModel> call, Throwable t) {
+//                Toast.makeText(MainActivity.this, "something is wrong", Toast.LENGTH_LONG).show();
+//            }
+//        });
+//    }
 
 
     private void profileDetailApi(String userId) {
@@ -383,4 +528,57 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-}
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.linear_home:
+
+                imageViewHome.setColorFilter(getResources().getColor(R.color.colorAccent));
+                imageViewChat.setColorFilter(getResources().getColor(R.color.black));
+                imageViewLike.setColorFilter(getResources().getColor(R.color.black));
+                imageViewAccount.setColorFilter(getResources().getColor(R.color.black));
+                pushFragment(new MainFragment());
+                break;
+            case R.id.linear_chat:
+
+                imageViewHome.setColorFilter(getResources().getColor(R.color.black));
+                imageViewChat.setColorFilter(getResources().getColor(R.color.colorAccent));
+                imageViewLike.setColorFilter(getResources().getColor(R.color.black));
+                imageViewAccount.setColorFilter(getResources().getColor(R.color.black));
+                pushFragment(new SmartSearchFragment());
+                break;
+            case R.id.linear_like:
+
+                imageViewHome.setColorFilter(getResources().getColor(R.color.black));
+                imageViewChat.setColorFilter(getResources().getColor(R.color.black));
+                imageViewLike.setColorFilter(getResources().getColor(R.color.colorAccent));
+                imageViewAccount.setColorFilter(getResources().getColor(R.color.black));
+                pushFragment(new MyProfileFragment());
+                break;
+            case R.id.linear_account:
+
+                imageViewHome.setColorFilter(getResources().getColor(R.color.black));
+                imageViewChat.setColorFilter(getResources().getColor(R.color.black));
+                imageViewLike.setColorFilter(getResources().getColor(R.color.black));
+                imageViewAccount.setColorFilter(getResources().getColor(R.color.colorAccent));
+                pushFragment(new MyProfileFragment());
+                break;
+        }
+        }
+    //load fragment
+    private void pushFragment(Fragment fragment) {
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            if (fragmentManager.getBackStackEntryCount() > 2) {
+
+                fragmentManager.popBackStack();
+            }
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, fragment)
+                    .addToBackStack(null)
+                    .commit();
+
+        }
+    }
+

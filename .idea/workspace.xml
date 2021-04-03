@@ -6,42 +6,50 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4755558-08fa-467b-8a9b-4b76d2b3fed1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/ic_launcher_logo_f-playstore.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/blur_input_tool.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_logo_f.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_logo_f_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_logo_f.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_logo_f_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_logoo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_logo_f.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_logo_f_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_logoo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_logo_f.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_logo_f_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_logoo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_logo_f.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_logo_f_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_logoo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_logo_f.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_logo_f_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_logoo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/ic_launcher_logo_f_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__de_hdodenhof_circleimageview_3_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_bottom_linear.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_nav_drawer.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_nav_header.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_toolbar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/chaticon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_dehaze_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_search_24.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__de_hdodenhof_circleimageview_3_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/LGBTsCLUB.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/LGBTsCLUB.app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/adapter/HomeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/adapter/HomeAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/MainFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/MainFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/AdvancedSearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/AdvancedSearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/EducationSearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/EducationSearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/LocationSearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/LocationSearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/MatrimonyIDSearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/MatrimonyIDSearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/OccupationSearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/OccupationSearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/SmartSearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/SmartSearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/SpecialSearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/SpecialSearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/network/networking/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/network/networking/ApiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_person_24.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_person_24.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_chat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_chat.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/home_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/home_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,14 +80,18 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="ZHROEQ59HAKRNR59" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-03-27T09:23:40.441Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="RZ8MC0DA52M" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-03-31T07:41:29.557Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="android-custom-viewC:/Users/shras/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.2.1/37d55d5141066b3d118d24232fa7025b65eb3a74/material-1.2.1-sources.jar!/com/google/android/material/appbar/AppBarLayout.java_SELECTED" value="AppBarLayout" />
+    <property name="android-custom-viewC:/Users/shras/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.2.1/37d55d5141066b3d118d24232fa7025b65eb3a74/material-1.2.1-sources.jar!/com/google/android/material/navigation/NavigationView.java_SELECTED" value="NavigationView" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AndroidStudioProjects/FirstOne" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Shopping" />
+    <property name="multi-representation-previewC:/Users/shras/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.2.1/37d55d5141066b3d118d24232fa7025b65eb3a74/material-1.2.1-sources.jar!/com/google/android/material/appbar/AppBarLayout.java_selected" value="Custom views" />
+    <property name="multi-representation-previewC:/Users/shras/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.2.1/37d55d5141066b3d118d24232fa7025b65eb3a74/material-1.2.1-sources.jar!/com/google/android/material/navigation/NavigationView.java_selected" value="Custom views" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -209,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616865268304</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="second commit">
+      <created>1617111773120</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1617111773120</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -226,58 +245,66 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="95" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1616740955676" />
+    <state x="446" y="46" key="#com.intellij.ide.util.MemberChooser" timestamp="1617342166124">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="446" y="46" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1617342166124" />
     <state x="348" y="254" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1616594412462">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="348" y="254" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.680@0.0.1280.680" timestamp="1616594412462" />
-    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616856756375">
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1617429753018">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1616856756375" />
-    <state x="221" y="95" key="AndroidCreateResourceFileDialog" timestamp="1616585030214">
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1617429753018" />
+    <state x="93" y="93" width="1095" height="495" key="AVDManager" timestamp="1617342605112">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="221" y="95" key="AndroidCreateResourceFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1616585030214" />
-    <state x="50" y="0" key="CommitChangelistDialog2" timestamp="1616865263380">
+    <state x="93" y="93" width="1095" height="495" key="AVDManager/0.0.1280.680@0.0.1280.680" timestamp="1617342605112" />
+    <state x="221" y="95" key="AndroidCreateResourceFileDialog" timestamp="1617344284992">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="50" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1616865263380" />
-    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1617106131079">
+    <state x="221" y="95" key="AndroidCreateResourceFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1617344284992" />
+    <state x="50" y="0" key="CommitChangelistDialog2" timestamp="1617111768643">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1617106131079" />
+    <state x="50" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1617111768643" />
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1617346933873">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1617346933873" />
     <state x="517" y="238" key="Github.ShareDialog" timestamp="1616762319703">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="517" y="238" key="Github.ShareDialog/0.0.1280.680@0.0.1280.680" timestamp="1616762319703" />
-    <state width="1220" height="266" key="GridCell.Tab.0.bottom" timestamp="1617111184439">
+    <state width="1220" height="159" key="GridCell.Tab.0.bottom" timestamp="1617370382338">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1220" height="266" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1617111184439" />
-    <state width="1220" height="266" key="GridCell.Tab.0.center" timestamp="1617111184439">
+    <state width="1220" height="159" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1617370382338" />
+    <state width="1220" height="159" key="GridCell.Tab.0.center" timestamp="1617370382337">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1220" height="266" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1617111184439" />
-    <state width="1220" height="266" key="GridCell.Tab.0.left" timestamp="1617111184438">
+    <state width="1220" height="159" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1617370382337" />
+    <state width="1220" height="159" key="GridCell.Tab.0.left" timestamp="1617370382337">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1220" height="266" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1617111184438" />
-    <state width="1220" height="266" key="GridCell.Tab.0.right" timestamp="1617111184439">
+    <state width="1220" height="159" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1617370382337" />
+    <state width="1220" height="159" key="GridCell.Tab.0.right" timestamp="1617370382337">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1220" height="266" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1617111184439" />
+    <state width="1220" height="159" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1617370382337" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1616763057132">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1616763057132" />
-    <state x="233" y="73" key="Vcs.Push.Dialog.v2" timestamp="1616865281071">
+    <state x="233" y="73" key="Vcs.Push.Dialog.v2" timestamp="1617111794991">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1616865281071" />
-    <state x="451" y="118" key="chooseDestDirectoryDialog" timestamp="1617105820268">
+    <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1617111794991" />
+    <state x="451" y="118" key="chooseDestDirectoryDialog" timestamp="1617186484267">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="451" y="118" key="chooseDestDirectoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1617105820268" />
+    <state x="451" y="118" key="chooseDestDirectoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1617186484267" />
     <state x="419" y="9" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1616648689733">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

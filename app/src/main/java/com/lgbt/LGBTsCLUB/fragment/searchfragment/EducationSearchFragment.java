@@ -170,7 +170,7 @@ public class EducationSearchFragment extends Fragment implements View.OnClickLis
                 bundle.putString("max", ageSelectorRsb.getSelectedMaxValue().toString());
                 MainActivity activity = (MainActivity) getActivity();
                 assert activity != null;
-                activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
+              //  activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
                 break;
 
 
