@@ -16,10 +16,12 @@
     <string name="notification_channel_id">default</string>
     <string name="facebook_app_id">573801643398142</string>
     <string name="fb_login_protocol_scheme">fb573801643398142</string>
+    <string name="about_us"> Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book</string>
 
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="array_gender">
-        <item>I am a</item>
         <item>Male</item>
         <item>Female</item>
     </string-array>
@@ -29,18 +31,18 @@
         <item>Day</item>
         <item>Day</item>
     </string-array>
-
     <string-array name="array_month">
         <item>Month</item>
         <item>Month</item>
         <item>Month</item>
     </string-array>
+
+
     <string-array name="array_year">
         <item>Year</item>
         <item>Year</item>
         <item>Year</item>
     </string-array>
-
 
     <string-array name="array_Feet">
         <item>Feet</item>
@@ -79,11 +81,11 @@
         <item>Max</item>
     </string-array>
 
+
     <string-array name="Profilecreatedby">
         <item>Select</item>
     </string-array>
-
-
+    <!-- TODO: Remove or change this placeholder text -->
     <string-array name="levelArray">
         <item>Lv1</item>
         <item>Lv2</item>

@@ -24,7 +24,7 @@ public class VerificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verification);
 
-        editTextCountryCode = findViewById(R.id.editTextCountryCode);
+       // editTextCountryCode = findViewById(R.id.editTextCountryCode);
         editTextPhone = findViewById(R.id.editTextPhone);
         btnverify = findViewById(R.id.btn_get_code);
 

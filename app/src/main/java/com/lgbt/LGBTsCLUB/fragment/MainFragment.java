@@ -47,7 +47,6 @@ public class MainFragment extends Fragment {
     RecyclerView main_recycler_view;
     ProgressBar progressCircular;
     ProgressBar progress_bar;
-    ImageView iv_logo;
     String userId;
     //  RecyclerView.LayoutManager layoutManager;
     int OFFSET = 0;
@@ -75,7 +74,6 @@ public class MainFragment extends Fragment {
 
         main_recycler_view = view.findViewById(R.id.main_recycler_view);
         progressCircular = view.findViewById(R.id.progress_circular);
-        iv_logo = view.findViewById(R.id.iv_logo);
         progress_bar = view.findViewById(R.id.progress_bar);
 
         userId = SharedPrefsManager.getInstance().getString(LOGIN_ID);
@@ -99,7 +97,7 @@ public class MainFragment extends Fragment {
         progress = new UtilsMethod(getContext());
 
         OFFSET = 0;
-      //  homeMatch(userId, OFFSET);
+        homeMatch(userId, OFFSET);
 
         main_recycler_view.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -118,7 +116,7 @@ public class MainFragment extends Fragment {
                             Log.e("Last Item Wow !", "Last Item Wow !");
                             loading = false;
                             OFFSET = OFFSET + 5;
-                        //    homeMatch(userId, OFFSET);
+                            homeMatch(userId, OFFSET);
                         }
                     }
                 }
@@ -126,7 +124,7 @@ public class MainFragment extends Fragment {
 
         });
 
-        // setList();
+       // setList();
 
         return view;
     }
@@ -150,10 +148,8 @@ public class MainFragment extends Fragment {
                         homeDataList = homeModel.getHomeDataList();
                         if (homeDataList != null && homeDataList.size() > 0) {
                             homeAdapter.addAll(homeDataList);
-                            iv_logo.setVisibility(View.GONE);
                         } else {
                             if (OFFSET == 0) {
-                                iv_logo.setVisibility(View.VISIBLE);
                             }
                         }
                     }

@@ -3,17 +3,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="@drawable/bluebg"
+        android:background="#000"
         android:fitsSystemWindows="true">
+
+    <ImageView
+        android:id="@+id/linear_one"
+        android:layout_width="match_parent"
+        android:layout_height="520dp"
+        android:background="@drawable/back_screen"
+        />
 
 
         <ImageView
             android:id="@+id/img_view"
-            android:layout_width="220dp"
+            android:layout_width="250dp"
             android:layout_centerHorizontal="true"
-            android:layout_height="220dp"
+            android:layout_height="250dp"
             android:layout_marginTop="40dp"
-            android:src="@drawable/img_number_verification" />
+            android:src="@drawable/screen_3" />
 
 
         <TextView
@@ -24,7 +31,8 @@
             android:layout_centerHorizontal="true"
             android:text="Verification"
             android:textColor="#fff"
-            android:textSize="20sp"
+            android:textSize="25sp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="14dp"
             android:textStyle="bold"
             />
@@ -35,19 +43,22 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_verification"
             android:layout_centerHorizontal="true"
-            android:text="Enter a 4 digit number that was sent to "
+            android:text="Enter A 4 Digit Number That Was Sent To your Mobile Number "
             android:textColor="#fff"
-            android:textSize="15sp"
-            android:layout_marginStart="18dp"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
             android:textStyle="bold"
             />
 
         <androidx.cardview.widget.CardView
             android:layout_below="@+id/txt_enter_code_validation"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="250dp"
             app:cardElevation="10dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             app:cardCornerRadius="20dp"
             app:cardBackgroundColor="@color/white"
             app:cardMaxElevation="12dp"
@@ -67,6 +78,7 @@
                     android:hint="Code"
                     android:inputType="phone"
                     android:maxLines="1"
+                    android:drawableEnd="@drawable/right_icon"
                     android:singleLine="true"
                     android:layout_marginTop="35dp"
                     android:layout_marginStart="20dp"
@@ -79,14 +91,16 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/buttonSignIn"
                     style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="match_parent"
+                    android:layout_width="200dp"
                     android:textColor="@color/white"
-                    android:layout_marginStart="22dp"
-                    android:layout_marginEnd="22dp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="25dp"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:padding="12dp"
                     android:text="VERIFY"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
                     android:background="@drawable/bg_black_colour" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

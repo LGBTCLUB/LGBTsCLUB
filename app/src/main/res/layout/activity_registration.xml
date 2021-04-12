@@ -82,33 +82,31 @@
 
 
             <RelativeLayout
-                android:layout_width="320dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/bg_rec_solid_gray"
                 android:layout_marginTop="15dp"
-                android:padding="8dp">
+                android:layout_marginStart="35dp"
+                android:layout_marginEnd="35dp"
+                android:padding="5dp"
+                android:background="@drawable/bg_rec_solid_gray">
+
+                <TextView
+                    android:id="@+id/et_doo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:drawablePadding="6dp"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    />
 
                 <Spinner
                     android:id="@+id/gender_category"
-                    android:layout_width="320dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_centerVertical="true"
-                    android:textColorHint="@color/white"
-                    android:layout_marginTop="15dp"
-                    android:entries="@array/array_gender"
-                    android:textSize="10sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerInParent="true"
-                    android:padding="5dp"
-                    app:srcCompat="@drawable/ic_baseline_arrow_drop_down_24"
-                    tools:ignore="VectorDrawableCompat" />
+                    android:layout_marginTop="5dp"
+
+                    />
             </RelativeLayout>
 
             <EditText

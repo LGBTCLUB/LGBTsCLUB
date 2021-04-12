@@ -115,12 +115,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         Log.e("title", data.getString("title"));
         Log.e("message", data.getString("body"));
+        Log.e("time", data.getString("time"));
 
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);   // To open only one activity on launch.
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, getString(R.string.notification_channel_id))
                 .setContentTitle(data.getString("title"))
                 .setContentText(data.getString("body"))
+                .setContentText(data.getString("time"))
+                .setContentText(data.getString("date"))
                 //.setStyle(new NotificationCompat.BigTextStyle().bigText(data.getString("message"))) // Makes it expandable to show the message
                 .setAutoCancel(true)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))

@@ -3,23 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bluebg"
+    android:background="#000"
     android:fitsSystemWindows="true">
 
     <ImageView
+        android:id="@+id/linear_one"
+        android:layout_width="match_parent"
+        android:layout_height="520dp"
+        android:background="@drawable/back_screen"
+        />
+
+    <ImageView
         android:id="@+id/img_phone"
-        android:layout_width="220dp"
+        android:layout_width="200dp"
         android:layout_height="220dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/img_number_verification" />
+        android:layout_marginTop="35dp"
+        android:src="@drawable/mobile_screen" />
 
     <TextView
         android:id="@+id/txt_registration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Registration"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:layout_below="@id/img_phone"
         android:layout_centerHorizontal="true"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
@@ -28,10 +35,12 @@
 
     <TextView
         android:id="@+id/txt_regis_txt"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter your mobile number to receive a verification code"
-        android:textSize="15sp"
+        android:text="Enter Your Mobile Number To Receive A Verification Code"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_below="@id/txt_registration"
@@ -40,23 +49,26 @@
         android:textColor="@color/white"
         android:textStyle="bold" />
 
-        <androidx.cardview.widget.CardView
-        android:layout_below="@+id/txt_regis_txt"
-        android:layout_width="match_parent"
-        android:layout_height="280dp"
-        app:cardElevation="10dp"
-        android:layout_marginTop="25dp"
-        app:cardCornerRadius="20dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardMaxElevation="12dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true"
+            <androidx.cardview.widget.CardView
+            android:layout_below="@+id/txt_regis_txt"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:cardElevation="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:cardCornerRadius="15dp"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardMaxElevation="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
         >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
             <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,45 +76,51 @@
             android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextCountryCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="+91"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
-                android:textColor="#000" />
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/editTextCountryCode"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:inputType="phone"-->
+<!--                android:maxLines="1"-->
+<!--                android:drawableLeft="@drawable/flag"-->
+<!--                android:singleLine="true"-->
+<!--                android:text="  +91 "-->
+<!--                android:padding="5dp"-->
+<!--                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"-->
+<!--                android:textColor="#000" />-->
 
-            <View
-                android:layout_width="5dp"
-                android:layout_height="0dp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextPhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Phone Number"
-                android:inputType="phone"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
-                android:textColor="#000">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_border_black"
+                    android:hint="   Phone Number"
+                    android:inputType="phone"
+                    android:drawableEnd="@drawable/right_icon"
+                    android:drawableStart="@drawable/flag"
+                    android:padding="10dp"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                    android:textColor="#000">
 
-                <requestFocus />
+                    <requestFocus />
 
-            </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputEditText>
 
-        </LinearLayout>
+            </LinearLayout>
 
         <Button
             android:id="@+id/btn_get_code"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/bg_rec_solid_gray"
-            android:text="CONTINUE"
+            android:background="@drawable/bg_black_colour"
+            android:text="Get Code"
+            android:textAllCaps="false"
             android:layout_gravity="center"
             android:textColor="@android:color/white" />
 

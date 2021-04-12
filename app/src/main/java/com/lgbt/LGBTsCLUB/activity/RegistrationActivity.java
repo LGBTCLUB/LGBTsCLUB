@@ -78,10 +78,9 @@ import static com.lgbt.LGBTsCLUB.network.networking.Constant.USER_GENDER;
 public class RegistrationActivity extends AppCompatActivity {
 
     Button btn_continue;
-    ImageView iv_back;
     Toolbar toolbar;
     // private ProgressDailog progress;
-    ProgressBar progress_bar;
+//    ProgressBar progress_bar;
     EditText et_firstName, et_phone, et_emailId, password, et_hobbies;
     TextView et_dob,txt_signIn;
     CheckBox ch_terms;
@@ -156,16 +155,17 @@ public class RegistrationActivity extends AppCompatActivity {
         li_dob = findViewById(R.id.li_dob);
         google = findViewById(R.id.img_google);
         facebook = findViewById(R.id.img_facebook);
-        progress_bar = findViewById(R.id.progress_bar);
+       // progress_bar = findViewById(R.id.progress_bar);
         tv_termsCondition = findViewById(R.id.tv_termsCondition);
 
         apiInterface = ApiClient.getInterface();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
+        init();
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        init();
+
 
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(RegistrationActivity.this, new OnSuccessListener<InstanceIdResult>() {
             @Override
@@ -191,7 +191,7 @@ public class RegistrationActivity extends AppCompatActivity {
             if (validationSuccess()) {
                 if (isValidMobile(et_phone.getText().toString())) {
                     if (isValidEmail(et_emailId.getText().toString())) {
-                        progress_bar.setVisibility(View.VISIBLE);
+                      //  progress_bar.setVisibility(View.VISIBLE);
                         verifyEmailRegister(et_emailId.getText().toString(), et_phone.getText().toString());
                     } else {
                         et_emailId.setError("Please enter valid Email Id!");
@@ -258,7 +258,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void verifyEmailRegister(String userEmail, String phone) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://umeed.app/api/")
+                .baseUrl("https://myteachers.live/app/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiInterface api = retrofit.create(ApiInterface.class);
@@ -268,7 +268,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     VeryfyEmailRegisterModel registerModel = response.body();
                     if (registerModel != null) {
-                        progress_bar.setVisibility(View.GONE);
+                    //    progress_bar.setVisibility(View.GONE);
                         String respons = registerModel.getResponse();
                         String message = registerModel.getMessage();
                         otp = registerModel.getOtp();
@@ -285,7 +285,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<VeryfyEmailRegisterModel> call, Throwable t) {
                 Toast.makeText(RegistrationActivity.this, "something is wrong", Toast.LENGTH_LONG).show();
-                progress_bar.setVisibility(View.GONE);
+             //   progress_bar.setVisibility(View.GONE);
             }
         });
     }
@@ -336,7 +336,7 @@ public class RegistrationActivity extends AppCompatActivity {
         ok.setOnClickListener(v -> {
             if (text_dialog.getText().toString().equals(otp)) {
                 String dob = dobYear + "/" + dobMonth + "/" + dobDate;
-                progress_bar.setVisibility(View.VISIBLE);
+             //   progress_bar.setVisibility(View.VISIBLE);
                 registration(et_firstName.getText().toString(), "", et_hobbies.getText().toString(), dob,
                         Gender, et_phone.getText().toString(), et_emailId.getText().toString(), password.getText().toString(), newToken, "1");
             } else {
@@ -355,7 +355,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     RegisterModel registerModel = response.body();
                     if (registerModel != null) {
-                        progress_bar.setVisibility(View.GONE);
+                        //progress_bar.setVisibility(View.GONE);
                         String respons = registerModel.getResponse();
                         String message = registerModel.getMessage();
                         if (respons.equals("true")) {
@@ -380,7 +380,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<RegisterModel> call, Throwable t) {
                 Toast.makeText(RegistrationActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
-                progress_bar.setVisibility(View.GONE);
+              //  progress_bar.setVisibility(View.GONE);
             }
         });
     }

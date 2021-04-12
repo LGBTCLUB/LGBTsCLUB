@@ -2,6 +2,7 @@ package com.lgbt.LGBTsCLUB;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Color;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -43,6 +45,7 @@ import com.lgbt.LGBTsCLUB.activity.BookMarkedActivity;
 import com.lgbt.LGBTsCLUB.activity.ChatActivity;
 import com.lgbt.LGBTsCLUB.activity.LoginActivity;
 import com.lgbt.LGBTsCLUB.activity.NotificationActivity;
+import com.lgbt.LGBTsCLUB.fragment.AboutUsFragment;
 import com.lgbt.LGBTsCLUB.fragment.ChatFragment;
 import com.lgbt.LGBTsCLUB.fragment.MainFragment;
 import com.lgbt.LGBTsCLUB.fragment.MyProfileFragment;
@@ -86,33 +89,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     AppUpdateManager appUpdateManager;
     int MY_REQUEST_CODE = 200;
     private ApiInterface apiInterface;
-    private ActionBarDrawerToggle drawerToggle;
-
-
-
+    private DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Find our drawer view
-//         mDrawer = (DrawerLayout) findViewById(R.id.navDrawer);
-//        drawerToggle = setupDrawerToggle();
-
-        // Setup toggle to display hamburger icon with nice animation
-
-//        drawerToggle.setDrawerIndicatorEnabled(true);
-//        drawerToggle.syncState();
-
-        // Tie DrawerLayout events to the ActionBarToggle
-//        mDrawer.addDrawerListener(drawerToggle);
+        initView();
 
         apiInterface = ApiClient.getInterface();
-//
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("Home");
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         imageViewHome = findViewById(R.id.img_home);
         imageViewChat = findViewById(R.id.img_chat);
@@ -136,70 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         fragmentTransaction.commit();
 
-        DrawerLayout drawerLayout=(DrawerLayout)findViewById(R.id.navDrawer);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-//        toolbar.setNavigationIcon(R.drawable.ic_baseline_dehaze_24);
-
-        toggle.setHomeAsUpIndicator(R.color.white);
-//        toggle=new ActionBarDrawerToggle(this,drawerLayout,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
-//        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
-      //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
        // installButton90to90();
-
- //       DrawerLayout drawerLayout=(DrawerLayout)findViewById(R.id.navDrawer);
-//        toggle=new ActionBarDrawerToggle(this,drawerLayout, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
-//        drawerLayout.addDrawerListener(toggle);
-//        toggle.syncState();
-//        toggle = setupDrawerToggle();
-//
-//        // Setup toggle to display hamburger icon with nice animation
-//        toggle.setDrawerIndicatorEnabled(true);
-//
-//
-//        // Tie DrawerLayout events to the ActionBarToggle
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-
-         NavigationView navigationView=(NavigationView)findViewById(R.id.navView);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.item_profile:
-                        pushFragment(new MyProfileFragment());
-                        break;
-                    case R.id.item_message:
-                        pushFragment(new MyProfileFragment());
-                        break;
-                    case R.id.item_notification:
-                        pushFragment(new MyProfileFragment());
-                        break;
-                    case R.id.item_favourite:
-                        pushFragment(new MyProfileFragment());
-                        break;
-                    case R.id.item_settings:
-                        pushFragment(new MyProfileFragment());
-                        break;
-
-                }
-//                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.navDrawer);
-//                drawer.closeDrawer(GravityCompat.START);
-//                return true;
-                DrawerLayout d1=(DrawerLayout)findViewById(R.id.navDrawer);
-                if(d1.isDrawerOpen(GravityCompat.START)){
-                    d1.closeDrawer(GravityCompat.START);
-                }
-                return false;
-            }
-        });
-
 
         String afterLogIn = SharedPrefsManager.getInstance().getString(STATUS);
 
@@ -242,25 +166,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    @Override    public boolean onOptionsItemSelected(MenuItem item) {
-        if (toggle.onOptionsItemSelected(item)){
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+    private void initView() {
+        drawerLayout = findViewById(R.id.navDrawer);
+        ImageView menu = findViewById(R.id.menu);
+        findViewById(R.id.profile).setOnClickListener(this);
+        findViewById(R.id.message).setOnClickListener(this);
+        findViewById(R.id.notification).setOnClickListener(this);
+        findViewById(R.id.favourite).setOnClickListener(this);
+        findViewById(R.id.settings).setOnClickListener(this);
+     //   TextView deliveryBoyUser = findViewById(R.id.deliveryBoyUser);
+
+      //  String deliveryBoyName = AppPreference.getStringPreference(DashbordActivity.this, AppConstants.PREF_USERNAME);
+     //   deliveryBoyUser.setText(deliveryBoyName);
+
+        menu.setOnClickListener(v -> {
+            try {
+                InputMethodManager inputManager = (InputMethodManager) MainActivity.this
+                        .getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(
+                        MainActivity.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            } catch (Exception e) {
+
+            }
+            if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
     }
-//    private ActionBarDrawerToggle setupDrawerToggle() {
-//        return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.navigation_drawer_open,  R.string.navigation_drawer_close);
-//    }
-
-
-//       DrawerLayout drawerLayout=(DrawerLayout)findViewById(R.id.navDrawer);
-////        drawerLayout.addDrawerListener(toggle);
-//    private ActionBarDrawerToggle setupDrawerToggle() {
-//
-//        return new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open,  R.string.navigation_drawer_close);
-//
-//    }
-
 
     public void onBackPressed() {
 
@@ -282,30 +217,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        //user_status(SharedPrefsManager.getInstance().getString(LOGIN_ID));
-//        profileDetailApi(SharedPrefsManager.getInstance().getString(LOGIN_ID));
-//        appUpdateManager
-//                .getAppUpdateInfo()
-//                .addOnSuccessListener(
-//                        appUpdateInfo -> {
-//
-//                            if (appUpdateInfo.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
-//                                // If an in-app update is already running, resume the update.
-//                                try {
-//                                    appUpdateManager.startUpdateFlowForResult(
-//                                            appUpdateInfo,
-//                                            IMMEDIATE,
-//                                            this,
-//                                            MY_REQUEST_CODE);
-//                                } catch (IntentSender.SendIntentException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//                        });
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        user_status(SharedPrefsManager.getInstance().getString(LOGIN_ID));
+        profileDetailApi(SharedPrefsManager.getInstance().getString(LOGIN_ID));
+        appUpdateManager
+                .getAppUpdateInfo()
+                .addOnSuccessListener(
+                        appUpdateInfo -> {
+
+                            if (appUpdateInfo.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                                // If an in-app update is already running, resume the update.
+                                try {
+                                    appUpdateManager.startUpdateFlowForResult(
+                                            appUpdateInfo,
+                                            IMMEDIATE,
+                                            this,
+                                            MY_REQUEST_CODE);
+                                } catch (IntentSender.SendIntentException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+    }
 
 
 
@@ -562,8 +497,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 imageViewChat.setColorFilter(getResources().getColor(R.color.black));
                 imageViewLike.setColorFilter(getResources().getColor(R.color.black));
                 imageViewAccount.setColorFilter(getResources().getColor(R.color.colorAccent));
-                pushFragment(new MyProfileFragment());
+                pushFragment(new AboutUsFragment());
+//                toolbar.setTitle("About Us");
+//                toolbar.setTitleTextColor(getResources().getColor(R.color.white));
                 break;
+             case R.id.profile:
+                 pushFragment(new AboutUsFragment());
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+            case R.id.message:
+                pushFragment(new ChatFragment());
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+            case R.id.notification:
+                pushFragment(new SearchSelectFragment());
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+            case R.id.favourite:
+                pushFragment(new MyProfileFragment());
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+            case R.id.settings:
+                pushFragment(new SearchSelectFragment());
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+
         }
         }
     //load fragment

@@ -84,6 +84,8 @@ public class LoginActivity extends AppCompatActivity {
         txt_signup=findViewById(R.id.text_signup);
         apiInterface = ApiClient.getInterface();
 
+
+
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(LoginActivity.this, new OnSuccessListener<InstanceIdResult>() {
             @Override
             public void onSuccess(InstanceIdResult instanceIdResult) {
@@ -92,6 +94,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         tv_forget_password.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
         txt_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(intent);
             }
         });
@@ -244,7 +253,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void verifyEmailMobile(String userEmail, String phone) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://umeed.app/api/")
+                .baseUrl("https://myteachers.live/app/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         //  RetrofitService api = retrofit.create(RetrofitService.class);

@@ -86,12 +86,12 @@ public class ChatActivity extends AppCompatActivity {
         });
 
 
-        fragment = new ChatFragment();
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.container, fragment);
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        fragmentTransaction.commit();
+//        fragment = new ChatFragment();
+//        fragmentManager = getSupportFragmentManager();
+//        fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.container, fragment);
+//        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//        fragmentTransaction.commit();
 
         //  setList();
 

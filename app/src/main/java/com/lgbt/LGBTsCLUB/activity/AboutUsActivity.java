@@ -38,31 +38,31 @@ public class AboutUsActivity extends AppCompatActivity {
 
         iv_back = findViewById(R.id.iv_back);
         tv_contant = findViewById(R.id.tv_aboutUs);
-        wabView = findViewById(R.id.faqs);
-        wabView.getSettings().setJavaScriptEnabled(true); // enable javascript
+       // wabView = findViewById(R.id.faqs);
+      //  wabView.getSettings().setJavaScriptEnabled(true); // enable javascript
 
-        wabView.setWebViewClient(new WebViewClient() {
-            @SuppressWarnings("deprecation")
-            @Override
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                Toast.makeText(AboutUsActivity.this, description, Toast.LENGTH_SHORT).show();
-            }
-
-            @TargetApi(android.os.Build.VERSION_CODES.M)
-            @Override
-            public void onReceivedError(WebView view, WebResourceRequest req, WebResourceError rerr) {
-                // Redirect to deprecated method, so you can use it in all SDK versions
-                onReceivedError(view, rerr.getErrorCode(), rerr.getDescription().toString(), req.getUrl().toString());
-            }
-        });
-
-        wabView.loadUrl("https://umeed.app/app/api/faq");
+//        wabView.setWebViewClient(new WebViewClient() {
+//            @SuppressWarnings("deprecation")
+//            @Override
+//            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+//                Toast.makeText(AboutUsActivity.this, description, Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @TargetApi(android.os.Build.VERSION_CODES.M)
+//            @Override
+//            public void onReceivedError(WebView view, WebResourceRequest req, WebResourceError rerr) {
+//                // Redirect to deprecated method, so you can use it in all SDK versions
+//                onReceivedError(view, rerr.getErrorCode(), rerr.getDescription().toString(), req.getUrl().toString());
+//            }
+//        });
+//
+//        wabView.loadUrl("https://myteachers.live/");
 
 
         apiInterface = ApiClient.getInterface();
-        progress = new UtilsMethod(this);
+      progress = new UtilsMethod(this);
 
-        iv_back.setOnClickListener(v -> finish());
+//        iv_back.setOnClickListener(v -> finish());
         aboutUsApi();
 //        getFAQS();
     }
