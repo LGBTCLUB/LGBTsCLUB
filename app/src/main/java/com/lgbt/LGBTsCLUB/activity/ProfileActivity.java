@@ -47,6 +47,7 @@ import java.io.IOException;
 import java.util.List;
 
 import id.zelory.compressor.Compressor;
+import jp.wasabeef.glide.transformations.BlurTransformation;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -56,6 +57,8 @@ import retrofit2.Response;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
+import static com.lgbt.LGBTsCLUB.network.networking.Constant.IMAGE_LOAD_USER;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.IMAGE_LOAD_USER1;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.IMAGE_LOAD_USER2;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.IMAGE_LOAD_USER3;
@@ -70,12 +73,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     public static String profileDetailApiCall = "No";
     ImageView iv_back, iv_home, iv_image1, iv_image2, iv_image3, iv_image4, iv_image5, iv_image6,
-            iv_image7, iv_attachment;
+            iv_image7, iv_attachment,bg_blur_iv;
     TextView tv_attachment;
-    TextView tv_account, tv_personal, tv_professional, tv_name, tv_gender, tv_hight, tv_dob, tv_age,
+    TextView tv_namee,li_viewPlan,tv_account, tv_personal, tv_professional, tv_name, tv_gender, tv_hight, tv_dob, tv_age,
             tv_material, tv_motherTongue, tv_interest, tv_country, tv_city, tv_nationality, tv_contact,
             tv_email, tv_education, tv_perofessions, tv_salary, tv_bio, tv_upgrade;
-    LinearLayout li_viewPlan;
+    //    LinearLayout li_viewPlan;
     TextView hide;
     Button bt_editprofile;
     LinearLayout li_account, li_prfessional, li_personal;
@@ -93,8 +96,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
 
-        iv_back = findViewById(R.id.iv_back);
-        iv_home = findViewById(R.id.iv_home);
+//        iv_back = findViewById(R.id.iv_back);
+//        iv_home = findViewById(R.id.iv_home);
         bt_editprofile = findViewById(R.id.bt_editprofile);
         tv_account = findViewById(R.id.tv_account);
         tv_personal = findViewById(R.id.tv_personal);
@@ -104,6 +107,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         li_personal = findViewById(R.id.li_personal);
 
         tv_name = findViewById(R.id.tv_name);
+        tv_namee = findViewById(R.id.tv_namee);
         tv_gender = findViewById(R.id.tv_gender);
         tv_hight = findViewById(R.id.tv_hight);
         tv_dob = findViewById(R.id.tv_dob);
@@ -118,7 +122,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         tv_email = findViewById(R.id.tv_email);
         tv_education = findViewById(R.id.tv_education);
         tv_perofessions = findViewById(R.id.tv_perofessions);
-        tv_bio = findViewById(R.id.tv_bio);
+//        tv_bio = findViewById(R.id.tv_bio);
         tv_salary = findViewById(R.id.tv_salary);
         iv_image1 = findViewById(R.id.iv_image1);
         iv_image2 = findViewById(R.id.iv_image2);
@@ -127,8 +131,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         iv_image5 = findViewById(R.id.iv_image5);
         iv_image6 = findViewById(R.id.iv_image6);
         iv_image7 = findViewById(R.id.iv_image7);
+        bg_blur_iv = findViewById(R.id.bg_blur_iv);
         progress_bar = findViewById(R.id.progress_bar);
-        hide = findViewById(R.id.hide);
+//        hide = findViewById(R.id.hide);
         tv_upgrade = findViewById(R.id.tv_upgrade);
         li_viewPlan = findViewById(R.id.li_viewPlan);
 
@@ -137,20 +142,20 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         apiInterface = ApiClient.getInterface();
 
-        iv_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-        iv_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        iv_back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
+//        iv_home.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
         bt_editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,13 +172,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 li_prfessional.setVisibility(GONE);
                 li_personal.setVisibility(GONE);
 
-                tv_account.setBackgroundResource(R.drawable.ractangle_colour);
-                tv_account.setTextColor(getResources().getColor(R.color.white));
 
-                tv_personal.setBackgroundResource(R.drawable.ractangle_white);
-                tv_personal.setTextColor(getResources().getColor(R.color.red));
-                tv_professional.setBackgroundResource(R.drawable.ractangle_white);
-                tv_professional.setTextColor(getResources().getColor(R.color.red));
+                tv_account.setTextColor(getResources().getColor(R.color.colorAccent));
+                tv_personal.setTextColor(getResources().getColor(R.color.black));
+                tv_professional.setTextColor(getResources().getColor(R.color.black));
             }
         });
 
@@ -184,13 +186,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 li_account.setVisibility(GONE);
                 li_prfessional.setVisibility(GONE);
 
-                tv_personal.setBackgroundResource(R.drawable.ractangle_colour);
-                tv_personal.setTextColor(getResources().getColor(R.color.white));
-
-                tv_account.setBackgroundResource(R.drawable.ractangle_white);
-                tv_account.setTextColor(getResources().getColor(R.color.red));
-                tv_professional.setBackgroundResource(R.drawable.ractangle_white);
-                tv_professional.setTextColor(getResources().getColor(R.color.red));
+                tv_account.setTextColor(getResources().getColor(R.color.black));
+                tv_personal.setTextColor(getResources().getColor(R.color.colorAccent));
+                tv_professional.setTextColor(getResources().getColor(R.color.black));
             }
         });
 
@@ -201,13 +199,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 li_account.setVisibility(GONE);
                 li_personal.setVisibility(GONE);
 
-                tv_professional.setBackgroundResource(R.drawable.ractangle_colour);
-                tv_professional.setTextColor(getResources().getColor(R.color.white));
-
-                tv_personal.setBackgroundResource(R.drawable.ractangle_white);
-                tv_personal.setTextColor(getResources().getColor(R.color.red));
-                tv_account.setBackgroundResource(R.drawable.ractangle_white);
-                tv_account.setTextColor(getResources().getColor(R.color.red));
+                 tv_account.setTextColor(getResources().getColor(R.color.black));
+                tv_personal.setTextColor(getResources().getColor(R.color.black));
+                tv_professional.setTextColor(getResources().getColor(R.color.colorAccent));
             }
 //            9584936236
         });
@@ -219,7 +213,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         iv_image5.setOnClickListener(this);
         iv_image6.setOnClickListener(this);
         iv_image7.setOnClickListener(this);
-        hide.setOnClickListener(this);
+//        hide.setOnClickListener(this);
         tv_upgrade.setOnClickListener(this);
         li_viewPlan.setOnClickListener(this);
         iv_attachment.setOnClickListener(this);
@@ -298,16 +292,16 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 requestCameraAndStorage(RESULT_LOAD_DOC);
                 break;
 
-            case R.id.hide:
-                if (status.equals("hide")) {
-                    status = "show";
-                    hide.setText("Show");
-                } else {
-                    status = "hide";
-                    hide.setText("Hide");
-                }
-                profile_status_saveApi(SharedPrefsManager.getInstance().getString(MATRI_ID), status);
-                break;
+//            case R.id.hide:
+//                if (status.equals("hide")) {
+//                    status = "show";
+//                    hide.setText("Show");
+//                } else {
+//                    status = "hide";
+//                    hide.setText("Hide");
+//                }
+//                profile_status_saveApi(SharedPrefsManager.getInstance().getString(MATRI_ID), status);
+//                break;
 
             case R.id.tv_upgrade:
                 startActivity(new Intent(ProfileActivity.this, MemberShipPlanActivity.class));
@@ -333,6 +327,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         if (respons) {
                             List<MemberProfileModel.MemberProfileData> profileData = profileModel.getMemberProfileDataList();
                             tv_name.setText(profileData.get(0).getName());
+                            tv_namee.setText(profileData.get(0).getName());
                             tv_gender.setText(profileData.get(0).getGender());
                             tv_hight.setText(profileData.get(0).getUserHeight());
                             tv_dob.setText(profileData.get(0).getDOB());
@@ -352,12 +347,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             tv_education.setText(profileData.get(0).getEducation());
                             tv_perofessions.setText(profileData.get(0).getOccupation());
                             tv_salary.setText(profileData.get(0).getAnnualincome());
-                            tv_bio.setText(profileData.get(0).getProfile());
+//                            tv_bio.setText(profileData.get(0).getProfile());
                             try {
                                 RequestOptions options = new RequestOptions()
                                         .centerCrop()
-                                        .placeholder(R.drawable.no_photo)
-                                        .error(R.drawable.no_photo)
+                                        .placeholder(R.drawable.logo_final)
+                                        .error(R.drawable.logo_final)
                                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                                         .priority(Priority.HIGH).dontAnimate()
                                         .dontTransform();
@@ -366,6 +361,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                                         .load(IMAGE_LOAD_USER1 + profileData.get(0).getPhoto1())
                                         .apply(options)
                                         .into(iv_image1);
+                                Glide.with(ProfileActivity.this)
+                                        .load(IMAGE_LOAD_USER1 + profileData.get(0).getPhoto1())
+                                        .apply(bitmapTransform(new BlurTransformation(25)))
+                                        .into(bg_blur_iv);
 
                                 Glide.with(ProfileActivity.this)
                                         .load(IMAGE_LOAD_USER2 + profileData.get(0).getPhoto2())
@@ -611,7 +610,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private void profileDetail(String userId) {
         apiInterface.profileDetail(userId).enqueue(new Callback<ProfileModel>() {
             @Override
-            public void onResponse(Call<ProfileModel> call, Response<ProfileModel> response) {
+            public void onResponse(Call<ProfileModel> prcall, Response<ProfileModel> response) {
                 if (response.isSuccessful()) {
                     ProfileModel profileModel = response.body();
                     if (profileModel != null) {

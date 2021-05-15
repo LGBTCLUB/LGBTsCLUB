@@ -44,7 +44,7 @@ public class DeleteAccountActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_delete_account);
 
         iv_back = findViewById(R.id.iv_back);
-        iv_home = findViewById(R.id.iv_home);
+//        iv_home = findViewById(R.id.iv_home);
         et_description = findViewById(R.id.et_description);
 
         rb_notSatisfied = findViewById(R.id.rb_notSatisfied);
@@ -63,7 +63,7 @@ public class DeleteAccountActivity extends AppCompatActivity implements View.OnC
         rb_Noneoftheabove.setOnClickListener(this);
         rb_other.setOnClickListener(this);
         tv_deleteAccount.setOnClickListener(this);
-        iv_home.setOnClickListener(this);
+//        iv_home.setOnClickListener(this);
     }
 
     @Override
@@ -127,10 +127,10 @@ public class DeleteAccountActivity extends AppCompatActivity implements View.OnC
 
                 break;
 
-            case R.id.iv_home:
-                startActivity(new Intent(DeleteAccountActivity.this, MainActivity.class));
-                finish();
-                break;
+//            case R.id.iv_home:
+//                startActivity(new Intent(DeleteAccountActivity.this, MainActivity.class));
+//                finish();
+//                break;
         }
     }
 

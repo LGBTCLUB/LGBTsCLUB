@@ -37,7 +37,7 @@ public class ContactUsActivity extends AppCompatActivity {
 
     ImageView iv_back, iv_home;
     TextView tv_title, tv_contant;
-    EditText et_emailId, et_message;
+    EditText et_emailId,et_name, et_message;
     Button bt_submit, bt_call;
     LinearLayout li_mail;
     String contact = "";
@@ -55,6 +55,7 @@ public class ContactUsActivity extends AppCompatActivity {
         tv_contant = findViewById(R.id.tv_contant);
 
         et_emailId = findViewById(R.id.et_emailId);
+        et_name = findViewById(R.id.et_name);
         et_message = findViewById(R.id.et_message);
         bt_submit = findViewById(R.id.bt_submit);
         bt_call = findViewById(R.id.bt_call);
@@ -105,18 +106,18 @@ public class ContactUsActivity extends AppCompatActivity {
             }
         });
 
-        iv_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ContactUsActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+//        iv_home.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(ContactUsActivity.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         bt_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (validationSuccess()) {
-                    sencontactUsApi(et_emailId.getText().toString(), et_message.getText().toString(), SharedPrefsManager.getInstance().getString(MATRI_ID));
+                    sencontactUsApi(et_emailId.getText().toString(), et_message.getText().toString() , et_message.getText().toString(),SharedPrefsManager.getInstance().getString(MATRI_ID));
 
                 }
 
@@ -139,7 +140,7 @@ public class ContactUsActivity extends AppCompatActivity {
                         boolean respons = contactUsModel.isResponse();
                         if (respons) {
                             ContactUsModel.ContactUsData contactUsData = contactUsModel.getContactUsData();
-                            tv_title.setText(contactUsData.getTitle());
+//                            tv_title.setText(contactUsData.getTitle());
 
                             Spanned str = HtmlCompat.fromHtml(contactUsData.getContent(),
                                     HtmlCompat.FROM_HTML_MODE_LEGACY);
@@ -159,7 +160,7 @@ public class ContactUsActivity extends AppCompatActivity {
         });
     }
 
-    private void sencontactUsApi(String emailId, String message, String name) {
+    private void sencontactUsApi(String id, String emailId, String message, String name) {
 
         apiInterface.sencontectUs(emailId, message, name).enqueue(new Callback<ContactUsModel>() {
             @Override
@@ -172,6 +173,7 @@ public class ContactUsActivity extends AppCompatActivity {
                         if (respons) {
                             et_emailId.getText().clear();
                             et_message.getText().clear();
+                            et_name.getText().clear();
                             Toast.makeText(ContactUsActivity.this, "Success", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -188,6 +190,11 @@ public class ContactUsActivity extends AppCompatActivity {
 
     private Boolean validationSuccess() {
 
+        if (et_name.getText().toString().length() == 0) {
+            et_name.setError("Please enter name !");
+            et_name.requestFocus();
+            return false;
+        }
 
         if (et_emailId.getText().toString().length() == 0) {
             et_emailId.setError("Please enter email Id !");

@@ -44,7 +44,7 @@
                     android:id="@+id/iv_payicon"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ccavenue_logo"
+                    android:src="@drawable/logo_final"
                     android:scaleType="centerInside"
                     android:layout_gravity="center"
                     />

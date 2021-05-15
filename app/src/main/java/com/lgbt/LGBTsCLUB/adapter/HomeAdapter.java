@@ -49,6 +49,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
     private final List<HomeModel.HomeData> homeDataList;
     private final ApiInterface apiInterface;
     private String heartlist;
+    private String userName;
 
     public HomeAdapter(FragmentActivity context, Fragment fragment, List<HomeModel.HomeData> homeDataList) {
         this.context = context;
@@ -68,13 +69,17 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
     public void onBindViewHolder(@NonNull final CustomerViewHolder holder, final int position) {
         final HomeModel.HomeData customerList = homeDataList.get(position);
         holder.name.setText(customerList.getNameUser());
-       // holder.userId.setText(customerList.getAge() + " Years");
+        holder.userId.setText(customerList.getMatriId());
+        holder.totalVisit.setText(customerList.getTotalvisit());
+
+
        // holder.tv_gender.setText(customerList.getGenderUser());
         final String matriId = customerList.getMatriId();
         final String sendrequest = customerList.getSendrequest();
 
         heartlist = customerList.getHeartlist();
         String status = customerList.getStatus();
+
         String profileStatus = customerList.getProfile_status();
         String verify_status = customerList.getVerify_status();
 
@@ -113,8 +118,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
 
         RequestOptions options = new RequestOptions()
                 .centerCrop()
-                .placeholder(R.drawable.no_photo)
-                .error(R.drawable.no_photo)
+                .placeholder(R.drawable.logo_final)
+                .error(R.drawable.logo_final)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH).dontAnimate()
                 .dontTransform();
@@ -133,7 +138,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
             }
         } else {
             Glide.with(context)
-                    .load(context.getResources().getDrawable(R.drawable.app_logo))
+                    .load(context.getResources().getDrawable(R.drawable.logo_final))
                     .apply(options)
                     .into(holder.user_image);
         }
@@ -180,12 +185,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
 //            holder.unlikeBtn.setVisibility(View.GONE);
 //        });
 
-//        holder.bt_moreInfo.setOnClickListener(v -> {
-//            Intent intent = new Intent(context, MoreInfoActivity.class);
-//            intent.putExtra("martId", customerList.getMatriId());
-//            //   intent.putExtra("blur_status", profileStatus);
-//            context.startActivity(intent);
-//        });
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, MoreInfoActivity.class);
+            intent.putExtra("martId", customerList.getMatriId());
+            //   intent.putExtra("blur_status", profileStatus);
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -228,7 +233,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
             @Override
             public void onFailure(Call<LoginModel> call, Throwable t) {
                 Toast.makeText(context, "something is wrong", Toast.LENGTH_LONG).show();
-                //     progress.cancleDialog();
+             //    progress.cancleDialog();
             }
         });
     }
@@ -273,6 +278,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
 //        private final ImageView iv_verified;
         private final TextView name;
         private final TextView userId;
+        private final TextView totalVisit;
 //        private final TextView tv_age;
 //        private final TextView tv_verified;
 //        private final TextView tv_gender;
@@ -294,15 +300,17 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
 
             name = itemView.findViewById(R.id.user_name);
             userId = itemView.findViewById(R.id.user_id);
+
 //            tv_age = itemView.findViewById(R.id.tv_age);
 //            tv_gender = itemView.findViewById(R.id.tv_gender);
 //            layout_item = itemView.findViewById(R.id.layout_item);
 //            bt_request = itemView.findViewById(R.id.bt_request);
 //            bt_moreInfo = itemView.findViewById(R.id.bt_moreInfo);
-//            tv_verified = itemView.findViewById(R.id.tv_verified);
+ //             tv_verified = itemView.findViewById(R.id.tv_verified);
 //            iv_verified = itemView.findViewById(R.id.iv_verified);
 //            rv_image = itemView.findViewById(R.id.rv_image);
 //          gifDrawable = itemView.findViewById(R.id.gif_iv);
+            totalVisit = itemView.findViewById(R.id.total_visit);
         }
     }
 }

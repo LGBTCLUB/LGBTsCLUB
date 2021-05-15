@@ -17,9 +17,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/main_recycler_view"
                 android:layout_width="match_parent"
+                android:layout_gravity="center"
                 android:layout_height="match_parent"/>
 
         </LinearLayout>
+
     <ProgressBar
         android:visibility="gone"
         android:layout_width="match_parent"

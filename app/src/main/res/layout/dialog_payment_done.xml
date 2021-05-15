@@ -9,8 +9,8 @@
     <RelativeLayout
         android:id="@+id/a"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@color/white"
+        android:layout_height="60dp"
+        android:background="@drawable/background"
         android:gravity="center">
 
         <ImageView
@@ -18,7 +18,7 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:scaleType="fitCenter"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo_final" />
 
 
     </RelativeLayout>
@@ -138,7 +138,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="80dp"
             android:layout_marginBottom="@dimen/dp_10"
-            android:background="@drawable/gradient_pink"
+            android:background="@drawable/bg_black_colour"
             android:gravity="center"
             android:text="Ok"
             android:textAllCaps="false"

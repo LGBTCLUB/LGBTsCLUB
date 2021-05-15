@@ -82,8 +82,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp50"
                         android:layout_margin="@dimen/margin_10"
-                        android:background="@drawable/gradient_pink"
+                        android:background="@drawable/bg_black_colour"
                         android:text="Select"
+                        android:textStyle="bold"
                         android:textColor="@color/white"
 
                         />

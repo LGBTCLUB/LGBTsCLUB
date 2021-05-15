@@ -192,7 +192,7 @@
                     android:layout_height="50dp"
                     android:layout_below="@+id/layout_view"
                     android:layout_margin="@dimen/dp_10"
-                    android:background="@drawable/gradient_pink"
+                    android:background="@drawable/bg_black_colour"
                     android:textColor="@color/white">
 
                     <TextView
@@ -200,6 +200,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:text="Search"
+                        android:textStyle="bold"
                         android:textColor="@color/white"
                         android:textSize="18sp"
 

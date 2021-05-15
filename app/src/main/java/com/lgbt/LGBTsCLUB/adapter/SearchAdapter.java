@@ -85,7 +85,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.CustomerVi
             } else {
                 holder.tv_verified.setText("Verified");
                 holder.iv_verified.setImageDrawable(context.getDrawable(R.drawable.ic_check_circle_black_24dp));
-                DrawableCompat.setTint(holder.iv_verified.getDrawable(), ContextCompat.getColor(context, R.color.blue));
+                DrawableCompat.setTint(holder.iv_verified.getDrawable(), ContextCompat.getColor(context, R.color.navy_blue));
             }
         } catch (Exception e) {
 
@@ -115,8 +115,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.CustomerVi
 
         RequestOptions options = new RequestOptions()
                 .centerCrop()
-                .placeholder(R.drawable.no_photo)
-                .error(R.drawable.no_photo)
+                .placeholder(R.drawable.logo_final)
+                .error(R.drawable.logo_final)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH).dontAnimate()
                 .dontTransform();

@@ -85,8 +85,8 @@ public class VisitedUserProfileAdapter extends RecyclerView.Adapter<VisitedUserP
 
         RequestOptions options = new RequestOptions()
                 .centerCrop()
-                .placeholder(R.drawable.no_photo)
-                .error(R.drawable.no_photo)
+                .placeholder(R.drawable.logo_final)
+                .error(R.drawable.logo_final)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH).dontAnimate()
                 .dontTransform();
@@ -99,7 +99,7 @@ public class VisitedUserProfileAdapter extends RecyclerView.Adapter<VisitedUserP
                     .into(holder.circleImageView);
         } else {
             Glide.with(context)
-                    .load(context.getResources().getDrawable(R.drawable.app_logo))
+                    .load(context.getResources().getDrawable(R.drawable.logo_final))
                     .apply(options)
                     .into(holder.circleImageView);
         }

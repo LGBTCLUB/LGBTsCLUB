@@ -74,6 +74,7 @@ import java.util.List;
 import java.util.Map;
 
 import id.zelory.compressor.Compressor;
+import jp.wasabeef.glide.transformations.BlurTransformation;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -83,6 +84,7 @@ import retrofit2.Response;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.IMAGE_LOAD_USER1;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.LOGIN_ID;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.MATRI_ID;
@@ -90,7 +92,7 @@ import static com.lgbt.LGBTsCLUB.network.networking.Constant.MATRI_ID;
 public class EditProfileActivity extends AppCompatActivity {
 
     Button bt_savedetails;
-    ImageView iv_back, iv_home, iv_userprofile;
+    ImageView iv_back, iv_home, iv_userprofile,iv_blur;
 
     TextView tv_account, tv_personal, tv_professional;
     LinearLayout li_account, li_prfessional, li_personal;
@@ -149,8 +151,8 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         bt_savedetails = findViewById(R.id.bt_savedetails);
-        iv_back = findViewById(R.id.iv_back);
-        iv_home = findViewById(R.id.iv_home);
+     //  iv_back = findViewById(R.id.iv_back);
+//        iv_home = findViewById(R.id.iv_home);
 
         tv_account = findViewById(R.id.tv_account);
         tv_personal = findViewById(R.id.tv_personal);
@@ -167,6 +169,7 @@ public class EditProfileActivity extends AppCompatActivity {
         et_income = findViewById(R.id.et_income);
         et_bio = findViewById(R.id.et_bio);
         et_hobbies = findViewById(R.id.et_hobbies);
+        iv_blur=findViewById(R.id.iv_blur);
 
         sp_gender = findViewById(R.id.sp_gender);
         sp_feet = findViewById(R.id.sp_feet);
@@ -212,20 +215,20 @@ public class EditProfileActivity extends AppCompatActivity {
 
         clickStatus = "Account";
 
-        iv_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(EditProfileActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        iv_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+//        iv_home.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(EditProfileActivity.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        iv_back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
 
         et_dob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -303,13 +306,9 @@ public class EditProfileActivity extends AppCompatActivity {
                 li_prfessional.setVisibility(GONE);
                 li_personal.setVisibility(GONE);
 
-                tv_account.setBackgroundResource(R.drawable.ractangle_colour);
-                tv_account.setTextColor(getResources().getColor(R.color.white));
-
-                tv_personal.setBackgroundResource(R.drawable.ractangle_white);
-                tv_personal.setTextColor(getResources().getColor(R.color.red));
-                tv_professional.setBackgroundResource(R.drawable.ractangle_white);
-                tv_professional.setTextColor(getResources().getColor(R.color.red));
+                tv_personal.setTextColor(getResources().getColor(R.color.black));
+                tv_account.setTextColor(getResources().getColor(R.color.colorAccent));
+                tv_professional.setTextColor(getResources().getColor(R.color.black));
 
             }
         });
@@ -323,13 +322,10 @@ public class EditProfileActivity extends AppCompatActivity {
                 li_account.setVisibility(GONE);
                 li_prfessional.setVisibility(GONE);
 
-                tv_personal.setBackgroundResource(R.drawable.ractangle_colour);
-                tv_personal.setTextColor(getResources().getColor(R.color.white));
+                tv_personal.setTextColor(getResources().getColor(R.color.colorAccent));
+                tv_account.setTextColor(getResources().getColor(R.color.black));
+                tv_professional.setTextColor(getResources().getColor(R.color.black));
 
-                tv_account.setBackgroundResource(R.drawable.ractangle_white);
-                tv_account.setTextColor(getResources().getColor(R.color.red));
-                tv_professional.setBackgroundResource(R.drawable.ractangle_white);
-                tv_professional.setTextColor(getResources().getColor(R.color.red));
             }
         });
 
@@ -343,13 +339,9 @@ public class EditProfileActivity extends AppCompatActivity {
                 li_account.setVisibility(GONE);
                 li_personal.setVisibility(GONE);
 
-                tv_professional.setBackgroundResource(R.drawable.ractangle_colour);
-                tv_professional.setTextColor(getResources().getColor(R.color.white));
-
-                tv_personal.setBackgroundResource(R.drawable.ractangle_white);
-                tv_personal.setTextColor(getResources().getColor(R.color.red));
-                tv_account.setBackgroundResource(R.drawable.ractangle_white);
-                tv_account.setTextColor(getResources().getColor(R.color.red));
+                tv_personal.setTextColor(getResources().getColor(R.color.black));
+                tv_account.setTextColor(getResources().getColor(R.color.black));
+                tv_professional.setTextColor(getResources().getColor(R.color.colorAccent));
             }
         });
 
@@ -1142,8 +1134,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
                             RequestOptions options = new RequestOptions()
                                     .centerCrop()
-                                    .placeholder(R.drawable.no_photo)
-                                    .error(R.drawable.no_photo)
+                                    .placeholder(R.drawable.logo_final)
+                                    .error(R.drawable.logo_final)
                                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                                     .priority(Priority.HIGH).dontAnimate()
                                     .dontTransform();
@@ -1152,6 +1144,10 @@ public class EditProfileActivity extends AppCompatActivity {
                                     .load(IMAGE_LOAD_USER1 + profileData.get(0).getPhoto1())
                                     .apply(options)
                                     .into(iv_userprofile);
+                            Glide.with(EditProfileActivity.this)
+                                    .load(IMAGE_LOAD_USER1 +profileData.get(0).getPhoto1())
+                                    .apply(bitmapTransform(new BlurTransformation(25)))
+                                    .into(iv_blur);
 
 
                             SpinMotherToung();

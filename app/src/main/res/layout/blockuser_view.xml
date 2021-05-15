@@ -8,8 +8,8 @@
     <RelativeLayout
         android:id="@+id/a"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@color/white"
+        android:layout_height="60dp"
+        android:background="@drawable/background"
         android:gravity="center">
 
         <ImageView
@@ -17,7 +17,8 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:scaleType="fitCenter"
-            android:src="@drawable/logo"/>
+            android:src="@drawable/logo_final" />
+
 
     </RelativeLayout>
 
@@ -36,13 +37,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_10"
-            android:background="@drawable/gradient_pink"
             android:drawablePadding="6dp"
             android:gravity="center"
             android:padding="8dp"
             android:layout_weight=".5"
             android:text="Block"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -52,13 +52,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/liq"
             android:layout_margin="@dimen/dp_10"
-            android:background="@drawable/gradient_pink"
             android:drawablePadding="6dp"
             android:gravity="center"
             android:padding="8dp"
             android:layout_weight=".5"
             android:text="Delete Chat"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -81,11 +80,11 @@
             android:layout_margin="@dimen/dp_10"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="20dp"
-            android:background="@color/white"
+            android:background="@drawable/bg_black_colour"
             android:gravity="center_vertical|center_horizontal"
             android:text="Cancel"
             android:textAllCaps="false"
-            android:textColor="@color/red" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

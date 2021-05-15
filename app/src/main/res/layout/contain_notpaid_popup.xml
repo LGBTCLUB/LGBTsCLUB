@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#ffffffff">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/a"
-        android:background="@color/white"
+        android:background="@drawable/background"
         android:gravity="center"
-        android:layout_height="80dp">
+        android:layout_height="60dp">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:gravity="center"
-            android:src="@drawable/logo"
+            android:src="@drawable/logo_final"
             android:scaleType="fitCenter" />
-
-
     </RelativeLayout>
-
-
-
 
     <LinearLayout
         android:id="@+id/liq"
@@ -41,12 +36,10 @@
             android:gravity="center_vertical"
             android:padding="12dp"
             android:text="Please upgrade your membership to view contact details."
-            android:textColor="@color/red"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/li"
@@ -61,16 +54,15 @@
         <Button
             android:id="@+id/bt_upgrade"
             android:gravity="center_vertical|center_horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="140dp"
             android:layout_height="30dp"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="16dp"
             android:text="Upgrade"
             android:layout_margin="@dimen/dp_10"
             android:textAllCaps="false"
-            android:background="@drawable/gradient_pink"
+            android:background="@drawable/bg_black_colour"
             android:textColor="@color/white"
-
             />
 
         <Button
@@ -83,18 +75,10 @@
             android:text="Ok"
             android:layout_margin="@dimen/dp_10"
             android:textAllCaps="false"
-            android:background="@drawable/gradient_pink"
+            android:background="@drawable/bg_black_colour"
             android:textColor="@color/white"
-
             />
-
-
     </LinearLayout>
-
-
-
-
-
 
 </RelativeLayout>
 

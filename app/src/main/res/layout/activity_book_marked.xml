@@ -19,7 +19,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
+            android:background="#151D32"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:layout_gravity="center"
@@ -36,7 +36,7 @@
                     android:id="@+id/iv_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_leftarrow_pink"
+                    app:srcCompat="@drawable/back_arrow"
                     tools:ignore="VectorDrawableCompat"
 
                     android:layout_alignParentStart="true"
@@ -49,18 +49,19 @@
                     android:layout_marginStart="40dp"
                     android:layout_marginLeft="20dp"
                     android:text="Favourites"
-                    android:textColor="@color/red"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
                     android:textSize="20sp" />
 
-                <ImageView
-                    android:id="@+id/iv_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_home_pink"
-                    tools:ignore="VectorDrawableCompat"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="@dimen/dp_10"
-                    />
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/iv_home"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    app:srcCompat="@drawable/ic_home_pink"-->
+                <!--                    tools:ignore="VectorDrawableCompat"-->
+                <!--                    android:layout_alignParentEnd="true"-->
+                <!--                    android:layout_marginRight="@dimen/dp_10"-->
+                <!--                    />-->
 
 
             </RelativeLayout>
@@ -86,7 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/umeedlogonew"
+        android:src="@drawable/logo_final"
         android:visibility="gone"
         />
 

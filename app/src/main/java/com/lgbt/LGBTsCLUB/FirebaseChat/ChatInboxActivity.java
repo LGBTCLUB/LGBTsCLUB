@@ -66,14 +66,14 @@ public class ChatInboxActivity extends AppCompatActivity {
     Firebase reference1, reference2;
     String mUserName;
     String dateToStr;
-    TextView matchUserName;
+    TextView matchUserName,txt_designation;
     ImageView chatBackArrow, matchUserImage, onlineIndicator, btEmoji, settingProfile;
     RelativeLayout chatParentView;
     DatabaseReference myRef;
     FirebaseDatabase database;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String msgContent, response;
-    String user_Name, user_Image, myId, userMatriId;
+    String user_Name, user_Image, myId, userMatriId,user_designation;
     ImageView back_arrow, iv_info;
     String toblocked = "", fromblocked = "";
     TextView tv_block;
@@ -90,8 +90,8 @@ public class ChatInboxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_inbox);
         back_arrow = findViewById(R.id.back_arrow);
-        iv_info = findViewById(R.id.iv_info);
-
+       // iv_info = findViewById(R.id.iv_info);
+txt_designation=findViewById(R.id.txt_designation);
         Firebase.setAndroidContext(this);
 
         dialog = new Dialog(ChatInboxActivity.this);
@@ -108,6 +108,7 @@ public class ChatInboxActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         user_Name = intent.getStringExtra("user_Name");
+        user_designation = intent.getStringExtra("designation");
         //  user_Id = intent.getStringExtra("user_Id");
         user_Image = intent.getStringExtra("user_Image");
         userMatriId = intent.getStringExtra("matriId");
@@ -121,30 +122,30 @@ public class ChatInboxActivity extends AppCompatActivity {
             dialog.cancel();
             FirebasechatMethod();
         });
-        back_arrow.setOnClickListener(v -> finish());
-
-        iv_info.setOnClickListener(v -> BlockShow());
+//        back_arrow.setOnClickListener(v -> finish());
+//
+//        iv_info.setOnClickListener(v -> BlockShow());
         init();
     }
 
     public void init() {
-        chatBackArrow = findViewById(R.id.back_arrow);
+//        chatBackArrow = findViewById(R.id.back_arrow);
         contentRoot = findViewById(R.id.contentRoot);
-        chatBackArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-        btEmoji = (ImageView) findViewById(R.id.emoji);
+//        chatBackArrow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
+//        btEmoji = (ImageView) findViewById(R.id.emoji);
         mMessageEditText = (EmojiconEditText) findViewById(R.id.typemsg);
-        emojIcon = new EmojIconActions(ChatInboxActivity.this, contentRoot, mMessageEditText, btEmoji);
-        emojIcon.ShowEmojIcon();
+       // emojIcon = new EmojIconActions(ChatInboxActivity.this, contentRoot, mMessageEditText, btEmoji);
+      //  emojIcon.ShowEmojIcon();
         onlineIndicator = findViewById(R.id.imgOnlineIndicator);
         matchUserImage = findViewById(R.id.sellerImage);
         matchUserName = findViewById(R.id.sellerUserName);
-        chatParentView = findViewById(R.id.chat_parent_view);
-        settingProfile = findViewById(R.id.preview_setting);
+//        chatParentView = findViewById(R.id.chat_parent_view);
+//        settingProfile = findViewById(R.id.preview_setting);
         Date today = new Date();
          /*dateToStr = format.format(today);
         System.out.println(dateToStr);
@@ -152,11 +153,13 @@ public class ChatInboxActivity extends AppCompatActivity {
         matchUserName.setText(user_Name);
         RequestOptions options = new RequestOptions()
                 .centerCrop()
-                .placeholder(R.drawable.logo)
+                .placeholder(R.drawable.logo_final)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH)
                 .dontAnimate()
                 .dontTransform();
+
+        txt_designation.setText(user_designation);
 
         Glide.with(this)
                 .load(IMAGE_LOAD_USER1 + user_Image)

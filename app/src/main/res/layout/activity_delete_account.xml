@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#151D32"
     tools:context=".activity.DeleteAccountActivity">
-
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -17,70 +17,84 @@
         >
 
         <androidx.appcompat.widget.Toolbar
+            android:elevation="@dimen/dp_8"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:layout_gravity="center"
-            android:background="@color/white"
-            android:elevation="@dimen/dp_8"
+            android:background="#151D32"
             app:layout_scrollFlags="scroll|enterAlways|snap"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:layout_gravity="center"
+            >
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                >
 
                 <ImageView
+                    android:layout_centerInParent="true"
                     android:id="@+id/iv_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/back_arrow"
+                    tools:ignore="VectorDrawableCompat"
                     android:layout_alignParentStart="true"
-                    android:layout_centerInParent="true"
-                    app:srcCompat="@drawable/ic_leftarrow_pink"
-
-                    tools:ignore="VectorDrawableCompat" />
+                    />
 
                 <TextView
                     android:id="@+id/tv_test"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:text="Delete account"
-                    android:textColor="@color/red"
-                    android:textSize="20sp" />
-
-                <ImageView
-                    android:id="@+id/iv_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="@dimen/dp_10"
-                    app:srcCompat="@drawable/ic_home_pink"
-                    tools:ignore="VectorDrawableCompat" />
+                    android:text="Delete Account"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="20dp"
+                    />
+
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/iv_home"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    app:srcCompat="@drawable/ic_home_pink"-->
+                <!--                    tools:ignore="VectorDrawableCompat"-->
+                <!--                    android:layout_alignParentEnd="true"-->
+                <!--                    android:layout_marginRight="@dimen/dp_10"-->
+                <!--                    />-->
+
 
             </RelativeLayout>
+
         </androidx.appcompat.widget.Toolbar>
+
     </com.google.android.material.appbar.AppBarLayout>
+
 
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/app_bar"
+        android:background="@drawable/gradient_card"
 
         >
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_10"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_card"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
 
             <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
 
                 <RadioButton
                     android:id="@+id/rb_notSatisfied"
@@ -156,15 +170,16 @@
             <TextView
                 android:id="@+id/tv_deleteAccount"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="45dp"
                 android:layout_marginTop="50dp"
-                android:layout_marginRight="40dp"
-                android:background="@drawable/gradient_pink"
+                android:layout_marginRight="45dp"
+                android:background="@drawable/bg_black_colour"
                 android:gravity="center"
                 android:padding="@dimen/dp_10"
                 android:text="Delete Account"
                 android:textColor="@color/white"
+                android:textStyle="bold"
                 android:textSize="@dimen/t16" />
         </LinearLayout>
 
@@ -178,5 +193,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:visibility="gone" />
+
 
 </RelativeLayout>

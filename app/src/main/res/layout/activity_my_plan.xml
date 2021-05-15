@@ -19,7 +19,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
+            android:background="#151D32"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:layout_gravity="center"
@@ -36,7 +36,7 @@
                     android:id="@+id/iv_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_leftarrow_pink"
+                    app:srcCompat="@drawable/back_arrow"
                     tools:ignore="VectorDrawableCompat"
                     android:layout_alignParentStart="true"
                     />
@@ -48,19 +48,20 @@
                     android:layout_height="wrap_content"
                     android:text="My Plan"
                     android:textSize="20sp"
-                    android:textColor="@color/red"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
                     android:layout_marginLeft="20dp"
                     />
 
-                <ImageView
-                    android:id="@+id/iv_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_home_pink"
-                    tools:ignore="VectorDrawableCompat"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="@dimen/dp_10"
-                    />
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/iv_home"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    app:srcCompat="@drawable/ic_home_pink"-->
+                <!--                    tools:ignore="VectorDrawableCompat"-->
+                <!--                    android:layout_alignParentEnd="true"-->
+                <!--                    android:layout_marginRight="@dimen/dp_10"-->
+                <!--                    />-->
 
 
             </RelativeLayout>
@@ -111,7 +112,7 @@
                             android:layout_height="100dp"
                             android:layout_centerVertical="true"
                             android:padding="0dp"
-                            android:src="@drawable/app_logo"
+                            android:src="@drawable/logo_final"
                             />
                     </RelativeLayout>
 
@@ -200,7 +201,7 @@
                     android:layout_marginLeft="80dp"
                     android:layout_marginRight="80dp"
                     android:layout_marginBottom="@dimen/dp_10"
-                    android:background="@drawable/gradient_pink"
+                    android:background="@drawable/bg_black_colour"
                     android:textColor="@color/white"
                     android:layout_gravity="bottom"
 

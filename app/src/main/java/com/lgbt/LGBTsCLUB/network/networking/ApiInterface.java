@@ -45,11 +45,9 @@ public interface ApiInterface {
     @POST("login")
     Call<LoginModel> userLogin(@Field("username") String email, @Field("password") String password, @Field("devicetoken") String devicetoken);
 
-
     @FormUrlEncoded
     @POST("loginwidthmobile")
     Call<LoginModel> loginwidthmobile(@Field("mobile") String mobile);
-
 
     @FormUrlEncoded
     @POST("verify_email")
@@ -62,7 +60,6 @@ public interface ApiInterface {
             , @Field("fcm_token") String fcmToken, @Field("terms") String terms,
                                      @Field("mobilecode") String countryCode);
 
-
     @FormUrlEncoded
     @POST("user_about_us")
     Call<LoginModel> tellusAbout(@Field("height") String height, @Field("merital_status") String meritalStatus, @Field("religion") String religion
@@ -70,7 +67,6 @@ public interface ApiInterface {
             , @Field("country") String country, @Field("state") String state, @Field("city") String city, @Field("user_id") String userId
             , @Field("zipcode") String zipcode, @Field("nationality") String nationality, @Field("income") String income,
                                  @Field("childrenlivingstatus") String childrenlivingstatus, @Field("bio") String bio);
-
 
 //    @Multipart
 //    @POST("registration")
@@ -255,13 +251,11 @@ public interface ApiInterface {
     @POST("blockunblokstatus")
     Call<UserBlockModel> blockunblokstatus(@Field("fromMatriID") String from_id, @Field("toMatriID") String toMatriID);
 
-
     @FormUrlEncoded
     @POST("smartSearch")
     Call<SmartSearchModel> smartSearch(@Field("loginmatriid") String MatriID, @Field("txtGender") String gender, @Field("Fage") String Fage, @Field("Tage") String Tage,
                                        @Field("txtphoto") String txtphoto, @Field("religion") String religion, @Field("txtprofile") String txtprofile
             , @Field("pagecount") String pagecount, @Field("caste") String caste);
-
 
     @FormUrlEncoded
     @POST("matrimonyIdSearch")

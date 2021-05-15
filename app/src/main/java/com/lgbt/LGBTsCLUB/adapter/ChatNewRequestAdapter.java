@@ -73,8 +73,8 @@ public class ChatNewRequestAdapter extends RecyclerView.Adapter<ChatNewRequestAd
 
         RequestOptions options = new RequestOptions()
                 .centerCrop()
-                .placeholder(R.drawable.no_photo)
-                .error(R.drawable.no_photo)
+                .placeholder(R.drawable.logo_final)
+                .error(R.drawable.logo_final)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH).dontAnimate()
                 .dontTransform();
@@ -103,7 +103,7 @@ public class ChatNewRequestAdapter extends RecyclerView.Adapter<ChatNewRequestAd
             }
         });
 
-        holder.bt_moreInfo.setOnClickListener(new View.OnClickListener() {
+        holder.moreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, MoreInfoActivity.class);
@@ -112,12 +112,20 @@ public class ChatNewRequestAdapter extends RecyclerView.Adapter<ChatNewRequestAd
             }
         });
 
-        holder.bt_cancel.setOnClickListener(new View.OnClickListener() {
+        holder.cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cancel_send_request(customerList.getReq_id(), position);
             }
         });
+
+        holder.accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                acceptRequest(customerList.getReq_id(), position);
+            }
+        });
+
 
 
         holder.layout_item.setOnClickListener(new View.OnClickListener() {
@@ -209,8 +217,8 @@ public class ChatNewRequestAdapter extends RecyclerView.Adapter<ChatNewRequestAd
         private final TextView chat_message;
         private final LinearLayout layout_item;
         private final Button bt_request;
-        private final Button bt_moreInfo;
-        private final Button bt_cancel;
+        private final TextView moreInfo;
+        private ImageView cancel, accept;
         private ImageView iv_heart;
 
 
@@ -222,8 +230,9 @@ public class ChatNewRequestAdapter extends RecyclerView.Adapter<ChatNewRequestAd
             chat_message = itemView.findViewById(R.id.chat_message);
             layout_item = itemView.findViewById(R.id.layout_item);
             bt_request = itemView.findViewById(R.id.bt_request);
-            bt_moreInfo = itemView.findViewById(R.id.bt_moreInfo);
-            bt_cancel = itemView.findViewById(R.id.bt_cancel);
+            moreInfo = itemView.findViewById(R.id.more_info);
+            cancel = itemView.findViewById(R.id.cancel);
+            accept = itemView.findViewById(R.id.accept);
         }
     }
 

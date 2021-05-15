@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <RelativeLayout
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/layout_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000">
+
+
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="510dp"
+            android:orientation="vertical"
+            android:background="@drawable/back_screen">
+
+            <ImageView
+                android:id="@+id/mPager"
+                android:layout_width="200dp"
+                android:layout_height="190dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/screen_1"
+                android:layout_marginTop="55dp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/txt_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FFF"
+                android:layout_marginTop="10dp"
+                android:text="Let's Get Started"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/txt_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:layout_below="@+id/txt_sign_up"
+                android:text="Join Us Now And Enjoy"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/txt_line2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:layout_below="@+id/txt_line"
+                android:text="Online Free Tutorials"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/txt_line3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:layout_below="@+id/txt_line2"
+                android:text="Instantly"
+                android:textStyle="bold"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_create_account"
+            android:layout_width="320dp"
+            android:layout_height="55dp"
+            android:layout_below="@id/linear"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_border_white"
+            android:textStyle="bold"
+            android:padding="8dp"
+            android:layout_marginTop="15dp"
+            android:hint="Create Account"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+        <Button
+            android:id="@+id/btn_login_account"
+            android:layout_width="320dp"
+            android:layout_height="55dp"
+            android:layout_below="@id/btn_create_account"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_white_colour"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="8dp"
+            android:layout_marginTop="25dp"
+            android:hint="Login"
+            android:textColorHint="@color/black"
+            android:textSize="20sp" />
+
+
+
+    </RelativeLayout>
+</ScrollView>

@@ -15,6 +15,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,7 +42,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.CONFIRM_EMAIL;
+import static com.lgbt.LGBTsCLUB.network.networking.Constant.IMAGE_LOAD_URL;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.KEY_LOGIN_STATUS;
+import static com.lgbt.LGBTsCLUB.network.networking.Constant.KEY_USER_NAME;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.LOGIN_ID;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.MATRI_ID;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.MOBILE;
@@ -55,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
     PopupWindow popupWindow;
     RelativeLayout relativeLayout;
     EditText et_emailId,et_password;
-    // private ProgressDailog progress;
+    private ProgressBar progress;
     String newToken;
     String otp;
     private ApiInterface apiInterface;
@@ -67,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 
         relativeLayout = findViewById(R.id.rel_layout);
         tv_forget_password = findViewById(R.id.txt_forgotpasssword);
+        progress = findViewById(R.id.progress_bar);
         
 //        tv_forget_password.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -225,6 +229,7 @@ public class LoginActivity extends AppCompatActivity {
                             SharedPrefsManager.getInstance().setString(LOGIN_ID, loginDataList.get(0).getLoginId());
                             SharedPrefsManager.getInstance().setString(MATRI_ID, loginDataList.get(0).getMatriId());
                             SharedPrefsManager.getInstance().setString(USER_GENDER, loginDataList.get(0).getGenderUser());
+                            SharedPrefsManager.getInstance().setString(KEY_USER_NAME, loginDataList.get(0).getNameUser());
                             SharedPrefsManager.getInstance().setString(CONFIRM_EMAIL, loginDataList.get(0).getConfirmEmail());
                             SharedPrefsManager.getInstance().setString(MOBILE, loginDataList.get(0).getMobileUser());
                             SharedPrefsManager.getInstance().setString(STATUS, loginDataList.get(0).getStatus());
@@ -300,7 +305,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText text_dialog = dialog.findViewById(R.id.text_dialog);
         ok.setOnClickListener(v -> {
             if (text_dialog.getText().toString().equals(otp)) {
-//                progress_bar.setVisibility(View.VISIBLE);
+                progress.setVisibility(View.VISIBLE);
 //                loginwidthmobile(et_mobile.getText().toString());
             } else {
                 Toast toast = Toast.makeText(LoginActivity.this, "Enter Valid Otp", Toast.LENGTH_LONG);

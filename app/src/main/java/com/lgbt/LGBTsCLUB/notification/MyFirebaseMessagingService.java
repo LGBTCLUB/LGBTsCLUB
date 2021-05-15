@@ -128,17 +128,17 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setAutoCancel(true)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                 .setContentIntent(pendingIntent)
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.logo))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.logo_final))
                 .setLights(Color.RED, 1000, 300)
                 .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setNumber(++numMessages);
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notificationBuilder.setSmallIcon(R.drawable.logo);
+            notificationBuilder.setSmallIcon(R.drawable.logo_final);
             notificationBuilder.setColor(getResources().getColor(R.color.design_default_color_primary_dark));
         } else {
-            notificationBuilder.setSmallIcon(R.drawable.logo);
+            notificationBuilder.setSmallIcon(R.drawable.logo_final);
         }
         /*try {
             String picture = data.getString(FCM_PARAM);

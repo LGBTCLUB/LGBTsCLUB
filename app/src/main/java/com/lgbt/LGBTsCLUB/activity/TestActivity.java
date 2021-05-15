@@ -31,7 +31,7 @@ public class TestActivity extends AppCompatActivity {
         final AllAngleExpandableButton button = (AllAngleExpandableButton) findViewById(R.id.button_expandable_90_90);
         final List<ButtonData> buttonDatas = new ArrayList<>();
         int[] drawable = {R.drawable.plus, R.drawable.mark, R.drawable.settings, R.drawable.heart};
-        int[] color = {R.color.blue, R.color.colorPrimary, R.color.green, R.color.yellow};
+        int[] color = {R.color.navy_blue, R.color.colorPrimary, R.color.green, R.color.yellow};
         for (int i = 0; i < 4; i++) {
             ButtonData buttonData;
             if (i == 0) {
@@ -50,7 +50,7 @@ public class TestActivity extends AppCompatActivity {
         final AllAngleExpandableButton button = (AllAngleExpandableButton) findViewById(R.id.button_expandable_90_180);
         final List<ButtonData> buttonDatas = new ArrayList<>();
         int[] drawable = {R.drawable.plus, R.drawable.mark, R.drawable.settings, R.drawable.heart};
-        int[] color = {R.color.blue, R.color.colorPrimary, R.color.green, R.color.yellow};
+        int[] color = {R.color.navy_blue, R.color.colorPrimary, R.color.green, R.color.yellow};
         for (int i = 0; i < 4; i++) {
             ButtonData buttonData;
             if (i == 0) {
@@ -70,7 +70,7 @@ public class TestActivity extends AppCompatActivity {
         final AllAngleExpandableButton button = (AllAngleExpandableButton) findViewById(R.id.button_expandable_110_250);
         final List<ButtonData> buttonDatas = new ArrayList<>();
         int[] drawable = {R.drawable.edit, R.drawable.refresh, R.drawable.mark, R.drawable.settings, R.drawable.heart, R.drawable.search, R.drawable.copy};
-        int[] color = {R.color.colorBlack, R.color.colorPrimary, R.color.blue, R.color.pink, R.color.yellow, R.color.gray_light, R.color.green};
+        int[] color = {R.color.colorBlack, R.color.colorPrimary, R.color.navy_blue, R.color.pink, R.color.yellow, R.color.gray_light, R.color.green};
         for (int i = 0; i < 7; i++) {
             ButtonData buttonData;
             if (i == 0) {
@@ -90,7 +90,7 @@ public class TestActivity extends AppCompatActivity {
         final AllAngleExpandableButton button = (AllAngleExpandableButton) findViewById(R.id.button_expandable_0_360);
         final List<ButtonData> buttonDatas = new ArrayList<>();
         int[] drawable = {R.drawable.edit, R.drawable.refresh, R.drawable.mark, R.drawable.settings, R.drawable.heart, R.drawable.search, R.drawable.copy};
-        int[] color = {R.color.colorBlack, R.color.colorPrimary, R.color.blue, R.color.pink, R.color.yellow, R.color.gray_light, R.color.green};
+        int[] color = {R.color.colorBlack, R.color.colorPrimary, R.color.navy_blue, R.color.pink, R.color.yellow, R.color.gray_light, R.color.green};
         for (int i = 0; i < 7; i++) {
             ButtonData buttonData;
             if (i == 0) {

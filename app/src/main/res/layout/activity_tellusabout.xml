@@ -3,23 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".activity.TellusaboutActivity">
+
+
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+
+        >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="center"
-            android:background="@color/white"
+            android:background="#151D32"
             android:elevation="@dimen/dp_8"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
@@ -35,7 +39,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_centerInParent="true"
-                    app:srcCompat="@drawable/ic_leftarrow_pink"
+                    app:srcCompat="@drawable/back_arrow"
+
                     tools:ignore="VectorDrawableCompat" />
 
                 <TextView
@@ -44,19 +49,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
                     android:layout_marginLeft="20dp"
-                    android:text="Tell us about you"
-                    android:textColor="@color/red"
+                    android:text="Tell Us About Yourself"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
                     android:textSize="20sp" />
 
-                <ImageView
-                    android:id="@+id/iv_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="@dimen/dp_10"
-                    android:visibility="gone"
-                    app:srcCompat="@drawable/ic_home_pink"
-                    tools:ignore="VectorDrawableCompat" />
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/iv_home"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_alignParentEnd="true"-->
+                <!--                    android:layout_marginRight="@dimen/dp_10"-->
+                <!--                    app:srcCompat="@drawable/ic_home_pink"-->
+                <!--                    tools:ignore="VectorDrawableCompat" />-->
+
 
             </RelativeLayout>
 
@@ -64,10 +70,12 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/app_bar">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,13 +83,14 @@
             android:orientation="vertical"
             android:padding="20dp">
 
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:padding="5dp"
                 android:text="How Tall Are You?"
-                android:textColor="@color/colorBlack"
+                android:textColor="#000"
                 android:textSize="14dp" />
 
             <LinearLayout
@@ -93,7 +102,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_rec_solid_gray"
+                    android:background="@drawable/bg_border_grey"
                     android:orientation="horizontal">
 
                     <Spinner
@@ -114,7 +123,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_centerInParent="true"
                         android:padding="10dp"
-                        app:srcCompat="@drawable/arrow_drop_down"
+                        app:srcCompat="@drawable/ccp_down_arrow"
                         tools:ignore="VectorDrawableCompat" />
                 </RelativeLayout>
 
@@ -164,13 +173,13 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="Marital status"
-                android:textColor="@color/colorBlack"
+                android:textColor="#000"
                 android:textSize="14dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray">
+                android:background="@drawable/bg_border_grey">
 
                 <Spinner
                     android:id="@+id/sp_material"
@@ -190,7 +199,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerInParent="true"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/arrow_drop_down"
+                    app:srcCompat="@drawable/ccp_down_arrow"
                     tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
 
@@ -200,7 +209,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="Do You Have Children?"
-                android:textColor="@color/colorBlack"
+                android:textColor="#000"
                 android:textSize="14dp" />
 
 
@@ -236,13 +245,13 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="Religion You Identify With?"
-                android:textColor="@color/colorBlack"
+                android:textColor="#000"
                 android:textSize="14dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray">
+                android:background="@drawable/bg_border_grey">
 
                 <Spinner
                     android:id="@+id/sp_religon"
@@ -263,7 +272,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerInParent="true"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/arrow_drop_down"
+                    app:srcCompat="@drawable/ccp_down_arrow"
                     tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
 
@@ -273,13 +282,13 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="Mother Tongue?"
-                android:textColor="@color/colorBlack"
+                android:textColor="#000"
                 android:textSize="14dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray">
+                android:background="@drawable/bg_border_grey">
 
                 <Spinner
                     android:id="@+id/sp_motherToung"
@@ -296,7 +305,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/arrow_drop_down"
+                    app:srcCompat="@drawable/ccp_down_arrow"
                     tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
 
@@ -306,13 +315,13 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="Educational Qualification?"
-                android:textColor="@color/colorBlack"
+                android:textColor="#000"
                 android:textSize="14dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray">
+                android:background="@drawable/bg_border_grey">
 
                 <Spinner
                     android:id="@+id/sp_education"
@@ -330,7 +339,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerInParent="true"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/arrow_drop_down"
+                    app:srcCompat="@drawable/ccp_down_arrow"
                     tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
 
@@ -340,13 +349,13 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="What Is Your Profession ?"
-                android:textColor="@color/colorBlack"
+                android:textColor="#000"
                 android:textSize="14dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray">
+                android:background="@drawable/bg_border_grey">
 
                 <Spinner
                     android:id="@+id/sp_profession"
@@ -364,7 +373,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerInParent="true"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/arrow_drop_down"
+                    app:srcCompat="@drawable/ccp_down_arrow"
                     tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
 
@@ -374,14 +383,14 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="Annual Income?"
-                android:textColor="@color/colorBlack"
+                android:textColor="#000"
                 android:textSize="14dp" />
 
             <EditText
                 android:id="@+id/et_annualIncome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray"
+                android:background="@drawable/bg_border_grey"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
                 android:inputType="number"
@@ -394,13 +403,13 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="Country"
-                android:textColor="@color/colorBlack"
+                android:textColor="#000"
                 android:textSize="14dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray">
+                android:background="@drawable/bg_border_grey">
 
                 <Spinner
                     android:id="@+id/sp_country"
@@ -418,7 +427,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerInParent="true"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/arrow_drop_down"
+                    app:srcCompat="@drawable/ccp_down_arrow"
                     tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
 
@@ -428,13 +437,13 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="State"
-                android:textColor="@color/colorBlack"
+                android:textColor="#000"
                 android:textSize="14dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray">
+                android:background="@drawable/bg_border_grey">
 
                 <Spinner
                     android:id="@+id/sp_state"
@@ -452,7 +461,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerInParent="true"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/arrow_drop_down"
+                    app:srcCompat="@drawable/ccp_down_arrow"
                     tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
 
@@ -463,13 +472,13 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="City"
-                android:textColor="@color/colorBlack"
+                android:textColor="#000"
                 android:textSize="14dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray">
+                android:background="@drawable/bg_border_grey">
 
                 <Spinner
                     android:id="@+id/sp_city"
@@ -487,7 +496,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerInParent="true"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/arrow_drop_down"
+                    app:srcCompat="@drawable/ccp_down_arrow"
                     tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
 
@@ -497,14 +506,14 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="Zip Code"
-                android:textColor="@color/colorBlack"
+                android:textColor="#000"
                 android:textSize="14dp" />
 
             <EditText
                 android:id="@+id/et_zipcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray"
+                android:background="@drawable/bg_border_grey"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
                 android:inputType="number"
@@ -518,14 +527,14 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="Nationality"
-                android:textColor="@color/colorBlack"
+                android:textColor="#000"
                 android:textSize="14dp" />
 
             <EditText
                 android:id="@+id/et_nationality"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray"
+                android:background="@drawable/bg_border_grey"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
                 android:inputType="textEmailAddress"
@@ -538,7 +547,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="Short Bio"
-                android:textColor="@color/colorBlack"
+                android:textColor="#000"
                 android:textSize="14dp" />
 
 
@@ -546,7 +555,7 @@
                 android:id="@+id/et_bio"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:background="@drawable/bg_rec_solid_gray"
+                android:background="@drawable/bg_border_grey"
                 android:drawablePadding="6dp"
                 android:gravity="left"
                 android:hint="I am looking for a serious relationship/ life partner....."
@@ -555,10 +564,10 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_getStart"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/gradient_pink"
+                android:background="@drawable/bg_black_colour"
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="Get Started"

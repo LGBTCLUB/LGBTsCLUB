@@ -3,6 +3,7 @@ package com.lgbt.LGBTsCLUB.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ import com.lgbt.LGBTsCLUB.activity.MemberShipPlanActivity;
 import com.lgbt.LGBTsCLUB.activity.MyProfileVisitorActivity;
 import com.lgbt.LGBTsCLUB.activity.ProfileActivity;
 import com.lgbt.LGBTsCLUB.activity.TermsConditionActivity;
+import com.lgbt.LGBTsCLUB.model.AboutUsModel;
 import com.lgbt.LGBTsCLUB.model.ProfileModel;
 import com.lgbt.LGBTsCLUB.network.database.SharedPrefsManager;
 import com.lgbt.LGBTsCLUB.network.networking.ApiClient;
@@ -42,18 +44,20 @@ import com.lgbt.LGBTsCLUB.network.networking.ApiInterface;
 
 import java.util.Objects;
 
+import jp.wasabeef.glide.transformations.BlurTransformation;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.IMAGE_LOAD_USER1;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.KEY_LOGIN_STATUS;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.LOGIN_ID;
 
 public class MyProfileFragment extends Fragment {
     GoogleSignInClient mGoogleSignInClient;
-    ImageView iv_back, iv_userprofile;
-    Button bt_profile;
+    ImageView iv_back, iv_userprofile,bg_blur_iv;
+    Button bt_profile,bt_contactUs;
     ProgressBar progress_bar;
     TextView tv_contactUs, tv_aboutUs, tv_termsCondition, tv_Membership, tv_changePassword, tv_logout,
             tv_username, tv_professional, tv_deleteAccount, profile_visitor, visit_count;
@@ -79,8 +83,10 @@ public class MyProfileFragment extends Fragment {
         tv_username = view.findViewById(R.id.tv_username);
         tv_professional = view.findViewById(R.id.tv_professional);
         bt_profile = view.findViewById(R.id.bt_profile);
-        tv_contactUs = view.findViewById(R.id.tv_contactUs);
-        tv_aboutUs = view.findViewById(R.id.tv_aboutUs);
+        bt_contactUs=view.findViewById(R.id.bt_contactUs);
+        bg_blur_iv=view.findViewById(R.id.bg_blur_iv);
+        // tv_contactUs = view.findViewById(R.id.tv_contactUs);
+        tv_aboutUs = view.findViewById(R.id.tvv_about);
         tv_termsCondition = view.findViewById(R.id.tv_termsCondition);
         tv_changePassword = view.findViewById(R.id.tv_changePassword);
         tv_logout = view.findViewById(R.id.tv_logout);
@@ -91,12 +97,14 @@ public class MyProfileFragment extends Fragment {
         visit_count = view.findViewById(R.id.visit_count);
 
         apiInterface = ApiClient.getInterface();
+        aboutUsApi();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
+
 
         bt_profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +114,7 @@ public class MyProfileFragment extends Fragment {
             }
         });
 
-        tv_contactUs.setOnClickListener(new View.OnClickListener() {
+        bt_contactUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), ContactUsActivity.class);
@@ -114,13 +122,13 @@ public class MyProfileFragment extends Fragment {
             }
         });
 
-        tv_aboutUs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), AboutUsActivity.class);
-                startActivity(intent);
-            }
-        });
+//        tv_aboutUs.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getContext(), AboutUsActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         tv_termsCondition.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,6 +190,32 @@ public class MyProfileFragment extends Fragment {
         return view;
     }
 
+    private void aboutUsApi() {
+        apiInterface.aboutUs().enqueue(new Callback<AboutUsModel>() {
+            @Override
+            public void onResponse(Call<AboutUsModel> call, Response<AboutUsModel> response) {
+                if (response.isSuccessful()) {
+                    AboutUsModel aboutUsModel = response.body();
+                    if (aboutUsModel != null) {
+                        // progress.cancleDialog();
+                        boolean respons = aboutUsModel.isResponse();
+                        if (respons) {
+                            AboutUsModel.AboutUsData loginData = aboutUsModel.getLoginData();
+                            tv_aboutUs.setText(Html.fromHtml(Html.fromHtml(loginData.getContent()).toString()));
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AboutUsModel> call, Throwable t) {
+//                Toast.makeText(AboutUsActivity.this, "something is wrong", Toast.LENGTH_LONG).show();
+//                progress.cancleDialog();
+            }
+        });
+    }
+
+
     @Override
     public void onResume() {
         super.onResume();
@@ -228,8 +262,8 @@ public class MyProfileFragment extends Fragment {
 
                             RequestOptions options = new RequestOptions()
                                     .centerCrop()
-                                    .placeholder(R.drawable.no_photo)
-                                    .error(R.drawable.no_photo)
+                                    .placeholder(R.drawable.logo_final)
+                                    .error(R.drawable.logo_final)
                                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                                     .priority(Priority.HIGH).dontAnimate()
                                     .dontTransform();
@@ -239,6 +273,10 @@ public class MyProfileFragment extends Fragment {
                                         .load(IMAGE_LOAD_USER1 + profileData.getPhoto1())
                                         .apply(options)
                                         .into(iv_userprofile);
+                                Glide.with(Objects.requireNonNull(getContext()))
+                                        .load(IMAGE_LOAD_USER1 + profileData.getPhoto1())
+                                        .apply(bitmapTransform(new BlurTransformation(25)))
+                                        .into(bg_blur_iv);
                             }
                         } else {
                             if (getContext() != null) {

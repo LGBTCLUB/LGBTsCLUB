@@ -3,17 +3,17 @@
     android:shape="rectangle"
     android:thickness="0dp">
 
-    <solid android:color="@color/chatuser" />
+    <solid android:color="#193676" />
 
     <stroke android:width="0dp"
-        android:color="@color/chatuser"
+        android:color="#151D32"
         />
 
     <corners
-        android:bottomLeftRadius="@dimen/dp_10"
-        android:topLeftRadius="@dimen/dp_10"
-        android:bottomRightRadius="@dimen/dp_10"
-        android:topRightRadius="@dimen/dp_10"
+        android:bottomLeftRadius="10dp"
+        android:topLeftRadius="10dp"
+            android:bottomRightRadius="10dp"
+        android:topRightRadius="10dp"
         />
 
     <!--

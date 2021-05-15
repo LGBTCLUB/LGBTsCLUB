@@ -515,7 +515,7 @@
         android:id="@+id/btn_preference"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradient_noround_pink"
+        android:background="@drawable/bg_black_colour"
         android:gravity="center"
         android:padding="10dp"
         android:text="Set Preference"

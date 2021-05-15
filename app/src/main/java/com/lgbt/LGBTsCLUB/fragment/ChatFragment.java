@@ -84,8 +84,8 @@ public class ChatFragment extends Fragment {
         progressCircular = view.findViewById(R.id.progress_circular);
         iv_logo = view.findViewById(R.id.iv_logo);
         progress_bar = view.findViewById(R.id.progress_bar);
-        search_iv = view.findViewById(R.id.search_iv);
-        search_et = view.findViewById(R.id.search_et);
+       // search_iv = view.findViewById(R.id.search_iv);
+       // search_et = view.findViewById(R.id.search_et);
 
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -111,46 +111,46 @@ public class ChatFragment extends Fragment {
         });
 
 
-        search_iv.setOnClickListener(v -> {
-            isFilter = true;
-            List<AcceptModel.AcceptData> acceptDataListFilter = new ArrayList<>();
-            String query = search_et.getText().toString();
-            if (query != null && !query.isEmpty()) {
-                for (int i = 0; i < acceptDataList.size(); i++) {
-                    String matriid = acceptDataList.get(i).getMatriId();
-                    Log.e("idd", "Matriid " + matriid + " query " + query);
-                    if (acceptDataList.get(i).getMatriId().contains(query.trim())) {
-                        acceptDataListFilter.add(acceptDataList.get(i));
-                        Log.e("match", "Matriid ");
-                    }
-                }
-//                Collections.sort(acceptDataListFilter, (s1, s2) ->
-//                        s2.getMsg().getSendDate().compareToIgnoreCase(s1.getMsg().getSendDate()));
-                chatAdapter.addCustomerList(acceptDataListFilter);
-
-            } else {
-                chatAdapter.addCustomerList(acceptDataList);
-
-            }
-        });
-        search_et.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() == 0) {
-                    chatAdapter.addCustomerList(acceptDataList);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+//        search_iv.setOnClickListener(v -> {
+//            isFilter = true;
+//            List<AcceptModel.AcceptData> acceptDataListFilter = new ArrayList<>();
+//            String query = search_et.getText().toString();
+//            if (query != null && !query.isEmpty()) {
+//                for (int i = 0; i < acceptDataList.size(); i++) {
+//                    String matriid = acceptDataList.get(i).getMatriId();
+//                    Log.e("idd", "Matriid " + matriid + " query " + query);
+//                    if (acceptDataList.get(i).getMatriId().contains(query.trim())) {
+//                        acceptDataListFilter.add(acceptDataList.get(i));
+//                        Log.e("match", "Matriid ");
+//                    }
+//                }
+////                Collections.sort(acceptDataListFilter, (s1, s2) ->
+////                        s2.getMsg().getSendDate().compareToIgnoreCase(s1.getMsg().getSendDate()));
+//                chatAdapter.addCustomerList(acceptDataListFilter);
+//
+//            } else {
+//                chatAdapter.addCustomerList(acceptDataList);
+//
+//            }
+//        });
+//        search_et.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                if (s.length() == 0) {
+//                    chatAdapter.addCustomerList(acceptDataList);
+//                }
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
         return view;
     }
 

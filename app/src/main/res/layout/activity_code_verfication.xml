@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="#000"
-        android:fitsSystemWindows="true">
+        >
 
-    <ImageView
-        android:id="@+id/linear_one"
-        android:layout_width="match_parent"
-        android:layout_height="520dp"
-        android:background="@drawable/back_screen"
-        />
+
+        <ImageView
+            android:id="@+id/linear_one"
+            android:layout_width="match_parent"
+            android:layout_height="520dp"
+            android:background="@drawable/back_screen"
+            />
 
 
         <ImageView
@@ -43,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_verification"
             android:layout_centerHorizontal="true"
+            android:layout_margin="30dp"
             android:text="Enter A 4 Digit Number That Was Sent To your Mobile Number "
             android:textColor="#fff"
             android:textSize="20sp"
@@ -56,14 +62,15 @@
         <androidx.cardview.widget.CardView
             android:layout_below="@+id/txt_enter_code_validation"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            app:cardElevation="10dp"
-            android:layout_marginTop="30dp"
-            app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardMaxElevation="12dp"
-            app:cardPreventCornerOverlap="true"
+            android:layout_height="220dp"
             app:cardUseCompatPadding="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardElevation="10dp"
+            app:cardCornerRadius="15dp"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardMaxElevation="8dp"
             >
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,11 +85,11 @@
                     android:hint="Code"
                     android:inputType="phone"
                     android:maxLines="1"
-                    android:drawableEnd="@drawable/right_icon"
                     android:singleLine="true"
                     android:layout_marginTop="35dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
+                    android:drawableEnd="@drawable/checked"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
                     android:textColor="@color/black">
                     <requestFocus />
@@ -90,20 +97,21 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/buttonSignIn"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="200dp"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="25dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="12dp"
-                    android:text="VERIFY"
-                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_black_colour"
+                    android:text="Verify"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
                     android:textAllCaps="false"
-                    android:background="@drawable/bg_black_colour" />
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/white" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
 
+
     </RelativeLayout>
+</ScrollView>

@@ -2,17 +2,18 @@
 <resources>
     <color name="colorPrimary">#D3DBDA</color>
     <color name="colorPrimaryDark">#3C3D3D</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="navy_blue">#151D32</color>
 
 
     <color name="white">#FFFFFF</color>
     <color name="transprint">#0000</color>
 
     <color name="gray_light">#dddddd</color>
-    <color name="colorBlack">#424242</color>
+    <color name="colorBlack">#000</color>
+    <color name="light_slate">#778899</color>
     <color name="darkgray">#616161</color>
 
-    <color name="red">#FF1457</color>
+    <color name="red">#000</color>
     <color name="orange">#FF4414</color>
     <color name="colorButton">#FF2938</color>
 
@@ -20,9 +21,10 @@
 
 
     <color name="pink">#f08080</color>
-    <color name="blue">#1295EC</color>
+    <color name="grey">#787878</color>
     <color name="green">#11b900</color>
     <color name="yellow">#ffff00</color>
+
 
     <color name="chatto">#FF1457</color>
     <color name="chatuser">#FF4414</color>

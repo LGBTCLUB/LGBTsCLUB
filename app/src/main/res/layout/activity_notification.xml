@@ -11,14 +11,16 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+
+        >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="center"
-            android:background="@color/white"
+            android:background="#151D32"
             android:elevation="@dimen/dp_8"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
@@ -34,7 +36,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_centerInParent="true"
-                    app:srcCompat="@drawable/ic_leftarrow_pink"
+                    app:srcCompat="@drawable/back_arrow"
+
                     tools:ignore="VectorDrawableCompat" />
 
                 <TextView
@@ -44,20 +47,24 @@
                     android:layout_marginStart="40dp"
                     android:layout_marginLeft="20dp"
                     android:text="Notification"
-                    android:textColor="@color/red"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
                     android:textSize="20sp" />
 
-                <ImageView
-                    android:id="@+id/iv_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="@dimen/dp_10"
-                    app:srcCompat="@drawable/ic_home_pink"
-                    tools:ignore="VectorDrawableCompat" />
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/iv_home"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_alignParentEnd="true"-->
+                <!--                    android:layout_marginRight="@dimen/dp_10"-->
+                <!--                    app:srcCompat="@drawable/ic_home_pink"-->
+                <!--                    tools:ignore="VectorDrawableCompat" />-->
+
 
             </RelativeLayout>
+
         </androidx.appcompat.widget.Toolbar>
+
     </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -86,15 +93,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/umeedlogonew"
+        android:src="@drawable/logo_final"
         android:visibility="gone" />
 
-    <ImageView
-        android:id="@+id/delete_all_iv"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/dp_10"
-        android:src="@drawable/ic_delete_black_24dp" />
+<!--    <ImageView-->
+<!--        android:id="@+id/delete_all_iv"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginBottom="@dimen/dp_10"-->
+<!--        android:src="@drawable/ic_delete_black_24dp" />-->
 </RelativeLayout>

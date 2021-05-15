@@ -176,6 +176,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.google.android.material:material:1.0.0-alpha1'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

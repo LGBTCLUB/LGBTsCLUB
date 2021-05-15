@@ -72,8 +72,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.CustomerViewHo
     public void onBindViewHolder(@NonNull CustomerViewHolder holder, int position) {
         final AcceptModel.AcceptData customerList = chatDataList.get(position);
 
-        holder.name.setText(customerList.getMatriId());
-        holder.chat_message.setText(customerList.getGender());
+        holder.name.setText(customerList.getName());
+        holder.chat_message.setText(customerList.getMsg().getMsg());
+//        holder.address.setText(customerList.get);
+
 
         String rid = customerList.getMsg().getRid();
 
@@ -90,8 +92,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.CustomerViewHo
 
         RequestOptions options = new RequestOptions()
                 .centerCrop()
-                .placeholder(R.drawable.no_photo)
-                .error(R.drawable.no_photo)
+                .placeholder(R.drawable.logo_final)
+                .error(R.drawable.logo_final)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH).dontAnimate()
                 .dontTransform();
@@ -284,6 +286,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.CustomerViewHo
                         intent.putExtra("user_Image", customerList.getPhoto1());
                         intent.putExtra("matriId", customerList.getMatriId());
                         intent.putExtra("chatId", customerList.getMsg().getRid());
+                        intent.putExtra("designation",customerList.getStatus());
                         intent.putExtra("response", respnse);
                         context.startActivity(intent);
 
@@ -307,6 +310,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.CustomerViewHo
         private final TextView name;
         private final TextView chat_message;
         private final LinearLayout layout_item;
+     //   private final TextView address;
 
 
         CustomerViewHolder(@NonNull View itemView) {
@@ -315,6 +319,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.CustomerViewHo
             name = itemView.findViewById(R.id.name);
             chat_message = itemView.findViewById(R.id.chat_message);
             layout_item = itemView.findViewById(R.id.layout_item);
+           // address = itemView.findViewById(R.id.address);
         }
     }
 }

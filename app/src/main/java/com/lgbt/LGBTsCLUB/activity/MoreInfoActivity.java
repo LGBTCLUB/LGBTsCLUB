@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -62,16 +63,16 @@ import static com.lgbt.LGBTsCLUB.network.networking.Constant.STATUS;
 
 public class MoreInfoActivity extends AppCompatActivity implements ViewPagerEx.OnPageChangeListener, BaseSliderView.OnSliderClickListener {
 
-    //SliderLayout slider;
+    RecyclerView mList1;
+    List<App> appList;
     private static ViewPager mPager;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
-    TextView tv_personalInfo, tv_expectation, tv_location, tv_perofessions, tv_salary,
-            tv_expgender, tv_professional, tv_hight, tv_bio, tv_expdec;
-    LinearLayout li_prfessional, li_exepectation;
+    Button  bt_containview,bt_sendrequest;
+    TextView tv_location, txt_salary,txt_bio,
+            tv_expgender, tv_hight,txt_weight,tv_professional,txt_name, tv_expdec;
     ArrayList<String> imagelist = new ArrayList<>();
     ProgressBar progress_bar;
-    Button bt_sendrequest, bt_containview;
     String matriID, status, noContact, email, mobileNo, bio, contactview, sendrequest = "";
     ImageView iv_back;
     private CirclePageIndicator circleIndicator;
@@ -82,31 +83,37 @@ public class MoreInfoActivity extends AppCompatActivity implements ViewPagerEx.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_info);
-
-        tv_personalInfo = findViewById(R.id.tv_personalInfo);
-        tv_expectation = findViewById(R.id.tv_expectation);
-        li_prfessional = findViewById(R.id.li_prfessional);
-        li_exepectation = findViewById(R.id.li_exepectation);
+      //  mList1 = findViewById(R.id.list1);
         progress_bar = findViewById(R.id.progress_bar);
-        // slider = findViewById(R.id.slider);
         mPager = findViewById(R.id.mPager);
         circleIndicator = findViewById(R.id.indicator);
-
+        init();
         tv_location = findViewById(R.id.tv_location);
-        tv_perofessions = findViewById(R.id.tv_perofessions);
-        tv_salary = findViewById(R.id.tv_salary);
-        tv_expgender = findViewById(R.id.tv_expgender);
+        txt_name=findViewById(R.id.txt_name);
         tv_professional = findViewById(R.id.tv_professional);
+        txt_salary = findViewById(R.id.txt_salary);
+        tv_expgender = findViewById(R.id.tv_expgender);
         tv_hight = findViewById(R.id.tv_hight);
-        bt_containview = findViewById(R.id.bt_containview);
-        bt_sendrequest = findViewById(R.id.bt_sendrequest);
-        tv_bio = findViewById(R.id.tv_bio);
-        tv_expdec = findViewById(R.id.tv_expdec);
+        txt_bio = findViewById(R.id.txt_bio);
+        txt_weight = findViewById(R.id.txt_weight);
         iv_back = findViewById(R.id.iv_back);
-
+        // bt_sendrequest = findViewById(R.id.bt_sendrequest);
         status = SharedPrefsManager.getInstance().getString(STATUS);
         apiInterface = ApiClient.getInterface();
+        bt_containview=findViewById(R.id.bt_containview);
         progress_bar.setVisibility(VISIBLE);
+//
+//        appList = new ArrayList<>();
+//        appList.add(new App(R.drawable.downloadone,""));
+//        appList.add(new App(R.drawable.downloadtwo," "));
+//        appList.add(new App(R.drawable.downloadthree," "));
+//        appList.add(new App(R.drawable.downloadfour," "));
+//
+//        LinearLayoutManager manager1 = new LinearLayoutManager(this);
+//        manager1.setOrientation(LinearLayoutManager.HORIZONTAL);
+//        mList1.setLayoutManager(manager1);
+//        CustomAdaptor adaptor1 = new CustomAdaptor(this,appList);
+//        mList1.setAdapter(adaptor1);
 
 
         Intent intent = getIntent();
@@ -116,46 +123,6 @@ public class MoreInfoActivity extends AppCompatActivity implements ViewPagerEx.O
             member_profile_details(SharedPrefsManager.getInstance().getString(MATRI_ID), martId);
         }
 
-        // String arrayImage[] = martList.getData().get(0).getProduct_image().split(",");
-        // setSlider(arrayImage);
-
-        tv_personalInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                li_prfessional.setVisibility(VISIBLE);
-                li_exepectation.setVisibility(GONE);
-
-                tv_personalInfo.setBackgroundResource(R.drawable.ractangle_colour);
-                tv_personalInfo.setTextColor(getResources().getColor(R.color.white));
-
-                tv_expectation.setBackgroundResource(R.drawable.ractangle_white);
-                tv_expectation.setTextColor(getResources().getColor(R.color.red));
-            }
-        });
-
-        tv_expectation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                li_exepectation.setVisibility(VISIBLE);
-                li_prfessional.setVisibility(GONE);
-
-                tv_expectation.setBackgroundResource(R.drawable.ractangle_colour2);
-                tv_expectation.setTextColor(getResources().getColor(R.color.white));
-
-                tv_personalInfo.setBackgroundResource(R.drawable.ractangle_white2);
-                tv_personalInfo.setTextColor(getResources().getColor(R.color.red));
-            }
-        });
-
-        bt_sendrequest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                progress_bar.setVisibility(VISIBLE);
-                sendRequest(matriID, SharedPrefsManager.getInstance().getString(MATRI_ID));
-            }
-        });
-
         bt_containview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,13 +131,52 @@ public class MoreInfoActivity extends AppCompatActivity implements ViewPagerEx.O
                 checkValidity();
             }
         });
+        // String arrayImage[] = martList.getData().get(0).getProduct_image().split(",");
+        // setSlider(arrayImage);
 
-        iv_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+
+
+//        iv_back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
+    }
+
+    private void init() {
+//        ChipGroup categoryChipGroup = findViewById(R.id.cg_filter_items);
+//        for (int i = 0; i < categoryModelList.size(); i++) {
+//            Chip categoryChip = (Chip) getLayoutInflater().inflate(R.layout.item_chips_group, categoryChipGroup, false);
+//            categoryChip.setText(categoryModelList.get(i).getCategoryName());
+//            categoryChip.setTextColor(getResources().getColor(R.color.colorPrimary));
+//
+//            categoryChip.setOnClickListener(v -> {
+//                for (int i1 = 0; i1 < categoryChipGroup.getChildCount(); ++i1) {
+//                    Chip chip1 = ((Chip) categoryChipGroup.getChildAt(i1));
+//                    chip1.setChecked(false);
+//                }
+
+//                if (((Chip) v).getText().equals("Search Category")) {
+//                    sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//                    bottomSheetState();
+//                    navgationTitle.setText("Search Category");
+//                    datePicker_ll.setVisibility(View.GONE);
+//                    timePicker_ll.setVisibility(View.GONE);
+//                    search_ll.setVisibility(View.VISIBLE);
+//                } else {
+//                    categoryChip.setChecked(true);
+//                }
+
+//                for (int j = 0; j < categoryModelList.size(); j++) {
+//                    if (categoryModelList.get(j).getCategoryName().equals(categoryChip.getText())) {
+//                        category = categoryModelList.get(j).getCategoryId();
+//
+//                    }
+        //          }
+//            });
+//            categoryChipGroup.addView(categoryChip);
+//        }
     }
 
     private void contain() {
@@ -271,6 +277,7 @@ public class MoreInfoActivity extends AppCompatActivity implements ViewPagerEx.O
                             mobileNo = memberProfileDataList.get(0).getMobile();
                             sendrequest = memberProfileDataList.get(0).getSendrequest();
                             contactview = memberProfileDataList.get(0).getContactview();
+                            Log.e("TAG", "onResponse: "+memberProfileDataList.get(0).getWeight() );
 
                             profileStatus = memberProfileDataList.get(0).getProfile_status();
 
@@ -290,7 +297,7 @@ public class MoreInfoActivity extends AppCompatActivity implements ViewPagerEx.O
                             SliderList.add(photo7);
 
                             if (SliderList.size() > 0) {
-                                mPager.setAdapter(new SlidingImage_Adapter(MoreInfoActivity.this, SliderList));
+                                mPager.setAdapter(new MoreInfoActivity.SlidingImage_Adapter(MoreInfoActivity.this, SliderList));
                                 circleIndicator.setViewPager(mPager);
                                 final float density = getResources().getDisplayMetrics().density;
                                 circleIndicator.setRadius(5 * density);
@@ -308,13 +315,15 @@ public class MoreInfoActivity extends AppCompatActivity implements ViewPagerEx.O
                             }
                             tv_location.setText(memberProfileDataList.get(0).getCity_name() + "," + memberProfileDataList.get(0).getState()
                                     + "," + memberProfileDataList.get(0).getCountry());
-                            tv_perofessions.setText(memberProfileDataList.get(0).getOccupation());
-                            tv_salary.setText(memberProfileDataList.get(0).getAnnualincome());
+                            tv_professional.setText(memberProfileDataList.get(0).getOccupation());
+                            txt_salary.setText(memberProfileDataList.get(0).getAnnualincome());
                             tv_expgender.setText(memberProfileDataList.get(0).getShow_gender());
                             tv_professional.setText(memberProfileDataList.get(0).getOccupation());
+                            txt_name.setText(memberProfileDataList.get(0).getName());
                             tv_hight.setText(memberProfileDataList.get(0).getHeight());
-                            tv_bio.setText(memberProfileDataList.get(0).getProfile());
-                            tv_expdec.setText(memberProfileDataList.get(0).getPartnerExpectations());
+                            txt_bio.setText(memberProfileDataList.get(0).getProfile());
+                            txt_weight.setText(memberProfileDataList.get(0).getWeight());
+
                         } else {
                             Toast.makeText(MoreInfoActivity.this, "No Data Found", Toast.LENGTH_LONG).show();
                         }
@@ -474,8 +483,9 @@ public class MoreInfoActivity extends AppCompatActivity implements ViewPagerEx.O
             assert imageLayout != null;
             final ImageView imageView = (ImageView) imageLayout.findViewById(R.id.image);
 
+
             RequestOptions requestOptions = new RequestOptions();
-            requestOptions.placeholder(R.drawable.app_logo);
+            requestOptions.placeholder(R.drawable.logo_final);
 
             if (profileStatus.equals("show")) {
                 Glide.with(context)
@@ -488,6 +498,8 @@ public class MoreInfoActivity extends AppCompatActivity implements ViewPagerEx.O
                         .apply(bitmapTransform(new BlurTransformation(35)))
                         .into(imageView);
             }
+
+
             view.addView(imageLayout, 0);
             return imageLayout;
         }

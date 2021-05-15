@@ -81,8 +81,8 @@ public class ChatPandingFragment extends Fragment {
         iv_logo = view.findViewById(R.id.iv_logo);
         progress_bar = view.findViewById(R.id.progress_bar);
         apiInterface = ApiClient.getInterface();
-        search_iv = view.findViewById(R.id.search_iv);
-        search_et = view.findViewById(R.id.search_et);
+      //  search_iv = view.findViewById(R.id.search_iv);
+      //   search_et = view.findViewById(R.id.search_et);
 
         layoutManager = new LinearLayoutManager(getActivity());
         pending_recy.setLayoutManager(layoutManager);
@@ -107,46 +107,46 @@ public class ChatPandingFragment extends Fragment {
             }
         });
 
-        search_iv.setOnClickListener(v -> {
-            isFilter = true;
-            List<PendingModel.PendingData> homeDataListFilter = new ArrayList<>();
-            String query = search_et.getText().toString();
-            if (query != null && !query.isEmpty()) {
-                for (int i = 0; i < homeDataList.size(); i++) {
-                    String matriid = homeDataList.get(i).getMatriId();
-                    Log.e("idd", "Matriid " + matriid + " query " + query);
-                    if (homeDataList.get(i).getMatriId().contains(query.trim())) {
-                        homeDataListFilter.add(homeDataList.get(i));
-                        Log.e("match", "Matriid ");
-                    }
-                }
-//                Collections.sort(acceptDataListFilter, (s1, s2) ->
-//                        s2.getMsg().getSendDate().compareToIgnoreCase(s1.getMsg().getSendDate()));
-                chatPendingAdapter.addCustomerList(homeDataListFilter);
-
-            } else {
-                chatPendingAdapter.addCustomerList(homeDataList);
-
-            }
-        });
-        search_et.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() == 0) {
-                    chatPendingAdapter.addCustomerList(homeDataList);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+//        search_iv.setOnClickListener(v -> {
+//            isFilter = true;
+//            List<PendingModel.PendingData> homeDataListFilter = new ArrayList<>();
+//            String query = search_et.getText().toString();
+//            if (query != null && !query.isEmpty()) {
+//                for (int i = 0; i < homeDataList.size(); i++) {
+//                    String matriid = homeDataList.get(i).getMatriId();
+//                    Log.e("idd", "Matriid " + matriid + " query " + query);
+//                    if (homeDataList.get(i).getMatriId().contains(query.trim())) {
+//                        homeDataListFilter.add(homeDataList.get(i));
+//                        Log.e("match", "Matriid ");
+//                    }
+//                }
+////                Collections.sort(acceptDataListFilter, (s1, s2) ->
+////                        s2.getMsg().getSendDate().compareToIgnoreCase(s1.getMsg().getSendDate()));
+//                chatPendingAdapter.addCustomerList(homeDataListFilter);
+//
+//            } else {
+//                chatPendingAdapter.addCustomerList(homeDataList);
+//
+//            }
+//        });
+//        search_et.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                if (s.length() == 0) {
+//                    chatPendingAdapter.addCustomerList(homeDataList);
+//                }
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
 
 
         return view;

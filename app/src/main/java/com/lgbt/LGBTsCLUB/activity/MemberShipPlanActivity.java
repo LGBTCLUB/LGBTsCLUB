@@ -55,7 +55,7 @@ public class MemberShipPlanActivity extends AppCompatActivity {
 
         membership_plan_recy = findViewById(R.id.membership_plan_recy);
         iv_back = findViewById(R.id.iv_back);
-        iv_home = findViewById(R.id.iv_home);
+//        iv_home = findViewById(R.id.iv_home);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         membership_plan_recy.setLayoutManager(layoutManager);
@@ -68,15 +68,15 @@ public class MemberShipPlanActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        iv_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MemberShipPlanActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//
+//        iv_home.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MemberShipPlanActivity.this, MainActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
         TimeZone tz = TimeZone.getDefault();
         System.out.println("TimeZone   " + tz.getDisplayName(false, TimeZone.SHORT) + " Timezone id :: " + tz.getID());

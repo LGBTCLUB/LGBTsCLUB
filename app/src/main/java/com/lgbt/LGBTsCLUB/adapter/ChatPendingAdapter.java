@@ -43,6 +43,7 @@ public class ChatPendingAdapter extends RecyclerView.Adapter<ChatPendingAdapter.
     private List<PendingModel.PendingData> homeDataList;
     private final ApiInterface apiInterface;
 
+
     public ChatPendingAdapter(FragmentActivity context, Fragment fragment, List<PendingModel.PendingData> homeDataList) {
         this.context = context;
         this.fragment = fragment;
@@ -63,15 +64,15 @@ public class ChatPendingAdapter extends RecyclerView.Adapter<ChatPendingAdapter.
     @Override
     public void onBindViewHolder(@NonNull CustomerViewHolder holder, int position) {
         final PendingModel.PendingData customerList = homeDataList.get(position);
-        holder.name.setText(customerList.getMatriId());
+        holder.name.setText(customerList.getName());
         holder.chat_message.setText(customerList.getGender());
         final String reqId = customerList.getReq_id();
         String profileStatus = customerList.getProfile_status();
 
         RequestOptions options = new RequestOptions()
                 .centerCrop()
-                .placeholder(R.drawable.no_photo)
-                .error(R.drawable.no_photo)
+                .placeholder(R.drawable.logo_final)
+                .error(R.drawable.logo_final)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH).dontAnimate()
                 .dontTransform();
@@ -90,13 +91,13 @@ public class ChatPendingAdapter extends RecyclerView.Adapter<ChatPendingAdapter.
         }
 
 
-        holder.bt_Cancel.setOnClickListener(v -> {
+        holder.cancel.setOnClickListener(v -> {
             // ((ChatPandingFragment) fragment).cancel_send_request(reqId);
             cancel_send_request(reqId, position);
         });
 
 
-        holder.bt_moreInfo.setOnClickListener(new View.OnClickListener() {
+        holder.moreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, MoreInfoActivity.class);
@@ -163,18 +164,20 @@ public class ChatPendingAdapter extends RecyclerView.Adapter<ChatPendingAdapter.
         private final TextView name;
         private final TextView chat_message;
         private final LinearLayout layout_item;
-        private final Button bt_Cancel;
-        private final Button bt_moreInfo;
+        private  final TextView MoreInfo;
+        private final ImageView cancel;
+        private final TextView moreInfo;
 
 
         CustomerViewHolder(@NonNull View itemView) {
             super(itemView);
             user_image = itemView.findViewById(R.id.user_image);
+            MoreInfo = itemView.findViewById(R.id.more_info);
             name = itemView.findViewById(R.id.name);
             chat_message = itemView.findViewById(R.id.chat_message);
             layout_item = itemView.findViewById(R.id.layout_item);
-            bt_Cancel = itemView.findViewById(R.id.bt_Cancel);
-            bt_moreInfo = itemView.findViewById(R.id.bt_moreInfo);
+            cancel = itemView.findViewById(R.id.cancel_req);
+            moreInfo = itemView.findViewById(R.id.more_info);
         }
     }
 

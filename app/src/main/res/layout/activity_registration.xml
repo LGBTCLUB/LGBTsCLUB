@@ -6,7 +6,6 @@
     android:background="#000"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <ImageView
         android:id="@+id/linear_one"
         android:layout_width="match_parent"
@@ -56,19 +55,18 @@
                 android:background="@drawable/bg_rec_solid_gray"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
-                android:textStyle="bold"
                 android:padding="8dp"
                 android:layout_marginTop="15dp"
                 android:hint="First name"
                 android:drawableLeft="@drawable/icon_user"
                 android:textColorHint="@color/white"
+                android:textColor="#000"
                 android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/edt_last_name"
                 android:layout_width="320dp"
                 android:layout_height="50dp"
-                android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_rec_solid_gray"
                 android:drawablePadding="6dp"
@@ -78,33 +76,36 @@
                 android:hint="Last name"
                 android:drawableLeft="@drawable/icon_user"
                 android:textColorHint="@color/white"
+                android:textColor="#000"
                 android:textSize="14sp" />
 
 
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="35dp"
                 android:layout_marginEnd="35dp"
-                android:padding="5dp"
+                android:layout_gravity="center"
                 android:background="@drawable/bg_rec_solid_gray">
+
 
                 <TextView
                     android:id="@+id/et_doo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
-                    android:drawablePadding="6dp"
+                    android:drawableLeft="@drawable/icon_user"
                     android:gravity="center_vertical"
                     android:padding="8dp"
                     />
 
                 <Spinner
                     android:id="@+id/gender_category"
-                    android:layout_width="match_parent"
+                    android:layout_width="290dp"
+                    android:layout_alignParentRight="true"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
 
                     />
             </RelativeLayout>
@@ -118,12 +119,12 @@
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
                 android:padding="8dp"
-                android:textStyle="bold"
                 android:layout_marginTop="15dp"
                 android:hint="Hobbies and Interests"
                 android:textColorHint="@color/white"
                 android:drawableLeft="@drawable/hobbies"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textColor="#000"/>
 
             <LinearLayout
                 android:layout_width="320dp"
@@ -139,7 +140,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_weight=".33"
                     android:layout_marginTop="10dp"
-                    android:layout_marginStart="18dp"
+                    android:layout_marginStart="22dp"
                     android:padding="8dp"
                     android:layout_marginEnd="18dp"
                     android:background="@drawable/bg_rec_solid_gray"
@@ -151,7 +152,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:background="@null"
-                        android:textColor="@color/white"
+                        android:textColor="#000"
                         android:layout_marginTop="10dp"
                         android:layout_marginStart="18dp"
                         android:layout_marginEnd="18dp"
@@ -262,11 +263,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
+                    android:drawablePadding="6dp"
+                    android:hint="Date of Birth"
+                    android:layout_marginStart="4dp"
+                    android:gravity="center_vertical"
                     android:drawableLeft="@drawable/dob"
-                    android:hint="   Date of Birth"
-                    android:padding="8dp"
-                    android:textColor="@color/colorBlack"
                     android:textColorHint="@color/white"
+                    android:textColor="#000"
                     android:textSize="14sp" />
 
                 <ImageView
@@ -276,7 +279,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerInParent="true"
                     android:padding="10dp"
-                    android:src="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:src="@drawable/ccp_down_arrow"
                     tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
 
@@ -291,9 +294,9 @@
                 android:drawableLeft="@drawable/icon_phone"
                 android:textColorHint="@color/white"
                 android:padding="8dp"
+                android:textColor="#000"
                 android:layout_marginTop="15dp"
                 android:hint="Phone number"
-                android:textStyle="bold"
                 android:textSize="14sp" />
 
             <EditText
@@ -307,7 +310,7 @@
                 android:layout_marginTop="15dp"
                 android:padding="8dp"
                 android:hint="Email "
-                android:textStyle="bold"
+                android:textColor="#000"
                 android:textColorHint="@color/white"
                 android:drawableLeft="@drawable/mail"
                 android:textSize="14sp" />
@@ -322,8 +325,8 @@
                 android:gravity="center_vertical"
                 android:layout_marginTop="15dp"
                 android:padding="8dp"
-                android:textStyle="bold"
                 android:hint="Password "
+                android:textColor="#000"
                 android:textColorHint="@color/white"
                 android:drawableLeft="@drawable/icon_lock"
                 android:textSize="14sp" />
@@ -394,8 +397,8 @@
 
                 <ImageButton
                     android:id="@+id/img_facebook"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:background="@drawable/fb" />
@@ -418,5 +421,11 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
 
 </RelativeLayout>

@@ -47,7 +47,7 @@ public class BuyPlanAdapter extends RecyclerView.Adapter<BuyPlanAdapter.Customer
         if (timeZone.equals("Asia/Kolkata") || timeZone.equals("Asia/Calcutta")) {
             if (customerList.getOption_type().equals("CCAvenue")) {
                 holder.tv_buyplan.setText(customerList.getOption_type() + " (Credit Card/Debit Card/NetBanking/Paytm)");
-                holder.iv_payicon.setImageDrawable(context.getDrawable(R.drawable.ccavenue_logo));
+                holder.iv_payicon.setImageDrawable(context.getDrawable(R.drawable.logo_final));
                 holder.iv_payicon.setColorFilter(ContextCompat.getColor(context, R.color.red), android.graphics.PorterDuff.Mode.MULTIPLY);
             } else {
                 holder.tv_buyplan.setText("RazorPay");

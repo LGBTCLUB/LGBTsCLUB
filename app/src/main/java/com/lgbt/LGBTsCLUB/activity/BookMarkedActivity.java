@@ -57,7 +57,7 @@ public class BookMarkedActivity extends AppCompatActivity {
         bookmarked_recyclerview = findViewById(R.id.bookmarked_recyclerview);
         progressCircular = findViewById(R.id.progress_circular);
         iv_back = findViewById(R.id.iv_back);
-        iv_home = findViewById(R.id.iv_home);
+        //iv_home = findViewById(R.id.iv_home);
         iv_logo = findViewById(R.id.iv_logo);
         progress_bar = findViewById(R.id.progress_bar);
 
@@ -65,8 +65,8 @@ public class BookMarkedActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         bookmarked_recyclerview.setLayoutManager(layoutManager);
 
-        bookmarkAdapter = new BookmarkAdapter(this, BookMarkedActivity.this, homeDataList);
-        bookmarked_recyclerview.setAdapter(bookmarkAdapter);
+//        bookmarkAdapter = new BookmarkAdapter(this, BookMarkedActivity.this, homeDataList);
+//        bookmarked_recyclerview.setAdapter(bookmarkAdapter);
         apiInterface = ApiClient.getInterface();
 
 
@@ -77,13 +77,13 @@ public class BookMarkedActivity extends AppCompatActivity {
             }
         });
 
-        iv_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(BookMarkedActivity.this, MainActivity.class));
-                // finish();
-            }
-        });
+//        iv_home.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(BookMarkedActivity.this, MainActivity.class));
+//                // finish();
+//            }
+//        });
 
         myHeartList(SharedPrefsManager.getInstance().getString(MATRI_ID), offset);
 

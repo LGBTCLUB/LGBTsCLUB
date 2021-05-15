@@ -47,6 +47,8 @@ import com.lgbt.LGBTsCLUB.activity.LoginActivity;
 import com.lgbt.LGBTsCLUB.activity.NotificationActivity;
 import com.lgbt.LGBTsCLUB.fragment.AboutUsFragment;
 import com.lgbt.LGBTsCLUB.fragment.ChatFragment;
+import com.lgbt.LGBTsCLUB.fragment.ChatUsFragment;
+import com.lgbt.LGBTsCLUB.fragment.FavouritesFragment;
 import com.lgbt.LGBTsCLUB.fragment.MainFragment;
 import com.lgbt.LGBTsCLUB.fragment.MyProfileFragment;
 import com.lgbt.LGBTsCLUB.fragment.searchfragment.AdvancedSearchFragment;
@@ -65,6 +67,8 @@ import com.lgbt.LGBTsCLUB.network.networking.ApiClient;
 import com.lgbt.LGBTsCLUB.network.networking.ApiInterface;
 import com.lgbt.LGBTsCLUB.network.networking.Constant;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,7 +78,9 @@ import retrofit2.Response;
 
 import static android.graphics.Color.parseColor;
 import static com.google.android.play.core.install.model.AppUpdateType.IMMEDIATE;
+import static com.lgbt.LGBTsCLUB.network.networking.Constant.KEY_USER_NAME;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.LOGIN_ID;
+import static com.lgbt.LGBTsCLUB.network.networking.Constant.MATRI_ID;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.NO_CHAT_CONTACT;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.STATUS;
 
@@ -90,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int MY_REQUEST_CODE = 200;
     private ApiInterface apiInterface;
     private DrawerLayout drawerLayout;
+    private ImageView notification, userName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
+        notification = findViewById(R.id.notification);
         imageViewHome = findViewById(R.id.img_home);
         imageViewChat = findViewById(R.id.img_chat);
         imageViewLike = findViewById(R.id.img_like);
@@ -116,6 +125,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         linearLayoutLike.setOnClickListener(this);
         linearLayoutAccount.setOnClickListener(this);
 
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
         fragment = new MainFragment();
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
@@ -168,22 +184,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initView() {
         drawerLayout = findViewById(R.id.navDrawer);
-        ImageView menu = findViewById(R.id.menu);
-        findViewById(R.id.profile).setOnClickListener(this);
-        findViewById(R.id.message).setOnClickListener(this);
-        findViewById(R.id.notification).setOnClickListener(this);
-        findViewById(R.id.favourite).setOnClickListener(this);
-        findViewById(R.id.settings).setOnClickListener(this);
-     //   TextView deliveryBoyUser = findViewById(R.id.deliveryBoyUser);
 
-      //  String deliveryBoyName = AppPreference.getStringPreference(DashbordActivity.this, AppConstants.PREF_USERNAME);
-     //   deliveryBoyUser.setText(deliveryBoyName);
+        ImageView menu = findViewById(R.id.menu);
+
+        findViewById(R.id.linear_profile).setOnClickListener(this);
+        findViewById(R.id.linear_message).setOnClickListener(this);
+        findViewById(R.id.linear_notification).setOnClickListener(this);
+        findViewById(R.id.linear_favourite).setOnClickListener(this);
+        findViewById(R.id.linear_settings).setOnClickListener(this);
+        TextView userName,matriId;
+        userName = findViewById(R.id.txt_user_name);
+        matriId = findViewById(R.id.txt_user_id);
+
+        if(SharedPrefsManager.getInstance().getString(KEY_USER_NAME)!= null){
+            userName.setText(SharedPrefsManager.getInstance().getString(KEY_USER_NAME));
+        }
+        if (SharedPrefsManager.getInstance().getString(Constant.MATRI_ID)!=null)
+        {
+            matriId.setText(SharedPrefsManager.getInstance().getString(MATRI_ID));
+        }
 
         menu.setOnClickListener(v -> {
             try {
                 InputMethodManager inputManager = (InputMethodManager) MainActivity.this
                         .getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(
+                         inputManager.hideSoftInputFromWindow(
                         MainActivity.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             } catch (Exception e) {
 
@@ -208,19 +233,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else {
             pushFragment(new MainFragment());
 
-            imageViewHome.setColorFilter(getResources().getColor(R.color.colorAccent));
-            imageViewChat.setColorFilter(getResources().getColor(R.color.black));
-            imageViewLike.setColorFilter(getResources().getColor(R.color.black));
-            imageViewAccount.setColorFilter(getResources().getColor(R.color.black));
+            imageViewHome.setColorFilter(getResources().getColor(R.color.navy_blue));
+            imageViewChat.setColorFilter(getResources().getColor(R.color.grey));
+            imageViewLike.setColorFilter(getResources().getColor(R.color.grey));
+            imageViewAccount.setColorFilter(getResources().getColor(R.color.grey));
 
         }
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-//        user_status(SharedPrefsManager.getInstance().getString(LOGIN_ID));
+       user_status(SharedPrefsManager.getInstance().getString(LOGIN_ID));
         profileDetailApi(SharedPrefsManager.getInstance().getString(LOGIN_ID));
         appUpdateManager
                 .getAppUpdateInfo()
@@ -241,9 +265,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         });
     }
-
-
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -281,7 +302,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void installButton90to90() {
         final AllAngleExpandableButton button = (AllAngleExpandableButton) findViewById(R.id.button_expandable_90_180);
         final List<ButtonData> buttonDatas = new ArrayList<>();
-        int[] drawable = {R.drawable.plus, R.drawable.user_pink, R.drawable.ic_notification_pink, R.drawable.ic_chat_pink, R.drawable.ic_search_pink, R.drawable.ic_heart_pink};
+        int[] drawable = {R.drawable.plus, R.drawable.user, R.drawable.ic_notification_pink, R.drawable.ic_chat_pink, R.drawable.search, R.drawable.ic_heart_pink};
         int[] color = {R.color.red, R.color.white, R.color.white, R.color.white, R.color.white, R.color.white};
         for (int i = 0; i < 6; i++) {
             ButtonData buttonData;
@@ -396,38 +417,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //    }
 
 
-//    private void user_status(String user_id) {
-//        apiInterface.user_status(user_id).enqueue(new Callback<UserStatusModel>() {
-//            @Override
-//            public void onResponse(Call<UserStatusModel> call, Response<UserStatusModel> response) {
-//                if (response.isSuccessful()) {
-//                    UserStatusModel userStatusModel = response.body();
-//                    if (userStatusModel != null) {
-//                        String respons = userStatusModel.getResponse();
-//                        String status = userStatusModel.getStatus();
-//                        if (status.equals("Active") || status.equals("Inactive")) {
-//
-//                        } else {
-//                            SharedPrefsManager.getInstance().clearPrefs();
-//                            afterregisContain("Your profile has been rejected due to inappropriate words.More details email : umeedlgbt@gmail.com");
-//
-////                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-////                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-////                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-////                            startActivity(intent);
-////                            finish();
-//                        }
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<UserStatusModel> call, Throwable t) {
-//                Toast.makeText(MainActivity.this, "something is wrong", Toast.LENGTH_LONG).show();
-//            }
-//        });
-//    }
+    private void user_status(String user_id) {
+        apiInterface.user_status(user_id).enqueue(new Callback<UserStatusModel>() {
+            @Override
+            public void onResponse(Call<UserStatusModel> call, Response<UserStatusModel> response) {
+                if (response.isSuccessful()) {
+                    UserStatusModel userStatusModel = response.body();
+                    if (userStatusModel != null) {
+                        String respons = userStatusModel.getResponse();
+                        String status = userStatusModel.getStatus();
+                        if (status.equals("Active") || status.equals("Inactive")) {
 
+                        } else {
+                            SharedPrefsManager.getInstance().clearPrefs();
+                            afterregisContain("Your profile has been rejected due to inappropriate words.More details email : umeedlgbt@gmail.com");
+
+//                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                            startActivity(intent);
+//                            finish();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserStatusModel> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "something is wrong", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
     private void profileDetailApi(String userId) {
         apiInterface.profileDetail(userId).enqueue(new Callback<ProfileModel>() {
@@ -469,58 +489,60 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.linear_home:
 
-                imageViewHome.setColorFilter(getResources().getColor(R.color.colorAccent));
-                imageViewChat.setColorFilter(getResources().getColor(R.color.black));
-                imageViewLike.setColorFilter(getResources().getColor(R.color.black));
-                imageViewAccount.setColorFilter(getResources().getColor(R.color.black));
+                imageViewHome.setColorFilter(getResources().getColor(R.color.navy_blue));
+                imageViewChat.setColorFilter(getResources().getColor(R.color.grey));
+                imageViewLike.setColorFilter(getResources().getColor(R.color.grey));
+                imageViewAccount.setColorFilter(getResources().getColor(R.color.grey));
                 pushFragment(new MainFragment());
                 break;
             case R.id.linear_chat:
-
-                imageViewHome.setColorFilter(getResources().getColor(R.color.black));
-                imageViewChat.setColorFilter(getResources().getColor(R.color.colorAccent));
-                imageViewLike.setColorFilter(getResources().getColor(R.color.black));
-                imageViewAccount.setColorFilter(getResources().getColor(R.color.black));
-                pushFragment(new SmartSearchFragment());
+                imageViewHome.setColorFilter(getResources().getColor(R.color.grey));
+                imageViewChat.setColorFilter(getResources().getColor(R.color.navy_blue));
+                imageViewLike.setColorFilter(getResources().getColor(R.color.grey));
+                imageViewAccount.setColorFilter(getResources().getColor(R.color.grey));
+                pushFragment(new ChatUsFragment());
                 break;
             case R.id.linear_like:
+                imageViewHome.setColorFilter(getResources().getColor(R.color.grey));
+                imageViewChat.setColorFilter(getResources().getColor(R.color.grey));
+                imageViewLike.setColorFilter(getResources().getColor(R.color.navy_blue));
+                imageViewAccount.setColorFilter(getResources().getColor(R.color.grey));
+               pushFragment(new FavouritesFragment());
 
-                imageViewHome.setColorFilter(getResources().getColor(R.color.black));
-                imageViewChat.setColorFilter(getResources().getColor(R.color.black));
-                imageViewLike.setColorFilter(getResources().getColor(R.color.colorAccent));
-                imageViewAccount.setColorFilter(getResources().getColor(R.color.black));
-                pushFragment(new MyProfileFragment());
+//                Intent intent=new Intent(MainActivity.this,BookMarkedActivity.class);
+//                startActivity(intent);
                 break;
             case R.id.linear_account:
-
-                imageViewHome.setColorFilter(getResources().getColor(R.color.black));
-                imageViewChat.setColorFilter(getResources().getColor(R.color.black));
-                imageViewLike.setColorFilter(getResources().getColor(R.color.black));
-                imageViewAccount.setColorFilter(getResources().getColor(R.color.colorAccent));
-                pushFragment(new AboutUsFragment());
+                imageViewHome.setColorFilter(getResources().getColor(R.color.grey));
+                imageViewChat.setColorFilter(getResources().getColor(R.color.grey));
+                imageViewLike.setColorFilter(getResources().getColor(R.color.grey));
+                imageViewAccount.setColorFilter(getResources().getColor(R.color.navy_blue));
+                pushFragment(new MyProfileFragment());
 //                toolbar.setTitle("About Us");
 //                toolbar.setTitleTextColor(getResources().getColor(R.color.white));
                 break;
-             case R.id.profile:
-                 pushFragment(new AboutUsFragment());
+             case R.id.linear_profile:
+                 pushFragment(new MyProfileFragment());
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
-            case R.id.message:
-                pushFragment(new ChatFragment());
+            case R.id.linear_message:
+                pushFragment(new ChatUsFragment());
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
-            case R.id.notification:
-                pushFragment(new SearchSelectFragment());
+            case R.id.linear_notification:
+               // pushFragment(new SearchSelectFragment());
+                Intent intent1 =new Intent(MainActivity.this,NotificationActivity.class);
+                startActivity(intent1);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
-            case R.id.favourite:
-                pushFragment(new MyProfileFragment());
+            case R.id.linear_favourite:
+                 pushFragment(new FavouritesFragment());
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
-            case R.id.settings:
-                pushFragment(new SearchSelectFragment());
-                drawerLayout.closeDrawer(GravityCompat.START);
-                break;
+//            case R.id.settings:
+//                pushFragment(new SearchSelectFragment());
+//                drawerLayout.closeDrawer(GravityCompat.START);
+//                break;
 
         }
         }
@@ -536,7 +558,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .replace(R.id.container, fragment)
                     .addToBackStack(null)
                     .commit();
-
         }
     }
-

@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/contentRoot"
+    android:background="#151D32"
     xmlns:emojicon="http://schemas.android.com/apk/res-auto"
-    tools:context=".activity.ChatInboxActivity">
+    >
 
     <RelativeLayout
         android:id="@+id/chat_parent_view"
@@ -31,15 +32,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="0dp"
-                    android:padding="10dp">
+                    android:layout_marginStart="0dp">
 
-                    <ImageView
-                        android:id="@+id/back_arrow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:background="@drawable/ic_leftarrow_pink" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/back_arrow"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:background="@drawable/ic_leftarrow_pink" />-->
 
 
                     <ImageView
@@ -53,12 +53,10 @@
 
 
                     <RelativeLayout
-
                         android:id="@+id/rvvvv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_toRightOf="@+id/back_arrow">
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:background="#151D32">
 
                         <ImageView
                             android:id="@+id/imgOnlineIndicator"
@@ -72,49 +70,63 @@
                             android:visibility="gone"
                             app:srcCompat="@drawable/ic_account_circle_black_24dp" />
 
-                        <ImageView
-                            android:id="@+id/iv_info"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginEnd="21dp"
-                            android:background="@drawable/ic_information_pink" />
+<!--                        <ImageView-->
+<!--                            android:id="@+id/iv_info"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentEnd="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:layout_marginEnd="21dp"-->
+<!--                            android:background="@drawable/ic_information_pink" />-->
 
                         <TextView
                             android:id="@+id/sellerUserName1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_10"
-                            android:layout_marginTop="20dp"
-                            android:layout_toRightOf="@+id/sellerImage"
+                            android:layout_toRightOf="@+id/sellerUserName"
                             android:padding="5dp"
                             android:text="Online"
-                            android:textColor="@color/colorBlack"
+                            android:textColor="@color/white"
                             android:textSize="13sp"
-                            android:visibility="gone" />
+                            android:visibility="gone"/>
 
                         <TextView
                             android:id="@+id/sellerUserName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/dp_10"
+                            android:layout_marginStart="10dp"
                             android:layout_toRightOf="@+id/sellerImage"
-                            android:padding="5dp"
                             android:text="User Name"
-                            android:textColor="@color/red"
-                            android:textSize="15sp"
+                            android:padding="5dp"
+                           android:layout_marginTop="45dp"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txt_designation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:textSize="12sp"
+                            android:textColor="#fff"
+                            android:layout_marginStart="15dp"
+                            android:layout_toRightOf="@+id/sellerImage"
+                            android:layout_below="@id/sellerUserName"
+                            android:textAllCaps="false"
+                            android:text="Designation"
+                            />
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/sellerImage"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
                             android:layout_centerVertical="true"
+                            android:layout_marginStart="18dp"
                             android:background="@drawable/circle_imagecate"
                             android:padding="0dp"
-                            android:src="@drawable/no_photo" />
+                            android:src="@drawable/ic_launcher_background" />
 
                     </RelativeLayout>
 
@@ -130,13 +142,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/cy"
-            android:layout_below="@+id/cards">
+            android:layout_below="@+id/cards"
+            android:background="@drawable/gradient_card">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/chat_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
+                android:layout_margin="10dp"
                 app:stackFromEnd="true">
 
             </androidx.recyclerview.widget.RecyclerView>
@@ -148,8 +161,6 @@
 
                 <RelativeLayout
                     android:id="@+id/cy"
-
-                    android:background="@drawable/gradient_noround_pink"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -164,16 +175,15 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:padding="1dp"
-                        android:background="@drawable/edit_text_border"
                         >
 
-                        <ImageView
-                            android:id="@+id/emoji"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/typemsg"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_panda_pink" />
+<!--                        <ImageView-->
+<!--                            android:id="@+id/emoji"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignBottom="@+id/typemsg"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:src="@drawable/ic_panda_pink" />-->
 
                         <hani.momanii.supernova_emoji_library.Helper.EmojiconEditText
                             android:id="@+id/typemsg"
@@ -182,10 +192,8 @@
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="10dp"
-                            android:layout_toStartOf="@+id/sendbtn"
-                            android:layout_toEndOf="@+id/emoji"
-                            android:layout_toRightOf="@+id/emoji"
-                            android:hint="Message"
+                            android:hint="Type a message"
+                            android:layout_marginBottom="5dp"
                             android:padding="10sp"
                             android:textColor="#000"
                             android:textSize="14sp"
@@ -197,28 +205,28 @@
 
 
 
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="30dp"
-                            android:layout_toRightOf="@+id/emoji"
-                            android:background="@drawable/edit_text_border"
-                            android:hint="Message"
-                            android:paddingLeft="5dp"
-                            android:singleLine="true"
-                            android:textColor="#000"
-                            android:textSize="15sp"
-                            android:visibility="gone"
-                            />
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="5dp"-->
+<!--                            android:layout_marginRight="30dp"-->
+<!--                            android:background="@drawable/edit_text_border"-->
+<!--                            android:hint="Message"-->
+<!--                            android:paddingLeft="5dp"-->
+<!--                            android:singleLine="true"-->
+<!--                            android:textColor="#000"-->
+<!--                            android:textSize="15sp"-->
+<!--                            android:visibility="gone"-->
+<!--                            />-->
 
                         <ImageView
                             android:id="@+id/sendbtn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="20dp"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
-                            android:src="@drawable/ic_play_pink" />
+                            android:src="@drawable/send" />
                     </RelativeLayout>
 
                 </RelativeLayout>

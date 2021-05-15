@@ -131,7 +131,7 @@ public class BuyMemberShipPlanActivity extends AppCompatActivity implements Paym
         sellerImage = findViewById(R.id.sellerImage);
         rc_plan = findViewById(R.id.rc_plan);
         iv_back = findViewById(R.id.iv_back);
-        iv_home = findViewById(R.id.iv_home);
+//        iv_home = findViewById(R.id.iv_home);
         progress_bar = findViewById(R.id.progress_bar);
         gif_iv = findViewById(R.id.gif_iv);
         note_rl = findViewById(R.id.note_rl);
@@ -157,12 +157,12 @@ public class BuyMemberShipPlanActivity extends AppCompatActivity implements Paym
         rc_plan.setAdapter(buyPlanAdapter);
 
         iv_back.setOnClickListener(v -> finish());
-
-        iv_home.setOnClickListener(v -> {
-            Intent intent = new Intent(BuyMemberShipPlanActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        });
+//
+//        iv_home.setOnClickListener(v -> {
+//            Intent intent = new Intent(BuyMemberShipPlanActivity.this, MainActivity.class);
+//            startActivity(intent);
+//            finish();
+//        });
 
         Intent intent = getIntent();
         if (intent != null) {

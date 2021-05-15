@@ -16,11 +16,19 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.lgbt.LGBTsCLUB.R;
 import com.lgbt.LGBTsCLUB.activity.NotificationActivity;
 import com.lgbt.LGBTsCLUB.model.NotificationModel;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
+
+import static com.lgbt.LGBTsCLUB.network.networking.Constant.IMAGE_LOAD_USER;
 
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.CustomerViewHolder> {
@@ -49,6 +57,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         final NotificationModel.NotificationData customerList = notificationDataList.get(position);
         holder.name.setText(customerList.getName());
         holder.chat_message.setText(customerList.getMsg());
+       // holder.time.setText(customerList.getNid());
 
 
         if (customerList.getReadstatus().equals("No")) {
@@ -61,19 +70,16 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         }
 
-/*
         RequestOptions options = new RequestOptions()
                 .centerCrop()
-                .placeholder(R.drawable.locality_logo_small)
-                .error(R.drawable.locality_logo_small)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH).dontAnimate()
                 .dontTransform();
 
         Glide.with(context)
-                .load(IMAGE_LOAD_USER + singleItem.getUserImage())
+                .load(IMAGE_LOAD_USER + customerList.getPhoto1())
                 .apply(options)
-                .into(holder.userImage);*/
+                .into(holder.user_image);
 
 
         holder.layout_item.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +119,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         private final TextView name;
         private final TextView chat_message;
         private final LinearLayout layout_item;
+        private final TextView time;
 
         CustomerViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -122,6 +129,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             chat_message = itemView.findViewById(R.id.chat_message);
             layout_item = itemView.findViewById(R.id.layout_item);
             rl_layout = itemView.findViewById(R.id.rl_layout);
+            time = itemView.findViewById(R.id.txt_time);
 
         }
     }

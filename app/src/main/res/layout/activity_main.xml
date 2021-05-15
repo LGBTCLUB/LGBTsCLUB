@@ -83,7 +83,7 @@
     <LinearLayout
         android:id="@+id/linear_bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:elevation="6dp"
         android:background="@drawable/bg_bottom_linear"
@@ -103,10 +103,10 @@
 
             <ImageView
                 android:id="@+id/img_home"
-                android:layout_width="40dp"
-                android:layout_height="38dp"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_baseline_person_24"/>
+                android:src="@drawable/house"/>
 
         </LinearLayout>
 
@@ -120,10 +120,10 @@
 
             <ImageView
                 android:id="@+id/img_chat"
-                android:layout_width="40dp"
-                android:layout_height="38dp"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_baseline_person_24"/>
+                android:src="@drawable/chat"/>
 
         </LinearLayout>
 
@@ -138,10 +138,10 @@
 
             <ImageView
                 android:id="@+id/img_like"
-                android:layout_width="42dp"
-                android:layout_height="38dp"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_baseline_person_24" />
+                android:src="@drawable/heartt" />
 
         </LinearLayout>
 
@@ -156,10 +156,10 @@
 
             <ImageView
                 android:id="@+id/img_account"
-                android:layout_width="40dp"
-                android:layout_height="38dp"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_baseline_person_24" />
+                android:src="@drawable/userr" />
 
         </LinearLayout>
     </LinearLayout>

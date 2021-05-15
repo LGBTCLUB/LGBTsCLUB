@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="center"
-            android:background="@color/white"
+            android:background="#151D32"
             android:elevation="@dimen/dp_8"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_centerInParent="true"
-                    app:srcCompat="@drawable/ic_leftarrow_pink"
+                    app:srcCompat="@drawable/back_arrow"
 
                     tools:ignore="VectorDrawableCompat" />
 
@@ -47,17 +47,18 @@
                     android:layout_marginStart="40dp"
                     android:layout_marginLeft="20dp"
                     android:text="Membership Plan"
-                    android:textColor="@color/red"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
                     android:textSize="20sp" />
 
-                <ImageView
-                    android:id="@+id/iv_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="@dimen/dp_10"
-                    app:srcCompat="@drawable/ic_home_pink"
-                    tools:ignore="VectorDrawableCompat" />
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/iv_home"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_alignParentEnd="true"-->
+                <!--                    android:layout_marginRight="@dimen/dp_10"-->
+                <!--                    app:srcCompat="@drawable/ic_home_pink"-->
+                <!--                    tools:ignore="VectorDrawableCompat" />-->
 
 
             </RelativeLayout>
@@ -84,9 +85,10 @@
     <ImageView
         android:layout_below="@+id/li_main"
         android:id="@+id/iv_logo"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/umeedlogonew"
+        android:src="@drawable/logo_final"
         android:visibility="visible"
         />
     <ProgressBar

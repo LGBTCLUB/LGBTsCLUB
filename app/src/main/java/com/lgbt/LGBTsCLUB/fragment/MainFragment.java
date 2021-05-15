@@ -1,6 +1,4 @@
 package com.lgbt.LGBTsCLUB.fragment;
-
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,7 +38,6 @@ import static com.lgbt.LGBTsCLUB.network.networking.Constant.LOGIN_ID;
 
 public class MainFragment extends Fragment {
 
-
     HomeAdapter homeAdapter;
     List<YardsItem> customerListList = new ArrayList<>();
     YardsItem yardsItem;
@@ -79,7 +76,7 @@ public class MainFragment extends Fragment {
         userId = SharedPrefsManager.getInstance().getString(LOGIN_ID);
 
        // Log.i("user..id", userId);
-        layoutManager = new GridLayoutManager(main_recycler_view.getContext(), 1);
+        layoutManager = new GridLayoutManager(main_recycler_view.getContext(), 2);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         main_recycler_view.setHasFixedSize(true);
         main_recycler_view.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(4), true));
@@ -125,7 +122,6 @@ public class MainFragment extends Fragment {
         });
 
        // setList();
-
         return view;
     }
 
@@ -195,7 +191,6 @@ public class MainFragment extends Fragment {
 
     }
 
-
     public void sendheartlist(String matriId, String loginmatriid, String status) {
         apiInterface.sendheartlist(matriId, loginmatriid, status).enqueue(new Callback<LoginModel>() {
             @Override
@@ -221,9 +216,7 @@ public class MainFragment extends Fragment {
             }
         });
 
-
     }
-
 
     @Override
     public void onDestroyView() {

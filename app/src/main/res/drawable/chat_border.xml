@@ -3,10 +3,10 @@
     android:shape="rectangle"
     android:thickness="0dp">
 
-    <solid android:color="@color/chatto" />
+    <solid android:color="#FFF" />
 
     <stroke android:width="0dp"
-        android:color="@color/chatto"/>
+        android:color="#FFF" />
 <!--
     <corners android:radius="10dp"/>
 -->

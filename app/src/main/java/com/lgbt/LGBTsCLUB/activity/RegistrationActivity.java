@@ -106,6 +106,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private SpinnerAdapter monthAdapter;
     private SpinnerAdapter yearAdapter;
     private String mCountryCode = "";
+    private ProgressBar progressBar;
 
     private static boolean isValidEmail(String email) {
         return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
@@ -117,6 +118,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         btn_continue = findViewById(R.id.btn_continue);
+        progressBar = findViewById(R.id.progress_bar);
 //        iv_back = findViewById(R.id.iv_back);
 //        toolbar = findViewById(R.id.toolbar);
 
@@ -133,7 +135,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
-                    "com.umeeds.app",
+                    "com.lgbt.LGBTsCLUB",
                     PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
@@ -191,7 +193,8 @@ public class RegistrationActivity extends AppCompatActivity {
             if (validationSuccess()) {
                 if (isValidMobile(et_phone.getText().toString())) {
                     if (isValidEmail(et_emailId.getText().toString())) {
-                      //  progress_bar.setVisibility(View.VISIBLE);
+
+                        progressBar.setVisibility(View.VISIBLE);
                         verifyEmailRegister(et_emailId.getText().toString(), et_phone.getText().toString());
                     } else {
                         et_emailId.setError("Please enter valid Email Id!");
@@ -268,7 +271,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     VeryfyEmailRegisterModel registerModel = response.body();
                     if (registerModel != null) {
-                    //    progress_bar.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                         String respons = registerModel.getResponse();
                         String message = registerModel.getMessage();
                         otp = registerModel.getOtp();
@@ -285,7 +288,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<VeryfyEmailRegisterModel> call, Throwable t) {
                 Toast.makeText(RegistrationActivity.this, "something is wrong", Toast.LENGTH_LONG).show();
-             //   progress_bar.setVisibility(View.GONE);
+              progressBar.setVisibility(View.GONE);
             }
         });
     }
@@ -336,7 +339,7 @@ public class RegistrationActivity extends AppCompatActivity {
         ok.setOnClickListener(v -> {
             if (text_dialog.getText().toString().equals(otp)) {
                 String dob = dobYear + "/" + dobMonth + "/" + dobDate;
-             //   progress_bar.setVisibility(View.VISIBLE);
+              progressBar.setVisibility(View.VISIBLE);
                 registration(et_firstName.getText().toString(), "", et_hobbies.getText().toString(), dob,
                         Gender, et_phone.getText().toString(), et_emailId.getText().toString(), password.getText().toString(), newToken, "1");
             } else {
@@ -355,7 +358,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     RegisterModel registerModel = response.body();
                     if (registerModel != null) {
-                        //progress_bar.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.GONE);
                         String respons = registerModel.getResponse();
                         String message = registerModel.getMessage();
                         if (respons.equals("true")) {
@@ -380,7 +383,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<RegisterModel> call, Throwable t) {
                 Toast.makeText(RegistrationActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
-              //  progress_bar.setVisibility(View.GONE);
+               progressBar.setVisibility(View.GONE);
             }
         });
     }

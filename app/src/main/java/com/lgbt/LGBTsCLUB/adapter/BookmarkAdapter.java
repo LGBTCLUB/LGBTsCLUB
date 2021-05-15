@@ -23,6 +23,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.lgbt.LGBTsCLUB.R;
 import com.lgbt.LGBTsCLUB.activity.BookMarkedActivity;
 import com.lgbt.LGBTsCLUB.activity.MoreInfoActivity;
+import com.lgbt.LGBTsCLUB.fragment.FavouritesFragment;
 import com.lgbt.LGBTsCLUB.model.HeartModel;
 import com.lgbt.LGBTsCLUB.network.database.SharedPrefsManager;
 
@@ -38,12 +39,13 @@ import static com.lgbt.LGBTsCLUB.network.networking.Constant.MATRI_ID;
 public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.CustomerViewHolder> {
 
     private final FragmentActivity context;
+    private final FavouritesFragment fragment;
     private List<HeartModel.HeartData> homeDataList;
-    private final Activity activity;
+   // private final Activity activity;
 
-    public BookmarkAdapter(FragmentActivity context, Activity activity, List<HeartModel.HeartData> homeDataList) {
+    public BookmarkAdapter(FragmentActivity context, FavouritesFragment fragment, List<HeartModel.HeartData> homeDataList) {
         this.context = context;
-        this.activity = activity;
+        this.fragment = fragment;
         this.homeDataList = homeDataList;
     }
 
@@ -70,13 +72,13 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Custom
         } else {
             holder.tv_verified.setText("Verified");
             holder.iv_verified.setImageDrawable(context.getDrawable(R.drawable.ic_check_circle_black_24dp));
-            DrawableCompat.setTint(holder.iv_verified.getDrawable(), ContextCompat.getColor(context, R.color.blue));
+            DrawableCompat.setTint(holder.iv_verified.getDrawable(), ContextCompat.getColor(context, R.color.navy_blue));
         }
 
         RequestOptions options = new RequestOptions()
                 .centerCrop()
-                .placeholder(R.drawable.no_photo)
-                .error(R.drawable.no_photo)
+                .placeholder(R.drawable.logo_final)
+                .error(R.drawable.logo_final)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH).dontAnimate()
                 .dontTransform();
@@ -115,19 +117,19 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Custom
             @Override
             public void onClick(View v) {
                 if (customerList.getSendrequest().equals("0")) {
-                    ((BookMarkedActivity) activity).sendRequest(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID));
+                    ((FavouritesFragment) fragment).sendRequest(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID));
                 }
             }
         });
 
 
 
-       /* holder.bt_request.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((BookMarkedActivity) activity).sendRequest(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID));
-            }
-        });*/
+//       holder.bt_request.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ((BookMarkedActivity) activity).sendRequest(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID));
+//            }
+//        });
 
 
     }
