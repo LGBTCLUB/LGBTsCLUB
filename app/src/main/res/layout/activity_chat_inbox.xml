@@ -55,7 +55,7 @@
                     <RelativeLayout
                         android:id="@+id/rvvvv"
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="120dp"
                         android:background="#151D32">
 
                         <ImageView
@@ -99,7 +99,7 @@
                             android:layout_toRightOf="@+id/sellerImage"
                             android:text="User Name"
                             android:padding="5dp"
-                           android:layout_marginTop="45dp"
+                            android:layout_marginTop="25dp"
                             android:textColor="@color/white"
                             android:textSize="18sp"
                             android:textStyle="bold" />

@@ -64,18 +64,9 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="John Doe"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        />
+                        android:textColor="@color/navy_blue"
+                        android:textSize="16sp" />
 
-                    <ImageView
-                        android:id="@+id/cancel_req"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/cancel"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="15dp"/>
 
                 </RelativeLayout>
 
@@ -85,21 +76,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Chat Message"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:visibility="visible" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/more_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="More Info"
-                    android:drawableRight="@drawable/ic_baseline_arrow_right_alt_24"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/navy_blue"
                     android:textSize="14sp"
                     android:visibility="visible" />
 
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="22dp"
+                        android:padding="5dp"
+                        android:src="@drawable/right_arrow"/>
+                </LinearLayout>
+
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/cancel_req"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/cancel"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"/>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

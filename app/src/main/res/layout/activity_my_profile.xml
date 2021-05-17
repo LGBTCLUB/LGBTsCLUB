@@ -48,12 +48,12 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/back_arrow">
 
-<!--                    <ImageView-->
-<!--                        android:id="@+id/bg_blur_iv"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:scaleType="fitXY"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        />-->
+                    <!--                    <ImageView-->
+                    <!--                        android:id="@+id/bg_blur_iv"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:scaleType="fitXY"-->
+                    <!--                        android:layout_height="match_parent"-->
+                    <!--                        />-->
 
 
                     <de.hdodenhof.circleimageview.CircleImageView
@@ -66,14 +66,14 @@
 
                     <ImageView
                         android:id="@+id/imgOnlineIndicator"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
                         android:layout_alignRight="@+id/iv_image1"
                         android:layout_alignBottom="@+id/iv_image1"
                         android:layout_marginRight="0dp"
                         android:layout_marginBottom="0dp"
                         android:visibility="visible"
-                        app:srcCompat="@drawable/ic_edit_pink" />
+                        app:srcCompat="@drawable/edit_black" />
 
                     <TextView
                         android:id="@+id/tv_namee"
@@ -81,11 +81,11 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text=""
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         android:layout_below="@+id/iv_image1"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/lbt_member"
@@ -96,7 +96,7 @@
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         android:layout_below="@+id/tv_namee"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <LinearLayout
                         android:id="@+id/linear_plan"
@@ -104,7 +104,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center"
-                        android:layout_marginTop="10dp"
+                        android:layout_margin="8dp"
                         android:layout_below="@id/lbt_member">
 
                         <TextView
@@ -116,7 +116,7 @@
                             android:paddingLeft="20dp"
                             android:paddingRight="20dp"
                             android:text="Upgrade Plan"
-                            android:layout_margin="10dp"
+                            android:layout_margin="5dp"
                             android:textColor="@color/white"
                             android:textSize="12sp"
 
@@ -128,7 +128,7 @@
                             android:layout_height="20dp"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:layout_margin="10dp"
+                            android:layout_margin="5dp"
                             android:background="@drawable/bg_round_white"
                             android:paddingLeft="@dimen/dp_10"
                             android:text="View Plan"
@@ -150,6 +150,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_marginTop="-30dp"
                 android:background="@drawable/gradient_card">
 
                 <HorizontalScrollView

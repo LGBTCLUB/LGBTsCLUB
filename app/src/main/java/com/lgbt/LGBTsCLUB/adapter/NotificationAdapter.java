@@ -57,15 +57,14 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         final NotificationModel.NotificationData customerList = notificationDataList.get(position);
         holder.name.setText(customerList.getName());
         holder.chat_message.setText(customerList.getMsg());
-       // holder.time.setText(customerList.getNid());
-
+     //   holder.time.setText(customerList.getCreated_date());
 
         if (customerList.getReadstatus().equals("No")) {
-            // holder.rl_layout.setBackgroundColor(Color.parseColor("#ffffff"));
+
             holder.rl_layout.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
 
         } else {
-            // holder.rl_layout.setBackgroundColor(Color.parseColor("#000000"));
+
             holder.rl_layout.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary));
 
         }

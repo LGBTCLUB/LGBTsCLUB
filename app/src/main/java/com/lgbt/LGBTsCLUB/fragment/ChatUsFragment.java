@@ -45,17 +45,9 @@ public class ChatUsFragment extends Fragment implements View.OnClickListener {
         textViewPending.setOnClickListener(this);
         textViewNewRequest.performClick();
 
-        Typeface boldTypeface = Typeface.defaultFromStyle(Typeface.BOLD);
-
-
-       
         return view;
     }
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//     //   user_status(SharedPrefsManager.getInstance().getString(LOGIN_ID));
-//    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -66,6 +58,7 @@ public class ChatUsFragment extends Fragment implements View.OnClickListener {
                 textViewPending.setTextColor(getResources().getColor(R.color.gray_light));
                 pushFragment(new ChatFragment());
                 break;
+
             case R.id.txt_new_request:
                 textViewAccepted.setTextColor(getResources().getColor(R.color.gray_light));
                 textViewNewRequest.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
@@ -73,6 +66,7 @@ public class ChatUsFragment extends Fragment implements View.OnClickListener {
                 textViewPending.setTextColor(getResources().getColor(R.color.gray_light));
                 pushFragment(new ChatNewRequestFragment());
                 break;
+
             case R.id.txt_pending:
                 textViewAccepted.setTextColor(getResources().getColor(R.color.gray_light));
                 textViewPending.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
@@ -84,38 +78,6 @@ public class ChatUsFragment extends Fragment implements View.OnClickListener {
         }
 
     }
-
-//    private void user_status(String string) {
-//        apiInterface.user_status(user_id).enqueue(new Callback<UserStatusModel>() {
-//            @Override
-//            public void onResponse(Call<UserStatusModel> call, Response<UserStatusModel> response) {
-//                if (response.isSuccessful()) {
-//                    UserStatusModel userStatusModel = response.body();
-//                    if (userStatusModel != null) {
-//                        String respons = userStatusModel.getResponse();
-//                        String status = userStatusModel.getStatus();
-//                        if (status.equals("Active")) {
-//
-//                        } else {
-////                            SharedPrefsManager.getInstance().clearPrefs();
-////                            Intent intent = new Intent(ChatUsFragment.this, LoginActivity.class);
-////                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-////                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-////                            startActivity(intent);
-////                            finish();
-//                        }
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<UserStatusModel> call, Throwable t) {
-//                //Toast.makeText(ChatUsFragment.this, "something is wrong", Toast.LENGTH_LONG).show();
-//            }
-//        });
-//    }
-
-
 
     private void pushFragment( Fragment fragment) {
 

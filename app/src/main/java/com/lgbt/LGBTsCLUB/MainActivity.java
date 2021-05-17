@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
 import com.fangxu.allangleexpandablebutton.AllAngleExpandableButton;
 import com.fangxu.allangleexpandablebutton.ButtonData;
 import com.fangxu.allangleexpandablebutton.ButtonEventListener;
@@ -71,6 +73,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -78,11 +81,14 @@ import retrofit2.Response;
 
 import static android.graphics.Color.parseColor;
 import static com.google.android.play.core.install.model.AppUpdateType.IMMEDIATE;
+import static com.lgbt.LGBTsCLUB.network.networking.Constant.IMAGE_LOAD_USER;
+import static com.lgbt.LGBTsCLUB.network.networking.Constant.IMAGE_LOAD_USER1;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.KEY_USER_NAME;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.LOGIN_ID;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.MATRI_ID;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.NO_CHAT_CONTACT;
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.STATUS;
+import static java.lang.System.load;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private ImageView imageViewHome,imageViewChat,imageViewLike,imageViewAccount;
@@ -196,6 +202,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         userName = findViewById(R.id.txt_user_name);
         matriId = findViewById(R.id.txt_user_id);
 
+
         if(SharedPrefsManager.getInstance().getString(KEY_USER_NAME)!= null){
             userName.setText(SharedPrefsManager.getInstance().getString(KEY_USER_NAME));
         }
@@ -203,6 +210,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             matriId.setText(SharedPrefsManager.getInstance().getString(MATRI_ID));
         }
+        if (SharedPrefsManager.getInstance().getString(IMAGE_LOAD_USER)!=null)
+        {
+
+        }
+
 
         menu.setOnClickListener(v -> {
             try {
@@ -361,62 +373,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-//    public void loadFragment(String fragmentString, Bundle bundle) {
-//
-//        switch (fragmentString) {
-//
-//            case Constant.SEARCH_TYPE_FRAGMENT:
-//                callFragment(new ResultSearchFragment(), Constant.SEARCH_TYPE_FRAGMENT, null, null);
-//                break;
-//            case Constant.SMART_SEARCH_FRAGMENT:
-//                getSupportActionBar().setTitle(" Smart Search");
-//                callFragment(new SmartSearchFragment(), Constant.SMART_SEARCH_FRAGMENT, null, null);
-//                break;
-//            case Constant.ADVANCED_SEARCH_FRAGMENT:
-//                getSupportActionBar().setTitle(" Advanced Search");
-//                callFragment(new AdvancedSearchFragment(), Constant.ADVANCED_SEARCH_FRAGMENT, null, null);
-//                break;
-//            case Constant.OCCUP_SEARCH_FRAGMENT:
-//                getSupportActionBar().setTitle("Search by Occupational");
-//                callFragment(new OccupationSearchFragment(), Constant.OCCUP_SEARCH_FRAGMENT, null, null);
-//                break;
-//            case Constant.EDU_SEARCH_FRAGMENT:
-//                getSupportActionBar().setTitle("Search by Educational");
-//                callFragment(new EducationSearchFragment(), Constant.EDU_SEARCH_FRAGMENT, null, null);
-//                break;
-//            case Constant.LOCATION_SEARCH_FRAGMENT:
-//                getSupportActionBar().setTitle("Search by Location");
-//                callFragment(new LocationSearchFragment(), Constant.LOCATION_SEARCH_FRAGMENT, null, null);
-//                break;
-//            case Constant.SPECIAL_SEARCH_FRAGMENT:
-//                getSupportActionBar().setTitle("Search by Special case");
-//                callFragment(new SpecialSearchFragment(), Constant.SPECIAL_SEARCH_FRAGMENT, null, null);
-//                break;
-//            case Constant.MATRIMONIAL_SEARCH_FRAGMENT:
-//                getSupportActionBar().setTitle("Search by Matrimonial ID");
-//                callFragment(new MatrimonyIDSearchFragment(), Constant.MATRIMONIAL_SEARCH_FRAGMENT, null, null);
-//                break;
-//
-//            case Constant.SEARCH_RESULT_FRAGMENT:
-//                callFragment(new ResultSearchFragment(), Constant.SEARCH_TYPE_FRAGMENT, null, bundle);
-//                break;
-//        }
-//    }
-
-//    private void callFragment(Fragment fragment, String tag, String addBackStack, Bundle bundle) {
-//        if (bundle != null) {
-//            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment, tag).addToBackStack(addBackStack).commit();
-//            fragment.setArguments(bundle);
-//        } else {
-//            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment, tag).addToBackStack(addBackStack).commit();
-//        }
-//    }
-//
-//    private void showToast(String toast) {
-//        Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
-//    }
-
-
     private void user_status(String user_id) {
         apiInterface.user_status(user_id).enqueue(new Callback<UserStatusModel>() {
             @Override
@@ -490,6 +446,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.linear_home:
 
                 imageViewHome.setColorFilter(getResources().getColor(R.color.navy_blue));
+
                 imageViewChat.setColorFilter(getResources().getColor(R.color.grey));
                 imageViewLike.setColorFilter(getResources().getColor(R.color.grey));
                 imageViewAccount.setColorFilter(getResources().getColor(R.color.grey));
@@ -507,10 +464,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 imageViewChat.setColorFilter(getResources().getColor(R.color.grey));
                 imageViewLike.setColorFilter(getResources().getColor(R.color.navy_blue));
                 imageViewAccount.setColorFilter(getResources().getColor(R.color.grey));
-               pushFragment(new FavouritesFragment());
-
-//                Intent intent=new Intent(MainActivity.this,BookMarkedActivity.class);
-//                startActivity(intent);
+                pushFragment(new FavouritesFragment());
                 break;
             case R.id.linear_account:
                 imageViewHome.setColorFilter(getResources().getColor(R.color.grey));
@@ -518,8 +472,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 imageViewLike.setColorFilter(getResources().getColor(R.color.grey));
                 imageViewAccount.setColorFilter(getResources().getColor(R.color.navy_blue));
                 pushFragment(new MyProfileFragment());
-//                toolbar.setTitle("About Us");
-//                toolbar.setTitleTextColor(getResources().getColor(R.color.white));
                 break;
              case R.id.linear_profile:
                  pushFragment(new MyProfileFragment());
@@ -530,7 +482,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.linear_notification:
-               // pushFragment(new SearchSelectFragment());
                 Intent intent1 =new Intent(MainActivity.this,NotificationActivity.class);
                 startActivity(intent1);
                 drawerLayout.closeDrawer(GravityCompat.START);

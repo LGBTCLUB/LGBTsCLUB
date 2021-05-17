@@ -64,29 +64,16 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="John Doe"
-                        android:textColor="@color/black"
+                        android:textColor="@color/navy_blue"
+                        android:textStyle="bold"
                         android:textSize="16sp"
                         />
 
-                    <ImageView
-                        android:id="@+id/cancel"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/cancel"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/dp_10"/>
 
-                    <ImageView
-                        android:id="@+id/accept"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/greentick"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="40dp"/>
 
                 </RelativeLayout>
+
+
 
 
                 <TextView
@@ -94,8 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Chat Message"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:visibility="visible" />
 
                 <TextView
@@ -109,6 +95,23 @@
                     android:visibility="visible" />
 
             </LinearLayout>
+            <ImageView
+                android:id="@+id/cancel"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/cancel"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dp_10"/>
+
+            <ImageView
+                android:id="@+id/accept"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/greentick"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="40dp"/>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

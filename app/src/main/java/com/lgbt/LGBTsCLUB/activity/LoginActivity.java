@@ -71,13 +71,6 @@ public class LoginActivity extends AppCompatActivity {
         relativeLayout = findViewById(R.id.rel_layout);
         tv_forget_password = findViewById(R.id.txt_forgotpasssword);
         progress = findViewById(R.id.progress_bar);
-        
-//        tv_forget_password.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////              popUp();
-//            }
-//        });
 
         tv_register = findViewById(R.id.txt_sign_in);
         btn_login = findViewById(R.id.btn_login);
@@ -87,7 +80,6 @@ public class LoginActivity extends AppCompatActivity {
 
         txt_signup=findViewById(R.id.text_signup);
         apiInterface = ApiClient.getInterface();
-
 
 
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(LoginActivity.this, new OnSuccessListener<InstanceIdResult>() {
@@ -190,29 +182,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
-
-    private void popUp() {
-
-        LayoutInflater layoutInflater = (LayoutInflater) LoginActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View customView = layoutInflater.inflate(R.layout.popup,null);
-
-//        closePopupBtn = (Button) customView.findViewById(R.id.closePopupBtn);
-
-        //instantiate popup window
-        popupWindow = new PopupWindow(customView, ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-
-        //display the popup window
-       // popupWindow.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
-
-        //close the popup window on button click
-//        closePopupBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                popupWindow.dismiss();
-//            }
-        }
-  //  }
-
 
     private void LoginApi(String emailId, String passWord, String newToken) {
         Log.i("rhl....", emailId + "   " + passWord + "    " + newToken);
@@ -378,16 +347,5 @@ public class LoginActivity extends AppCompatActivity {
 
         return true;
     }
-
-//    private Boolean validationSuccess2() {
-//
-//        if (et_mobile.getText().toString().length() < 10) {
-//            et_mobile.setError("Please enter phone number!");
-//            et_mobile.requestFocus();
-//            return false;
-//        }
-//        return true;
-//    }
-
 
 }

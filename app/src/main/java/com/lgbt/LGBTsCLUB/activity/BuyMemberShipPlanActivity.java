@@ -77,23 +77,12 @@ import static com.lgbt.LGBTsCLUB.network.networking.Constant.STATUS;
 
 public class BuyMemberShipPlanActivity extends AppCompatActivity implements PaymentResultListener, BuyPlanAdapter.BuyPlanClickListener {
 
-//    AsyncHttpClient client;
 
     public static String checkSum, orderId, payStatus, amountNew, emailid, custId, paytmAmount;
     private final int PAYPAL_REQUEST_CODE = 1254;
-//    private BraintreeFragment braintreeFragment;
-
-    //    private static final PayPalConfiguration config = new PayPalConfiguration()
-//            .environment(PayPalConfiguration.ENVIRONMENT_PRODUCTION)
-//            .clientId(Config.PAYPAL_CLIENT_ID)
-//            .merchantName("Example Merchant")
-//            .merchantPrivacyPolicyUri(Uri.parse("https://www.example.com/privacy"))
-//            .merchantUserAgreementUri(Uri.parse("https://www.example.com/legal"));
-//    ;
     ProgressBar progressBar;
     int userId;
     ImageView sellerImage, iv_back, iv_home;
-    // Button bt_paynow;
     TextView tv_planType, tv_amount, tv_validity, tv_planchatcontact, tv_contact;
     String plan, planId, amount, validity, chatcontact, contact, plantype, email, mobileNo, planImageUrl;
     RecyclerView rc_plan;

@@ -91,12 +91,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
             public void onFailure(Call<LoginModel> call, Throwable t) {
                 Toast.makeText(ChangePasswordActivity.this, "something is wrong", Toast.LENGTH_LONG).show();
                 progress.cancleDialog();
-
             }
-
         });
-
-
     }
 
     private Boolean validationSuccess() {

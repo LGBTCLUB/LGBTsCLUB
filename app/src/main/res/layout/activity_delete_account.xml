@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#151D32"
     tools:context=".activity.DeleteAccountActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -78,7 +77,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/app_bar"
-        android:background="@drawable/gradient_card"
 
         >
 
@@ -87,9 +85,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/gradient_card"
             android:orientation="vertical"
-            android:layout_marginTop="30dp">
+            android:layout_margin="10dp"
+
+
+
+            >
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -169,7 +170,7 @@
 
             <TextView
                 android:id="@+id/tv_deleteAccount"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="55dp"
                 android:layout_marginLeft="45dp"
                 android:layout_marginTop="50dp"

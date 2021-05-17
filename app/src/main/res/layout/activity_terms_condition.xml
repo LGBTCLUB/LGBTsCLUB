@@ -103,19 +103,19 @@
                         android:layout_height="wrap_content"
                         android:text="Terms &amp; Conditions "
                         android:textSize="18sp"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@color/navy_blue"
                         android:textStyle="bold"
                         />
-<!--
-                    <TextView
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="15sp"
-                        android:textColor="@color/colorBlack"
-                        />
--->
+                    <!--
+                                        <TextView
+                                            android:layout_marginTop="@dimen/dp_10"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text=""
+                                            android:textSize="15sp"
+                                            android:textColor="@color/colorBlack"
+                                            />
+                    -->
 
 
                 </LinearLayout>

@@ -43,7 +43,6 @@ public class BookMarkedActivity extends AppCompatActivity {
     RecyclerView bookmarked_recyclerview;
     ProgressBar progressCircular;
     ProgressBar progress_bar;
-    //  private ProgressDailog progress;
     List<HeartModel.HeartData> homeDataList = new ArrayList<>();
     private ApiInterface apiInterface;
     private int last = 0;
@@ -57,16 +56,12 @@ public class BookMarkedActivity extends AppCompatActivity {
         bookmarked_recyclerview = findViewById(R.id.bookmarked_recyclerview);
         progressCircular = findViewById(R.id.progress_circular);
         iv_back = findViewById(R.id.iv_back);
-        //iv_home = findViewById(R.id.iv_home);
         iv_logo = findViewById(R.id.iv_logo);
         progress_bar = findViewById(R.id.progress_bar);
 
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         bookmarked_recyclerview.setLayoutManager(layoutManager);
-
-//        bookmarkAdapter = new BookmarkAdapter(this, BookMarkedActivity.this, homeDataList);
-//        bookmarked_recyclerview.setAdapter(bookmarkAdapter);
         apiInterface = ApiClient.getInterface();
 
 
@@ -77,13 +72,7 @@ public class BookMarkedActivity extends AppCompatActivity {
             }
         });
 
-//        iv_home.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(BookMarkedActivity.this, MainActivity.class));
-//                // finish();
-//            }
-//        });
+
 
         myHeartList(SharedPrefsManager.getInstance().getString(MATRI_ID), offset);
 
@@ -113,7 +102,6 @@ public class BookMarkedActivity extends AppCompatActivity {
                         if (homeModel.getHeartDataList().size() > 0) {
                             iv_logo.setVisibility(View.GONE);
                             homeDataList.addAll(homeModel.getHeartDataList());
-                            //  bookmarkAdapter.addCustomerList(homeDataList);
                             bookmarkAdapter.notifyDataSetChanged();
                         }
                     } else {
@@ -122,7 +110,7 @@ public class BookMarkedActivity extends AppCompatActivity {
                             Toast.makeText(BookMarkedActivity.this, "No Data Found", Toast.LENGTH_LONG).show();
                             iv_logo.setVisibility(View.VISIBLE);
                         }
-                        //  Toast.makeText(getContext(), "No pending request", Toast.LENGTH_LONG).show();
+
                         if (offset > 0) {
                             --offset;
                         }

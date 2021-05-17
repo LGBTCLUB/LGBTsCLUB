@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -306,9 +307,10 @@ public class EditProfileActivity extends AppCompatActivity {
                 li_prfessional.setVisibility(GONE);
                 li_personal.setVisibility(GONE);
 
-                tv_personal.setTextColor(getResources().getColor(R.color.black));
-                tv_account.setTextColor(getResources().getColor(R.color.colorAccent));
-                tv_professional.setTextColor(getResources().getColor(R.color.black));
+                tv_account.setTextColor(getResources().getColor(R.color.navy_blue));
+                tv_account.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+                tv_personal.setTextColor(getResources().getColor(R.color.gray_light));
+                tv_professional.setTextColor(getResources().getColor(R.color.gray_light));
 
             }
         });
@@ -322,9 +324,10 @@ public class EditProfileActivity extends AppCompatActivity {
                 li_account.setVisibility(GONE);
                 li_prfessional.setVisibility(GONE);
 
-                tv_personal.setTextColor(getResources().getColor(R.color.colorAccent));
-                tv_account.setTextColor(getResources().getColor(R.color.black));
-                tv_professional.setTextColor(getResources().getColor(R.color.black));
+                tv_account.setTextColor(getResources().getColor(R.color.gray_light));
+                tv_personal.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+                tv_personal.setTextColor(getResources().getColor(R.color.navy_blue));
+                tv_professional.setTextColor(getResources().getColor(R.color.gray_light));
 
             }
         });
@@ -339,9 +342,11 @@ public class EditProfileActivity extends AppCompatActivity {
                 li_account.setVisibility(GONE);
                 li_personal.setVisibility(GONE);
 
-                tv_personal.setTextColor(getResources().getColor(R.color.black));
-                tv_account.setTextColor(getResources().getColor(R.color.black));
-                tv_professional.setTextColor(getResources().getColor(R.color.colorAccent));
+                tv_account.setTextColor(getResources().getColor(R.color.gray_light));
+                tv_professional.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+                tv_personal.setTextColor(getResources().getColor(R.color.gray_light));
+                tv_professional.setTextColor(getResources().getColor(R.color.navy_blue));
+
             }
         });
 

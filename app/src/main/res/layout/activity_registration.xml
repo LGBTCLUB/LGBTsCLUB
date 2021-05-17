@@ -6,45 +6,55 @@
     android:background="#000"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <ImageView
         android:id="@+id/linear_one"
         android:layout_width="match_parent"
         android:layout_height="520dp"
+        android:fitsSystemWindows="true"
+        android:scaleType="center"
         android:background="@drawable/back_screen"
         />
 
-    <TextView
-        android:id="@+id/txt_sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#FFF"
-        android:text="Sign Up"
-        android:textSize="45sp"
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/txt_line"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/txt_sign_up"
-        android:text="Please sign up to continue"
-        android:textStyle="bold"
-        android:layout_marginTop="8dp"
-        android:layout_centerHorizontal="true"/>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/txt_line"
         android:layout_marginTop="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFF"
+            android:text="Sign Up"
+            android:layout_gravity="center"
+            android:textSize="45sp"
+            android:layout_marginTop="35dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/txt_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:layout_below="@+id/txt_sign_in"
+            android:text="Please sign up to continue"
+            android:layout_centerHorizontal="true"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
+            android:layout_marginTop="20dp"
             >
 
             <EditText
@@ -327,6 +337,7 @@
                 android:padding="8dp"
                 android:hint="Password "
                 android:textColor="#000"
+                android:inputType="textPassword"
                 android:textColorHint="@color/white"
                 android:drawableLeft="@drawable/icon_lock"
                 android:textSize="14sp" />
@@ -335,18 +346,32 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:layout_marginStart="42dp"
+                >
+
+<!--                <CheckBox-->
+<!--                    android:id="@+id/ch_terms"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginStart="45dp"-->
+<!--                    android:checked="true"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="14sp" />-->
 
                 <CheckBox
                     android:id="@+id/ch_terms"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="45dp"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_chech_boc"
+                    android:button="@drawable/ic_baseline_check_24"
                     android:checked="true"
-                    android:textColor="@color/white"
                     android:textSize="14sp" />
+
 
 
                 <TextView
@@ -373,9 +398,11 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:text="Continue"
-                android:textAllCaps="true"
-                android:textColor="#000"
+                android:textAllCaps="false"
+                android:textColor="#332B2B"
+                android:textStyle="bold"
                 android:textSize="18sp" />
+
 
 
             <LinearLayout
@@ -388,19 +415,21 @@
 
                 <ImageButton
                     android:id="@+id/img_google"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2dp"
                     android:background="@drawable/google" />
+
 
                 <ImageButton
                     android:id="@+id/img_facebook"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:layout_marginRight="10dp"
                     android:background="@drawable/fb" />
             </LinearLayout>
             <TextView
@@ -410,14 +439,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginTop="12dp"
-                android:text="Already have an account? Sign in"
+                android:layout_marginTop="25dp"
+                android:text="Already have an account? Sign In"
                 android:textColor="@color/white"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
+                android:layout_marginBottom="@dimen/dp_10"
                 />
 
 
+        </LinearLayout>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

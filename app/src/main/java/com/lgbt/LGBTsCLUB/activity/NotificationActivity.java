@@ -46,9 +46,7 @@ public class NotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
         iv_back = findViewById(R.id.iv_back);
-       // iv_home = findViewById(R.id.iv_home);
         iv_logo = findViewById(R.id.iv_logo);
-    //    delete_all_iv = findViewById(R.id.delete_all_iv);
         notification_recy = findViewById(R.id.notification_recy);
 
         apiInterface = ApiClient.getInterface();
@@ -67,18 +65,7 @@ public class NotificationActivity extends AppCompatActivity {
                 finish();
             }
         });
-//        iv_home.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
-//        delete_all_iv.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                delete_all_notification();
-//            }
-//        });
+
 
         all_notification_list(SharedPrefsManager.getInstance().getString(MATRI_ID));
     }

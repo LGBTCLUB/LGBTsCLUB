@@ -18,53 +18,49 @@
         >
 
         <androidx.appcompat.widget.Toolbar
-            android:elevation="@dimen/dp_8"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:layout_gravity="center"
-            >
+            android:background="#151D32"
+            android:elevation="@dimen/dp_8"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_centerInParent="true"
                     android:id="@+id/iv_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_leftarrow_pink"
-                    tools:ignore="VectorDrawableCompat"
                     android:layout_alignParentStart="true"
-                    />
+                    android:layout_centerInParent="true"
+                    app:srcCompat="@drawable/back_arrow"
+
+                    tools:ignore="VectorDrawableCompat" />
 
                 <TextView
                     android:id="@+id/tv_test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Set Preference"
-                    android:textSize="20sp"
-                    android:textColor="@color/red"
                     android:layout_marginLeft="20dp"
-                    />
+                    android:text="Set Preference"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
 
-                <ImageView
-                    android:visibility="gone"
-                    android:id="@+id/iv_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_home_pink"
-                    tools:ignore="VectorDrawableCompat"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="@dimen/dp_10"
-                    />
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/iv_home"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_alignParentEnd="true"-->
+                <!--                    android:layout_marginRight="@dimen/dp_10"-->
+                <!--                    app:srcCompat="@drawable/ic_home_pink"-->
+                <!--                    tools:ignore="VectorDrawableCompat" />-->
 
 
             </RelativeLayout>
@@ -101,7 +97,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray"
+                android:background="@drawable/bg_border_grey"
                 >
 
                 <Spinner
@@ -120,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
-                    app:srcCompat="@drawable/arrow_drop_down"
+                    app:srcCompat="@drawable/ccp_down_arrow"
                     android:padding="10dp"
                     android:layout_centerInParent="true"
                     tools:ignore="VectorDrawableCompat" />
@@ -146,7 +142,7 @@
                     android:layout_weight=".50"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_rec_solid_gray"
+                    android:background="@drawable/bg_border_grey"
                     android:orientation="horizontal"
                     android:layout_marginRight="5dp"
                     >
@@ -167,7 +163,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentBottom="true"
-                        app:srcCompat="@drawable/arrow_drop_down"
+                        app:srcCompat="@drawable/ccp_down_arrow"
                         android:padding="10dp"
                         android:layout_centerInParent="true"
 
@@ -179,7 +175,7 @@
                     android:layout_weight=".50"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_rec_solid_gray"
+                    android:background="@drawable/bg_border_grey"
                     android:orientation="horizontal"
                     android:layout_marginLeft="5dp"
 
@@ -201,7 +197,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentBottom="true"
-                        app:srcCompat="@drawable/arrow_drop_down"
+                        app:srcCompat="@drawable/ccp_down_arrow"
                         android:padding="10dp"
                         android:layout_centerInParent="true"
 
@@ -339,7 +335,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray"
+                android:background="@drawable/bg_border_grey"
                 >
 
                 <Spinner
@@ -358,7 +354,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
-                    app:srcCompat="@drawable/arrow_drop_down"
+                    app:srcCompat="@drawable/ccp_down_arrow"
                     android:padding="10dp"
                     tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
@@ -379,7 +375,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray"
+                android:background="@drawable/bg_border_grey"
                 >
 
                 <Spinner
@@ -398,7 +394,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
-                    app:srcCompat="@drawable/arrow_drop_down"
+                    app:srcCompat="@drawable/ccp_down_arrow"
                     android:padding="10dp"
                     tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
@@ -417,7 +413,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray"
+                android:background="@drawable/bg_border_grey"
                 >
 
                 <Spinner
@@ -436,7 +432,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
-                    app:srcCompat="@drawable/arrow_drop_down"
+                    app:srcCompat="@drawable/ccp_down_arrow"
                     android:padding="10dp"
                     tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
@@ -455,7 +451,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_rec_solid_gray"
+                android:background="@drawable/bg_border_grey"
                 >
 
                 <Spinner
@@ -475,7 +471,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
-                    app:srcCompat="@drawable/arrow_drop_down"
+                    app:srcCompat="@drawable/ccp_down_arrow"
                     android:padding="10dp"
                     tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
@@ -494,7 +490,7 @@
                 android:id="@+id/et_description"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="@drawable/bg_rec_solid_gray"
+                android:background="@drawable/bg_border_grey"
                 android:drawablePadding="6dp"
                 android:hint="Sweet simple loving and caring......"
                 android:gravity="left"
@@ -504,25 +500,24 @@
                 android:textSize="14sp"
                 />
 
-
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_preference"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/bg_black_colour"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Set Preference"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
 
     </androidx.core.widget.NestedScrollView>
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_preference"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_black_colour"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="Set Preference"
-        android:textColor="#fff"
-        android:textSize="18sp"
-        android:textAllCaps="true"
-        android:layout_alignParentBottom="true"
-        />
 
 </RelativeLayout>

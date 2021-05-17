@@ -38,33 +38,11 @@ public class AboutUsActivity extends AppCompatActivity {
 
         iv_back = findViewById(R.id.iv_back);
         tv_contant = findViewById(R.id.tv_aboutUs);
-       // wabView = findViewById(R.id.faqs);
-      //  wabView.getSettings().setJavaScriptEnabled(true); // enable javascript
-
-//        wabView.setWebViewClient(new WebViewClient() {
-//            @SuppressWarnings("deprecation")
-//            @Override
-//            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-//                Toast.makeText(AboutUsActivity.this, description, Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @TargetApi(android.os.Build.VERSION_CODES.M)
-//            @Override
-//            public void onReceivedError(WebView view, WebResourceRequest req, WebResourceError rerr) {
-//                // Redirect to deprecated method, so you can use it in all SDK versions
-//                onReceivedError(view, rerr.getErrorCode(), rerr.getDescription().toString(), req.getUrl().toString());
-//            }
-//        });
-//
-//        wabView.loadUrl("https://myteachers.live/");
-
 
         apiInterface = ApiClient.getInterface();
       progress = new UtilsMethod(this);
 
-//        iv_back.setOnClickListener(v -> finish());
         aboutUsApi();
-//        getFAQS();
     }
 
     private void aboutUsApi() {
@@ -92,31 +70,4 @@ public class AboutUsActivity extends AppCompatActivity {
             }
         });
     }
-
-
-//    private void getFAQS() {
-//
-//        apiInterface.getFaqs().enqueue(new Callback<AboutUsModel>() {
-//            @Override
-//            public void onResponse(Call<AboutUsModel> call, Response<AboutUsModel> response) {
-//                if (response.isSuccessful()) {
-//                    AboutUsModel aboutUsModel = response.body();
-//                    if (aboutUsModel != null) {
-//                        progress.cancleDialog();
-//                        boolean respons = aboutUsModel.isResponse();
-//                        if (respons) {
-//                            AboutUsModel.AboutUsData loginData = aboutUsModel.getLoginData();
-//                            faqs.setText(Html.fromHtml(Html.fromHtml(loginData.getContent()).toString()));
-//                        }
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<AboutUsModel> call, Throwable t) {
-//                Toast.makeText(AboutUsActivity.this, "something is wrong", Toast.LENGTH_LONG).show();
-//                progress.cancleDialog();
-//            }
-//        });
-//    }
 }

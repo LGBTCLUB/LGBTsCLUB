@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<ScrollView android:id="@+id/scrollView1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".activity.MoreInfoActivity">
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".activity.MoreInfoActivity">
 
 
-<!--    <androidx.core.widget.NestedScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
+
 
 
         <LinearLayout
@@ -35,9 +43,10 @@
 
                     <androidx.viewpager.widget.ViewPager
                         android:id="@+id/mPager"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:scaleType="fitXY"
+                        android:adjustViewBounds="true"
                         android:fitsSystemWindows="true"
                         android:visibility="visible" />
 
@@ -104,11 +113,11 @@
                         android:id="@+id/bt_containview"
                         android:layout_width="100dp"
                         android:layout_height="20dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginStart="15dp"
                         android:background="@drawable/bg_border_black"
                         android:text="View contact"
+                        android:layout_margin="8dp"
                         android:textAllCaps="false"
+                        android:layout_marginStart="15dp"
                         android:layout_gravity="left"
                         android:textColor="#565e6c" />
 
@@ -117,7 +126,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="#a9a9a9"
-                        android:layout_marginTop="10dp"/>
+                        android:layout_marginTop="8dp"/>
 
 
 
@@ -137,7 +146,7 @@
                             android:text="Location"
                             android:textStyle="bold"
                             android:textAllCaps="false"
-                            android:textColor="#000"
+                            android:textColor="@color/navy_blue"
                             android:textSize="18dp"
 
 
@@ -169,7 +178,7 @@
                             android:text="Salary"
                             android:textStyle="bold"
                             android:textAllCaps="false"
-                            android:textColor="#000"
+                            android:textColor="@color/navy_blue"
                             android:textSize="18dp"
 
                             />
@@ -198,7 +207,7 @@
                             android:text="Short Bio"
                             android:textStyle="bold"
                             android:textAllCaps="false"
-                            android:textColor="#000"
+                            android:textColor="@color/navy_blue"
                             android:textSize="18dp"/>
 
 
@@ -214,33 +223,33 @@
 
 
 
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="vertical"-->
-<!--                        android:layout_margin="10dp">-->
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:orientation="vertical"-->
+                    <!--                        android:layout_margin="10dp">-->
 
 
-<!--                        <TextView-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="Friends"-->
-<!--                            android:textStyle="bold"-->
-<!--                            android:textAllCaps="false"-->
-<!--                            android:textColor="#000"-->
-<!--                            android:textSize="18dp"/>-->
+                    <!--                        <TextView-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:text="Friends"-->
+                    <!--                            android:textStyle="bold"-->
+                    <!--                            android:textAllCaps="false"-->
+                    <!--                            android:textColor="#000"-->
+                    <!--                            android:textSize="18dp"/>-->
 
 
 
-<!--                        <androidx.recyclerview.widget.RecyclerView-->
-<!--                            android:id="@+id/list1"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:background="#e8f4f8"-->
+                    <!--                        <androidx.recyclerview.widget.RecyclerView-->
+                    <!--                            android:id="@+id/list1"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="match_parent"-->
+                    <!--                            android:background="#e8f4f8"-->
 
-<!--                            />-->
+                    <!--                            />-->
 
-<!--                    </LinearLayout>-->
+                    <!--                    </LinearLayout>-->
 
 
 
@@ -257,7 +266,7 @@
                             android:text="Basic Profile"
                             android:textStyle="bold"
                             android:textAllCaps="false"
-                            android:textColor="#000"
+                            android:textColor="@color/navy_blue"
                             android:textSize="18dp"/>
 
 
@@ -357,60 +366,63 @@
 
 
 
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="vertical"-->
-<!--                        android:layout_margin="10dp"-->
-<!--                        >-->
-<!--                        <TextView-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="Interesting"-->
-<!--                            android:textStyle="bold"-->
-<!--                            android:textAllCaps="false"-->
-<!--                            android:textColor="#000"-->
-<!--                            android:textSize="18dp"/>-->
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:orientation="vertical"-->
+                    <!--                        android:layout_margin="10dp"-->
+                    <!--                        >-->
+                    <!--                        <TextView-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:text="Interesting"-->
+                    <!--                            android:textStyle="bold"-->
+                    <!--                            android:textAllCaps="false"-->
+                    <!--                            android:textColor="#000"-->
+                    <!--                            android:textSize="18dp"/>-->
 
 
-<!--                        <com.google.android.material.chip.ChipGroup-->
-<!--                            android:id="@+id/cg_filter_items"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_margin="8dp"-->
-<!--                            app:chipSpacing="5dp"-->
-<!--                            app:singleSelection="true">-->
+                    <!--                        <com.google.android.material.chip.ChipGroup-->
+                    <!--                            android:id="@+id/cg_filter_items"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_margin="8dp"-->
+                    <!--                            app:chipSpacing="5dp"-->
+                    <!--                            app:singleSelection="true">-->
 
-<!--                        </com.google.android.material.chip.ChipGroup>-->
+                    <!--                        </com.google.android.material.chip.ChipGroup>-->
 
-<!--                    </LinearLayout>-->
+                    <!--                    </LinearLayout>-->
 
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
 
-    <!--    <Button-->
-    <!--        android:id="@+id/bt_sendrequest"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--android:gravity="bottom"-->
-    <!--        android:layout_marginLeft="5dp"-->
-    <!--        android:layout_marginTop="@dimen/dp_10"-->
-    <!--        android:layout_marginRight="5dp"-->
-    <!--        android:layout_weight=".50"-->
-    <!--        android:background="@drawable/gradient_pink"-->
-    <!--        android:text="Send Request"-->
-    <!--        android:textAllCaps="true"-->
-    <!--        android:textColor="@color/white"-->
 
-    <!--        />-->
+        <!--    <Button-->
+        <!--        android:id="@+id/bt_sendrequest"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--android:gravity="bottom"-->
+        <!--        android:layout_marginLeft="5dp"-->
+        <!--        android:layout_marginTop="@dimen/dp_10"-->
+        <!--        android:layout_marginRight="5dp"-->
+        <!--        android:layout_weight=".50"-->
+        <!--        android:background="@drawable/gradient_pink"-->
+        <!--        android:text="Send Request"-->
+        <!--        android:textAllCaps="true"-->
+        <!--        android:textColor="@color/white"-->
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
-<!--    </androidx.core.widget.NestedScrollView>-->
+        <!--        />-->
 
-</RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+</ScrollView>

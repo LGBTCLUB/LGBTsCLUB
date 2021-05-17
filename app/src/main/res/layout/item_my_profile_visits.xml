@@ -35,7 +35,7 @@
             android:layout_toEndOf="@+id/user_profile_civ"
             android:gravity="center"
             android:text="#UD12890"
-            android:textColor="#FF1493"
+            android:textColor="@color/navy_blue"
             android:textSize="14dp"
             android:textStyle="bold"/>
 
@@ -81,7 +81,7 @@
             android:textStyle="bold"
             android:text="Request"
             android:textAlignment="center"
-            android:textColor="#FF1493"
+            android:textColor="#000"
             android:textSize="12sp" />
     </RelativeLayout>
 
