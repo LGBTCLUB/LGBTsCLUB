@@ -157,7 +157,7 @@ public class ChatNewRequestFragment extends Fragment {
                         } else {
                             if (offset == 0) {
                                 iv_logo.setVisibility(View.VISIBLE);
-                                Toast.makeText(getContext(), "No new request", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(), "No new request", Toast.LENGTH_LONG).show();
                             }
                             if (offset > 0) {
                                 --offset;

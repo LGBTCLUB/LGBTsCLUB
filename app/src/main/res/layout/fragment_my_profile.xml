@@ -9,12 +9,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
+
 
         <ImageView
             android:id="@+id/bg_blur_iv"
@@ -102,9 +101,6 @@
                         android:layout_margin="8dp"
                         android:layout_below="@id/tv_professional">
 
-
-
-
                         <Button
                             android:id="@+id/bt_profile"
                             android:layout_width="wrap_content"
@@ -132,16 +128,11 @@
                             android:layout_margin="5dp"
                             android:textAllCaps="false"
                             android:textSize="12sp"
-
                             />
-
 
                     </LinearLayout>
 
                 </RelativeLayout>
-
-
-
 
             </LinearLayout>
 
@@ -151,10 +142,6 @@
                 android:layout_marginTop="-35dp"
                 android:background="@drawable/gradient_card"
                 android:orientation="vertical">
-
-                <!--            <RelativeLayout-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="match_parent">-->
 
                 <LinearLayout
                     android:id="@+id/linear_member"
@@ -212,7 +199,7 @@
                             android:layout_marginTop="10dp"
                             android:text="About Us"
                             android:textColor="@color/navy_blue"
-                            android:textSize="18dp"
+                            android:textSize="15sp"
                             android:textStyle="bold" />
 
 
@@ -222,7 +209,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:textColor="#000"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -252,10 +239,10 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="25dp"
+                            android:layout_width="18dp"
+                            android:layout_height="20dp"
                             android:layout_marginStart="8dp"
-                            android:src="@drawable/membership" />
+                            android:src="@drawable/membership_icon" />
 
                         <TextView
                             android:id="@+id/tv_Membership"
@@ -263,9 +250,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="Membership Plan"
-                            android:textStyle="bold"
                             android:textColor="@color/navy_blue"
-                            android:textSize="18dp" />
+                            android:layout_gravity="center_vertical"
+                            android:textSize="15sp" />
 
                     </LinearLayout>
 
@@ -282,7 +269,7 @@
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_marginStart="8dp"
-                            android:src="@drawable/lock" />
+                            android:src="@drawable/padlock" />
 
                         <TextView
                             android:id="@+id/tv_changePassword"
@@ -290,9 +277,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="Change Password"
+                            android:layout_gravity="center_vertical"
                             android:textColor="@color/navy_blue"
-                            android:textStyle="bold"
-                            android:textSize="18dp" />
+                            android:textSize="15sp" />
 
                     </LinearLayout>
 
@@ -310,7 +297,7 @@
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_marginStart="8dp"
-                            android:src="@drawable/bin" />
+                            android:src="@drawable/delete_icon" />
 
                         <TextView
                             android:id="@+id/tv_deleteAccount"
@@ -318,9 +305,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="Delete Account"
+                            android:layout_gravity="center_vertical"
                             android:textColor="@color/navy_blue"
-                            android:textStyle="bold"
-                            android:textSize="18dp" />
+                            android:textSize="15sp" />
 
                     </LinearLayout>
 
@@ -328,20 +315,19 @@
                         android:id="@+id/linear_logout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/view"
+                        android:layout_below="@+id/linear_delete_account"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="15dp"
-
+                        android:layout_marginTop="35dp"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="16dp"
                             android:layout_height="16dp"
-                            android:layout_marginStart="10dp"
+                            android:layout_marginStart="12dp"
                             android:layout_gravity="center_vertical"
                             android:src="@drawable/logout"
-
                             />
+
 
                         <TextView
                             android:id="@+id/tv_logout"
@@ -351,7 +337,7 @@
                             android:text="Logout"
                             android:textColor="@color/navy_blue"
                             android:textStyle="bold"
-                            android:textSize="18dp" />
+                            android:textSize="15sp" />
 
                     </LinearLayout>
 
@@ -361,36 +347,25 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/linear_logout"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="22dp"
                         android:layout_marginTop="5dp"
                         android:text="Terms and condition"
                         android:textColor="#000"
                         android:textSize="12sp" />
 
 
-                    <View
-                        android:id="@+id/view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:layout_below="@id/linear_delete_account"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginTop="25dp"
-                        android:background="#a9a9a9" />
+<!--                    <View-->
+<!--                        android:id="@+id/view"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:layout_below="@id/linear_delete_account"-->
+<!--                        android:layout_marginTop="25dp"-->
+<!--                        android:background="#a9a9a9" />-->
 
 
                     <!--                </LinearLayout>-->
 
                 </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@id/linear_member"
-                    android:layout_marginTop="10dp"
-                    android:background="#a9a9a9" />
-
-                <!--            </RelativeLayout>-->
-
 
             </LinearLayout>
 
@@ -403,9 +378,6 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:visibility="invisible" />
-
-
-
 
     </FrameLayout>
 </ScrollView>

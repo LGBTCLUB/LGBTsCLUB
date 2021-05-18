@@ -79,7 +79,7 @@ public class MainFragment extends Fragment {
         layoutManager = new GridLayoutManager(main_recycler_view.getContext(), 2);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         main_recycler_view.setHasFixedSize(true);
-        main_recycler_view.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(4), true));
+//        main_recycler_view.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(4), true));
         main_recycler_view.setLayoutManager(layoutManager);
 
         //  visitedProfileAdapter = new VisitedProfileAdapter(getActivity(), visitedModelListArrayList);

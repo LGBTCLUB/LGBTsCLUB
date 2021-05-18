@@ -210,10 +210,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             matriId.setText(SharedPrefsManager.getInstance().getString(MATRI_ID));
         }
-        if (SharedPrefsManager.getInstance().getString(IMAGE_LOAD_USER)!=null)
-        {
-
-        }
 
 
         menu.setOnClickListener(v -> {
