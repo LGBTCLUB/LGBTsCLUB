@@ -109,37 +109,6 @@ public class ChatUsFragment extends Fragment  {
         return view;
     }
 
-//    @Override
-//    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.txt_accepted:
-//                textViewAccepted.setTextColor(getResources().getColor(R.color.navy_blue));
-//                textViewAccepted.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
-//                textViewNewRequest.setTextColor(getResources().getColor(R.color.gray_light));
-//                textViewPending.setTextColor(getResources().getColor(R.color.gray_light));
-//                pushFragment(new ChatFragment());
-//                break;
-//
-//            case R.id.txt_new_request:
-//                textViewAccepted.setTextColor(getResources().getColor(R.color.gray_light));
-//                textViewNewRequest.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
-//                textViewNewRequest.setTextColor(getResources().getColor(R.color.navy_blue));
-//                textViewPending.setTextColor(getResources().getColor(R.color.gray_light));
-//                pushFragment(new ChatNewRequestFragment());
-//                break;
-//
-//            case R.id.txt_pending:
-//                textViewAccepted.setTextColor(getResources().getColor(R.color.gray_light));
-//                textViewPending.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
-//                textViewNewRequest.setTextColor(getResources().getColor(R.color.gray_light));
-//                textViewPending.setTextColor(getResources().getColor(R.color.navy_blue));
-//                pushFragment(new ChatPandingFragment());
-//                break;
-//
-//        }
-
-//    }
-
     private void pushFragment( Fragment fragment) {
 
         FragmentManager fragmentManager = getFragmentManager();

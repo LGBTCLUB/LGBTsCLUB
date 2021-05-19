@@ -4,6 +4,8 @@ package com.lgbt.LGBTsCLUB.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,6 +97,11 @@ public class MyProfileFragment extends Fragment {
         tv_deleteAccount = view.findViewById(R.id.tv_deleteAccount);
         profile_visitor = view.findViewById(R.id.profile_visitor);
         visit_count = view.findViewById(R.id.visit_count);
+
+
+        SpannableString content = new SpannableString("Terms and condition");
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        tv_termsCondition.setText(content);
 
         apiInterface = ApiClient.getInterface();
         aboutUsApi();

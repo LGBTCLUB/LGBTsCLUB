@@ -10,6 +10,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -138,10 +140,20 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         tv_upgrade = findViewById(R.id.tv_upgrade);
         li_viewPlan = findViewById(R.id.li_viewPlan);
 
-        iv_attachment = findViewById(R.id.iv_attachment);
-        tv_attachment = findViewById(R.id.tv_attachment);
+//        iv_attachment = findViewById(R.id.iv_attachment);
+//        tv_attachment = findViewById(R.id.tv_attachment);
 
         apiInterface = ApiClient.getInterface();
+        tv_account.performClick();
+
+        SpannableString content = new SpannableString("Account");
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        tv_account.setText(content);
+
+        tv_account.setTextColor(getResources().getColor(R.color.navy_blue));
+        tv_account.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+        tv_personal.setTextColor(getResources().getColor(R.color.gray_light));
+        tv_professional.setTextColor(getResources().getColor(R.color.gray_light));
 
 //        iv_back.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -149,14 +161,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 //                finish();
 //            }
 //        });
-//        iv_home.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+
 
         bt_editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,6 +178,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 li_prfessional.setVisibility(GONE);
                 li_personal.setVisibility(GONE);
 
+                SpannableString content = new SpannableString("Account");
+                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                tv_account.setText(content);
 
                 tv_account.setTextColor(getResources().getColor(R.color.navy_blue));
                 tv_account.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
@@ -188,6 +196,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 li_account.setVisibility(GONE);
                 li_prfessional.setVisibility(GONE);
 
+                SpannableString content = new SpannableString("Personal");
+                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                tv_personal.setText(content);
+
                 tv_account.setTextColor(getResources().getColor(R.color.gray_light));
                 tv_personal.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
                 tv_personal.setTextColor(getResources().getColor(R.color.navy_blue));
@@ -201,6 +213,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 li_prfessional.setVisibility(VISIBLE);
                 li_account.setVisibility(GONE);
                 li_personal.setVisibility(GONE);
+
+                SpannableString content = new SpannableString("Professional");
+                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                tv_professional.setText(content);
 
                 tv_account.setTextColor(getResources().getColor(R.color.gray_light));
                 tv_professional.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
@@ -220,7 +236,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 //        hide.setOnClickListener(this);
         tv_upgrade.setOnClickListener(this);
         li_viewPlan.setOnClickListener(this);
-        iv_attachment.setOnClickListener(this);
+        //       iv_attachment.setOnClickListener(this);
         profileDetailApi(SharedPrefsManager.getInstance().getString(MATRI_ID));
 
     }
@@ -291,10 +307,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 requestCameraAndStorage(RESULT_LOAD_IMAGE);
                 break;
 
-            case R.id.iv_attachment:
-                clickImage = "doc";
-                requestCameraAndStorage(RESULT_LOAD_DOC);
-                break;
+//            case R.id.iv_attachment:
+//                clickImage = "doc";
+//                requestCameraAndStorage(RESULT_LOAD_DOC);
+//                break;
 
 //            case R.id.hide:
 //                if (status.equals("hide")) {

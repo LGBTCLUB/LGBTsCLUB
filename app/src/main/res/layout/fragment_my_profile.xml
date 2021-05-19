@@ -242,7 +242,7 @@
                             android:layout_width="18dp"
                             android:layout_height="20dp"
                             android:layout_marginStart="8dp"
-                            android:src="@drawable/membership_icon" />
+                            android:src="@drawable/membership_plan" />
 
                         <TextView
                             android:id="@+id/tv_Membership"
@@ -250,6 +250,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="Membership Plan"
+                            android:textStyle="bold"
                             android:textColor="@color/navy_blue"
                             android:layout_gravity="center_vertical"
                             android:textSize="15sp" />
@@ -262,7 +263,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/linear_member_plan"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="12dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -277,6 +278,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="Change Password"
+                            android:textStyle="bold"
                             android:layout_gravity="center_vertical"
                             android:textColor="@color/navy_blue"
                             android:textSize="15sp" />
@@ -290,7 +292,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/linear_change_password"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="12dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -305,6 +307,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="Delete Account"
+                            android:textStyle="bold"
                             android:layout_gravity="center_vertical"
                             android:textColor="@color/navy_blue"
                             android:textSize="15sp" />
@@ -317,15 +320,15 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/linear_delete_account"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="35dp"
+                        android:layout_marginTop="12dp"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_marginStart="12dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="8dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/logout"
+                            android:src="@drawable/exit_icon"
                             />
 
 
@@ -335,6 +338,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="Logout"
+                            android:layout_gravity="center_vertical"
                             android:textColor="@color/navy_blue"
                             android:textStyle="bold"
                             android:textSize="15sp" />
