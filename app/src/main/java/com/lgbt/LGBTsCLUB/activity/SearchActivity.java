@@ -22,21 +22,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.lgbt.LGBTsCLUB.R;
-import com.lgbt.LGBTsCLUB.fragment.searchfragment.LocationSearchFragment;
 import com.lgbt.LGBTsCLUB.model.CityDataModel;
-import com.lgbt.LGBTsCLUB.model.MemberProfileModel;
+import com.lgbt.LGBTsCLUB.model.EducationDataModel;
 import com.lgbt.LGBTsCLUB.model.StateDataModel;
-import com.lgbt.LGBTsCLUB.model.serachmodel.CityLivingInModel;
-import com.lgbt.LGBTsCLUB.model.serachmodel.CountryLivingInModel;
 import com.lgbt.LGBTsCLUB.model.serachmodel.OccupicationModel;
-import com.lgbt.LGBTsCLUB.model.serachmodel.SpecialCaseModel;
 import com.lgbt.LGBTsCLUB.model.serachmodel.SpecialSearchModel;
-import com.lgbt.LGBTsCLUB.model.serachmodel.StateLivingInModel;
-import com.lgbt.LGBTsCLUB.model.usermodel.CityModel;
-import com.lgbt.LGBTsCLUB.model.usermodel.CountryModel;
-import com.lgbt.LGBTsCLUB.model.usermodel.ReligiousModel;
-import com.lgbt.LGBTsCLUB.model.usermodel.StateModel;
-import com.lgbt.LGBTsCLUB.network.database.SharedPrefsManager;
 import com.lgbt.LGBTsCLUB.network.networking.ApiClient;
 import com.lgbt.LGBTsCLUB.network.networking.ApiInterface;
 import com.lgbt.LGBTsCLUB.network.networking.CountryDataModel;
@@ -51,11 +41,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.lgbt.LGBTsCLUB.network.networking.Constant.MATRI_ID;
 import static com.paytm.pgsdk.easypay.manager.PaytmAssist.getContext;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
-    Spinner sp_occupation, sp_gender, sp_sexual_orientation, sp_country, sp_state, sp_city, sp_education,sp_special_case;
+    Spinner sp_occupation, sp_gender, sp_sexual_orientation, sp_country, sp_state, sp_city, sp_education, sp_special_case;
 
     List<String> occupation_list = new ArrayList<>();
     List<String> gender_list = new ArrayList<>();
@@ -63,15 +52,15 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private List<CountryDataModel.DataBean> countryModelArrayList;
     private List<StateDataModel.DataEntity> stateModelArrayList;
     private List<CityDataModel.DataCity> cityModelArrayList;
+    private List<EducationDataModel.EducationData> educationDataArrayList;
 
-    List<String> education_list = new ArrayList<>();
 
     private SpinnerAdapter occupationAdapter;
     private GenderAdapter genderAdapter;
-    private SexualOrientationAdapter sexualOrientationAdapter;
-    String country_id, countryName, countryId, stateId, stateName,cityId,cityName;
-
     private EducationAdapter educationAdapter;
+    private SexualOrientationAdapter sexualOrientationAdapter;
+    String country_id, countryName, countryId, stateId, stateName, cityId, cityName, educationId, education;
+
 
     private String occupationstatus, genderStatus, sexualorientationStatus, countryStatus, stateStatus, cityStatus, educationStatus;
     private Button buttonSearch;
@@ -91,7 +80,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         sp_state = findViewById(R.id.sp_state);
         sp_city = findViewById(R.id.sp_city);
         sp_education = findViewById(R.id.sp_education);
-        sp_special_case=findViewById(R.id.sp_special_case);
+        sp_special_case = findViewById(R.id.sp_special_case);
 
         buttonSearch = findViewById(R.id.btn_search);
 
@@ -101,8 +90,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         countryModelArrayList = new ArrayList<>();
         stateModelArrayList = new ArrayList<>();
         cityModelArrayList = new ArrayList<>();
+        educationDataArrayList = new ArrayList<>();
 
         CountryApi();
+        EducationApi();
         ReligionApi();
 
         sp_country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -112,18 +103,18 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 Log.d("TAG", "bandId: " + bandId);
 
                 if (countryModelArrayList.size() > 0) {
-                    country_id= countryModelArrayList.get(position).getCountryId();
+                    country_id = countryModelArrayList.get(position).getCountryId();
                     Log.d("TAG", "countryIdd: " + country_id);
                     countryName = countryModelArrayList.get(position).getCountry();
-                    Toast.makeText(SearchActivity.this, ""+country_id, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SearchActivity.this, "" + country_id, Toast.LENGTH_SHORT).show();
 
                     if (country_id != null) {
                         StateApi(country_id);
-                           CityApi(stateName);
+                        //  CityApi(stateName);
 
                     }
-                }else{
-                    Toast.makeText(SearchActivity.this, ""+countryModelArrayList.size(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SearchActivity.this, "" + countryModelArrayList.size(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -137,17 +128,20 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
                 Log.d("TAG", "bandId: " + bandId);
+
                 if (stateModelArrayList.size() > 0) {
                     stateId = stateModelArrayList.get(position).getStateId();
+                    Log.d("TAG", "stateId: " + stateId);
                     stateName = stateModelArrayList.get(position).getState();
-                    Toast.makeText(SearchActivity.this, ""+stateName, Toast.LENGTH_SHORT).show();
-                    // cityModelArrayList.clear();
+                    Toast.makeText(SearchActivity.this, "" + stateName, Toast.LENGTH_SHORT).show();
+
                     if (stateName != null) {
                         CityApi(stateName);
 
                     }
+                } else {
+                    Toast.makeText(SearchActivity.this, "" + stateModelArrayList.size(), Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override
@@ -159,6 +153,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
+                Log.d("TAG", "bandId: " + bandId);
 
                 if (cityModelArrayList.size() > 0) {
                     cityId = cityModelArrayList.get(position).getId();
@@ -172,8 +167,43 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
             }
         });
+        sp_education.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String bandId = (String) parent.getItemAtPosition(position);
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
     }
 
+    private void EducationApi() {
+        apiInterface.get_education().enqueue(new Callback<EducationDataModel>() {
+            @Override
+            public void onResponse(Call<EducationDataModel> call, retrofit2.Response<EducationDataModel> response) {
+                EducationDataModel educationDataModel = response.body();
+                if (educationDataModel != null) {
+                    if (educationDataModel.getResponse()) {
+                        educationDataArrayList = educationDataModel.getData();
+                        Log.d("TAG", "onResponse4: " + educationDataArrayList.get(0).getEducation());
+                        sp_education.setAdapter(new EducationAdapter(SearchActivity.this, educationDataArrayList));
+                        sp_education.setAdapter(educationAdapter);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<EducationDataModel> call, Throwable t) {
+
+            }
+        });
+    }
 
 
     private void ReligionApi() {
@@ -181,10 +211,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onResponse(Call<SpecialSearchModel> call, retrofit2.Response<SpecialSearchModel> response) {
                 SpecialSearchModel specialSearchModel = response.body();
-                if (specialSearchModel!= null)
-                {
-                    if (specialSearchModel.getResponse())
-                    {
+                if (specialSearchModel != null) {
+                    if (specialSearchModel.getResponse()) {
                         List<SpecialSearchModel.SpecialData> specialData = specialSearchModel.getData();
                         Log.d("TAG", "search: " + specialData.get(0).getName());
 
@@ -215,7 +243,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 }
             }
 
-
             @Override
             public void onFailure(Call<CountryDataModel> call, Throwable t) {
                 Log.d("TAG", "onResponse: Fail");
@@ -223,7 +250,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
     }
-
 
     private void StateApi(String country_id) {
         apiInterface.get_state(country_id).enqueue(new Callback<StateDataModel>() {
@@ -235,9 +261,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 if (stateDataModel != null) {
                     Log.d("TAG", "stateData: " + stateDataModel.getData());
                     if (stateDataModel.getResponse()) {
-                        List<StateDataModel.DataEntity> stateData = stateDataModel.getData();
-                        Log.d("TAG", "onResponse2: " + stateData.get(0).getState());
-                        sp_state.setAdapter(new StateAdapter(SearchActivity.this, stateData));
+                        stateModelArrayList = stateDataModel.getData();
+                        Log.d("TAG", "onResponse2: " + stateModelArrayList.get(0).getState());
+                        sp_state.setAdapter(new StateAdapter(SearchActivity.this, stateModelArrayList));
                         CityApi(stateModelArrayList.get(0).getState());
 
                     }
@@ -261,7 +287,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 if (cityDataModel != null) {
                     if (cityDataModel.getResponse()) {
                         cityModelArrayList = cityDataModel.getData();
-                        Log.d("TAG", "onResponse3: " + cityModelArrayList.get(0).getState());
+                        Log.d("TAG", "onResponse3: " + cityModelArrayList.get(0).getCity());
                         sp_city.setAdapter(new CityAdapter(SearchActivity.this, cityModelArrayList));
 
                     }
@@ -311,8 +337,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
             }
         });
-
-
 
 
         genderAdapter = new GenderAdapter(this);
@@ -389,51 +413,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
             }
         });
-
-
-        educationAdapter = new EducationAdapter(this);
-        sp_education.setAdapter(educationAdapter);
-        education_list.add("Select");
-        education_list.add("India");
-        education_list.add("New Zealand");
-        education_list.add("Bhutan");
-        education_list.add("US");
-        education_list.add("Uk");
-        education_list.add("Afganistan");
-
-
-        educationAdapter.addTaxRateList(education_list);
-        sp_education.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (education_list.size() > 0) {
-                    int position1 = sp_state.getSelectedItemPosition();
-                    educationStatus = education_list.get(position);
-
-                    if (position1 == 0) {
-                        educationStatus = "1";
-                    } else if (position1 == 1) {
-                        educationStatus = "2";
-                    } else if (position1 == 2) {
-                        educationStatus = "3";
-                    } else if (position1 == 3) {
-                        educationStatus = "4";
-                    } else if (position1 == 4) {
-                        educationStatus = "5";
-                    } else if (position1 == 5) {
-                        educationStatus = "6";
-                    } else if (position1 == 6) {
-                        educationStatus = "7";
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
 
     }
 
@@ -642,8 +621,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         private final LayoutInflater layoutInflater;
         private List<String> spinnerList;
 
-        public EducationAdapter(Context context) {
+        public EducationAdapter(Context context, List<EducationDataModel.EducationData> educationDataArrayList) {
             layoutInflater = LayoutInflater.from(context);
+
+
         }
 
         @Override
@@ -773,7 +754,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             return convertView;
         }
     }
-
 
 
 }

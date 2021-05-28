@@ -479,7 +479,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 imageViewChat.setColorFilter(getResources().getColor(R.color.grey));
                 imageViewLike.setColorFilter(getResources().getColor(R.color.grey));
                 imageViewAccount.setColorFilter(getResources().getColor(R.color.navy_blue));
-                pushFragment(new LocationSearchFragment());
+                pushFragment(new EducationSearchFragment());
                 break;
              case R.id.linear_profile:
                  pushFragment(new SpecialSearchFragment());

@@ -6,6 +6,7 @@ import com.lgbt.LGBTsCLUB.model.AcceptModel;
 import com.lgbt.LGBTsCLUB.model.BuyPlanModel;
 import com.lgbt.LGBTsCLUB.model.CityDataModel;
 import com.lgbt.LGBTsCLUB.model.ContactUsModel;
+import com.lgbt.LGBTsCLUB.model.EducationDataModel;
 import com.lgbt.LGBTsCLUB.model.ForgotModel;
 import com.lgbt.LGBTsCLUB.model.HeartModel;
 import com.lgbt.LGBTsCLUB.model.HomeModel;
@@ -100,6 +101,9 @@ public interface ApiInterface {
 
     @GET("get_religion")
     Call<SpecialSearchModel> get_religion();
+
+    @GET("get_education")
+    Call<EducationDataModel> get_education();
 
 //    @FormUrlEncoded
 //    @POST("user_document_detail")

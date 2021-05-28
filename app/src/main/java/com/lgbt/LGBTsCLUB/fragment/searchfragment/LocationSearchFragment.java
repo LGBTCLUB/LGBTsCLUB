@@ -170,7 +170,7 @@ public class LocationSearchFragment extends Fragment implements View.OnClickList
                 if (stateModelArrayList.size() > 0) {
                     stateId = stateModelArrayList.get(position).getState_id();
                     stateName = stateModelArrayList.get(position).getState();
-                    cityModelArrayList.clear();
+                     cityModelArrayList.clear();
                     if (stateName != null) {
                         getCity(stateName);
                     }
