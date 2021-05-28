@@ -65,7 +65,7 @@
                         android:layout_marginRight="0dp"
                         android:layout_marginBottom="0dp"
                         android:visibility="visible"
-                        app:srcCompat="@drawable/edit_black" />
+                        app:srcCompat="@drawable/edit_icon" />
 
                     <TextView
                         android:id="@+id/tv_username"
@@ -324,11 +324,11 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/exit_icon"
+                            android:src="@drawable/log_out_profile"
                             />
 
 

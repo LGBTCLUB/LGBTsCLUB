@@ -92,7 +92,7 @@
                         android:layout_height="15dp"
                         android:layout_marginStart="5dp"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/visibility" />
+                        android:src="@drawable/icon_eye" />
 
                     <TextView
                         android:id="@+id/total_visit"
@@ -110,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/check" />
+                        android:src="@drawable/pink_right_icon" />
 
                     <ImageView
                         android:layout_width="12dp"

@@ -48,7 +48,6 @@ public class OccupationSearchFragment extends Fragment implements View.OnClickLi
 
     RangeSeekBar ageSelectorRsb;
     TextView tvMinAge, tvMaxAge;
-
     RelativeLayout rl_search;
     CheckBox cbProfileWithPhoto;
     Button btn_submit_dialog;
@@ -78,7 +77,6 @@ public class OccupationSearchFragment extends Fragment implements View.OnClickLi
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_occupation_search, container, false);
 
-
         rl_search = view.findViewById(R.id.rl_search);
         ll_select_occup = view.findViewById(R.id.ll_select_occup);
         btn_submit_dialog = view.findViewById(R.id.btn_submit_dialog);
@@ -96,6 +94,8 @@ public class OccupationSearchFragment extends Fragment implements View.OnClickLi
                 tvMaxAge.setText("Min " + maxValue + " yrs");
             }
         });
+
+
         occupicationApi();
 
         ll_select_occup.setOnClickListener(this);

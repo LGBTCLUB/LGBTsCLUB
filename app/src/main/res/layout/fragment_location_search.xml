@@ -306,38 +306,38 @@
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <RelativeLayout
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/bg_rounded"
-                    android:padding="3dp">
+<!--                <RelativeLayout-->
+<!--                    android:visibility="gone"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="4dp"-->
+<!--                    android:background="@drawable/bg_rounded"-->
+<!--                    android:padding="3dp">-->
 
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:id="@+id/ll_select_state"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:textColor="@color/red"
-                            android:id="@+id/tv_select_state"
-                            android:text="Select"
-                            android:padding="@dimen/p5"
-                            android:singleLine="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-                    <ImageView
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/arrow_drop_down"
-                        android:layout_marginRight="@dimen/margin_10"
-                        android:layout_width="@dimen/p20"
-                        android:padding="@dimen/p5"
-                        android:layout_height="@dimen/p20" />
+<!--                    <LinearLayout-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:id="@+id/ll_select_state"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent">-->
+<!--                        <TextView-->
+<!--                            android:textColor="@color/red"-->
+<!--                            android:id="@+id/tv_select_state"-->
+<!--                            android:text="Select"-->
+<!--                            android:padding="@dimen/p5"-->
+<!--                            android:singleLine="true"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent" />-->
+<!--                    </LinearLayout>-->
+<!--                    <ImageView-->
+<!--                        android:layout_alignParentEnd="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:src="@drawable/arrow_drop_down"-->
+<!--                        android:layout_marginRight="@dimen/margin_10"-->
+<!--                        android:layout_width="@dimen/p20"-->
+<!--                        android:padding="@dimen/p5"-->
+<!--                        android:layout_height="@dimen/p20" />-->
 
-                </RelativeLayout>
+<!--                </RelativeLayout>-->
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:visibility="gone"

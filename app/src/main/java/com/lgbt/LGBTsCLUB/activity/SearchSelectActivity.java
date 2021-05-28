@@ -85,15 +85,19 @@ public class SearchSelectActivity extends AppCompatActivity  implements  View.On
             case R.id.tv_occup_search:
                 replaceFragmentWithoutBack(new OccupationSearchFragment(), "Search by Occupational");
                 break;
+
             case R.id.tv_edu_search:
                 replaceFragmentWithoutBack(new EducationSearchFragment(), "Search by Educational");
                 break;
+
             case R.id.tv_matrimonal_search:
                 replaceFragmentWithoutBack(new MatrimonyIDSearchFragment(), "Search by Matrimonial ID");
                 break;
+
             case R.id.tv_special_search:
                 replaceFragmentWithoutBack(new SpecialSearchFragment(), "Search by Special case");
                 break;
+
             case R.id.tv_location_search:
                // replaceFragmentWithoutBack(new LocationSearchFragment(), "Search by Location");
                 break;

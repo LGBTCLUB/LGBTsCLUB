@@ -29,7 +29,7 @@
             <ImageView
                 android:id="@+id/menu"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
                 android:src="@drawable/ic_baseline_dehaze_24" />
@@ -42,7 +42,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
                 android:layout_marginEnd="60dp"
-                android:src="@drawable/ic_search_black_24dp" />
+                android:src="@drawable/icon_search_home" />
 
             <ImageView
                 android:id="@+id/notification"
@@ -51,7 +51,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
                 android:layout_marginEnd="20dp"
-                android:src="@drawable/notification_new_white" />
+                android:src="@drawable/bell" />
 
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>

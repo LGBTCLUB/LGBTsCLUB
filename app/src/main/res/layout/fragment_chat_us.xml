@@ -34,7 +34,7 @@
                                                android:layout_width="match_parent"
                                                android:layout_height="match_parent"
                                                android:background="@drawable/bg_white_colour"
-                                               android:drawableLeft="@drawable/search_chat"
+                                               android:drawableLeft="@drawable/search_icon_smal"
                                                android:textSize="14sp"
                                                android:drawablePadding="10dp"
                                                android:hint="Search for chats and people" />

@@ -28,11 +28,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.lgbt.LGBTsCLUB.MainActivity;
 import com.lgbt.LGBTsCLUB.R;
-import com.lgbt.LGBTsCLUB.SpinnerAdapter;
 import com.lgbt.LGBTsCLUB.adapter.MultiSelectAdapter;
 import com.lgbt.LGBTsCLUB.model.usermodel.ReligiousModel;
 import com.lgbt.LGBTsCLUB.network.networking.ApiClient;
-import com.lgbt.LGBTsCLUB.network.networking.Constant;
 import com.lgbt.LGBTsCLUB.network.networking.MySingleton;
 import com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar;
 
@@ -159,8 +157,8 @@ public class SmartSearchFragment extends Fragment implements View.OnClickListene
 
             }
         });
-        SpinnerAdapter spinnerAdapter = new SpinnerAdapter(getContext(), createdList);
-        spinnerProfileCreatedOn.setAdapter(spinnerAdapter);
+//        SpinnerAdapter spinnerAdapter = new SpinnerAdapter(getContext(), createdList);
+//        spinnerProfileCreatedOn.setAdapter(spinnerAdapter);
 
         ageSelectorRsb.setNotifyWhileDragging(true);
         ageSelectorRsb.setRangeValues(18, 60);

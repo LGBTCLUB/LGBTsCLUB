@@ -47,6 +47,7 @@ import com.lgbt.LGBTsCLUB.activity.BookMarkedActivity;
 import com.lgbt.LGBTsCLUB.activity.ChatActivity;
 import com.lgbt.LGBTsCLUB.activity.LoginActivity;
 import com.lgbt.LGBTsCLUB.activity.NotificationActivity;
+import com.lgbt.LGBTsCLUB.activity.SearchActivity;
 import com.lgbt.LGBTsCLUB.fragment.AboutUsFragment;
 import com.lgbt.LGBTsCLUB.fragment.ChatFragment;
 import com.lgbt.LGBTsCLUB.fragment.ChatUsFragment;
@@ -96,13 +97,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ActionBarDrawerToggle toggle;
     private Toolbar toolbar;
     Fragment fragment = null;
+    Bundle bundle = null;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     AppUpdateManager appUpdateManager;
     int MY_REQUEST_CODE = 200;
     private ApiInterface apiInterface;
     private DrawerLayout drawerLayout;
-    private ImageView notification, userName;
+    private ImageView notification, search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        setSupportActionBar(toolbar);
 
         notification = findViewById(R.id.notification);
+        search = findViewById(R.id.search);
         imageViewHome = findViewById(R.id.img_home);
         imageViewChat = findViewById(R.id.img_chat);
         imageViewLike = findViewById(R.id.img_like);
@@ -131,10 +134,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         linearLayoutLike.setOnClickListener(this);
         linearLayoutAccount.setOnClickListener(this);
 
+
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(intent);
             }
         });
@@ -467,10 +479,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 imageViewChat.setColorFilter(getResources().getColor(R.color.grey));
                 imageViewLike.setColorFilter(getResources().getColor(R.color.grey));
                 imageViewAccount.setColorFilter(getResources().getColor(R.color.navy_blue));
-                pushFragment(new MyProfileFragment());
+                pushFragment(new LocationSearchFragment());
                 break;
              case R.id.linear_profile:
-                 pushFragment(new MyProfileFragment());
+                 pushFragment(new SpecialSearchFragment());
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.linear_message:
@@ -506,4 +518,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .addToBackStack(null)
                     .commit();
         }
-    }
+}

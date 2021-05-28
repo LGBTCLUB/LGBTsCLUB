@@ -73,7 +73,7 @@
                         android:layout_marginRight="0dp"
                         android:layout_marginBottom="0dp"
                         android:visibility="visible"
-                        app:srcCompat="@drawable/edit_black" />
+                        app:srcCompat="@drawable/edit_icon" />
 
                     <TextView
                         android:id="@+id/tv_namee"

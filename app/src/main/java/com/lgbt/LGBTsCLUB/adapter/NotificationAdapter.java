@@ -57,7 +57,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         final NotificationModel.NotificationData customerList = notificationDataList.get(position);
         holder.name.setText(customerList.getName());
         holder.chat_message.setText(customerList.getMsg());
-     //   holder.time.setText(customerList.getCreated_date());
+        holder.time.setText(customerList.getCreated_date().substring(12,19));
 
         if (customerList.getReadstatus().equals("No")) {
 

@@ -119,7 +119,6 @@ public class LocationSearchFragment extends Fragment implements View.OnClickList
         btn_submit_dialog = view.findViewById(R.id.btn_submit_dialog);
         sp_sexualOrientation = view.findViewById(R.id.sp_sexualOrientation);
 
-
         sp_country = view.findViewById(R.id.sp_country);
         sp_state = view.findViewById(R.id.sp_state);
         sp_city = view.findViewById(R.id.sp_city);
@@ -148,6 +147,7 @@ public class LocationSearchFragment extends Fragment implements View.OnClickList
 
                 if (countryModelArrayList.size() > 0) {
                     countryId = countryModelArrayList.get(position).getCountry_id();
+                    Log.d("TAG", "countryIdd: " + countryId);
                     countryName = countryModelArrayList.get(position).getCountry();
 
                     if (countryId != null) {
@@ -163,8 +163,6 @@ public class LocationSearchFragment extends Fragment implements View.OnClickList
 
             }
         });
-
-
         sp_state.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -185,7 +183,6 @@ public class LocationSearchFragment extends Fragment implements View.OnClickList
 
             }
         });
-
         sp_city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -203,9 +200,11 @@ public class LocationSearchFragment extends Fragment implements View.OnClickList
 
             }
         });
-        ll_select_country.setOnClickListener(this);
-        ll_select_state.setOnClickListener(this);
-        rl_search.setOnClickListener(this);
+
+
+//        ll_select_country.setOnClickListener(this);
+//        ll_select_state.setOnClickListener(this);
+//        rl_search.setOnClickListener(this);
         // btn_submit_dialog.setOnClickListener(this);
 
         return view;
@@ -244,32 +243,32 @@ public class LocationSearchFragment extends Fragment implements View.OnClickList
     public void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.ll_select_country:
-                dialogOpenFor = 1;
-                dialog = new Dialog(getContext());
-                dialog.setContentView(R.layout.search_dialog);
-                dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-                recyclerView = dialog.findViewById(R.id.rv_books);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-                multiSelectAdapter = new MultiSelectCountryAdapter(countryLivingInModelArrayList, getContext());
-                recyclerView.setAdapter(multiSelectAdapter);
-                submit_dialog = dialog.findViewById(R.id.btn_submit_dialog);
-                submit_dialog.setOnClickListener(this);
-                dialog.show();
-                break;
-            case R.id.ll_select_state:
-                dialogOpenFor = 2;
-                dialog = new Dialog(getContext());
-                dialog.setContentView(R.layout.search_dialog);
-                dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-                recyclerView = dialog.findViewById(R.id.rv_books);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-                multiStateAdapter = new MultiStateSelectAdapter(stateLivingInModelArrayList, getContext());
-                recyclerView.setAdapter(multiStateAdapter);
-                submit_dialog = dialog.findViewById(R.id.btn_submit_dialog);
-                submit_dialog.setOnClickListener(this);
-                dialog.show();
-                break;
+//            case R.id.ll_select_country:
+//                dialogOpenFor = 1;
+//                dialog = new Dialog(getContext());
+//                dialog.setContentView(R.layout.search_dialog);
+//                dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+//                recyclerView = dialog.findViewById(R.id.rv_books);
+//                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+//                multiSelectAdapter = new MultiSelectCountryAdapter(countryLivingInModelArrayList, getContext());
+//                recyclerView.setAdapter(multiSelectAdapter);
+//                submit_dialog = dialog.findViewById(R.id.btn_submit_dialog);
+//                submit_dialog.setOnClickListener(this);
+//                dialog.show();
+//                break;
+//            case R.id.ll_select_state:
+//                dialogOpenFor = 2;
+//                dialog = new Dialog(getContext());
+//                dialog.setContentView(R.layout.search_dialog);
+//                dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+//                recyclerView = dialog.findViewById(R.id.rv_books);
+//                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+//                multiStateAdapter = new MultiStateSelectAdapter(stateLivingInModelArrayList, getContext());
+//                recyclerView.setAdapter(multiStateAdapter);
+//                submit_dialog = dialog.findViewById(R.id.btn_submit_dialog);
+//                submit_dialog.setOnClickListener(this);
+//                dialog.show();
+//                break;
            /* case R.id.ll_select_city:
                 dialogOpenFor = 3;
                 dialog = new Dialog(getContext());
@@ -286,99 +285,99 @@ public class LocationSearchFragment extends Fragment implements View.OnClickList
 */
 
             case R.id.rl_search:
-                if (sexualOrientation.equals("Select")) {
-                    Toast.makeText(getContext(), "Please select Sexual Orientation", Toast.LENGTH_SHORT).show();
-                } else if (countryName == null || countryName.equals("")) {
-                    Toast.makeText(getContext(), "Please select Country", Toast.LENGTH_SHORT).show();
-                } else {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("type", "location");
-                    bundle.putString("min", ageSelectorRsb.getSelectedMinValue().toString());
-                    bundle.putString("max", ageSelectorRsb.getSelectedMaxValue().toString());
-                    if (countryArray == null || countryArray.equalsIgnoreCase("")) {
-                        countryArray = "[\"Any\"]";
-                    }
-                    if (stateArray == null || stateArray.equalsIgnoreCase("")) {
-                        stateArray = "[\"Any\"]";
-                    }
-                    bundle.putString("country", countryId);
-                    bundle.putString("state", stateId);
-                    bundle.putString("city", cityName);
-                    if (cbProfileWithPhoto.isChecked()) {
-                        bundle.putString("photo", "Show profiles with Photo");
-                    } else {
-                        bundle.putString("photo", "");
-                    }
-                    bundle.putString("sexualOrientation", sexualOrientation);
-                    MainActivity activity = (MainActivity) getActivity();
-                    assert activity != null;
-                  //  activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
-                }
+//                if (sexualOrientation.equals("Select")) {
+//                    Toast.makeText(getContext(), "Please select Sexual Orientation", Toast.LENGTH_SHORT).show();
+//                } else if (countryName == null || countryName.equals("")) {
+//                    Toast.makeText(getContext(), "Please select Country", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("type", "location");
+//                    bundle.putString("min", ageSelectorRsb.getSelectedMinValue().toString());
+//                    bundle.putString("max", ageSelectorRsb.getSelectedMaxValue().toString());
+//                    if (countryArray == null || countryArray.equalsIgnoreCase("")) {
+//                        countryArray = "[\"Any\"]";
+//                    }
+//                    if (stateArray == null || stateArray.equalsIgnoreCase("")) {
+//                        stateArray = "[\"Any\"]";
+//                    }
+//                    bundle.putString("country", countryId);
+//                    bundle.putString("state", stateId);
+//                    bundle.putString("city", cityName);
+//                    if (cbProfileWithPhoto.isChecked()) {
+//                        bundle.putString("photo", "Show profiles with Photo");
+//                    } else {
+//                        bundle.putString("photo", "");
+//                    }
+//                    bundle.putString("sexualOrientation", sexualOrientation);
+//                    MainActivity activity = (MainActivity) getActivity();
+//                    assert activity != null;
+//                  //  activity.loadFragment(Constant.SEARCH_RESULT_FRAGMENT, bundle);
+//                }
+//
+//
+//                break;
 
-
-                break;
-
-            case R.id.btn_submit_dialog:
-                String str = "";
-                if (dialogOpenFor == 1) {
-                    countryArray = "";
-                    stateLivingInModelArrayList.clear();
-                    for (CountryLivingInModel model : countryLivingInModelArrayList) {
-                        if (model.isSelected()) {
-                            str = str + model.getCountry() + ", ";
-                            countryArray = countryArray + "\"" + model.getCountry_id() + "\"" + ",";
-                            stateLivingIn(model.getCountry_id());
-                        }
-                        tvSelectCountry.setText(str);
-                        tvSelectState.setText("Any State");
-                    }
-                    try {
-                        countryArray = removeLastChar(countryArray);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    countryArray = "[" + countryArray + "]";
-                    Log.d("dataReligion", countryArray);
-                }
-                str = "";
-                stateArray = "";
-                if (dialogOpenFor == 2) {
-                    for (StateLivingInModel m : stateLivingInModelArrayList) {
-                        if (m.isSelected()) {
-                            str = str + m.getState() + ", ";
-                            stateArray = stateArray + "\"" + m.getState_id() + "\"" + ",";
-                            cityLivingIn(m.getState());
-                        }
-                        tvSelectState.setText(str);
-                    }
-                    try {
-                        stateArray = removeLastChar(stateArray);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    stateArray = "[" + stateArray + "]";
-                    Log.d("dataCast", stateArray);
-                }
-                str = "";
-                cityArray = "";
-                if (dialogOpenFor == 3) {
-                    for (CityLivingInModel m : cityLivingInModelArrayList) {
-                        if (m.isSelected()) {
-                            str = str + m.getCity() + ", ";
-                            cityArray = cityArray + "\"" + m.getId() + "\"" + ",";
-                        }
-                        // tvSelectCity.setText(str);
-                    }
-                    try {
-                        cityArray = removeLastChar(cityArray);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    cityArray = "[" + cityArray + "]";
-                    Log.d("dataCast", cityArray);
-                }
-                dialog.dismiss();
-                break;
+//            case R.id.btn_submit_dialog:
+//                String str = "";
+//                if (dialogOpenFor == 1) {
+//                    countryArray = "";
+//                    stateLivingInModelArrayList.clear();
+//                    for (CountryLivingInModel model : countryLivingInModelArrayList) {
+//                        if (model.isSelected()) {
+//                            str = str + model.getCountry() + ", ";
+//                            countryArray = countryArray + "\"" + model.getCountry_id() + "\"" + ",";
+//                            stateLivingIn(model.getCountry_id());
+//                        }
+//                        tvSelectCountry.setText(str);
+//                        tvSelectState.setText("Any State");
+//                    }
+//                    try {
+//                        countryArray = removeLastChar(countryArray);
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                    countryArray = "[" + countryArray + "]";
+//                    Log.d("dataReligion", countryArray);
+//                }
+//                str = "";
+//                stateArray = "";
+//                if (dialogOpenFor == 2) {
+//                    for (StateLivingInModel m : stateLivingInModelArrayList) {
+//                        if (m.isSelected()) {
+//                            str = str + m.getState() + ", ";
+//                            stateArray = stateArray + "\"" + m.getState_id() + "\"" + ",";
+//                            cityLivingIn(m.getState());
+//                        }
+//                        tvSelectState.setText(str);
+//                    }
+//                    try {
+//                        stateArray = removeLastChar(stateArray);
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                    stateArray = "[" + stateArray + "]";
+//                    Log.d("dataCast", stateArray);
+//                }
+//                str = "";
+//                cityArray = "";
+//                if (dialogOpenFor == 3) {
+//                    for (CityLivingInModel m : cityLivingInModelArrayList) {
+//                        if (m.isSelected()) {
+//                            str = str + m.getCity() + ", ";
+//                            cityArray = cityArray + "\"" + m.getId() + "\"" + ",";
+//                        }
+//                        // tvSelectCity.setText(str);
+//                    }
+//                    try {
+//                        cityArray = removeLastChar(cityArray);
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                    cityArray = "[" + cityArray + "]";
+//                    Log.d("dataCast", cityArray);
+//                }
+//                dialog.dismiss();
+//                break;
 
         }
     }
@@ -1021,6 +1020,7 @@ public class LocationSearchFragment extends Fragment implements View.OnClickList
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             convertView = inflator.inflate(R.layout.item_spinner, null);
+            Log.e("TAG", spinnerArrayList.size()+" list size" );
             TextView deposit_channerl_ = (TextView) convertView.findViewById(R.id.spinner_text_view);
             deposit_channerl_.setText(spinnerArrayList.get(position).getCity());
             return convertView;

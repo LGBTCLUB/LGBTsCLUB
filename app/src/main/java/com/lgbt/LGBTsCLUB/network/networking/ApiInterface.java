@@ -4,6 +4,7 @@ package com.lgbt.LGBTsCLUB.network.networking;
 import com.lgbt.LGBTsCLUB.model.AboutUsModel;
 import com.lgbt.LGBTsCLUB.model.AcceptModel;
 import com.lgbt.LGBTsCLUB.model.BuyPlanModel;
+import com.lgbt.LGBTsCLUB.model.CityDataModel;
 import com.lgbt.LGBTsCLUB.model.ContactUsModel;
 import com.lgbt.LGBTsCLUB.model.ForgotModel;
 import com.lgbt.LGBTsCLUB.model.HeartModel;
@@ -24,10 +25,13 @@ import com.lgbt.LGBTsCLUB.model.ProfileModel;
 import com.lgbt.LGBTsCLUB.model.ProfileStatusModel;
 import com.lgbt.LGBTsCLUB.model.ReadMessageModel;
 import com.lgbt.LGBTsCLUB.model.RegisterModel;
+import com.lgbt.LGBTsCLUB.model.StateDataModel;
 import com.lgbt.LGBTsCLUB.model.UpdateProfileModel;
 import com.lgbt.LGBTsCLUB.model.UserBlockModel;
 import com.lgbt.LGBTsCLUB.model.UserStatusModel;
 import com.lgbt.LGBTsCLUB.model.serachmodel.SmartSearchModel;
+import com.lgbt.LGBTsCLUB.model.serachmodel.SpecialSearchModel;
+import com.lgbt.LGBTsCLUB.model.usermodel.CountryModel;
 import com.lgbt.LGBTsCLUB.model.usermodel.VeryfyEmailRegisterModel;
 
 import okhttp3.MultipartBody;
@@ -94,6 +98,9 @@ public interface ApiInterface {
     @POST("user_detail")
     Call<ProfileModel> profileDetail(@Field("user_id") String userId);
 
+    @GET("get_religion")
+    Call<SpecialSearchModel> get_religion();
+
 //    @FormUrlEncoded
 //    @POST("user_document_detail")
 //    Call<ProfileStatusModel> profileDetailForDoc(@Field("user_id") String userId);
@@ -109,6 +116,17 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("member_profile_details")
     Call<MemberProfileModel> member_profile_details(@Field("loginMatriID") String loginMatriID, @Field("MatriID") String MatriID);
+
+    @GET("get_country")
+    Call<CountryDataModel> get_country();
+
+    @FormUrlEncoded
+    @POST("get_state")
+    Call<StateDataModel> get_state(@Field("country_id") String country_id);
+
+    @FormUrlEncoded
+    @POST("get_city")
+    Call<CityDataModel> get_city(@Field("state_name") String state_name);
 
     @FormUrlEncoded
     @POST("update_user_about_us1")
@@ -338,5 +356,4 @@ public interface ApiInterface {
     @POST("visitedListNew")
     Call<MyVisitedModel> myProfileVisitedUsers(@Field("matri_id") String chat_id,
                                                @Field("pagecount") String pagecount);
-    // http://clarigoinfotech.co.in/umeed/api/user_status
 }

@@ -99,7 +99,7 @@
                 android:id="@+id/cancel"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/cancel"
+                android:src="@drawable/delete_icon"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/dp_10"/>
@@ -108,7 +108,7 @@
                 android:id="@+id/accept"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/greentick"
+                android:src="@drawable/accept_icon"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="40dp"/>

@@ -2167,6 +2167,7 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
+
     public class CountryAdapter extends BaseAdapter {
         LayoutInflater inflator;
         ArrayList<CountryModel> spinnerArrayList;

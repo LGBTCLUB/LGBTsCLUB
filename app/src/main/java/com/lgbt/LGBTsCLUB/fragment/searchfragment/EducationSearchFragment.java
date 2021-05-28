@@ -53,7 +53,6 @@ import butterknife.Unbinder;
 public class EducationSearchFragment extends Fragment implements View.OnClickListener {
 
     Unbinder unbinder;
-
     String eduArray;
     String gender;
     TextView tvMinAge;

@@ -155,13 +155,15 @@
                         android:id="@+id/ll_select_occup"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <TextView
                             android:id="@+id/tv_select_occup"
                             android:text="Select"
                             android:textColor="@color/red"
                             android:singleLine="true"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="match_parent"/>
+
                         <ImageView
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
