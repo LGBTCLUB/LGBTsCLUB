@@ -26,15 +26,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4755558-08fa-467b-8a9b-4b76d2b3fed1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/model/MotherToungueDataModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/model/OccupationDataModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/SearchActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/SearchActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/TellusaboutActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/TellusaboutActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/network/networking/ApiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/network/networking/ApiInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tellusabout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tellusabout.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b4755558-08fa-467b-8a9b-4b76d2b3fed1" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,7 +92,13 @@
     <property name="multi-representation-previewC:/Users/shras/AppData/Local/Android/Sdk/sources/android-30/android/view/View.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/shras/AppData/Local/Android/Sdk/sources/android-30/android/widget/RelativeLayout.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/shras/AppData/Local/Android/Sdk/sources/android-30/android/widget/Spinner.java_selected" value="Custom views" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="project.structure.last.edited" value="Build Variants" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -302,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622211539933</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="newwwww">
+      <created>1622292998396</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1622292998396</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -323,6 +328,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="394" y="0" key="#Code_Folding/0.0.1280.680@0.0.1280.680" timestamp="1618384740857" />
+    <state x="158" y="87" key="#PSD" timestamp="1622293042416">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="158" y="87" key="#PSD/0.0.1280.680@0.0.1280.680" timestamp="1622293042416" />
     <state x="233" y="0" key="#Plugins" timestamp="1622031709979">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -363,18 +372,18 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="87" key="AndroidProcessChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1622206223426" />
-    <state x="50" y="0" key="CommitChangelistDialog2" timestamp="1622211535857">
+    <state x="50" y="0" key="CommitChangelistDialog2" timestamp="1622292994450">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="50" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1622211535857" />
+    <state x="50" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1622292994450" />
     <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1621574917360">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1621574917360" />
-    <state x="517" y="238" key="Github.ShareDialog" timestamp="1616762319703">
+    <state x="517" y="238" key="Github.ShareDialog" timestamp="1622292904861">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="517" y="238" key="Github.ShareDialog/0.0.1280.680@0.0.1280.680" timestamp="1616762319703" />
+    <state x="517" y="238" key="Github.ShareDialog/0.0.1280.680@0.0.1280.680" timestamp="1622292904861" />
     <state width="1236" height="268" key="GridCell.Tab.0.bottom" timestamp="1622290557507">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -407,10 +416,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1236" height="163" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1622211868129" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1622292845355">
+    <state x="142" y="0" key="SettingsEditor" timestamp="1622293321987">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1622292845355" />
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1622293321987" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1622204551185">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
