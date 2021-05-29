@@ -17,7 +17,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="education" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="onResponse" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="SHOW_AS_SECONDS_SINCE_EPOCH" value="true" />
@@ -27,12 +27,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4755558-08fa-467b-8a9b-4b76d2b3fed1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/model/EducationDataModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/model/MotherToungueDataModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/model/OccupationDataModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/SearchActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/SearchActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/LocationSearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/searchfragment/LocationSearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/TellusaboutActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/TellusaboutActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/network/networking/ApiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/network/networking/ApiInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tellusabout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tellusabout.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,11 +100,11 @@
     <property name="multi-representation-previewC:/Users/shras/AppData/Local/Android/Sdk/sources/android-30/android/view/View.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/shras/AppData/Local/Android/Sdk/sources/android-30/android/widget/RelativeLayout.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/shras/AppData/Local/Android/Sdk/sources/android-30/android/widget/Spinner.java_selected" value="Custom views" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="android.template.594270087">
-      <recent name="com.lgbt.LGBTsCLUB.activity" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Umeed\app\src\main\res\drawable" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.lgbt.LGBTsCLUB.network.networking" />
@@ -115,8 +116,8 @@
     <key name="android.template.1539421503">
       <recent name="com.lgbt.LGBTsCLUB.activity" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Umeed\app\src\main\res\drawable" />
+    <key name="android.template.594270087">
+      <recent name="com.lgbt.LGBTsCLUB.activity" />
     </key>
   </component>
   <component name="RunManager">
@@ -294,7 +295,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622185082511</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="newwwww">
+      <created>1622211539931</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1622211539933</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -327,10 +335,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="394" y="142" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1621858497150" />
-    <state x="446" y="46" key="#com.intellij.ide.util.MemberChooser" timestamp="1622125647095">
+    <state x="446" y="46" key="#com.intellij.ide.util.MemberChooser" timestamp="1622269252028">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="446" y="46" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1622125647095" />
+    <state x="446" y="46" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1622269252028" />
     <state x="348" y="254" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1616594412462">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -355,10 +363,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="87" key="AndroidProcessChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1622206223426" />
-    <state x="50" y="0" key="CommitChangelistDialog2" timestamp="1622185077052">
+    <state x="50" y="0" key="CommitChangelistDialog2" timestamp="1622211535857">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="50" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1622185077052" />
+    <state x="50" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1622211535857" />
     <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1621574917360">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -367,42 +375,42 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="517" y="238" key="Github.ShareDialog/0.0.1280.680@0.0.1280.680" timestamp="1616762319703" />
-    <state width="1236" height="268" key="GridCell.Tab.0.bottom" timestamp="1622209827660">
+    <state width="1236" height="268" key="GridCell.Tab.0.bottom" timestamp="1622290557507">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="268" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1622209827660" />
-    <state width="1236" height="268" key="GridCell.Tab.0.center" timestamp="1622209827660">
+    <state width="1236" height="268" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1622290557507" />
+    <state width="1236" height="268" key="GridCell.Tab.0.center" timestamp="1622290557506">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="268" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1622209827660" />
-    <state width="1236" height="268" key="GridCell.Tab.0.left" timestamp="1622209827660">
+    <state width="1236" height="268" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1622290557506" />
+    <state width="1236" height="268" key="GridCell.Tab.0.left" timestamp="1622290557505">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="268" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1622209827660" />
-    <state width="1236" height="268" key="GridCell.Tab.0.right" timestamp="1622209827660">
+    <state width="1236" height="268" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1622290557505" />
+    <state width="1236" height="268" key="GridCell.Tab.0.right" timestamp="1622290557506">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="268" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1622209827660" />
-    <state width="1236" height="163" key="GridCell.Tab.1.bottom" timestamp="1622206377319">
+    <state width="1236" height="268" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1622290557506" />
+    <state width="1236" height="163" key="GridCell.Tab.1.bottom" timestamp="1622211868129">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="163" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1622206377319" />
-    <state width="1236" height="163" key="GridCell.Tab.1.center" timestamp="1622206377318">
+    <state width="1236" height="163" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1622211868129" />
+    <state width="1236" height="163" key="GridCell.Tab.1.center" timestamp="1622211868129">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="163" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1622206377318" />
-    <state width="1236" height="163" key="GridCell.Tab.1.left" timestamp="1622206377318">
+    <state width="1236" height="163" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1622211868129" />
+    <state width="1236" height="163" key="GridCell.Tab.1.left" timestamp="1622211868129">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="163" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1622206377318" />
-    <state width="1236" height="163" key="GridCell.Tab.1.right" timestamp="1622206377319">
+    <state width="1236" height="163" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1622211868129" />
+    <state width="1236" height="163" key="GridCell.Tab.1.right" timestamp="1622211868129">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="163" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1622206377319" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1621425341969">
+    <state width="1236" height="163" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1622211868129" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1622292845355">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1621425341969" />
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1622292845355" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1622204551185">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -415,10 +423,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="451" y="118" key="chooseDestDirectoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1621858409981" />
-    <state x="100" y="100" width="1080" height="480" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1622011503404">
+    <state x="100" y="100" width="1080" height="480" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1622269420067">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="100" y="100" width="1080" height="480" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1622011503404" />
+    <state x="100" y="100" width="1080" height="480" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1622269420067" />
     <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1622011503404">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -435,17 +443,17 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="104" key="extract.method.dialog/0.0.1280.680@0.0.1280.680" timestamp="1619505109677" />
-    <state x="484" y="98" key="refactoring.ChangeSignatureDialog" timestamp="1622204589638">
+    <state x="484" y="98" key="refactoring.ChangeSignatureDialog" timestamp="1622290919363">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="484" y="98" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1622204589638" />
-    <state x="297" y="153" key="run.anything.popup" timestamp="1616845260745">
+    <state x="484" y="98" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1622290919363" />
+    <state x="297" y="153" key="run.anything.popup" timestamp="1622292753991">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="153" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1616845260745" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1622031621881">
+    <state x="297" y="153" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1622292753991" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1622292288728">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1622031621881" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1622292288728" />
   </component>
 </project>

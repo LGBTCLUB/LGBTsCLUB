@@ -3,6 +3,7 @@ package com.lgbt.LGBTsCLUB.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,16 +15,17 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.lgbt.LGBTsCLUB.R;
 import com.lgbt.LGBTsCLUB.model.CityDataModel;
 import com.lgbt.LGBTsCLUB.model.EducationDataModel;
+import com.lgbt.LGBTsCLUB.model.OccupationDataModel;
 import com.lgbt.LGBTsCLUB.model.StateDataModel;
 import com.lgbt.LGBTsCLUB.model.serachmodel.OccupicationModel;
 import com.lgbt.LGBTsCLUB.model.serachmodel.SpecialSearchModel;
@@ -43,23 +45,24 @@ import java.util.Map;
 
 import static com.paytm.pgsdk.easypay.manager.PaytmAssist.getContext;
 
-public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
+public class SearchActivity extends AppCompatActivity  {
     Spinner sp_occupation, sp_gender, sp_sexual_orientation, sp_country, sp_state, sp_city, sp_education, sp_special_case;
 
-    List<String> occupation_list = new ArrayList<>();
     List<String> gender_list = new ArrayList<>();
     List<String> sexual_orientation_list = new ArrayList<>();
     private List<CountryDataModel.DataBean> countryModelArrayList;
     private List<StateDataModel.DataEntity> stateModelArrayList;
     private List<CityDataModel.DataCity> cityModelArrayList;
     private List<EducationDataModel.EducationData> educationDataArrayList;
+    private List<OccupationDataModel.OccupationData> occupationDataArrayList;
+    private List<SpecialSearchModel.SpecialData> specialDataArrayList;
 
 
-    private SpinnerAdapter occupationAdapter;
+
     private GenderAdapter genderAdapter;
-    private EducationAdapter educationAdapter;
+
     private SexualOrientationAdapter sexualOrientationAdapter;
-    String country_id, countryName, countryId, stateId, stateName, cityId, cityName, educationId, education;
+    String country_id, countryName, countryId, stateId, stateName, cityId, cityName;
 
 
     private String occupationstatus, genderStatus, sexualorientationStatus, countryStatus, stateStatus, cityStatus, educationStatus;
@@ -91,10 +94,12 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         stateModelArrayList = new ArrayList<>();
         cityModelArrayList = new ArrayList<>();
         educationDataArrayList = new ArrayList<>();
+        occupationDataArrayList = new ArrayList<>();
 
         CountryApi();
         EducationApi();
-        ReligionApi();
+        OccupationApi();
+        ReligiousApi();
 
         sp_country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -167,16 +172,52 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
             }
         });
-        sp_education.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+    }
+
+    private void ReligiousApi() {
+        apiInterface.get_religion().enqueue(new Callback<SpecialSearchModel>() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String bandId = (String) parent.getItemAtPosition(position);
+            public void onResponse(Call<SpecialSearchModel> call, Response<SpecialSearchModel> response) {
+                SpecialSearchModel specialSearchModel = response.body();
+                if (specialSearchModel != null)
+                {
+                    if (specialSearchModel.getResponse())
+                    {
+                        specialDataArrayList = specialSearchModel.getData();
+                        Log.d("TAG", "onResponse6: " + specialDataArrayList.get(0).getName());
+                        sp_special_case.setAdapter(new SpecialCaseAdapter(SearchActivity.this,specialDataArrayList));
+                    }
 
-
+                }
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onFailure(Call<SpecialSearchModel> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void OccupationApi() {
+        apiInterface.get_occupation().enqueue(new Callback<OccupationDataModel>() {
+            @Override
+            public void onResponse(Call<OccupationDataModel> call, retrofit2.Response<OccupationDataModel> response) {
+                OccupationDataModel occupationDataModel = response.body();
+                if (occupationDataModel != null) {
+                   if (occupationDataModel.getResponse())
+                   {
+                       occupationDataArrayList = occupationDataModel.getData();
+                       Log.d("TAG", "onResponse5: " + occupationDataArrayList.get(0).getOccupation());
+                       sp_occupation.setAdapter(new OccupationAdapter(SearchActivity.this,occupationDataArrayList));
+
+                   }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<OccupationDataModel> call, Throwable t) {
 
             }
         });
@@ -193,7 +234,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                         educationDataArrayList = educationDataModel.getData();
                         Log.d("TAG", "onResponse4: " + educationDataArrayList.get(0).getEducation());
                         sp_education.setAdapter(new EducationAdapter(SearchActivity.this, educationDataArrayList));
-                        sp_education.setAdapter(educationAdapter);
                     }
                 }
             }
@@ -206,26 +246,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 
-    private void ReligionApi() {
-        apiInterface.get_religion().enqueue(new Callback<SpecialSearchModel>() {
-            @Override
-            public void onResponse(Call<SpecialSearchModel> call, retrofit2.Response<SpecialSearchModel> response) {
-                SpecialSearchModel specialSearchModel = response.body();
-                if (specialSearchModel != null) {
-                    if (specialSearchModel.getResponse()) {
-                        List<SpecialSearchModel.SpecialData> specialData = specialSearchModel.getData();
-                        Log.d("TAG", "search: " + specialData.get(0).getName());
-
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<SpecialSearchModel> call, Throwable t) {
-
-            }
-        });
-    }
 
 
     private void CountryApi() {
@@ -307,37 +327,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
 
     private void init() {
-        occupationAdapter = new SpinnerAdapter(this);
-        sp_occupation.setAdapter(occupationAdapter);
-        occupation_list.add("Select Occupation");
-        occupation_list.add("Dancer");
-        occupation_list.add("Engineer");
-        occupation_list.add("Doctor");
-
-        occupationAdapter.addTaxRateList(occupation_list);
-        sp_occupation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (occupation_list.size() > 0) {
-                    int position1 = sp_occupation.getSelectedItemPosition();
-                    occupationstatus = occupation_list.get(position);
-
-                    if (position1 == 0) {
-                        occupationstatus = "1";
-                    } else if (position1 == 1) {
-                        occupationstatus = "2";
-                    } else if (position1 == 2) {
-                        occupationstatus = "3";
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
 
         genderAdapter = new GenderAdapter(this);
         sp_gender.setAdapter(genderAdapter);
@@ -416,91 +405,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_search:
-                occupationApi();
-                break;
-        }
-
-    }
-
-    private void occupationApi() {
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_occupation",
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        if (response != null) {
-                            try {
-                                Log.v("uploading", response);
-                                JSONObject jsonObject = new JSONObject(response);
-                                try {
-                                    String success = jsonObject.getString("response");
-                                    if (success.equals("true")) {
-
-                                        OccupicationModel occupicationModel = new OccupicationModel("", "Occupation", "", "");
-                                        occupicationModelArrayList.add(occupicationModel);
-                                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                        if (jsonArray.length() == 0) {
-                                            OccupicationModel occupicationModel1 = new OccupicationModel("", "No Record Found", "", "");
-                                            occupicationModelArrayList.add(occupicationModel1);
-
-                                        }
-                                        for (int i = 0; i < jsonArray.length(); i++) {
-                                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                            OccupicationModel occupicationModel1 = new OccupicationModel(jsonObject1.getString("occupation_id"),
-                                                    jsonObject1.getString("occupation"),
-                                                    jsonObject1.getString("status"),
-                                                    jsonObject1.getString("sortorder"), false);
 
 
-                                            occupicationModelArrayList.add(occupicationModel1);
-                                            //  progress_bar.setVisibility(View.INVISIBLE);
-
-                                        }
-                                    } else {
-
-                                        Toast.makeText(getContext(), "Error1!!!..", Toast.LENGTH_LONG).show();
-
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                //spinnerOccupation.setAdapter(new OccupicationAdapter(getContext(), occupicationModelArrayList));
-
-
-                            } catch (OutOfMemoryError | NullPointerException e) {
-                                //    progress_bar.setVisibility(View.INVISIBLE);
-                                // TODO: handle exception
-                                e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            //   progress_bar.setVisibility(View.INVISIBLE);
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Log.v("errrr", String.valueOf(error));
-
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                return params;
-            }
-        };
-        MySingleton.getInstance(getContext()).addToRequestQueue(postRequest);
-    }
 
     public class SpinnerAdapter extends BaseAdapter {
 
@@ -619,12 +525,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     public class EducationAdapter extends BaseAdapter {
 
         private final LayoutInflater layoutInflater;
-        private List<String> spinnerList;
+        private  List<EducationDataModel.EducationData> spinnerList;
 
         public EducationAdapter(Context context, List<EducationDataModel.EducationData> educationDataArrayList) {
             layoutInflater = LayoutInflater.from(context);
-
-
+            this.spinnerList=educationDataArrayList;
         }
 
         @Override
@@ -642,16 +547,16 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             return 0;
         }
 
-        public void addTaxRateList(List<String> spinnerList) {
-            this.spinnerList = spinnerList;
-            notifyDataSetChanged();
-        }
+//        public void addTaxRateList(List<String> spinnerList) {
+//            this.spinnerList = spinnerList;
+//            notifyDataSetChanged();
+//        }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
             TextView stateTxt = convertView.findViewById(R.id.spinner_text_view);
-            stateTxt.setText(spinnerList.get(position));
+            stateTxt.setText(spinnerList.get(position).getEducation());
             return convertView;
         }
     }
@@ -754,6 +659,84 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             return convertView;
         }
     }
+
+    public class OccupationAdapter extends BaseAdapter {
+
+        private final LayoutInflater layoutInflater;
+        private  List<OccupationDataModel.OccupationData> spinnerList;
+
+        public OccupationAdapter(Context context, List<OccupationDataModel.OccupationData> occupationDataArrayList) {
+            layoutInflater = LayoutInflater.from(context);
+            this.spinnerList=occupationDataArrayList;
+        }
+
+        @Override
+        public int getCount() {
+            return null == spinnerList ? 0 : spinnerList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+//        public void addTaxRateList(List<String> spinnerList) {
+//            this.spinnerList = spinnerList;
+//            notifyDataSetChanged();
+//        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
+            TextView stateTxt = convertView.findViewById(R.id.spinner_text_view);
+            stateTxt.setText(spinnerList.get(position).getOccupation());
+            return convertView;
+        }
+    }
+    public class SpecialCaseAdapter extends BaseAdapter {
+
+        private final LayoutInflater layoutInflater;
+        private  List<SpecialSearchModel.SpecialData> spinnerList;
+
+        public SpecialCaseAdapter(Context context, List<SpecialSearchModel.SpecialData> specialDataArrayList) {
+            layoutInflater = LayoutInflater.from(context);
+            this.spinnerList=specialDataArrayList;
+        }
+
+        @Override
+        public int getCount() {
+            return null == spinnerList ? 0 : spinnerList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+//        public void addTaxRateList(List<String> spinnerList) {
+//            this.spinnerList = spinnerList;
+//            notifyDataSetChanged();
+//        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
+            TextView stateTxt = convertView.findViewById(R.id.spinner_text_view);
+            stateTxt.setText(spinnerList.get(position).getName());
+            return convertView;
+        }
+    }
+
 
 
 }

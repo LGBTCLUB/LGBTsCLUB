@@ -27,7 +27,13 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.lgbt.LGBTsCLUB.R;
+import com.lgbt.LGBTsCLUB.model.CityDataModel;
+import com.lgbt.LGBTsCLUB.model.EducationDataModel;
 import com.lgbt.LGBTsCLUB.model.LoginModel;
+import com.lgbt.LGBTsCLUB.model.MotherToungueDataModel;
+import com.lgbt.LGBTsCLUB.model.OccupationDataModel;
+import com.lgbt.LGBTsCLUB.model.StateDataModel;
+import com.lgbt.LGBTsCLUB.model.serachmodel.SpecialSearchModel;
 import com.lgbt.LGBTsCLUB.model.usermodel.CityModel;
 import com.lgbt.LGBTsCLUB.model.usermodel.CountryModel;
 import com.lgbt.LGBTsCLUB.model.usermodel.EducationModel;
@@ -39,6 +45,7 @@ import com.lgbt.LGBTsCLUB.network.UtilsMethod;
 import com.lgbt.LGBTsCLUB.network.database.SharedPrefsManager;
 import com.lgbt.LGBTsCLUB.network.networking.ApiClient;
 import com.lgbt.LGBTsCLUB.network.networking.ApiInterface;
+import com.lgbt.LGBTsCLUB.network.networking.CountryDataModel;
 import com.lgbt.LGBTsCLUB.network.networking.MySingleton;
 
 import org.json.JSONArray;
@@ -69,7 +76,7 @@ public class TellusaboutActivity extends AppCompatActivity {
     List<String> heightfromlist = new ArrayList<>();
     List<String> heighttolist = new ArrayList<>();
     List<String> educationlist = new ArrayList<>();
-    String mstatus, matstatus, hightF, countryId, countryName, stateName, stateId, cityId, cityName, motherToungID, motherToungName,
+    String mstatus, matstatus, hightF, motherToungID, motherToungName,
             educationName, educationID, professionName, professionID, religiousIDName, religiousID;
     EditText et_annualIncome, et_zipcode, et_nationality, et_bio;
     RadioButton rb_typeyes, rb_typeno;
@@ -81,11 +88,16 @@ public class TellusaboutActivity extends AppCompatActivity {
     private SpinnerAdapter educationAdapter;
     private ArrayList<MotherToungModel> motherToungModelArrayList;
     private ArrayList<ReligiousModel> religiousModelArrayList;
-    private ArrayList<EducationModel> educationModelArrayList;
-    private ArrayList<ProfessionModel> professionModelArrayList;
-    private ArrayList<CountryModel> countryModelArrayList;
-    private ArrayList<StateModel> stateModelArrayList;
-    private ArrayList<CityModel> cityModelArrayList;
+    private List<EducationDataModel.EducationData> educationDataArrayList;
+    private List<OccupationDataModel.OccupationData> occupationDataArrayList;
+    private List<CountryDataModel.DataBean> countryModelArrayList;
+    private List<StateDataModel.DataEntity> stateModelArrayList;
+    private List<CityDataModel.DataCity> cityModelArrayList;
+
+    private List<SpecialSearchModel.SpecialData> specialDataArrayList;
+    private List<MotherToungueDataModel.MotherToungueData> motherToungueDataArrayList;
+    String country_id, countryName, countryId, stateId, stateName, cityId, cityName;
+
     private ApiInterface apiInterface;
     private UtilsMethod progress;
 
@@ -120,17 +132,20 @@ public class TellusaboutActivity extends AppCompatActivity {
 
         motherToungModelArrayList = new ArrayList<>();
         religiousModelArrayList = new ArrayList<>();
-        educationModelArrayList = new ArrayList<>();
-        professionModelArrayList = new ArrayList<>();
+        educationDataArrayList = new ArrayList<>();
+        occupationDataArrayList = new ArrayList<>();
         countryModelArrayList = new ArrayList<>();
         stateModelArrayList = new ArrayList<>();
         cityModelArrayList = new ArrayList<>();
 
-        SpinMotherToung();
-        spinGetreligion();
-        educationApi();
-        occupation();
-        countryCode();
+        motherToungueDataArrayList = new ArrayList<>();
+
+
+        ReligiousApi();
+        MotherToungueApi();
+        EducationApi();
+        OccupationApi();
+        CountryApi();
         init();
 
         btn_getStart.setOnClickListener(new View.OnClickListener() {
@@ -156,9 +171,9 @@ public class TellusaboutActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
 
-                if (motherToungModelArrayList.size() > 0) {
-                    motherToungID = motherToungModelArrayList.get(position).getMother_tongue_id();
-                    motherToungName = motherToungModelArrayList.get(position).getMother_tongue();
+                if (motherToungueDataArrayList.size() > 0) {
+                    motherToungID = motherToungueDataArrayList.get(position).getMotherTongueId();
+                    motherToungName = motherToungueDataArrayList.get(position).getMotherTongue();
                 }
             }
 
@@ -173,9 +188,9 @@ public class TellusaboutActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
 
-                if (educationModelArrayList.size() > 0) {
-                    educationID = educationModelArrayList.get(position).getEducation_id();
-                    educationName = educationModelArrayList.get(position).getEducation();
+                if (educationDataArrayList.size() > 0) {
+                    educationID = educationDataArrayList.get(position).getEducation();
+                    educationName = educationDataArrayList.get(position).getEducation();
                 }
             }
 
@@ -190,9 +205,9 @@ public class TellusaboutActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
 
-                if (professionModelArrayList.size() > 0) {
-                    professionID = professionModelArrayList.get(position).getOccupation_id();
-                    professionName = professionModelArrayList.get(position).getOccupation();
+                if (occupationDataArrayList.size() > 0) {
+                    professionID = occupationDataArrayList.get(position).getOccupationId();
+                    professionName = occupationDataArrayList.get(position).getOccupation();
                 }
             }
 
@@ -219,18 +234,25 @@ public class TellusaboutActivity extends AppCompatActivity {
             }
         });
 
-
         sp_country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
+                Log.d("TAG", "bandId: " + bandId);
 
                 if (countryModelArrayList.size() > 0) {
-                    countryId = countryModelArrayList.get(position).getCountry_id();
+                    country_id = countryModelArrayList.get(position).getCountryId();
+                    Log.d("TAG", "countryIdd: " + country_id);
                     countryName = countryModelArrayList.get(position).getCountry();
-                    if (countryId != null) {
-                        getState(countryId);
+                    Toast.makeText(TellusaboutActivity.this, "" + country_id, Toast.LENGTH_SHORT).show();
+
+                    if (country_id != null) {
+                        StateApi(country_id);
+                        //  CityApi(stateName);
+
                     }
+                } else {
+                    Toast.makeText(TellusaboutActivity.this, "" + countryModelArrayList.size(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -240,22 +262,25 @@ public class TellusaboutActivity extends AppCompatActivity {
             }
         });
 
-
         sp_state.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
+                Log.d("TAG", "bandId: " + bandId);
 
                 if (stateModelArrayList.size() > 0) {
-                    stateId = stateModelArrayList.get(position).getState_id();
+                    stateId = stateModelArrayList.get(position).getStateId();
+                    Log.d("TAG", "stateId: " + stateId);
                     stateName = stateModelArrayList.get(position).getState();
-                    Log.i("rhl....stateName", stateName);
-                    //  Log.i("rhl....Name",countryName);
-                    if (stateName != null) {
-                        getCity(stateName);
-                    }
-                }
+                    Toast.makeText(TellusaboutActivity.this, "" + stateName, Toast.LENGTH_SHORT).show();
 
+                    if (stateName != null) {
+                        CityApi(stateName);
+
+                    }
+                } else {
+                    Toast.makeText(TellusaboutActivity.this, "" + stateModelArrayList.size(), Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -268,6 +293,7 @@ public class TellusaboutActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
+                Log.d("TAG", "bandId: " + bandId);
 
                 if (cityModelArrayList.size() > 0) {
                     cityId = cityModelArrayList.get(position).getId();
@@ -281,8 +307,6 @@ public class TellusaboutActivity extends AppCompatActivity {
 
             }
         });
-        // onRadioButtonClicked();
-        // radioGroup.clearCheck();
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @SuppressLint("ResourceType")
@@ -293,6 +317,172 @@ public class TellusaboutActivity extends AppCompatActivity {
                     //   Toast.makeText(TellusaboutActivity.this, rb.getText(), Toast.LENGTH_SHORT).show();
                     childrenlivingstatus = rb.getText().toString();
                 }
+            }
+        });
+
+    }
+
+    private void CountryApi() {
+        apiInterface.get_country().enqueue(new Callback<CountryDataModel>() {
+            @Override
+            public void onResponse(Call<CountryDataModel> call, retrofit2.Response<CountryDataModel> response) {
+                CountryDataModel countryDataModel = response.body();
+                if (countryDataModel != null) {
+                    if (countryDataModel.getResponse()) {
+                        countryModelArrayList = countryDataModel.getData();
+                        Log.d("TAG", "onResponse: " + countryModelArrayList.get(0).getCountry());
+                        sp_country.setAdapter(new CountryAdapter(TellusaboutActivity.this, countryModelArrayList));
+                        StateApi(countryModelArrayList.get(0).getCountryId());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CountryDataModel> call, Throwable t) {
+                Log.d("TAG", "onResponse: Fail");
+
+            }
+        });
+    }
+
+    private void StateApi(String country_id) {
+        apiInterface.get_state(country_id).enqueue(new Callback<StateDataModel>() {
+            @Override
+            public void onResponse(Call<StateDataModel> call, retrofit2.Response<StateDataModel> response) {
+                StateDataModel stateDataModel = response.body();
+                Log.d("TAG", "stateData2: " + stateDataModel);
+
+                if (stateDataModel != null) {
+                    Log.d("TAG", "stateData: " + stateDataModel.getData());
+                    if (stateDataModel.getResponse()) {
+                        stateModelArrayList = stateDataModel.getData();
+                        Log.d("TAG", "onResponse2: " + stateModelArrayList.get(0).getState());
+                        sp_state.setAdapter(new StateAdapter(TellusaboutActivity.this, stateModelArrayList));
+                        CityApi(stateModelArrayList.get(0).getState());
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StateDataModel> call, Throwable t) {
+                Log.d("TAG", "onResponse2: Fail");
+
+            }
+        });
+    }
+
+    private void CityApi(String stateName) {
+        apiInterface.get_city(stateName).enqueue(new Callback<CityDataModel>() {
+            @Override
+            public void onResponse(Call<CityDataModel> call, retrofit2.Response<CityDataModel> response) {
+                CityDataModel cityDataModel = response.body();
+                if (cityDataModel != null) {
+                    if (cityDataModel.getResponse()) {
+                        cityModelArrayList = cityDataModel.getData();
+                        Log.d("TAG", "onResponse3: " + cityModelArrayList.get(0).getCity());
+                        sp_city.setAdapter(new CityAdapter(TellusaboutActivity.this, cityModelArrayList));
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CityDataModel> call, Throwable t) {
+                Log.d("TAG", "onResponse3: Fail");
+
+            }
+
+
+        });
+
+    }
+
+    private void OccupationApi() {
+        apiInterface.get_occupation().enqueue(new Callback<OccupationDataModel>() {
+            @Override
+            public void onResponse(Call<OccupationDataModel> call, retrofit2.Response<OccupationDataModel> response) {
+                OccupationDataModel occupationDataModel = response.body();
+                if (occupationDataModel != null) {
+                    if (occupationDataModel.getResponse()) {
+                        occupationDataArrayList = occupationDataModel.getData();
+                        Log.d("TAG", "onResponse5: " + occupationDataArrayList.get(0).getOccupation());
+                        sp_profession.setAdapter(new OccupationAdapter(TellusaboutActivity.this, occupationDataArrayList));
+
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<OccupationDataModel> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    private void EducationApi() {
+        apiInterface.get_education().enqueue(new Callback<EducationDataModel>() {
+            @Override
+            public void onResponse(Call<EducationDataModel> call, retrofit2.Response<EducationDataModel> response) {
+                EducationDataModel educationDataModel = response.body();
+                if (educationDataModel != null) {
+                    if (educationDataModel.getResponse()) {
+                        educationDataArrayList = educationDataModel.getData();
+                        Log.d("TAG", "onResponse4: " + educationDataArrayList.get(0).getEducation());
+                        sp_education.setAdapter(new EducationAdapter(TellusaboutActivity.this, educationDataArrayList));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<EducationDataModel> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void MotherToungueApi() {
+        apiInterface.get_mother_tongue().enqueue(new Callback<MotherToungueDataModel>() {
+            @Override
+            public void onResponse(Call<MotherToungueDataModel> call, Response<MotherToungueDataModel> response) {
+                MotherToungueDataModel motherToungueDataModel = response.body();
+                if (motherToungueDataModel != null) {
+                    if (motherToungueDataModel.getResponse()) {
+                        motherToungueDataArrayList = motherToungueDataModel.getData();
+                        Log.d("TAG", "onResponse: " + motherToungueDataArrayList.get(0).getMotherTongue());
+                        sp_motherToung.setAdapter(new MOtherToungAdapter(TellusaboutActivity.this, motherToungueDataArrayList));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MotherToungueDataModel> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void ReligiousApi() {
+
+        apiInterface.get_religion().enqueue(new Callback<SpecialSearchModel>() {
+            @Override
+            public void onResponse(Call<SpecialSearchModel> call, Response<SpecialSearchModel> response) {
+                SpecialSearchModel specialSearchModel = response.body();
+                if (specialSearchModel != null) {
+                    if (specialSearchModel.getResponse()) {
+                        specialDataArrayList = specialSearchModel.getData();
+                        Log.d("TAG", "onResponse6: " + specialDataArrayList.get(0).getName());
+                        sp_religon.setAdapter(new SpecialCaseAdapter(TellusaboutActivity.this, specialDataArrayList));
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SpecialSearchModel> call, Throwable t) {
+
             }
         });
 
@@ -445,546 +635,6 @@ public class TellusaboutActivity extends AppCompatActivity {
     }
 
 
-    private void spinGetreligion() {
-
-        // progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_religion",
-                response -> {
-                    //=========check response are coming or not after api hit ===========//
-                    if (response != null) {
-                        try {
-                            Log.v("uploading..", response);
-                            JSONObject jsonObject = new JSONObject(response);
-                            //=========login api response setup method====//
-
-                            try {
-                                String success = jsonObject.getString("response");
-                                if (success.equals("true")) {
-
-                                    ReligiousModel religiousModel = new ReligiousModel("", "Religious", "", "");
-                                    religiousModelArrayList.add(religiousModel);
-                                    JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                    if (jsonArray.length() == 0) {
-                                        ReligiousModel studentDetailClassModel1 = new ReligiousModel("", "No Record Found", "", "");
-                                        religiousModelArrayList.add(studentDetailClassModel1);
-                                        //      progress_bar.setVisibility(View.INVISIBLE);
-
-                                    }
-                                    for (int i = 0; i < jsonArray.length(); i++) {
-                                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                        ReligiousModel studentDetailClassMode = new ReligiousModel(jsonObject1.getString("id"),
-                                                jsonObject1.getString("name"),
-                                                jsonObject1.getString("sortorder"),
-                                                jsonObject1.getString("status"));
-
-                                        religiousModelArrayList.add(studentDetailClassMode);
-                                        //       progress_bar.setVisibility(View.INVISIBLE);
-                                    }
-                                } else {
-                                    //      progress_bar.setVisibility(View.INVISIBLE);
-                                    Toast.makeText(TellusaboutActivity.this, "Error1!!!..", Toast.LENGTH_LONG).show();
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            sp_religon.setAdapter(new ReligiousAdapter(TellusaboutActivity.this, religiousModelArrayList));
-
-                        } catch (OutOfMemoryError | NullPointerException e) {
-                            //   progress_bar.setVisibility(View.INVISIBLE);
-                            // TODO: handle exception
-                            e.printStackTrace();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        //    progress_bar.setVisibility(View.INVISIBLE);
-                    }
-                }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //===if response error then dismiss progress==========//
-
-                Log.v("errrr", String.valueOf(error));
-                //  progress_bar.setVisibility(View.INVISIBLE);
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
-    }
-
-
-    private void SpinMotherToung() {
-        // progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "mother_tounge",
-                new com.android.volley.Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //=========check response are coming or not after api hit ===========//
-                        if (response != null) {
-                            try {
-                                Log.v("uploading", response);
-                                JSONObject jsonObject = new JSONObject(response);
-                                //=========login api response setup method====//
-
-                                try {
-                                    String success = jsonObject.getString("response");
-                                    if (success.equals("true")) {
-                                        MotherToungModel studentDetailClassModel = new MotherToungModel("", "Mother Tounge", "", "");
-                                        motherToungModelArrayList.add(studentDetailClassModel);
-                                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                        if (jsonArray.length() == 0) {
-                                            MotherToungModel studentDetailClassModel1 = new MotherToungModel("", "No Record Found", "", "");
-                                            motherToungModelArrayList.add(studentDetailClassModel1);
-                                            //  progress_bar.setVisibility(View.INVISIBLE);
-                                        }
-                                        for (int i = 0; i < jsonArray.length(); i++) {
-                                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                            MotherToungModel studentDetailClassMode = new MotherToungModel
-                                                    (jsonObject1.getString("mother_tongue_id"),
-                                                            jsonObject1.getString("mother_tongue"),
-                                                            jsonObject1.getString("sortorder"),
-                                                            jsonObject1.getString("status"));
-
-                                            motherToungModelArrayList.add(studentDetailClassMode);
-                                            //  progress_bar.setVisibility(View.INVISIBLE);
-
-                                        }
-                                    } else {
-                                        //  progress_bar.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(TellusaboutActivity.this, "Error1!!!..", Toast.LENGTH_LONG).show();
-
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                sp_motherToung.setAdapter(new MOtherToungAdapter(TellusaboutActivity.this, motherToungModelArrayList));
-
-                                if (motherToungModelArrayList.size() > 0) {
-                                    for (int y = 0; y < motherToungModelArrayList.size(); y++) {
-                                        String mothertoung = motherToungModelArrayList.get(y).getMother_tongue();
-                                        if (MotherToung.equals(mothertoung)) {
-                                            sp_motherToung.setSelection(y);
-                                        }
-                                    }
-                                }
-                            } catch (OutOfMemoryError | NullPointerException | JSONException e) {
-                                //   progress_bar.setVisibility(View.INVISIBLE);
-                                // TODO: handle exception
-                                e.printStackTrace();
-                            }
-                        }  // progress_bar.setVisibility(View.INVISIBLE);
-
-                    }
-                }, error -> {
-            //===if response error then dismiss progress==========//
-
-            Log.v("errrr", String.valueOf(error));
-            // progress_bar.setVisibility(View.INVISIBLE);
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
-    }
-
-
-    private void educationApi() {
-        //  progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_education",
-                new com.android.volley.Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //=========check response are coming or not after api hit ===========//
-                        if (response != null) {
-
-                            try {
-                                Log.v("uploading", response);
-                                JSONObject jsonObject = new JSONObject(response);
-                                //=========login api response setup method====//
-
-                                try {
-                                    String success = jsonObject.getString("response");
-                                    if (success.equals("true")) {
-
-                                        EducationModel educationModel = new EducationModel("", "Education", "", "");
-                                        educationModelArrayList.add(educationModel);
-                                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                        if (jsonArray.length() == 0) {
-                                            EducationModel educationModel1 = new EducationModel("", "No Record Found", "", "");
-                                            educationModelArrayList.add(educationModel1);
-                                            // progress_bar.setVisibility(View.INVISIBLE);
-
-                                        }
-                                        for (int i = 0; i < jsonArray.length(); i++) {
-                                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                            EducationModel educationModel1 = new EducationModel(jsonObject1.getString("education_id"),
-                                                    jsonObject1.getString("education"),
-                                                    jsonObject1.getString("status"),
-                                                    jsonObject1.getString("sortorder"));
-
-
-                                            educationModelArrayList.add(educationModel1);
-                                            //  progress_bar.setVisibility(View.INVISIBLE);
-
-                                        }
-                                    } else {
-                                        //    progress_bar.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(TellusaboutActivity.this, "Error1!!!..", Toast.LENGTH_LONG).show();
-
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                sp_education.setAdapter(new EducationAdapter(TellusaboutActivity.this, educationModelArrayList));
-
-
-                            } catch (OutOfMemoryError | NullPointerException e) {
-                                //   progress_bar.setVisibility(View.INVISIBLE);
-                                // TODO: handle exception
-                                e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            //  progress_bar.setVisibility(View.INVISIBLE);
-                        }
-                    }
-                }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //===if response error then dismiss progress==========//
-
-                Log.v("errrr", String.valueOf(error));
-                //  progress_bar.setVisibility(View.INVISIBLE);
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
-    }
-
-
-    private void occupation() {
-        //  progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_occupation",
-                response -> {
-                    //=========check response are coming or not after api hit ===========//
-                    if (response != null) {
-
-                        try {
-                            Log.v("uploading", response);
-                            JSONObject jsonObject = new JSONObject(response);
-                            //=========login api response setup method====//
-
-                            try {
-                                String success = jsonObject.getString("response");
-                                if (success.equals("true")) {
-
-                                    ProfessionModel professionModel = new ProfessionModel("", "Profession", "", "");
-                                    professionModelArrayList.add(professionModel);
-                                    JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                    if (jsonArray.length() == 0) {
-                                        ProfessionModel professionModel1 = new ProfessionModel("", "No Record Found", "", "");
-                                        professionModelArrayList.add(professionModel1);
-                                        // progress_bar.setVisibility(View.INVISIBLE);
-
-                                    }
-                                    for (int i = 0; i < jsonArray.length(); i++) {
-                                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                        ProfessionModel professionModel1 = new ProfessionModel(
-                                                jsonObject1.getString("occupation_id"),
-                                                jsonObject1.getString("occupation"),
-                                                jsonObject1.getString("status"),
-                                                jsonObject1.getString("sortorder"));
-
-                                        professionModelArrayList.add(professionModel1);
-                                        //  progress_bar.setVisibility(View.INVISIBLE);
-
-                                    }
-                                } else {
-                                    //    progress_bar.setVisibility(View.INVISIBLE);
-                                    Toast.makeText(TellusaboutActivity.this, "Error1!!!..", Toast.LENGTH_LONG).show();
-
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            sp_profession.setAdapter(new ProfessionAdapter(TellusaboutActivity.this, professionModelArrayList));
-
-
-                        } catch (OutOfMemoryError | NullPointerException | JSONException e) {
-                            //   progress_bar.setVisibility(View.INVISIBLE);
-                            // TODO: handle exception
-                            e.printStackTrace();
-                        }
-                    }  //  progress_bar.setVisibility(View.INVISIBLE);
-
-                }, error -> {
-            //===if response error then dismiss progress==========//
-
-            Log.v("errrr", String.valueOf(error));
-            //  progress_bar.setVisibility(View.INVISIBLE);
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
-    }
-
-
-    private void countryCode() {
-        //  progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_country",
-                response -> {
-                    //=========check response are coming or not after api hit ===========//
-                    if (response != null) {
-
-                        try {
-                            Log.v("uploading", response);
-                            JSONObject jsonObject = new JSONObject(response);
-                            //=========login api response setup method====//
-                            try {
-                                String success = jsonObject.getString("response");
-                                if (success.equals("true")) {
-
-                                    // CountryModel countryModel = new CountryModel("", "Country", "", "","");
-                                    // countryModelArrayList.add(countryModel);
-                                    JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                    if (jsonArray.length() == 0) {
-                                        CountryModel countryModel1 = new CountryModel("", "No Record Found", "", "", "");
-                                        countryModelArrayList.add(countryModel1);
-                                        // progress_bar.setVisibility(View.INVISIBLE);
-                                    }
-                                    for (int i = 0; i < jsonArray.length(); i++) {
-                                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                        CountryModel professionModel1 = new CountryModel(
-                                                jsonObject1.getString("country_id"),
-                                                jsonObject1.getString("country"),
-                                                jsonObject1.getString("code"),
-                                                jsonObject1.getString("status"),
-                                                jsonObject1.getString("sortorder"));
-                                        countryModelArrayList.add(professionModel1);
-                                        //  progress_bar.setVisibility(View.INVISIBLE);
-                                    }
-                                } else {
-                                    //    progress_bar.setVisibility(View.INVISIBLE);
-                                    Toast.makeText(TellusaboutActivity.this, "Error1!!!..", Toast.LENGTH_LONG).show();
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            sp_country.setAdapter(new CountryAdapter(TellusaboutActivity.this, countryModelArrayList));
-
-                        } catch (OutOfMemoryError | NullPointerException | JSONException e) {
-                            //   progress_bar.setVisibility(View.INVISIBLE);
-                            // TODO: handle exception
-                            e.printStackTrace();
-                        }
-                    }  //  progress_bar.setVisibility(View.INVISIBLE);
-
-                }, error -> {
-            //===if response error then dismiss progress==========//
-            Log.v("errrr", String.valueOf(error));
-            //  progress_bar.setVisibility(View.INVISIBLE);
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
-    }
-
-
-    private void getState(final String countryIdd) {
-        stateModelArrayList.clear();
-        //  progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_state",
-                response -> {
-                    //=========check response are coming or not after api hit ===========//
-                    if (response != null) {
-
-                        try {
-                            Log.v("uploading..!", response);
-                            JSONObject jsonObject = new JSONObject(response);
-                            //=========login api response setup method====//
-                            try {
-                                String success = jsonObject.getString("response");
-                                if (success.equals("true")) {
-
-                                    //  StateModel stateModel = new StateModel("", "Country", "", "","","");
-                                    //  stateModelArrayList.add(stateModel);
-                                    JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                    if (jsonArray.length() == 0) {
-                                        StateModel stateModel1 = new StateModel("", "", "", "", "", "");
-                                        stateModelArrayList.add(stateModel1);
-                                        // progress_bar.setVisibility(View.INVISIBLE);
-                                    }
-                                    for (int i = 0; i < jsonArray.length(); i++) {
-                                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                        StateModel professionModel1 = new StateModel(
-                                                jsonObject1.getString("state_id"),
-                                                jsonObject1.getString("state"),
-                                                jsonObject1.getString("code"),
-                                                jsonObject1.getString("country_id"),
-                                                jsonObject1.getString("status"),
-                                                jsonObject1.getString("sortorder"));
-
-                                        stateModelArrayList.add(professionModel1);
-                                        //  progress_bar.setVisibility(View.INVISIBLE);
-                                    }
-                                } else {
-                                    //    progress_bar.setVisibility(View.INVISIBLE);
-                                    //  Toast.makeText(TellusaboutActivity.this, "No Found!..", Toast.LENGTH_LONG).show();
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            sp_state.setAdapter(new StateAdapter(TellusaboutActivity.this, stateModelArrayList));
-
-                        } catch (OutOfMemoryError | NullPointerException e) {
-                            //   progress_bar.setVisibility(View.INVISIBLE);
-                            // TODO: handle exception
-                            e.printStackTrace();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        //  progress_bar.setVisibility(View.INVISIBLE);
-                    }
-                }, error -> {
-            //===if response error then dismiss progress==========//
-
-            Log.v("errrr", String.valueOf(error));
-            //  progress_bar.setVisibility(View.INVISIBLE);
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("country_id", countryIdd);
-
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
-    }
-
-    private void getCity(final String stateNames) {
-        cityModelArrayList.clear();
-        //  progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_city",
-                response -> {
-                    //=========check response are coming or not after api hit ===========//
-                    if (response != null) {
-
-                        try {
-                            Log.v("uploading", response);
-                            JSONObject jsonObject = new JSONObject(response);
-                            //=========login api response setup method====//
-                            try {
-                                String success = jsonObject.getString("response");
-                                if (success.equals("true")) {
-
-                                    //  StateModel stateModel = new StateModel("", "Country", "", "","","");
-                                    //  stateModelArrayList.add(stateModel);
-                                    JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                    if (jsonArray.length() == 0) {
-                                        CityModel cityModel1 = new CityModel("", "", "", "", "", "");
-                                        cityModelArrayList.add(cityModel1);
-                                        // progress_bar.setVisibility(View.INVISIBLE);
-                                    }
-                                    for (int i = 0; i < jsonArray.length(); i++) {
-                                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                        CityModel professionModel1 = new CityModel(
-                                                jsonObject1.getString("id"),
-                                                jsonObject1.getString("city"),
-                                                jsonObject1.getString("state"),
-                                                jsonObject1.getString("country"),
-                                                jsonObject1.getString("sortorder"),
-                                                jsonObject1.getString("status"));
-
-                                        cityModelArrayList.add(professionModel1);
-                                        //  progress_bar.setVisibility(View.INVISIBLE);
-                                    }
-                                } else {
-                                    //    progress_bar.setVisibility(View.INVISIBLE);
-                                    cityModelArrayList.clear();
-                                    //       Toast.makeText(TellusaboutActivity.this, "No  Found", Toast.LENGTH_LONG).show();
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            sp_city.setAdapter(new CityAdapter(TellusaboutActivity.this, cityModelArrayList));
-
-                        } catch (OutOfMemoryError | NullPointerException e) {
-                            //   progress_bar.setVisibility(View.INVISIBLE);
-                            // TODO: handle exception
-                            e.printStackTrace();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        //  progress_bar.setVisibility(View.INVISIBLE);
-                    }
-                }, error -> {
-            //===if response error then dismiss progress==========//
-
-            Log.v("errrr", String.valueOf(error));
-            //  progress_bar.setVisibility(View.INVISIBLE);
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("state_name", stateNames);
-
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
-    }
-
-
     //---------------Base Spinner Adapter-------------
 
     private void tellusaboutApi(String height, String meritalStatus, String religion, String motherTongue, String education, String profession
@@ -1122,18 +772,19 @@ public class TellusaboutActivity extends AppCompatActivity {
     // ---------------------Education Adapter ------------------------------
 
     //-------------------Religious---------------------
-    public class ReligiousAdapter extends BaseAdapter {
-        LayoutInflater inflator;
-        ArrayList<ReligiousModel> spinnerArrayList;
+    public class SpecialCaseAdapter extends BaseAdapter {
 
-        public ReligiousAdapter(Context context, ArrayList<ReligiousModel> spinnerArrayList) {
-            inflator = LayoutInflater.from(context);
-            this.spinnerArrayList = spinnerArrayList;
+        private final LayoutInflater layoutInflater;
+        private List<SpecialSearchModel.SpecialData> spinnerList;
+
+        public SpecialCaseAdapter(Context context, List<SpecialSearchModel.SpecialData> specialDataArrayList) {
+            layoutInflater = LayoutInflater.from(context);
+            this.spinnerList = specialDataArrayList;
         }
 
         @Override
         public int getCount() {
-            return spinnerArrayList.size();
+            return null == spinnerList ? 0 : spinnerList.size();
         }
 
         @Override
@@ -1146,11 +797,16 @@ public class TellusaboutActivity extends AppCompatActivity {
             return 0;
         }
 
+//        public void addTaxRateList(List<String> spinnerList) {
+//            this.spinnerList = spinnerList;
+//            notifyDataSetChanged();
+//        }
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = inflator.inflate(R.layout.item_spinner, null);
-            TextView deposit_channerl_ = (TextView) convertView.findViewById(R.id.spinner_text_view);
-            deposit_channerl_.setText(spinnerArrayList.get(position).getName());
+            convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
+            TextView stateTxt = convertView.findViewById(R.id.spinner_text_view);
+            stateTxt.setText(spinnerList.get(position).getName());
             return convertView;
         }
     }
@@ -1160,17 +816,18 @@ public class TellusaboutActivity extends AppCompatActivity {
 
     // -------------------MotherToungAdapter----------------
     public class MOtherToungAdapter extends BaseAdapter {
-        LayoutInflater inflator;
-        ArrayList<MotherToungModel> spinnerArrayList;
 
-        public MOtherToungAdapter(Context context, ArrayList<MotherToungModel> spinnerArrayList) {
-            inflator = LayoutInflater.from(context);
-            this.spinnerArrayList = spinnerArrayList;
+        private final LayoutInflater layoutInflater;
+        private List<MotherToungueDataModel.MotherToungueData> spinnerList;
+
+        public MOtherToungAdapter(Context context, List<MotherToungueDataModel.MotherToungueData> motherToungueDataList) {
+            layoutInflater = LayoutInflater.from(context);
+            this.spinnerList = motherToungueDataList;
         }
 
         @Override
         public int getCount() {
-            return spinnerArrayList.size();
+            return null == spinnerList ? 0 : spinnerList.size();
         }
 
         @Override
@@ -1183,31 +840,32 @@ public class TellusaboutActivity extends AppCompatActivity {
             return 0;
         }
 
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = inflator.inflate(R.layout.item_spinner, null);
-            TextView deposit_channerl_ = (TextView) convertView.findViewById(R.id.spinner_text_view);
-            deposit_channerl_.setText(spinnerArrayList.get(position).getMother_tongue());
+            convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
+            TextView stateTxt = convertView.findViewById(R.id.spinner_text_view);
+            stateTxt.setText(spinnerList.get(position).getMotherTongue());
             return convertView;
         }
-
     }
 
 
 //--------------------CountryAdapter-----------------------------
 
     public class EducationAdapter extends BaseAdapter {
-        LayoutInflater inflator;
-        ArrayList<EducationModel> spinnerArrayList;
 
-        public EducationAdapter(Context context, ArrayList<EducationModel> spinnerArrayList) {
-            inflator = LayoutInflater.from(context);
-            this.spinnerArrayList = spinnerArrayList;
+        private final LayoutInflater layoutInflater;
+        private List<EducationDataModel.EducationData> spinnerList;
+
+        public EducationAdapter(Context context, List<EducationDataModel.EducationData> educationDataArrayList) {
+            layoutInflater = LayoutInflater.from(context);
+            this.spinnerList = educationDataArrayList;
         }
 
         @Override
         public int getCount() {
-            return spinnerArrayList.size();
+            return null == spinnerList ? 0 : spinnerList.size();
         }
 
         @Override
@@ -1220,27 +878,29 @@ public class TellusaboutActivity extends AppCompatActivity {
             return 0;
         }
 
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = inflator.inflate(R.layout.item_spinner, null);
-            TextView deposit_channerl_ = (TextView) convertView.findViewById(R.id.spinner_text_view);
-            deposit_channerl_.setText(spinnerArrayList.get(position).getEducation());
+            convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
+            TextView stateTxt = convertView.findViewById(R.id.spinner_text_view);
+            stateTxt.setText(spinnerList.get(position).getEducation());
             return convertView;
         }
     }
 
-    public class ProfessionAdapter extends BaseAdapter {
-        LayoutInflater inflator;
-        ArrayList<ProfessionModel> spinnerArrayList;
+    public class OccupationAdapter extends BaseAdapter {
 
-        public ProfessionAdapter(Context context, ArrayList<ProfessionModel> spinnerArrayList) {
-            inflator = LayoutInflater.from(context);
-            this.spinnerArrayList = spinnerArrayList;
+        private final LayoutInflater layoutInflater;
+        private List<OccupationDataModel.OccupationData> spinnerList;
+
+        public OccupationAdapter(Context context, List<OccupationDataModel.OccupationData> occupationDataArrayList) {
+            layoutInflater = LayoutInflater.from(context);
+            this.spinnerList = occupationDataArrayList;
         }
 
         @Override
         public int getCount() {
-            return spinnerArrayList.size();
+            return null == spinnerList ? 0 : spinnerList.size();
         }
 
         @Override
@@ -1253,20 +913,26 @@ public class TellusaboutActivity extends AppCompatActivity {
             return 0;
         }
 
+//        public void addTaxRateList(List<String> spinnerList) {
+//            this.spinnerList = spinnerList;
+//            notifyDataSetChanged();
+//        }
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = inflator.inflate(R.layout.item_spinner, null);
-            TextView deposit_channerl_ = (TextView) convertView.findViewById(R.id.spinner_text_view);
-            deposit_channerl_.setText(spinnerArrayList.get(position).getOccupation());
+            convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
+            TextView stateTxt = convertView.findViewById(R.id.spinner_text_view);
+            stateTxt.setText(spinnerList.get(position).getOccupation());
             return convertView;
         }
     }
 
     public class CountryAdapter extends BaseAdapter {
         LayoutInflater inflator;
-        ArrayList<CountryModel> spinnerArrayList;
+        List<CountryDataModel.DataBean> spinnerArrayList;
 
-        public CountryAdapter(Context context, ArrayList<CountryModel> spinnerArrayList) {
+
+        public CountryAdapter(Context context, List<CountryDataModel.DataBean> spinnerArrayList) {
             inflator = LayoutInflater.from(context);
             this.spinnerArrayList = spinnerArrayList;
         }
@@ -1298,9 +964,9 @@ public class TellusaboutActivity extends AppCompatActivity {
     //----------------------------satate code--------------------------------
     public class StateAdapter extends BaseAdapter {
         LayoutInflater inflator;
-        ArrayList<StateModel> spinnerArrayList;
+        List<StateDataModel.DataEntity> spinnerArrayList;
 
-        public StateAdapter(Context context, ArrayList<StateModel> spinnerArrayList) {
+        public StateAdapter(Context context, List<StateDataModel.DataEntity> spinnerArrayList) {
             inflator = LayoutInflater.from(context);
             this.spinnerArrayList = spinnerArrayList;
         }
@@ -1329,12 +995,11 @@ public class TellusaboutActivity extends AppCompatActivity {
         }
     }
 
-    //-------------------------city adapter---------------
     public class CityAdapter extends BaseAdapter {
         LayoutInflater inflator;
-        ArrayList<CityModel> spinnerArrayList;
+        List<CityDataModel.DataCity> spinnerArrayList;
 
-        public CityAdapter(Context context, ArrayList<CityModel> spinnerArrayList) {
+        public CityAdapter(Context context, List<CityDataModel.DataCity> spinnerArrayList) {
             inflator = LayoutInflater.from(context);
             this.spinnerArrayList = spinnerArrayList;
         }

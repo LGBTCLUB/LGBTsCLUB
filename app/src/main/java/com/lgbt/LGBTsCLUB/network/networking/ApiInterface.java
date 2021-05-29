@@ -13,11 +13,13 @@ import com.lgbt.LGBTsCLUB.model.HomeModel;
 import com.lgbt.LGBTsCLUB.model.LoginModel;
 import com.lgbt.LGBTsCLUB.model.MemberProfileModel;
 import com.lgbt.LGBTsCLUB.model.MemberShipPlanModel;
+import com.lgbt.LGBTsCLUB.model.MotherToungueDataModel;
 import com.lgbt.LGBTsCLUB.model.MyPlanModel;
 import com.lgbt.LGBTsCLUB.model.MyVisitedModel;
 import com.lgbt.LGBTsCLUB.model.NewRequestModel;
 import com.lgbt.LGBTsCLUB.model.NotifiDeletModel;
 import com.lgbt.LGBTsCLUB.model.NotificationModel;
+import com.lgbt.LGBTsCLUB.model.OccupationDataModel;
 import com.lgbt.LGBTsCLUB.model.PaytmModel;
 import com.lgbt.LGBTsCLUB.model.PaytmSccessModel;
 import com.lgbt.LGBTsCLUB.model.PendingModel;
@@ -104,6 +106,12 @@ public interface ApiInterface {
 
     @GET("get_education")
     Call<EducationDataModel> get_education();
+
+    @GET("get_occupation")
+    Call<OccupationDataModel> get_occupation();
+
+    @GET("mother_tounge")
+    Call<MotherToungueDataModel> get_mother_tongue();
 
 //    @FormUrlEncoded
 //    @POST("user_document_detail")
