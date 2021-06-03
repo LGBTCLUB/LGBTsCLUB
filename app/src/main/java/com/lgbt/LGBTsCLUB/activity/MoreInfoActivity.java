@@ -68,9 +68,9 @@ public class MoreInfoActivity extends AppCompatActivity implements ViewPagerEx.O
     private static ViewPager mPager;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
-    Button  bt_containview,bt_sendrequest;
-    TextView tv_location, txt_salary,txt_bio,
-            tv_expgender, tv_hight,txt_weight,tv_professional,txt_name, tv_expdec;
+    Button bt_containview, bt_sendrequest;
+    TextView tv_location, txt_salary, txt_bio,
+            tv_expgender, tv_hight, txt_weight, tv_professional, txt_name, tv_expdec;
     ArrayList<String> imagelist = new ArrayList<>();
     ProgressBar progress_bar;
     String matriID, status, noContact, email, mobileNo, bio, contactview, sendrequest = "";
@@ -83,13 +83,12 @@ public class MoreInfoActivity extends AppCompatActivity implements ViewPagerEx.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_info);
-      //  mList1 = findViewById(R.id.list1);
+        //  mList1 = findViewById(R.id.list1);
         progress_bar = findViewById(R.id.progress_bar);
         mPager = findViewById(R.id.mPager);
         circleIndicator = findViewById(R.id.indicator);
-        init();
         tv_location = findViewById(R.id.tv_location);
-        txt_name=findViewById(R.id.txt_name);
+        txt_name = findViewById(R.id.txt_name);
         tv_professional = findViewById(R.id.tv_professional);
         txt_salary = findViewById(R.id.txt_salary);
         tv_expgender = findViewById(R.id.tv_expgender);
@@ -97,24 +96,11 @@ public class MoreInfoActivity extends AppCompatActivity implements ViewPagerEx.O
         txt_bio = findViewById(R.id.txt_bio);
         txt_weight = findViewById(R.id.txt_weight);
         iv_back = findViewById(R.id.iv_back);
-        // bt_sendrequest = findViewById(R.id.bt_sendrequest);
+
         status = SharedPrefsManager.getInstance().getString(STATUS);
         apiInterface = ApiClient.getInterface();
-        bt_containview=findViewById(R.id.bt_containview);
+        bt_containview = findViewById(R.id.bt_containview);
         progress_bar.setVisibility(VISIBLE);
-//
-//        appList = new ArrayList<>();
-//        appList.add(new App(R.drawable.downloadone,""));
-//        appList.add(new App(R.drawable.downloadtwo," "));
-//        appList.add(new App(R.drawable.downloadthree," "));
-//        appList.add(new App(R.drawable.downloadfour," "));
-//
-//        LinearLayoutManager manager1 = new LinearLayoutManager(this);
-//        manager1.setOrientation(LinearLayoutManager.HORIZONTAL);
-//        mList1.setLayoutManager(manager1);
-//        CustomAdaptor adaptor1 = new CustomAdaptor(this,appList);
-//        mList1.setAdapter(adaptor1);
-
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -131,52 +117,7 @@ public class MoreInfoActivity extends AppCompatActivity implements ViewPagerEx.O
                 checkValidity();
             }
         });
-        // String arrayImage[] = martList.getData().get(0).getProduct_image().split(",");
-        // setSlider(arrayImage);
 
-
-
-//        iv_back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
-    }
-
-    private void init() {
-//        ChipGroup categoryChipGroup = findViewById(R.id.cg_filter_items);
-//        for (int i = 0; i < categoryModelList.size(); i++) {
-//            Chip categoryChip = (Chip) getLayoutInflater().inflate(R.layout.item_chips_group, categoryChipGroup, false);
-//            categoryChip.setText(categoryModelList.get(i).getCategoryName());
-//            categoryChip.setTextColor(getResources().getColor(R.color.colorPrimary));
-//
-//            categoryChip.setOnClickListener(v -> {
-//                for (int i1 = 0; i1 < categoryChipGroup.getChildCount(); ++i1) {
-//                    Chip chip1 = ((Chip) categoryChipGroup.getChildAt(i1));
-//                    chip1.setChecked(false);
-//                }
-
-//                if (((Chip) v).getText().equals("Search Category")) {
-//                    sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//                    bottomSheetState();
-//                    navgationTitle.setText("Search Category");
-//                    datePicker_ll.setVisibility(View.GONE);
-//                    timePicker_ll.setVisibility(View.GONE);
-//                    search_ll.setVisibility(View.VISIBLE);
-//                } else {
-//                    categoryChip.setChecked(true);
-//                }
-
-//                for (int j = 0; j < categoryModelList.size(); j++) {
-//                    if (categoryModelList.get(j).getCategoryName().equals(categoryChip.getText())) {
-//                        category = categoryModelList.get(j).getCategoryId();
-//
-//                    }
-        //          }
-//            });
-//            categoryChipGroup.addView(categoryChip);
-//        }
     }
 
     private void contain() {
@@ -277,7 +218,7 @@ public class MoreInfoActivity extends AppCompatActivity implements ViewPagerEx.O
                             mobileNo = memberProfileDataList.get(0).getMobile();
                             sendrequest = memberProfileDataList.get(0).getSendrequest();
                             contactview = memberProfileDataList.get(0).getContactview();
-                            Log.e("TAG", "onResponse: "+memberProfileDataList.get(0).getWeight() );
+                            Log.e("TAG", "onResponse: " + memberProfileDataList.get(0).getWeight());
 
                             profileStatus = memberProfileDataList.get(0).getProfile_status();
 

@@ -99,8 +99,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
 
-//        iv_back = findViewById(R.id.iv_back);
-//        iv_home = findViewById(R.id.iv_home);
         bt_editprofile = findViewById(R.id.bt_editprofile);
         tv_account = findViewById(R.id.tv_account);
         tv_personal = findViewById(R.id.tv_personal);
@@ -140,9 +138,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         tv_upgrade = findViewById(R.id.tv_upgrade);
         li_viewPlan = findViewById(R.id.li_viewPlan);
 
-//        iv_attachment = findViewById(R.id.iv_attachment);
-//        tv_attachment = findViewById(R.id.tv_attachment);
-
         apiInterface = ApiClient.getInterface();
         tv_account.performClick();
 
@@ -154,14 +149,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         tv_account.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
         tv_personal.setTextColor(getResources().getColor(R.color.gray_light));
         tv_professional.setTextColor(getResources().getColor(R.color.gray_light));
-
-//        iv_back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//            }
-//        });
-
 
         bt_editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -233,10 +220,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         iv_image5.setOnClickListener(this);
         iv_image6.setOnClickListener(this);
         iv_image7.setOnClickListener(this);
-//        hide.setOnClickListener(this);
         tv_upgrade.setOnClickListener(this);
         li_viewPlan.setOnClickListener(this);
-        //       iv_attachment.setOnClickListener(this);
         profileDetailApi(SharedPrefsManager.getInstance().getString(MATRI_ID));
 
     }
@@ -268,13 +253,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         switch (v.getId()) {
             case R.id.iv_image1:
                 clickImage = "1";
-
                 requestCameraAndStorage(RESULT_LOAD_IMAGE);
-//
-//                Intent intent1 = new Intent();
-//                intent1.setType("image/*");
-//                intent1.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-//                startActivityForResult(Intent.createChooser(intent1, "Select Picture"), RESULT_LOAD_IMAGE);
                 break;
 
             case R.id.iv_image2:
@@ -306,22 +285,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 clickImage = "7";
                 requestCameraAndStorage(RESULT_LOAD_IMAGE);
                 break;
-
-//            case R.id.iv_attachment:
-//                clickImage = "doc";
-//                requestCameraAndStorage(RESULT_LOAD_DOC);
-//                break;
-
-//            case R.id.hide:
-//                if (status.equals("hide")) {
-//                    status = "show";
-//                    hide.setText("Show");
-//                } else {
-//                    status = "hide";
-//                    hide.setText("Hide");
-//                }
-//                profile_status_saveApi(SharedPrefsManager.getInstance().getString(MATRI_ID), status);
-//                break;
 
             case R.id.tv_upgrade:
                 startActivity(new Intent(ProfileActivity.this, MemberShipPlanActivity.class));
@@ -367,7 +330,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             tv_education.setText(profileData.get(0).getEducation());
                             tv_perofessions.setText(profileData.get(0).getOccupation());
                             tv_salary.setText(profileData.get(0).getAnnualincome());
-//                            tv_bio.setText(profileData.get(0).getProfile());
                             try {
                                 RequestOptions options = new RequestOptions()
                                         .centerCrop()
@@ -468,10 +430,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             cursor.close();
             imagePath = FilePath.getPath(this, selectedImage);
 
-//            Uri selectedImage = data.getData();
-//             imagePath = FilePath.getPath(this, selectedImage);
-
-
             iv_image2.setVisibility(View.VISIBLE);
 
             if (clickImage.equals("1")) {
@@ -501,30 +459,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             cursor.close();
             String filePath = FilePath.getPath(this, selectedImage);
 
-//
-//            Uri selectedImage = data.getData();
-//            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-//            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-//            cursor.moveToFirst();
-//            String filePath = FilePath.getPath(this, selectedImage);
-//            cursor.close();
             tv_attachment.setText(filePath);
             Log.i("rhl....@@", "callll");
             upload_document(filePath, SharedPrefsManager.getInstance().getString(MATRI_ID));
         }
     }
-
-
     private void updateProfileImage(String imageno, String user_id) {
 
-//        MultipartBody.Part imagePart;
-//        if (imagePath == null || imagePath.isEmpty()) {
-//            imagePart = MultipartBody.Part.createFormData("image", "");
-//        } else {
-//            File file = new File(imagePath);
-//            RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-//            imagePart = MultipartBody.Part.createFormData("image", file.getName(), requestBody);
-//        }
         MultipartBody.Part imagenoPart = MultipartBody.Part.createFormData("imageno", imageno);
 
 
@@ -556,7 +497,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     if (profileModel != null) {
                         String respons = profileModel.getResponse();
                         if (respons.equals("true")) {
-//                            Toast.makeText(ProfileActivity.this, "Success", Toast.LENGTH_LONG).show();
                             profileDetail(SharedPrefsManager.getInstance().getString(LOGIN_ID));
                         }
                     }
@@ -573,16 +513,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     private void upload_document(String imagePath, String matriid) {
         progress_bar.setVisibility(VISIBLE);
-
-//        MultipartBody.Part imagePart;
-//        if (imagePath == null || imagePath.isEmpty()) {
-//            imagePart = MultipartBody.Part.createFormData("image", "");
-//        } else {
-//            File file = new File(imagePath);
-//            RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-//            imagePart = MultipartBody.Part.createFormData("image", file.getName(), requestBody);
-//        }
-
 
         File compressedImageFile;
         try {
@@ -666,8 +596,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         Button ok = dialog.findViewById(R.id.ok);
         ok.setOnClickListener(v -> {
             dialog.dismiss();
-//            startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
-//            finish();
         });
         dialog.show();
     }
@@ -681,7 +609,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 return false;
             }
-        } else { //permission is automatically granted on sdk<23 upon installation
+        } else {
             return true;
         }
     }
@@ -706,7 +634,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<UserStatusModel> call, Throwable t) {
                 Toast.makeText(ProfileActivity.this, "something is wrong", Toast.LENGTH_LONG).show();

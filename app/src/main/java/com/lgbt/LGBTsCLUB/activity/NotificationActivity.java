@@ -33,7 +33,7 @@ import static com.lgbt.LGBTsCLUB.network.networking.Constant.MATRI_ID;
 public class NotificationActivity extends AppCompatActivity {
 
 
-    private ImageView iv_back, iv_home, iv_logo, delete_all_iv;
+    private ImageView iv_back, iv_home, iv_logo;
     private RecyclerView notification_recy;
     private NotificationAdapter notificationAdapter;
 

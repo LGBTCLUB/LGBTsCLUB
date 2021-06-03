@@ -36,12 +36,10 @@ import retrofit2.Response;
 
 import static com.lgbt.LGBTsCLUB.network.networking.Constant.MATRI_ID;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class ChatPandingFragment extends Fragment {
 
-    ImageView iv_back, iv_logo, search_iv;
+    ImageView iv_back, iv_logo;
     RecyclerView pending_recy;
     ProgressBar progressCircular;
     boolean isFilter = true;
@@ -53,26 +51,22 @@ public class ChatPandingFragment extends Fragment {
     int OFFSET = 0;
     private final boolean loading = true;
     RecyclerView.LayoutManager layoutManager;
-    //private ProgressDailog progress;
-    int pastVisiblesItems, visibleItemCount, totalItemCount;
-    private EditText search_et;
     private ApiInterface apiInterface;
     private int last = 0;
     private int offset = 0;
 
     public ChatPandingFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //  Api.getInstance().call(ApiClient.getInterface().AllPostApi(SharedPrefsManager.getInstance().getString(WORD_ID),"0"), this, 4);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_chat_panding, container, false);
 
         iv_back = view.findViewById(R.id.iv_back);
@@ -81,9 +75,6 @@ public class ChatPandingFragment extends Fragment {
         iv_logo = view.findViewById(R.id.iv_logo);
         progress_bar = view.findViewById(R.id.progress_bar);
         apiInterface = ApiClient.getInterface();
-      //  search_iv = view.findViewById(R.id.search_iv);
-      //   search_et = view.findViewById(R.id.search_et);
-
         layoutManager = new LinearLayoutManager(getActivity());
         pending_recy.setLayoutManager(layoutManager);
         pending_recy.setHasFixedSize(true);
@@ -107,58 +98,15 @@ public class ChatPandingFragment extends Fragment {
             }
         });
 
-//        search_iv.setOnClickListener(v -> {
-//            isFilter = true;
-//            List<PendingModel.PendingData> homeDataListFilter = new ArrayList<>();
-//            String query = search_et.getText().toString();
-//            if (query != null && !query.isEmpty()) {
-//                for (int i = 0; i < homeDataList.size(); i++) {
-//                    String matriid = homeDataList.get(i).getMatriId();
-//                    Log.e("idd", "Matriid " + matriid + " query " + query);
-//                    if (homeDataList.get(i).getMatriId().contains(query.trim())) {
-//                        homeDataListFilter.add(homeDataList.get(i));
-//                        Log.e("match", "Matriid ");
-//                    }
-//                }
-////                Collections.sort(acceptDataListFilter, (s1, s2) ->
-////                        s2.getMsg().getSendDate().compareToIgnoreCase(s1.getMsg().getSendDate()));
-//                chatPendingAdapter.addCustomerList(homeDataListFilter);
-//
-//            } else {
-//                chatPendingAdapter.addCustomerList(homeDataList);
-//
-//            }
-//        });
-//        search_et.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                if (s.length() == 0) {
-//                    chatPendingAdapter.addCustomerList(homeDataList);
-//                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
-
-
         return view;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        //  unbinder.unbind();
+
     }
-
-
+    
     private void pendingList(String matriID, int OFFSET) {
         isFilter = false;
         Log.i("rhl...", String.valueOf(OFFSET));
@@ -182,7 +130,6 @@ public class ChatPandingFragment extends Fragment {
                                 Toast.makeText(getContext(), "No pending request", Toast.LENGTH_LONG).show();
                                 iv_logo.setVisibility(View.VISIBLE);
                             }
-                            //  Toast.makeText(getContext(), "No pending request", Toast.LENGTH_LONG).show();
                             if (offset > 0) {
                                 --offset;
                             }
@@ -211,7 +158,6 @@ public class ChatPandingFragment extends Fragment {
         });
 
     }
-
 
     public void cancel_send_request(String req_id) {
         apiInterface.cancel_send_request(req_id).enqueue(new Callback<PendingModel>() {

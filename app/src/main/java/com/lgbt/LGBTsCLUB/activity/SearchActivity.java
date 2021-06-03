@@ -57,13 +57,10 @@ public class SearchActivity extends AppCompatActivity  {
     private List<OccupationDataModel.OccupationData> occupationDataArrayList;
     private List<SpecialSearchModel.SpecialData> specialDataArrayList;
 
-
-
     private GenderAdapter genderAdapter;
 
     private SexualOrientationAdapter sexualOrientationAdapter;
     String country_id, countryName, countryId, stateId, stateName, cityId, cityName;
-
 
     private String occupationstatus, genderStatus, sexualorientationStatus, countryStatus, stateStatus, cityStatus, educationStatus;
     private Button buttonSearch;
@@ -198,7 +195,6 @@ public class SearchActivity extends AppCompatActivity  {
             }
         });
     }
-
     private void OccupationApi() {
         apiInterface.get_occupation().enqueue(new Callback<OccupationDataModel>() {
             @Override
@@ -223,7 +219,6 @@ public class SearchActivity extends AppCompatActivity  {
         });
 
     }
-
     private void EducationApi() {
         apiInterface.get_education().enqueue(new Callback<EducationDataModel>() {
             @Override
@@ -244,10 +239,6 @@ public class SearchActivity extends AppCompatActivity  {
             }
         });
     }
-
-
-
-
     private void CountryApi() {
         apiInterface.get_country().enqueue(new Callback<CountryDataModel>() {
             @Override
@@ -270,7 +261,6 @@ public class SearchActivity extends AppCompatActivity  {
             }
         });
     }
-
     private void StateApi(String country_id) {
         apiInterface.get_state(country_id).enqueue(new Callback<StateDataModel>() {
             @Override
@@ -297,8 +287,6 @@ public class SearchActivity extends AppCompatActivity  {
             }
         });
     }
-
-
     private void CityApi(String stateName) {
         apiInterface.get_city(stateName).enqueue(new Callback<CityDataModel>() {
             @Override
@@ -324,8 +312,6 @@ public class SearchActivity extends AppCompatActivity  {
         });
 
     }
-
-
     private void init() {
 
         genderAdapter = new GenderAdapter(this);
@@ -404,10 +390,6 @@ public class SearchActivity extends AppCompatActivity  {
         });
 
     }
-
-
-
-
     public class SpinnerAdapter extends BaseAdapter {
 
         private final LayoutInflater layoutInflater;
@@ -445,7 +427,6 @@ public class SearchActivity extends AppCompatActivity  {
             return convertView;
         }
     }
-
     public class GenderAdapter extends BaseAdapter {
 
         private final LayoutInflater layoutInflater;
@@ -483,7 +464,6 @@ public class SearchActivity extends AppCompatActivity  {
             return convertView;
         }
     }
-
     public class SexualOrientationAdapter extends BaseAdapter {
 
         private final LayoutInflater layoutInflater;
@@ -521,7 +501,6 @@ public class SearchActivity extends AppCompatActivity  {
             return convertView;
         }
     }
-
     public class EducationAdapter extends BaseAdapter {
 
         private final LayoutInflater layoutInflater;
@@ -547,10 +526,6 @@ public class SearchActivity extends AppCompatActivity  {
             return 0;
         }
 
-//        public void addTaxRateList(List<String> spinnerList) {
-//            this.spinnerList = spinnerList;
-//            notifyDataSetChanged();
-//        }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -560,7 +535,6 @@ public class SearchActivity extends AppCompatActivity  {
             return convertView;
         }
     }
-
     public class CountryAdapter extends BaseAdapter {
         LayoutInflater inflator;
         List<CountryDataModel.DataBean> spinnerArrayList;
@@ -593,7 +567,6 @@ public class SearchActivity extends AppCompatActivity  {
             return convertView;
         }
     }
-
     public class StateAdapter extends BaseAdapter {
         LayoutInflater inflator;
         List<StateDataModel.DataEntity> spinnerArrayList;
@@ -626,7 +599,6 @@ public class SearchActivity extends AppCompatActivity  {
             return convertView;
         }
     }
-
     public class CityAdapter extends BaseAdapter {
         LayoutInflater inflator;
         List<CityDataModel.DataCity> spinnerArrayList;
@@ -659,7 +631,6 @@ public class SearchActivity extends AppCompatActivity  {
             return convertView;
         }
     }
-
     public class OccupationAdapter extends BaseAdapter {
 
         private final LayoutInflater layoutInflater;
@@ -685,10 +656,6 @@ public class SearchActivity extends AppCompatActivity  {
             return 0;
         }
 
-//        public void addTaxRateList(List<String> spinnerList) {
-//            this.spinnerList = spinnerList;
-//            notifyDataSetChanged();
-//        }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -723,11 +690,6 @@ public class SearchActivity extends AppCompatActivity  {
             return 0;
         }
 
-//        public void addTaxRateList(List<String> spinnerList) {
-//            this.spinnerList = spinnerList;
-//            notifyDataSetChanged();
-//        }
-
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
@@ -736,8 +698,6 @@ public class SearchActivity extends AppCompatActivity  {
             return convertView;
         }
     }
-
-
 
 }
 

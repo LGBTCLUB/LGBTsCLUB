@@ -46,29 +46,25 @@ public class FavouritesFragment extends Fragment {
     RecyclerView bookmarked_recyclerview;
     ProgressBar progressCircular;
     ProgressBar progress_bar;
-    //  private ProgressDailog progress;
+
     List<HeartModel.HeartData> homeDataList = new ArrayList<>();
     private ApiInterface apiInterface;
     private int last = 0;
     private int offset = 0;
 
     public FavouritesFragment() {
-        // Required empty public constructor
 
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_favourites, container, false);
 
         bookmarked_recyclerview = view.findViewById(R.id.bookmarked_recyclerview);
         progressCircular = view.findViewById(R.id.progress_circular);
         iv_back = view.findViewById(R.id.iv_back);
-        //iv_home = findViewById(R.id.iv_home);
-//        iv_logo = view.findViewById(R.id.iv_logo);
+
         progress_bar = view.findViewById(R.id.progress_bar);
 
 

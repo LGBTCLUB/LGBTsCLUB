@@ -43,7 +43,6 @@ public class MyPlanActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_my_plan);
 
         iv_back = findViewById(R.id.iv_back);
-        // iv_home = findViewById(R.id.iv_home);
         bt_upgrade = findViewById(R.id.bt_upgrade);
         progress_bar = findViewById(R.id.progress_bar);
         tv_memberShip = findViewById(R.id.tv_plandisplayname);
@@ -57,7 +56,6 @@ public class MyPlanActivity extends AppCompatActivity implements View.OnClickLis
         get_my_current_plan(SharedPrefsManager.getInstance().getString(MATRI_ID));
 
         iv_back.setOnClickListener(this);
-        //  iv_home.setOnClickListener(this);
         bt_upgrade.setOnClickListener(this);
 
     }
@@ -69,10 +67,6 @@ public class MyPlanActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.iv_back:
                 onBackPressed();
                 break;
-
-//            case R.id.iv_home:
-//                startActivity(new Intent(MyPlanActivity.this, MainActivity.class));
-//                break;
 
             case R.id.bt_upgrade:
                 startActivity(new Intent(MyPlanActivity.this, MemberShipPlanActivity.class));

@@ -25,7 +25,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.lgbt.LGBTsCLUB.MainActivity;
 import com.lgbt.LGBTsCLUB.R;
+import com.lgbt.LGBTsCLUB.model.CityDataModel;
+import com.lgbt.LGBTsCLUB.model.EducationDataModel;
 import com.lgbt.LGBTsCLUB.model.LoginModel;
+import com.lgbt.LGBTsCLUB.model.OccupationDataModel;
+import com.lgbt.LGBTsCLUB.model.StateDataModel;
 import com.lgbt.LGBTsCLUB.model.usermodel.CountryModel;
 import com.lgbt.LGBTsCLUB.model.usermodel.EducationModel;
 import com.lgbt.LGBTsCLUB.model.usermodel.ProfessionModel;
@@ -33,6 +37,7 @@ import com.lgbt.LGBTsCLUB.network.UtilsMethod;
 import com.lgbt.LGBTsCLUB.network.database.SharedPrefsManager;
 import com.lgbt.LGBTsCLUB.network.networking.ApiClient;
 import com.lgbt.LGBTsCLUB.network.networking.ApiInterface;
+import com.lgbt.LGBTsCLUB.network.networking.CountryDataModel;
 import com.lgbt.LGBTsCLUB.network.networking.MySingleton;
 
 import org.json.JSONArray;
@@ -67,6 +72,7 @@ public class SetpreferenceActivity extends AppCompatActivity {
     String Gender, minAge, minAgeName, maxAge, msxageName, minHightName, minHight, maxHightName, maxHight, specialCases,
             educationName, educationID, professionID, professionName, countryName, countryId;
     private SpinnerAdapter genderAdapter;
+    String country_id, stateId, stateName, cityId, cityName;
     private SpinnerAdapter ageAdapter;
     private SpinnerAdapter ageFromAdapter;
     private SpinnerAdapter fromheightAdapter;
@@ -74,9 +80,9 @@ public class SetpreferenceActivity extends AppCompatActivity {
     private SpinnerAdapter specialcaseAdapter;
     private ApiInterface apiInterface;
     private UtilsMethod progress;
-    private ArrayList<EducationModel> educationModelArrayList;
-    private ArrayList<ProfessionModel> professionModelArrayList;
-    private ArrayList<CountryModel> countryModelArrayList;
+    private List<EducationDataModel.EducationData> educationDataArrayList;
+    private List<OccupationDataModel.OccupationData> occupationDataArrayList;
+    private List<CountryDataModel.DataBean> countryModelArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,13 +111,14 @@ public class SetpreferenceActivity extends AppCompatActivity {
         apiInterface = ApiClient.getInterface();
         progress = new UtilsMethod(this);
 
-        educationModelArrayList = new ArrayList<>();
-        professionModelArrayList = new ArrayList<>();
+        educationDataArrayList = new ArrayList<>();
+        occupationDataArrayList = new ArrayList<>();
         countryModelArrayList = new ArrayList<>();
 
-        educationApi();
-        occupation();
-        countryCode();
+
+        EducationApi();
+        OccupationApi();
+        CountryApi();
         init();
 
         btn_preference.setOnClickListener(new View.OnClickListener() {
@@ -137,9 +144,9 @@ public class SetpreferenceActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
 
-                if (educationModelArrayList.size() > 0) {
-                    educationID = educationModelArrayList.get(position).getEducation_id();
-                    educationName = educationModelArrayList.get(position).getEducation();
+                if (educationDataArrayList.size() > 0) {
+                    educationID = educationDataArrayList.get(position).getEducationId();
+                    educationName = educationDataArrayList.get(position).getEducation();
                 }
             }
 
@@ -154,9 +161,9 @@ public class SetpreferenceActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
 
-                if (professionModelArrayList.size() > 0) {
-                    professionID = professionModelArrayList.get(position).getOccupation_id();
-                    professionName = professionModelArrayList.get(position).getOccupation();
+                if (occupationDataArrayList.size() > 0) {
+                    professionID = occupationDataArrayList.get(position).getOccupationId();
+                    professionName = occupationDataArrayList.get(position).getOccupation();
                 }
             }
 
@@ -171,10 +178,13 @@ public class SetpreferenceActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
+                Log.d("TAG", "bandId: " + bandId);
 
                 if (countryModelArrayList.size() > 0) {
-                    countryId = countryModelArrayList.get(position).getCountry_id();
+                    country_id = countryModelArrayList.get(position).getCountryId();
+                    Log.d("TAG", "countryIdd: " + country_id);
                     countryName = countryModelArrayList.get(position).getCountry();
+                    Toast.makeText(SetpreferenceActivity.this, "" + country_id, Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -186,6 +196,75 @@ public class SetpreferenceActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void CountryApi() {
+        apiInterface.get_country().enqueue(new Callback<CountryDataModel>() {
+            @Override
+            public void onResponse(Call<CountryDataModel> call, retrofit2.Response<CountryDataModel> response) {
+                CountryDataModel countryDataModel = response.body();
+                if (countryDataModel != null) {
+                    if (countryDataModel.getResponse()) {
+                        countryModelArrayList = countryDataModel.getData();
+                        Log.d("TAG", "onResponse: " + countryModelArrayList.get(0).getCountry());
+                        sp_country.setAdapter(new CountryAdapter(SetpreferenceActivity.this, countryModelArrayList));
+                      //  StateApi(countryModelArrayList.get(0).getCountryId());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CountryDataModel> call, Throwable t) {
+                Log.d("TAG", "onResponse: Fail");
+
+            }
+        });
+    }
+
+
+    private void OccupationApi() {
+        apiInterface.get_occupation().enqueue(new Callback<OccupationDataModel>() {
+            @Override
+            public void onResponse(Call<OccupationDataModel> call, retrofit2.Response<OccupationDataModel> response) {
+                OccupationDataModel occupationDataModel = response.body();
+                if (occupationDataModel != null) {
+                    if (occupationDataModel.getResponse()) {
+                        occupationDataArrayList = occupationDataModel.getData();
+                        Log.d("TAG", "onResponse5: " + occupationDataArrayList.get(0).getOccupation());
+                        sp_profession.setAdapter(new OccupationAdapter(SetpreferenceActivity.this, occupationDataArrayList));
+
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<OccupationDataModel> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    private void EducationApi() {
+        apiInterface.get_education().enqueue(new Callback<EducationDataModel>() {
+            @Override
+            public void onResponse(Call<EducationDataModel> call, retrofit2.Response<EducationDataModel> response) {
+                EducationDataModel educationDataModel = response.body();
+                if (educationDataModel != null) {
+                    if (educationDataModel.getResponse()) {
+                        educationDataArrayList = educationDataModel.getData();
+                        Log.d("TAG", "onResponse4: " + educationDataArrayList.get(0).getEducation());
+                        sp_education.setAdapter(new EducationAdapter(SetpreferenceActivity.this, educationDataArrayList));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<EducationDataModel> call, Throwable t) {
+
+            }
+        });
     }
 
     private void dialogeback() {
@@ -614,245 +693,6 @@ public class SetpreferenceActivity extends AppCompatActivity {
     }
 
 
-    //---------------Base Spinner Adapter-------------
-
-    private void educationApi() {
-        //  progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_education",
-                new com.android.volley.Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //=========check response are coming or not after api hit ===========//
-                        if (response != null) {
-
-                            try {
-                                Log.v("uploading", response);
-                                JSONObject jsonObject = new JSONObject(response);
-                                //=========login api response setup method====//
-
-                                try {
-                                    String success = jsonObject.getString("response");
-                                    if (success.equals("true")) {
-
-                                        EducationModel educationModel = new EducationModel("", "Education", "", "");
-                                        educationModelArrayList.add(educationModel);
-                                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                        if (jsonArray.length() == 0) {
-                                            EducationModel educationModel1 = new EducationModel("", "No Record Found", "", "");
-                                            educationModelArrayList.add(educationModel1);
-                                            // progress_bar.setVisibility(View.INVISIBLE);
-
-                                        }
-                                        for (int i = 0; i < jsonArray.length(); i++) {
-                                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                            EducationModel educationModel1 = new EducationModel(jsonObject1.getString("education_id"),
-                                                    jsonObject1.getString("education"),
-                                                    jsonObject1.getString("status"),
-                                                    jsonObject1.getString("sortorder"));
-                                            educationModelArrayList.add(educationModel1);
-                                            //  progress_bar.setVisibility(View.INVISIBLE);
-                                        }
-                                    } else {
-                                        //    progress_bar.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(SetpreferenceActivity.this, "Error1!!!..", Toast.LENGTH_LONG).show();
-
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                sp_education.setAdapter(new EducationAdapter(SetpreferenceActivity.this, educationModelArrayList));
-
-
-                            } catch (OutOfMemoryError | NullPointerException e) {
-                                //   progress_bar.setVisibility(View.INVISIBLE);
-                                // TODO: handle exception
-                                e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            //  progress_bar.setVisibility(View.INVISIBLE);
-                        }
-                    }
-                }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //===if response error then dismiss progress==========//
-
-                Log.v("errrr", String.valueOf(error));
-                //  progress_bar.setVisibility(View.INVISIBLE);
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
-    }
-
-    private void occupation() {
-        //  progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_occupation",
-                new com.android.volley.Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //=========check response are coming or not after api hit ===========//
-                        if (response != null) {
-
-                            try {
-                                Log.v("uploading", response);
-                                JSONObject jsonObject = new JSONObject(response);
-                                //=========login api response setup method====//
-
-                                try {
-                                    String success = jsonObject.getString("response");
-                                    if (success.equals("true")) {
-
-                                        ProfessionModel professionModel = new ProfessionModel("", "Profession", "", "");
-                                        professionModelArrayList.add(professionModel);
-                                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                        if (jsonArray.length() == 0) {
-                                            ProfessionModel professionModel1 = new ProfessionModel("", "No Record Found", "", "");
-                                            professionModelArrayList.add(professionModel1);
-                                            // progress_bar.setVisibility(View.INVISIBLE);
-
-                                        }
-                                        for (int i = 0; i < jsonArray.length(); i++) {
-                                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                            ProfessionModel professionModel1 = new ProfessionModel(
-                                                    jsonObject1.getString("occupation_id"),
-                                                    jsonObject1.getString("occupation"),
-                                                    jsonObject1.getString("status"),
-                                                    jsonObject1.getString("sortorder"));
-
-                                            professionModelArrayList.add(professionModel1);
-                                            //  progress_bar.setVisibility(View.INVISIBLE);
-
-                                        }
-                                    } else {
-                                        //    progress_bar.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(SetpreferenceActivity.this, "Error1!!!..", Toast.LENGTH_LONG).show();
-
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                sp_profession.setAdapter(new ProfessionAdapter(SetpreferenceActivity.this, professionModelArrayList));
-
-
-                            } catch (OutOfMemoryError | NullPointerException e) {
-                                //   progress_bar.setVisibility(View.INVISIBLE);
-                                // TODO: handle exception
-                                e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            //  progress_bar.setVisibility(View.INVISIBLE);
-                        }
-                    }
-                }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //===if response error then dismiss progress==========//
-
-                Log.v("errrr", String.valueOf(error));
-                //  progress_bar.setVisibility(View.INVISIBLE);
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
-    }
-
-    private void countryCode() {
-        //  progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_country",
-                new com.android.volley.Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //=========check response are coming or not after api hit ===========//
-                        if (response != null) {
-
-                            try {
-                                Log.v("uploading", response);
-                                JSONObject jsonObject = new JSONObject(response);
-                                //=========login api response setup method====//
-                                try {
-                                    String success = jsonObject.getString("response");
-                                    if (success.equals("true")) {
-                                        // CountryModel countryModel = new CountryModel("", "Country", "", "","");
-                                        // countryModelArrayList.add(countryModel);
-                                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-                                        if (jsonArray.length() == 0) {
-                                            CountryModel countryModel1 = new CountryModel("", "No Record Found", "", "", "");
-                                            countryModelArrayList.add(countryModel1);
-                                            // progress_bar.setVisibility(View.INVISIBLE);
-                                        }
-                                        for (int i = 0; i < jsonArray.length(); i++) {
-                                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                                            CountryModel professionModel1 = new CountryModel(
-                                                    jsonObject1.getString("country_id"),
-                                                    jsonObject1.getString("country"),
-                                                    jsonObject1.getString("code"),
-                                                    jsonObject1.getString("status"),
-                                                    jsonObject1.getString("sortorder"));
-                                            countryModelArrayList.add(professionModel1);
-                                            //  progress_bar.setVisibility(View.INVISIBLE);
-                                        }
-
-                                    } else {
-                                        //    progress_bar.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(SetpreferenceActivity.this, "Error1!!!..", Toast.LENGTH_LONG).show();
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                sp_country.setAdapter(new CountryAdapter(SetpreferenceActivity.this, countryModelArrayList));
-
-                            } catch (OutOfMemoryError | NullPointerException e) {
-                                //   progress_bar.setVisibility(View.INVISIBLE);
-                                // TODO: handle exception
-                                e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            //  progress_bar.setVisibility(View.INVISIBLE);
-                        }
-                    }
-                }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //===if response error then dismiss progress==========//
-                Log.v("errrr", String.valueOf(error));
-                //  progress_bar.setVisibility(View.INVISIBLE);
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
-    }
 
     private void setpreferenceApi(String show_gender, String min_age, String max_age, String min_height, String max_height, String income
             , String education, String profession, String location, String specialCase, String userId, String PartnerExpectations) {
@@ -954,17 +794,18 @@ public class SetpreferenceActivity extends AppCompatActivity {
     //--------------------CountryAdapter-----------------------------
 
     public class EducationAdapter extends BaseAdapter {
-        LayoutInflater inflator;
-        ArrayList<EducationModel> spinnerArrayList;
 
-        public EducationAdapter(Context context, ArrayList<EducationModel> spinnerArrayList) {
-            inflator = LayoutInflater.from(context);
-            this.spinnerArrayList = spinnerArrayList;
+        private final LayoutInflater layoutInflater;
+        private List<EducationDataModel.EducationData> spinnerList;
+
+        public EducationAdapter(Context context, List<EducationDataModel.EducationData> educationDataArrayList) {
+            layoutInflater = LayoutInflater.from(context);
+            this.spinnerList = educationDataArrayList;
         }
 
         @Override
         public int getCount() {
-            return spinnerArrayList.size();
+            return null == spinnerList ? 0 : spinnerList.size();
         }
 
         @Override
@@ -977,27 +818,29 @@ public class SetpreferenceActivity extends AppCompatActivity {
             return 0;
         }
 
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = inflator.inflate(R.layout.item_spinner, null);
-            TextView deposit_channerl_ = (TextView) convertView.findViewById(R.id.spinner_text_view);
-            deposit_channerl_.setText(spinnerArrayList.get(position).getEducation());
+            convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
+            TextView stateTxt = convertView.findViewById(R.id.spinner_text_view);
+            stateTxt.setText(spinnerList.get(position).getEducation());
             return convertView;
         }
     }
 
-    public class ProfessionAdapter extends BaseAdapter {
-        LayoutInflater inflator;
-        ArrayList<ProfessionModel> spinnerArrayList;
+    public class OccupationAdapter extends BaseAdapter {
 
-        public ProfessionAdapter(Context context, ArrayList<ProfessionModel> spinnerArrayList) {
-            inflator = LayoutInflater.from(context);
-            this.spinnerArrayList = spinnerArrayList;
+        private final LayoutInflater layoutInflater;
+        private List<OccupationDataModel.OccupationData> spinnerList;
+
+        public OccupationAdapter(Context context, List<OccupationDataModel.OccupationData> occupationDataArrayList) {
+            layoutInflater = LayoutInflater.from(context);
+            this.spinnerList = occupationDataArrayList;
         }
 
         @Override
         public int getCount() {
-            return spinnerArrayList.size();
+            return null == spinnerList ? 0 : spinnerList.size();
         }
 
         @Override
@@ -1010,20 +853,26 @@ public class SetpreferenceActivity extends AppCompatActivity {
             return 0;
         }
 
+//        public void addTaxRateList(List<String> spinnerList) {
+//            this.spinnerList = spinnerList;
+//            notifyDataSetChanged();
+//        }
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = inflator.inflate(R.layout.item_spinner, null);
-            TextView deposit_channerl_ = (TextView) convertView.findViewById(R.id.spinner_text_view);
-            deposit_channerl_.setText(spinnerArrayList.get(position).getOccupation());
+            convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
+            TextView stateTxt = convertView.findViewById(R.id.spinner_text_view);
+            stateTxt.setText(spinnerList.get(position).getOccupation());
             return convertView;
         }
     }
 
     public class CountryAdapter extends BaseAdapter {
         LayoutInflater inflator;
-        ArrayList<CountryModel> spinnerArrayList;
+        List<CountryDataModel.DataBean> spinnerArrayList;
 
-        public CountryAdapter(Context context, ArrayList<CountryModel> spinnerArrayList) {
+
+        public CountryAdapter(Context context, List<CountryDataModel.DataBean> spinnerArrayList) {
             inflator = LayoutInflater.from(context);
             this.spinnerArrayList = spinnerArrayList;
         }

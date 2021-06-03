@@ -87,7 +87,6 @@ public class MyProfileFragment extends Fragment {
         bt_profile = view.findViewById(R.id.bt_profile);
         bt_contactUs=view.findViewById(R.id.bt_contactUs);
         bg_blur_iv=view.findViewById(R.id.bg_blur_iv);
-        // tv_contactUs = view.findViewById(R.id.tv_contactUs);
         tv_aboutUs = view.findViewById(R.id.tvv_about);
         tv_termsCondition = view.findViewById(R.id.tv_termsCondition);
         tv_changePassword = view.findViewById(R.id.tv_changePassword);
@@ -109,6 +108,7 @@ public class MyProfileFragment extends Fragment {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
+
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
 
@@ -128,14 +128,6 @@ public class MyProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-//        tv_aboutUs.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getContext(), AboutUsActivity.class);
-//                startActivity(intent);
-//            }
-//        });
 
         tv_termsCondition.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,8 +208,7 @@ public class MyProfileFragment extends Fragment {
 
             @Override
             public void onFailure(Call<AboutUsModel> call, Throwable t) {
-//                Toast.makeText(AboutUsActivity.this, "something is wrong", Toast.LENGTH_LONG).show();
-//                progress.cancleDialog();
+
             }
         });
     }
@@ -235,9 +226,6 @@ public class MyProfileFragment extends Fragment {
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        // Toast.makeText(MainActivity.this,"Successfully signed out",Toast.LENGTH_SHORT).show();
-                        // startActivity(new Intent(Main2Activity.this, MainActivity.class));
-                        //  finish();
                     }
                 });
     }
@@ -276,11 +264,11 @@ public class MyProfileFragment extends Fragment {
                                     .dontTransform();
 
                             if (profileData.getPhoto1() != null) {
-                                Glide.with(Objects.requireNonNull(getContext()))
+                                Glide.with(Objects.requireNonNull(getActivity()))
                                         .load(IMAGE_LOAD_USER1 + profileData.getPhoto1())
                                         .apply(options)
                                         .into(iv_userprofile);
-                                Glide.with(Objects.requireNonNull(getContext()))
+                                Glide.with(Objects.requireNonNull(getActivity()))
                                         .load(IMAGE_LOAD_USER1 + profileData.getPhoto1())
                                         .apply(bitmapTransform(new BlurTransformation(25)))
                                         .into(bg_blur_iv);

@@ -85,9 +85,10 @@ public class TellusaboutActivity extends AppCompatActivity {
     private SpinnerAdapter materialAdapter;
     private SpinnerAdapter fromheightAdapter;
     private SpinnerAdapter toheightAdapter;
-    private SpinnerAdapter educationAdapter;
+
     private ArrayList<MotherToungModel> motherToungModelArrayList;
     private ArrayList<ReligiousModel> religiousModelArrayList;
+
     private List<EducationDataModel.EducationData> educationDataArrayList;
     private List<OccupationDataModel.OccupationData> occupationDataArrayList;
     private List<CountryDataModel.DataBean> countryModelArrayList;
@@ -961,7 +962,7 @@ public class TellusaboutActivity extends AppCompatActivity {
         }
     }
 
-    //----------------------------satate code--------------------------------
+    //----------------------------state code--------------------------------
     public class StateAdapter extends BaseAdapter {
         LayoutInflater inflator;
         List<StateDataModel.DataEntity> spinnerArrayList;

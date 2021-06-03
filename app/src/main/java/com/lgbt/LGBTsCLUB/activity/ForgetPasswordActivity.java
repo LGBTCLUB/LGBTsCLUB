@@ -22,8 +22,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ForgetPasswordActivity extends AppCompatActivity {
-
-
      ImageView imageView;
      TextView textView;
 
@@ -34,7 +32,6 @@ public class ForgetPasswordActivity extends AppCompatActivity {
 
         imageView = findViewById(R.id.img_close);
         textView = findViewById(R.id.txt_back_to_login);
-
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override

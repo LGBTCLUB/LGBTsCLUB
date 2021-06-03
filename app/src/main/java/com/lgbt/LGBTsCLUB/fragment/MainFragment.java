@@ -1,4 +1,5 @@
 package com.lgbt.LGBTsCLUB.fragment;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,7 +46,6 @@ public class MainFragment extends Fragment {
     ProgressBar progressCircular;
     ProgressBar progress_bar;
     String userId;
-    //  RecyclerView.LayoutManager layoutManager;
     int OFFSET = 0;
     int pastVisiblesItems, visibleItemCount, totalItemCount;
     List<HomeModel.HomeData> homeDataList = new ArrayList<>();
@@ -55,7 +55,6 @@ public class MainFragment extends Fragment {
     private boolean loading = true;
 
     public MainFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -75,17 +74,11 @@ public class MainFragment extends Fragment {
 
         userId = SharedPrefsManager.getInstance().getString(LOGIN_ID);
 
-       // Log.i("user..id", userId);
         layoutManager = new GridLayoutManager(main_recycler_view.getContext(), 2);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         main_recycler_view.setHasFixedSize(true);
-//        main_recycler_view.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(4), true));
         main_recycler_view.setLayoutManager(layoutManager);
 
-        //  visitedProfileAdapter = new VisitedProfileAdapter(getActivity(), visitedModelListArrayList);
-        // recyclerview.setAdapter(visitedProfileAdapter);
-        //  layoutManager = new LinearLayoutManager(getContext());
-        //  main_recycler_view.setLayoutManager(layoutManager);
 
         homeAdapter = new HomeAdapter(getActivity(), MainFragment.this, homeDataList);
         main_recycler_view.setAdapter(homeAdapter);
@@ -121,14 +114,12 @@ public class MainFragment extends Fragment {
 
         });
 
-       // setList();
+        // setList();
         return view;
     }
 
 
     private void homeMatch(String userId, final int OFFSET) {
-      //  Log.i("...userid", userId);
-        //Log.i("...of", String.valueOf(OFFSET));
         progress_bar.setVisibility(View.VISIBLE);
         apiInterface.homeMatch(userId, OFFSET + "").enqueue(new Callback<HomeModel>() {
             @Override
@@ -173,8 +164,7 @@ public class MainFragment extends Fragment {
                         boolean respnse = homeModel.isResponse();
                         if (respnse) {
                             Toast.makeText(getContext(), "Sent request", Toast.LENGTH_SHORT).show();
-                            // homeMatch(userId,OFFSET);
-                            //  homeAdapter.notifyDataSetChanged();
+
                         } else {
                             //  Toast.makeText(getContext(),"Already sent request",Toast.LENGTH_SHORT).show();
                         }

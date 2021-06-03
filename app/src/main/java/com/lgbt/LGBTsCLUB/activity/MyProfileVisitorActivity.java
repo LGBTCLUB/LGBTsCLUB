@@ -37,20 +37,14 @@ public class MyProfileVisitorActivity extends AppCompatActivity {
     private int last = 0;
     private int offset = 0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile_visitor);
+
         visit_user_rcv = findViewById(R.id.visit_user_rcv);
         iv_back = findViewById(R.id.iv_back);
-//        iv_home = findViewById(R.id.iv_home);
         iv_back.setOnClickListener(v -> finish());
-
-//        iv_home.setOnClickListener(v -> {
-//            startActivity(new Intent(MyProfileVisitorActivity.this, MainActivity.class));
-//            // finish();
-//        });
 
         dataBeans = new ArrayList<>();
         progress = new UtilsMethod(this);
@@ -69,7 +63,7 @@ public class MyProfileVisitorActivity extends AppCompatActivity {
     }
 
     public void getVisitedUsers(int OFFSET) {
-//        progress.showDialog();
+
         if (OFFSET == 0) {
             dataBeans.clear();
             visitedUserProfileAdapter.notifyDataSetChanged();

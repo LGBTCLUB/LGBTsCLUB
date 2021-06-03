@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lgbt.LGBTsCLUB.R;
+import com.lgbt.LGBTsCLUB.activity.ChatActivity;
 import com.lgbt.LGBTsCLUB.adapter.ChatAdapter;
 import com.lgbt.LGBTsCLUB.helper.AppHelper;
 import com.lgbt.LGBTsCLUB.model.AcceptModel;
@@ -185,7 +186,7 @@ public class ChatFragment extends Fragment {
 
                         } else {
                             if (offset == 0) {
-                                Toast.makeText(getContext(), "No Data Found", Toast.LENGTH_LONG).show();
+                              //  Toast.makeText(ChatActivity.this, "No Data Found", Toast.LENGTH_LONG).show();
                                 iv_logo.setVisibility(View.VISIBLE);
                             }
                             if (offset > 0) {

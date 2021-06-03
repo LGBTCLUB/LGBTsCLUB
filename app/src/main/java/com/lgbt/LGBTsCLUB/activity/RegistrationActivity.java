@@ -79,10 +79,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
     Button btn_continue;
     Toolbar toolbar;
-    // private ProgressDailog progress;
-//    ProgressBar progress_bar;
     EditText et_firstName, et_phone, et_emailId, password, et_hobbies;
-    TextView et_dob,txt_signIn;
+    TextView et_dob, txt_signIn;
     CheckBox ch_terms;
     RelativeLayout li_dob;
     Spinner gender_category, sp_day, sp_month, sp_year;
@@ -95,7 +93,7 @@ public class RegistrationActivity extends AppCompatActivity {
     Date date;
     AppCompatButton gmailsignup, facebooksignup;
 
-    ImageButton google,facebook;
+    ImageButton google, facebook;
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN = 0;
     TextView tv_termsCondition;
@@ -119,8 +117,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
         btn_continue = findViewById(R.id.btn_continue);
         progressBar = findViewById(R.id.progress_bar);
-//        iv_back = findViewById(R.id.iv_back);
-//        toolbar = findViewById(R.id.toolbar);
 
         et_firstName = findViewById(R.id.edt_first_name);
         et_phone = findViewById(R.id.edt_phone_number);
@@ -131,7 +127,6 @@ public class RegistrationActivity extends AppCompatActivity {
         ch_terms = findViewById(R.id.ch_terms);
         txt_signIn = findViewById(R.id.text_signin);
 
-        // ccp = findViewById(R.id.ccp);
 
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
@@ -146,9 +141,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
         }
 
-//        ccp.setOnCountryChangeListener(() -> {
-//            mCountryCode = ccp.getSelectedCountryCode();
-//        });
 
         sp_day = findViewById(R.id.sp_day);
         gender_category = findViewById(R.id.gender_category);
@@ -157,15 +149,17 @@ public class RegistrationActivity extends AppCompatActivity {
         li_dob = findViewById(R.id.li_dob);
         google = findViewById(R.id.img_google);
         facebook = findViewById(R.id.img_facebook);
-       // progress_bar = findViewById(R.id.progress_bar);
         tv_termsCondition = findViewById(R.id.tv_termsCondition);
 
         apiInterface = ApiClient.getInterface();
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
+
         init();
-        // Build a GoogleSignInClient with the options specified by gso.
+
+
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
@@ -185,7 +179,7 @@ public class RegistrationActivity extends AppCompatActivity {
         txt_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RegistrationActivity.this,LoginActivity.class);
+                Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -207,9 +201,6 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
-        // iv_back.setOnClickListener(view -> finish());
-
-//        gmailsignup.setOnClickListener(v -> signIn());
 
         et_dob.setOnClickListener(v -> {
             if (Gender.equals("Lesbian") || Gender.equals("Bisexual (Woman)") || Gender.equals("Transgender Woman")) {
@@ -271,7 +262,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     VeryfyEmailRegisterModel registerModel = response.body();
                     if (registerModel != null) {
-                    progressBar.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.GONE);
                         String respons = registerModel.getResponse();
                         String message = registerModel.getMessage();
                         otp = registerModel.getOtp();
@@ -288,7 +279,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<VeryfyEmailRegisterModel> call, Throwable t) {
                 Toast.makeText(RegistrationActivity.this, "something is wrong", Toast.LENGTH_LONG).show();
-              progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
             }
         });
     }
@@ -301,8 +292,6 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
@@ -339,7 +328,7 @@ public class RegistrationActivity extends AppCompatActivity {
         ok.setOnClickListener(v -> {
             if (text_dialog.getText().toString().equals(otp)) {
                 String dob = dobYear + "/" + dobMonth + "/" + dobDate;
-              progressBar.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.VISIBLE);
                 registration(et_firstName.getText().toString(), "", et_hobbies.getText().toString(), dob,
                         Gender, et_phone.getText().toString(), et_emailId.getText().toString(), password.getText().toString(), newToken, "1");
             } else {
@@ -383,7 +372,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<RegisterModel> call, Throwable t) {
                 Toast.makeText(RegistrationActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
-               progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
             }
         });
     }

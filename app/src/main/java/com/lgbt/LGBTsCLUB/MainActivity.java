@@ -479,10 +479,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 imageViewChat.setColorFilter(getResources().getColor(R.color.grey));
                 imageViewLike.setColorFilter(getResources().getColor(R.color.grey));
                 imageViewAccount.setColorFilter(getResources().getColor(R.color.navy_blue));
-                pushFragment(new EducationSearchFragment());
+                pushFragment(new MyProfileFragment());
                 break;
              case R.id.linear_profile:
-                 pushFragment(new SpecialSearchFragment());
+                 pushFragment(new MyProfileFragment());
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.linear_message:
@@ -495,7 +495,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.linear_favourite:
-                 pushFragment(new FavouritesFragment());
+                Intent intent2 =new Intent(MainActivity.this,BookMarkedActivity.class);
+                startActivity(intent2);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
 //            case R.id.settings:

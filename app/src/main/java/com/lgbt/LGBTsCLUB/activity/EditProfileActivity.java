@@ -42,11 +42,17 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.lgbt.LGBTsCLUB.MainActivity;
 import com.lgbt.LGBTsCLUB.R;
+import com.lgbt.LGBTsCLUB.model.CityDataModel;
+import com.lgbt.LGBTsCLUB.model.EducationDataModel;
 import com.lgbt.LGBTsCLUB.model.MemberProfileModel;
+import com.lgbt.LGBTsCLUB.model.MotherToungueDataModel;
+import com.lgbt.LGBTsCLUB.model.OccupationDataModel;
 import com.lgbt.LGBTsCLUB.model.ProfileImageModel;
 import com.lgbt.LGBTsCLUB.model.ProfileModel;
+import com.lgbt.LGBTsCLUB.model.StateDataModel;
 import com.lgbt.LGBTsCLUB.model.UpdateProfileModel;
 import com.lgbt.LGBTsCLUB.model.UserStatusModel;
+import com.lgbt.LGBTsCLUB.model.serachmodel.SpecialSearchModel;
 import com.lgbt.LGBTsCLUB.model.usermodel.CityModel;
 import com.lgbt.LGBTsCLUB.model.usermodel.CountryModel;
 import com.lgbt.LGBTsCLUB.model.usermodel.EducationModel;
@@ -57,6 +63,7 @@ import com.lgbt.LGBTsCLUB.model.usermodel.StateModel;
 import com.lgbt.LGBTsCLUB.network.database.SharedPrefsManager;
 import com.lgbt.LGBTsCLUB.network.networking.ApiClient;
 import com.lgbt.LGBTsCLUB.network.networking.ApiInterface;
+import com.lgbt.LGBTsCLUB.network.networking.CountryDataModel;
 import com.lgbt.LGBTsCLUB.network.networking.MySingleton;
 
 import org.json.JSONArray;
@@ -93,7 +100,7 @@ import static com.lgbt.LGBTsCLUB.network.networking.Constant.MATRI_ID;
 public class EditProfileActivity extends AppCompatActivity {
 
     Button bt_savedetails;
-    ImageView iv_back, iv_home, iv_userprofile,iv_blur;
+    ImageView iv_back, iv_home, iv_userprofile, iv_blur;
 
     TextView tv_account, tv_personal, tv_professional;
     LinearLayout li_account, li_prfessional, li_personal;
@@ -110,7 +117,7 @@ public class EditProfileActivity extends AppCompatActivity {
     String childrenlivingstatus = "No";
     String countryN, StateN, cityN, religionN, maritalstatusN, GenderN, EducationN, OccupationN, dobN, heightN, showgenderN, childrenlivingstatusN;
     RelativeLayout rvuserImage;
-    String Gender, hightF, mstatus, matstatusName, MotherToung, motherToungID, motherToungName, religiousID,
+    String Gender, hightF, mstatus, matstatusName, MotherToung, motherToungID, motherToungName, religiousID, country_id,
             religiousIDName, countryId, countryName, countryNameS, countryIdP, stateId, stateName, cityId, cityName, day, month, year,
             educationID, educationName, professionID, professionName, heightFeetName, heighttoFeetName, intrest;
 
@@ -138,13 +145,13 @@ public class EditProfileActivity extends AppCompatActivity {
     private SpinnerAdapter monthAdapter;
     private SpinnerAdapter yearAdapter;
     private SpinnerAdapter materialAdapter;
-    private ArrayList<MotherToungModel> motherToungModelArrayList;
-    private ArrayList<ReligiousModel> religiousModelArrayList;
-    private ArrayList<CountryModel> countryModelArrayList;
-    private ArrayList<StateModel> stateModelArrayList;
-    private ArrayList<CityModel> cityModelArrayList;
-    private ArrayList<EducationModel> educationModelArrayList;
-    private ArrayList<ProfessionModel> professionModelArrayList;
+    private List<MotherToungueDataModel.MotherToungueData> motherToungueDataArrayList;
+    private List<SpecialSearchModel.SpecialData> specialDataArrayList;
+    private List<CountryDataModel.DataBean> countryModelArrayList;
+    private List<StateDataModel.DataEntity> stateModelArrayList;
+    private List<CityDataModel.DataCity> cityModelArrayList;
+    private List<EducationDataModel.EducationData> educationDataArrayList;
+    private List<OccupationDataModel.OccupationData> occupationDataArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,8 +159,6 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         bt_savedetails = findViewById(R.id.bt_savedetails);
-     //  iv_back = findViewById(R.id.iv_back);
-//        iv_home = findViewById(R.id.iv_home);
 
         tv_account = findViewById(R.id.tv_account);
         tv_personal = findViewById(R.id.tv_personal);
@@ -170,7 +175,7 @@ public class EditProfileActivity extends AppCompatActivity {
         et_income = findViewById(R.id.et_income);
         et_bio = findViewById(R.id.et_bio);
         et_hobbies = findViewById(R.id.et_hobbies);
-        iv_blur=findViewById(R.id.iv_blur);
+        iv_blur = findViewById(R.id.iv_blur);
 
         sp_gender = findViewById(R.id.sp_gender);
         sp_feet = findViewById(R.id.sp_feet);
@@ -202,34 +207,19 @@ public class EditProfileActivity extends AppCompatActivity {
 
         apiInterface = ApiClient.getInterface();
 
-        motherToungModelArrayList = new ArrayList<MotherToungModel>();
-        religiousModelArrayList = new ArrayList<ReligiousModel>();
-        countryModelArrayList = new ArrayList<CountryModel>();
+        motherToungueDataArrayList = new ArrayList<>();
+        specialDataArrayList = new ArrayList<>();
+        countryModelArrayList = new ArrayList<>();
         stateModelArrayList = new ArrayList<>();
         cityModelArrayList = new ArrayList<>();
-        educationModelArrayList = new ArrayList<>();
-        professionModelArrayList = new ArrayList<>();
+        educationDataArrayList = new ArrayList<>();
+        occupationDataArrayList = new ArrayList<>();
 
         progress_bar.setVisibility(VISIBLE);                        //String dob = year+"/"+month+"/"+day;
         profileDetailApi(SharedPrefsManager.getInstance().getString(MATRI_ID));
 
 
         clickStatus = "Account";
-
-//        iv_home.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(EditProfileActivity.this, MainActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        iv_back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//            }
-//        });
 
         et_dob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -308,7 +298,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 li_personal.setVisibility(GONE);
 
                 tv_account.setTextColor(getResources().getColor(R.color.navy_blue));
-                tv_account.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+                tv_account.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
                 tv_personal.setTextColor(getResources().getColor(R.color.gray_light));
                 tv_professional.setTextColor(getResources().getColor(R.color.gray_light));
 
@@ -325,7 +315,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 li_prfessional.setVisibility(GONE);
 
                 tv_account.setTextColor(getResources().getColor(R.color.gray_light));
-                tv_personal.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+                tv_personal.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
                 tv_personal.setTextColor(getResources().getColor(R.color.navy_blue));
                 tv_professional.setTextColor(getResources().getColor(R.color.gray_light));
 
@@ -343,7 +333,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 li_personal.setVisibility(GONE);
 
                 tv_account.setTextColor(getResources().getColor(R.color.gray_light));
-                tv_professional.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+                tv_professional.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
                 tv_personal.setTextColor(getResources().getColor(R.color.gray_light));
                 tv_professional.setTextColor(getResources().getColor(R.color.navy_blue));
 
@@ -386,9 +376,9 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
 
-                if (motherToungModelArrayList.size() > 0) {
-                    motherToungID = motherToungModelArrayList.get(position).getMother_tongue_id();
-                    motherToungName = motherToungModelArrayList.get(position).getMother_tongue();
+                if (motherToungueDataArrayList.size() > 0) {
+                    motherToungID = motherToungueDataArrayList.get(position).getMotherTongueId();
+                    motherToungName = motherToungueDataArrayList.get(position).getMotherTongue();
                 }
             }
 
@@ -404,9 +394,9 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
 
-                if (religiousModelArrayList.size() > 0) {
-                    religiousID = religiousModelArrayList.get(position).getId();
-                    religiousIDName = religiousModelArrayList.get(position).getName();
+                if (specialDataArrayList.size() > 0) {
+                    religiousID = specialDataArrayList.get(position).getId();
+                    religiousIDName = specialDataArrayList.get(position).getName();
                 }
             }
 
@@ -415,34 +405,25 @@ public class EditProfileActivity extends AppCompatActivity {
 
             }
         });
-
         sp_country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
+                Log.d("TAG", "bandId: " + bandId);
+
                 if (countryModelArrayList.size() > 0) {
-                    countryId = countryModelArrayList.get(position).getCountry_id();
+                    country_id = countryModelArrayList.get(position).getCountryId();
+                    Log.d("TAG", "countryIdd: " + country_id);
                     countryName = countryModelArrayList.get(position).getCountry();
-                }
-            }
+                    Toast.makeText(EditProfileActivity.this, "" + country_id, Toast.LENGTH_SHORT).show();
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                    if (country_id != null) {
+                        StateApi(country_id);
+                        //  CityApi(stateName);
 
-            }
-        });
-
-        sp_countrys.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String bandId = (String) parent.getItemAtPosition(position);
-
-                if (countryModelArrayList.size() > 0) {
-                    countryIdP = countryModelArrayList.get(position).getCountry_id();
-                    countryNameS = countryModelArrayList.get(position).getCountry();
-                    if (countryIdP != null) {
-                        getState(countryIdP);
                     }
+                } else {
+                    Toast.makeText(EditProfileActivity.this, "" + countryModelArrayList.size(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -456,12 +437,20 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
+                Log.d("TAG", "bandId: " + bandId);
+
                 if (stateModelArrayList.size() > 0) {
-                    stateId = stateModelArrayList.get(position).getState_id();
+                    stateId = stateModelArrayList.get(position).getStateId();
+                    Log.d("TAG", "stateId: " + stateId);
                     stateName = stateModelArrayList.get(position).getState();
+                    Toast.makeText(EditProfileActivity.this, "" + stateName, Toast.LENGTH_SHORT).show();
+
                     if (stateName != null) {
-                        getCity(stateName);
+                        CityApi(stateName);
+
                     }
+                } else {
+                    Toast.makeText(EditProfileActivity.this, "" + stateModelArrayList.size(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -470,10 +459,12 @@ public class EditProfileActivity extends AppCompatActivity {
 
             }
         });
+
         sp_city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
+                Log.d("TAG", "bandId: " + bandId);
 
                 if (cityModelArrayList.size() > 0) {
                     cityId = cityModelArrayList.get(position).getId();
@@ -494,9 +485,9 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
 
-                if (educationModelArrayList.size() > 0) {
-                    educationID = educationModelArrayList.get(position).getEducation_id();
-                    educationName = educationModelArrayList.get(position).getEducation();
+                if (educationDataArrayList.size() > 0) {
+                    educationID = educationDataArrayList.get(position).getEducationId();
+                    educationName = educationDataArrayList.get(position).getEducation();
                 }
             }
 
@@ -511,9 +502,9 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String bandId = (String) parent.getItemAtPosition(position);
 
-                if (professionModelArrayList.size() > 0) {
-                    professionID = professionModelArrayList.get(position).getOccupation_id();
-                    professionName = professionModelArrayList.get(position).getOccupation();
+                if (occupationDataArrayList.size() > 0) {
+                    professionID = occupationDataArrayList.get(position).getOccupationId();
+                    professionName = occupationDataArrayList.get(position).getOccupation();
                 }
             }
 
@@ -530,6 +521,82 @@ public class EditProfileActivity extends AppCompatActivity {
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
             }
         });
+    }
+
+    private void CountryApi() {
+        apiInterface.get_country().enqueue(new Callback<CountryDataModel>() {
+            @Override
+            public void onResponse(Call<CountryDataModel> call, retrofit2.Response<CountryDataModel> response) {
+                CountryDataModel countryDataModel = response.body();
+                if (countryDataModel != null) {
+                    if (countryDataModel.getResponse()) {
+                        countryModelArrayList = countryDataModel.getData();
+                        Log.d("TAG", "onResponse: " + countryModelArrayList.get(0).getCountry());
+                        sp_country.setAdapter(new CountryAdapter(EditProfileActivity.this, countryModelArrayList));
+                        StateApi(countryModelArrayList.get(0).getCountryId());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CountryDataModel> call, Throwable t) {
+                Log.d("TAG", "onResponse: Fail");
+
+            }
+        });
+    }
+
+    private void StateApi(String country_id) {
+        apiInterface.get_state(country_id).enqueue(new Callback<StateDataModel>() {
+            @Override
+            public void onResponse(Call<StateDataModel> call, retrofit2.Response<StateDataModel> response) {
+                StateDataModel stateDataModel = response.body();
+                Log.d("TAG", "stateData2: " + stateDataModel);
+
+                if (stateDataModel != null) {
+                    Log.d("TAG", "stateData: " + stateDataModel.getData());
+                    if (stateDataModel.getResponse()) {
+                        stateModelArrayList = stateDataModel.getData();
+                        Log.d("TAG", "onResponse2: " + stateModelArrayList.get(0).getState());
+                        sp_state.setAdapter(new StateAdapter(EditProfileActivity.this, stateModelArrayList));
+                        CityApi(stateModelArrayList.get(0).getState());
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StateDataModel> call, Throwable t) {
+                Log.d("TAG", "onResponse2: Fail");
+
+            }
+        });
+    }
+
+    private void CityApi(String stateName) {
+        apiInterface.get_city(stateName).enqueue(new Callback<CityDataModel>() {
+            @Override
+            public void onResponse(Call<CityDataModel> call, retrofit2.Response<CityDataModel> response) {
+                CityDataModel cityDataModel = response.body();
+                if (cityDataModel != null) {
+                    if (cityDataModel.getResponse()) {
+                        cityModelArrayList = cityDataModel.getData();
+                        Log.d("TAG", "onResponse3: " + cityModelArrayList.get(0).getCity());
+                        sp_city.setAdapter(new CityAdapter(EditProfileActivity.this, cityModelArrayList));
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CityDataModel> call, Throwable t) {
+                Log.d("TAG", "onResponse3: Fail");
+
+            }
+
+
+        });
+
     }
 
     @Override
@@ -1150,16 +1217,16 @@ public class EditProfileActivity extends AppCompatActivity {
                                     .apply(options)
                                     .into(iv_userprofile);
                             Glide.with(EditProfileActivity.this)
-                                    .load(IMAGE_LOAD_USER1 +profileData.get(0).getPhoto1())
+                                    .load(IMAGE_LOAD_USER1 + profileData.get(0).getPhoto1())
                                     .apply(bitmapTransform(new BlurTransformation(25)))
                                     .into(iv_blur);
 
 
-                            SpinMotherToung();
-                            spinGetreligion();
-                            countryCode();
-                            educationApi();
-                            occupation();
+                            MotherToungueApi();
+                            ReligiousApi();
+                            CountryApi();
+                            EducationApi();
+                            OccupationApi();
                             init();
                         }
                     }
@@ -1176,654 +1243,95 @@ public class EditProfileActivity extends AppCompatActivity {
 
     }
 
+    private void ReligiousApi() {
 
-    //---------------Base Spinner Adapter-------------
-
-    private void SpinMotherToung() {
-        // progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "mother_tounge",
-                new com.android.volley.Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //=========check response are coming or not after api hit ===========//
-                        if (response != null) {
-                            try {
-                                Log.v("uploading", response);
-                                JSONObject jsonObject = new JSONObject(response);
-                                //=========login api response setup method====//
-
-                                try {
-                                    String success = jsonObject.getString("response");
-                                    if (success.equals("true")) {
-                                        //   MotherToungModel studentDetailClassModel = new MotherToungModel("", "Mother Tounge", "", "");
-                                        //    motherToungModelArrayList.add(studentDetailClassModel);
-                                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                        if (jsonArray.length() == 0) {
-                                            MotherToungModel studentDetailClassModel1 = new MotherToungModel("", "No Record Found", "", "");
-                                            motherToungModelArrayList.add(studentDetailClassModel1);
-                                            //  progress_bar.setVisibility(View.INVISIBLE);
-                                        }
-                                        for (int i = 0; i < jsonArray.length(); i++) {
-                                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                            MotherToungModel studentDetailClassMode = new MotherToungModel
-                                                    (jsonObject1.getString("mother_tongue_id"),
-                                                            jsonObject1.getString("mother_tongue"),
-                                                            jsonObject1.getString("sortorder"),
-                                                            jsonObject1.getString("status"));
-
-                                            motherToungModelArrayList.add(studentDetailClassMode);
-                                            //  progress_bar.setVisibility(View.INVISIBLE);
-
-                                        }
-                                    } else {
-                                        //  progress_bar.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(EditProfileActivity.this, "Error1!!!..", Toast.LENGTH_LONG).show();
-
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                sp_motherToung.setAdapter(new MOtherToungAdapter(EditProfileActivity.this, motherToungModelArrayList));
-
-                                if (motherToungModelArrayList.size() > 0) {
-                                    for (int y = 0; y < motherToungModelArrayList.size(); y++) {
-                                        String mothertoung = motherToungModelArrayList.get(y).getMother_tongue();
-                                        if (MotherToung.equals(mothertoung)) {
-                                            sp_motherToung.setSelection(y);
-                                        }
-                                    }
-                                }
-                            } catch (OutOfMemoryError | NullPointerException e) {
-                                //   progress_bar.setVisibility(View.INVISIBLE);
-                                // TODO: handle exception
-                                e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            // progress_bar.setVisibility(View.INVISIBLE);
-                        }
+        apiInterface.get_religion().enqueue(new Callback<SpecialSearchModel>() {
+            @Override
+            public void onResponse(Call<SpecialSearchModel> call, Response<SpecialSearchModel> response) {
+                SpecialSearchModel specialSearchModel = response.body();
+                if (specialSearchModel != null) {
+                    if (specialSearchModel.getResponse()) {
+                        specialDataArrayList = specialSearchModel.getData();
+                        Log.d("TAG", "onResponse6: " + specialDataArrayList.get(0).getName());
+                        sp_religon.setAdapter(new SpecialCaseAdapter(EditProfileActivity.this, specialDataArrayList));
                     }
-                }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //===if response error then dismiss progress==========//
 
-                Log.v("errrr", String.valueOf(error));
-                // progress_bar.setVisibility(View.INVISIBLE);
+                }
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
 
-                return params;
+            @Override
+            public void onFailure(Call<SpecialSearchModel> call, Throwable t) {
+
             }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
+        });
+
     }
 
-    private void spinGetreligion() {
 
-        // progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_religion",
-                new com.android.volley.Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //=========check response are coming or not after api hit ===========//
-                        if (response != null) {
-                            try {
-                                Log.v("uploading..", response);
-                                JSONObject jsonObject = new JSONObject(response);
-                                //=========login api response setup method====//
-
-                                try {
-                                    String success = jsonObject.getString("response");
-                                    if (success.equals("true")) {
-
-                                        //          ReligiousModel religiousModel = new ReligiousModel("", "Religious", "", "");
-                                        //          religiousModelArrayList.add(religiousModel);
-                                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                        if (jsonArray.length() == 0) {
-                                            ReligiousModel studentDetailClassModel1 = new ReligiousModel("", "No Record Found", "", "");
-                                            religiousModelArrayList.add(studentDetailClassModel1);
-                                            //      progress_bar.setVisibility(View.INVISIBLE);
-
-                                        }
-                                        for (int i = 0; i < jsonArray.length(); i++) {
-                                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                            ReligiousModel studentDetailClassMode = new ReligiousModel(jsonObject1.getString("id"),
-                                                    jsonObject1.getString("name"),
-                                                    jsonObject1.getString("sortorder"),
-                                                    jsonObject1.getString("status"));
-
-                                            religiousModelArrayList.add(studentDetailClassMode);
-                                            //       progress_bar.setVisibility(View.INVISIBLE);
-                                        }
-                                    } else {
-                                        //      progress_bar.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(EditProfileActivity.this, "Error1!!!..", Toast.LENGTH_LONG).show();
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                sp_religon.setAdapter(new ReligiousAdapter(EditProfileActivity.this, religiousModelArrayList));
-
-                                if (religiousModelArrayList.size() > 0) {
-                                    for (int y = 0; y < religiousModelArrayList.size(); y++) {
-                                        String religionName = religiousModelArrayList.get(y).getName();
-                                        if (religionN.equals(religionName)) {
-                                            sp_religon.setSelection(y);
-                                        }
-                                    }
-                                }
-
-                            } catch (OutOfMemoryError | NullPointerException e) {
-                                //   progress_bar.setVisibility(View.INVISIBLE);
-                                // TODO: handle exception
-                                e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            //    progress_bar.setVisibility(View.INVISIBLE);
-                        }
+    private void MotherToungueApi() {
+        apiInterface.get_mother_tongue().enqueue(new Callback<MotherToungueDataModel>() {
+            @Override
+            public void onResponse(Call<MotherToungueDataModel> call, Response<MotherToungueDataModel> response) {
+                MotherToungueDataModel motherToungueDataModel = response.body();
+                if (motherToungueDataModel != null) {
+                    if (motherToungueDataModel.getResponse()) {
+                        motherToungueDataArrayList = motherToungueDataModel.getData();
+                        Log.d("TAG", "onResponse: " + motherToungueDataArrayList.get(0).getMotherTongue());
+                        sp_motherToung.setAdapter(new MOtherToungAdapter(EditProfileActivity.this, motherToungueDataArrayList));
                     }
-                }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //===if response error then dismiss progress==========//
-
-                Log.v("errrr", String.valueOf(error));
-                //  progress_bar.setVisibility(View.INVISIBLE);
+                }
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
 
-                return params;
+            @Override
+            public void onFailure(Call<MotherToungueDataModel> call, Throwable t) {
+
             }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
+        });
     }
 
-    private void countryCode() {
-        //  progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_country",
-                new com.android.volley.Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //=========check response are coming or not after api hit ===========//
-                        if (response != null) {
+    private void OccupationApi() {
+        apiInterface.get_occupation().enqueue(new Callback<OccupationDataModel>() {
+            @Override
+            public void onResponse(Call<OccupationDataModel> call, retrofit2.Response<OccupationDataModel> response) {
+                OccupationDataModel occupationDataModel = response.body();
+                if (occupationDataModel != null) {
+                    if (occupationDataModel.getResponse()) {
+                        occupationDataArrayList = occupationDataModel.getData();
+                        Log.d("TAG", "onResponse5: " + occupationDataArrayList.get(0).getOccupation());
+                        sp_profession.setAdapter(new OccupationAdapter(EditProfileActivity.this, occupationDataArrayList));
 
-                            try {
-                                Log.v("uploading", response);
-                                JSONObject jsonObject = new JSONObject(response);
-                                //=========login api response setup method====//
-                                try {
-                                    String success = jsonObject.getString("response");
-                                    if (success.equals("true")) {
-
-                                        // CountryModel countryModel = new CountryModel("", "Country", "", "","");
-                                        // countryModelArrayList.add(countryModel);
-                                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                        if (jsonArray.length() == 0) {
-                                            CountryModel countryModel1 = new CountryModel("", "No Record Found", "", "", "");
-                                            countryModelArrayList.add(countryModel1);
-                                            // progress_bar.setVisibility(View.INVISIBLE);
-                                        }
-                                        for (int i = 0; i < jsonArray.length(); i++) {
-                                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                            CountryModel professionModel1 = new CountryModel(
-                                                    jsonObject1.getString("country_id"),
-                                                    jsonObject1.getString("country"),
-                                                    jsonObject1.getString("code"),
-                                                    jsonObject1.getString("status"),
-                                                    jsonObject1.getString("sortorder"));
-
-                                            countryModelArrayList.add(professionModel1);
-                                            //  progress_bar.setVisibility(View.INVISIBLE);
-                                        }
-
-                                    } else {
-                                        //    progress_bar.setVisibility(View.INVISIBLE);
-                                        //   Toast.makeText(EditProfileActivity.this, "Error1!!!..", Toast.LENGTH_LONG).show();
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                sp_country.setAdapter(new CountryAdapter(EditProfileActivity.this, countryModelArrayList));
-                                sp_countrys.setAdapter(new CountryAdapter(EditProfileActivity.this, countryModelArrayList));
-
-
-                                if (countryModelArrayList.size() > 0) {
-                                    for (int y = 0; y < countryModelArrayList.size(); y++) {
-                                        String countryNames = countryModelArrayList.get(y).getCountry();
-
-                                        if (countryN != null) {
-                                            if (countryN.equals(countryNames)) {
-                                                sp_countrys.setSelection(y);
-                                            }
-                                        }
-                                    }
-                                }
-
-                                if (countryModelArrayList.size() > 0) {
-                                    for (int y = 0; y < countryModelArrayList.size(); y++) {
-                                        String countryName = countryModelArrayList.get(y).getCountry();
-                                        if (countryN.equals(countryName)) {
-                                            sp_country.setSelection(y);
-                                        }
-                                    }
-                                }
-                            } catch (OutOfMemoryError | NullPointerException e) {
-                                //   progress_bar.setVisibility(View.INVISIBLE);
-                                // TODO: handle exception
-                                e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            //  progress_bar.setVisibility(View.INVISIBLE);
-                        }
                     }
-                }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //===if response error then dismiss progress==========//
-                //   Log.v("errrr", String.valueOf(error));
-                //  progress_bar.setVisibility(View.INVISIBLE);
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
 
-                return params;
+                }
             }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
+
+            @Override
+            public void onFailure(Call<OccupationDataModel> call, Throwable t) {
+
+            }
+        });
+
     }
 
-    private void getState(final String countryIdd) {
-        stateModelArrayList.clear();
-        //  progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_state",
-                new com.android.volley.Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //=========check response are coming or not after api hit ===========//
-                        if (response != null) {
-
-                            try {
-                                Log.v("uploading..!", response);
-                                JSONObject jsonObject = new JSONObject(response);
-                                //=========login api response setup method====//
-                                try {
-                                    String success = jsonObject.getString("response");
-                                    if (success.equals("true")) {
-
-                                        //  StateModel stateModel = new StateModel("", "Country", "", "","","");
-                                        //  stateModelArrayList.add(stateModel);
-                                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                        if (jsonArray.length() == 0) {
-                                            StateModel stateModel1 = new StateModel("", "", "", "", "", "");
-                                            stateModelArrayList.add(stateModel1);
-                                            // progress_bar.setVisibility(View.INVISIBLE);
-                                        }
-                                        for (int i = 0; i < jsonArray.length(); i++) {
-                                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                            StateModel professionModel1 = new StateModel(
-                                                    jsonObject1.getString("state_id"),
-                                                    jsonObject1.getString("state"),
-                                                    jsonObject1.getString("code"),
-                                                    jsonObject1.getString("country_id"),
-                                                    jsonObject1.getString("status"),
-                                                    jsonObject1.getString("sortorder"));
-
-                                            stateModelArrayList.add(professionModel1);
-                                            //  progress_bar.setVisibility(View.INVISIBLE);
-                                        }
-                                    } else {
-                                        //    progress_bar.setVisibility(View.INVISIBLE);
-                                        //      Toast.makeText(EditProfileActivity.this, "No Found!..", Toast.LENGTH_LONG).show();
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                sp_state.setAdapter(new StateAdapter(EditProfileActivity.this, stateModelArrayList));
-
-
-                                if (stateModelArrayList.size() > 0) {
-                                    for (int y = 0; y < stateModelArrayList.size(); y++) {
-                                        String countryName = stateModelArrayList.get(y).getState();
-                                        if (StateN != null) {
-                                            if (StateN.equals(countryName)) {
-                                                sp_state.setSelection(y);
-                                            }
-                                        }
-                                    }
-                                }
-
-                            } catch (OutOfMemoryError | NullPointerException e) {
-                                //   progress_bar.setVisibility(View.INVISIBLE);
-                                // TODO: handle exception
-                                e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            //  progress_bar.setVisibility(View.INVISIBLE);
-                        }
+    private void EducationApi() {
+        apiInterface.get_education().enqueue(new Callback<EducationDataModel>() {
+            @Override
+            public void onResponse(Call<EducationDataModel> call, retrofit2.Response<EducationDataModel> response) {
+                EducationDataModel educationDataModel = response.body();
+                if (educationDataModel != null) {
+                    if (educationDataModel.getResponse()) {
+                        educationDataArrayList = educationDataModel.getData();
+                        Log.d("TAG", "onResponse4: " + educationDataArrayList.get(0).getEducation());
+                        sp_education.setAdapter(new EducationAdapter(EditProfileActivity.this, educationDataArrayList));
                     }
-                }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //===if response error then dismiss progress==========//
-
-                Log.v("errrr", String.valueOf(error));
-                //  progress_bar.setVisibility(View.INVISIBLE);
+                }
             }
-        }) {
+
             @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("country_id", countryIdd);
+            public void onFailure(Call<EducationDataModel> call, Throwable t) {
 
-                return params;
             }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
-    }
-
-    private void getCity(final String stateNames) {
-        cityModelArrayList.clear();
-        //  progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_city",
-                new com.android.volley.Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //=========check response are coming or not after api hit ===========//
-                        if (response != null) {
-
-                            try {
-                                Log.v("uploading", response);
-                                JSONObject jsonObject = new JSONObject(response);
-                                //=========login api response setup method====//
-                                try {
-                                    String success = jsonObject.getString("response");
-                                    if (success.equals("true")) {
-
-                                        //  StateModel stateModel = new StateModel("", "Country", "", "","","");
-                                        //  stateModelArrayList.add(stateModel);
-                                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                        if (jsonArray.length() == 0) {
-                                            CityModel cityModel1 = new CityModel("", "", "", "", "", "");
-                                            cityModelArrayList.add(cityModel1);
-                                            // progress_bar.setVisibility(View.INVISIBLE);
-                                        }
-                                        for (int i = 0; i < jsonArray.length(); i++) {
-                                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                            CityModel professionModel1 = new CityModel(
-                                                    jsonObject1.getString("id"),
-                                                    jsonObject1.getString("city"),
-                                                    jsonObject1.getString("state"),
-                                                    jsonObject1.getString("country"),
-                                                    jsonObject1.getString("sortorder"),
-                                                    jsonObject1.getString("status"));
-
-                                            cityModelArrayList.add(professionModel1);
-                                            //  progress_bar.setVisibility(View.INVISIBLE);
-                                        }
-                                    } else {
-                                        //    progress_bar.setVisibility(View.INVISIBLE);
-                                        cityModelArrayList.clear();
-                                        Toast.makeText(EditProfileActivity.this, "No  Found", Toast.LENGTH_LONG).show();
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                sp_city.setAdapter(new CityAdapter(EditProfileActivity.this, cityModelArrayList));
-
-                                if (cityModelArrayList.size() > 0) {
-                                    for (int y = 0; y < cityModelArrayList.size(); y++) {
-                                        String cityName = cityModelArrayList.get(y).getCity();
-                                        if (cityN != null) {
-                                            if (cityN.equals(cityName)) {
-                                                sp_city.setSelection(y);
-                                            }
-                                        }
-                                    }
-                                }
-
-                            } catch (OutOfMemoryError | NullPointerException e) {
-                                //   progress_bar.setVisibility(View.INVISIBLE);
-                                // TODO: handle exception
-                                e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            //  progress_bar.setVisibility(View.INVISIBLE);
-                        }
-                    }
-                }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //===if response error then dismiss progress==========//
-
-                Log.v("errrr", String.valueOf(error));
-                //  progress_bar.setVisibility(View.INVISIBLE);
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("state_name", stateNames);
-
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
-    }
-
-    private void educationApi() {
-        //  progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_education",
-                new com.android.volley.Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //=========check response are coming or not after api hit ===========//
-                        if (response != null) {
-
-                            try {
-                                Log.v("uploading", response);
-                                JSONObject jsonObject = new JSONObject(response);
-                                //=========login api response setup method====//
-
-                                try {
-                                    String success = jsonObject.getString("response");
-                                    if (success.equals("true")) {
-
-                                        //   EducationModel educationModel = new EducationModel("", "Education", "", "");
-                                        //   educationModelArrayList.add(educationModel);
-                                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                        if (jsonArray.length() == 0) {
-                                            EducationModel educationModel1 = new EducationModel("", "No Record Found", "", "");
-                                            educationModelArrayList.add(educationModel1);
-                                            // progress_bar.setVisibility(View.INVISIBLE);
-
-                                        }
-                                        for (int i = 0; i < jsonArray.length(); i++) {
-                                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                            EducationModel educationModel1 = new EducationModel(jsonObject1.getString("education_id"),
-                                                    jsonObject1.getString("education"),
-                                                    jsonObject1.getString("status"),
-                                                    jsonObject1.getString("sortorder"));
-
-
-                                            educationModelArrayList.add(educationModel1);
-                                            //  progress_bar.setVisibility(View.INVISIBLE);
-
-                                        }
-                                    } else {
-                                        //    progress_bar.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(EditProfileActivity.this, "Error1!!!..", Toast.LENGTH_LONG).show();
-
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                sp_education.setAdapter(new EducationAdapter(EditProfileActivity.this, educationModelArrayList));
-
-
-                                if (educationModelArrayList.size() > 0) {
-                                    for (int y = 0; y < educationModelArrayList.size(); y++) {
-                                        String EducationName = educationModelArrayList.get(y).getEducation();
-                                        if (EducationN.equals(EducationName)) {
-                                            sp_education.setSelection(y);
-                                        }
-                                    }
-                                }
-
-                            } catch (OutOfMemoryError | NullPointerException e) {
-                                //   progress_bar.setVisibility(View.INVISIBLE);
-                                // TODO: handle exception
-                                e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            //  progress_bar.setVisibility(View.INVISIBLE);
-                        }
-                    }
-                }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //===if response error then dismiss progress==========//
-
-                Log.v("errrr", String.valueOf(error));
-                //  progress_bar.setVisibility(View.INVISIBLE);
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
-    }
-
-    private void occupation() {
-        //  progress_bar.setVisibility(View.VISIBLE);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, ApiClient.BASE_URL + "get_occupation",
-                new com.android.volley.Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //=========check response are coming or not after api hit ===========//
-                        if (response != null) {
-
-                            try {
-                                Log.v("uploading", response);
-                                JSONObject jsonObject = new JSONObject(response);
-                                //=========login api response setup method====//
-
-                                try {
-                                    String success = jsonObject.getString("response");
-                                    if (success.equals("true")) {
-
-                                        //   ProfessionModel professionModel = new ProfessionModel("", "Profession", "", "");
-                                        //   professionModelArrayList.add(professionModel);
-                                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                                        if (jsonArray.length() == 0) {
-                                            ProfessionModel professionModel1 = new ProfessionModel("", "No Record Found", "", "");
-                                            professionModelArrayList.add(professionModel1);
-                                            // progress_bar.setVisibility(View.INVISIBLE);
-
-                                        }
-                                        for (int i = 0; i < jsonArray.length(); i++) {
-                                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-
-                                            ProfessionModel professionModel1 = new ProfessionModel(
-                                                    jsonObject1.getString("occupation_id"),
-                                                    jsonObject1.getString("occupation"),
-                                                    jsonObject1.getString("status"),
-                                                    jsonObject1.getString("sortorder"));
-
-                                            professionModelArrayList.add(professionModel1);
-                                            //  progress_bar.setVisibility(View.INVISIBLE);
-
-                                        }
-                                    } else {
-                                        //    progress_bar.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(EditProfileActivity.this, "Error1!!!..", Toast.LENGTH_LONG).show();
-
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                sp_profession.setAdapter(new ProfessionAdapter(EditProfileActivity.this, professionModelArrayList));
-
-                                if (professionModelArrayList.size() > 0) {
-                                    for (int y = 0; y < professionModelArrayList.size(); y++) {
-                                        String OccupationNName = professionModelArrayList.get(y).getOccupation();
-                                        if (OccupationN.equals(OccupationNName)) {
-                                            sp_profession.setSelection(y);
-                                        }
-                                    }
-                                }
-
-
-                            } catch (OutOfMemoryError | NullPointerException e) {
-                                //   progress_bar.setVisibility(View.INVISIBLE);
-                                // TODO: handle exception
-                                e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            //  progress_bar.setVisibility(View.INVISIBLE);
-                        }
-                    }
-                }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //===if response error then dismiss progress==========//
-
-                Log.v("errrr", String.valueOf(error));
-                //  progress_bar.setVisibility(View.INVISIBLE);
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
+        });
     }
 
     @Override
@@ -1916,8 +1424,6 @@ public class EditProfileActivity extends AppCompatActivity {
         return true;
     }
 
-
-    //--------------------CountryAdapter-----------------------------
 
     private Boolean validationSuccessP() {
         if (et_phone.getText().toString().length() == 0) {
@@ -2039,9 +1545,6 @@ public class EditProfileActivity extends AppCompatActivity {
         });
     }
 
-
-    //------------------------------ProfessionAdapter-----------------------
-
     private void afterregisContain() {
         final Dialog dialog = new Dialog(EditProfileActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -2099,19 +1602,19 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
-    //-------------------Religious---------------------
-    public class ReligiousAdapter extends BaseAdapter {
-        LayoutInflater inflator;
-        ArrayList<ReligiousModel> spinnerArrayList;
+    public class SpecialCaseAdapter extends BaseAdapter {
 
-        public ReligiousAdapter(Context context, ArrayList<ReligiousModel> spinnerArrayList) {
-            inflator = LayoutInflater.from(context);
-            this.spinnerArrayList = spinnerArrayList;
+        private final LayoutInflater layoutInflater;
+        private List<SpecialSearchModel.SpecialData> spinnerList;
+
+        public SpecialCaseAdapter(Context context, List<SpecialSearchModel.SpecialData> specialDataArrayList) {
+            layoutInflater = LayoutInflater.from(context);
+            this.spinnerList = specialDataArrayList;
         }
 
         @Override
         public int getCount() {
-            return spinnerArrayList.size();
+            return null == spinnerList ? 0 : spinnerList.size();
         }
 
         @Override
@@ -2124,28 +1627,33 @@ public class EditProfileActivity extends AppCompatActivity {
             return 0;
         }
 
+//        public void addTaxRateList(List<String> spinnerList) {
+//            this.spinnerList = spinnerList;
+//            notifyDataSetChanged();
+//        }
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = inflator.inflate(R.layout.item_spinner, null);
-            TextView deposit_channerl_ = (TextView) convertView.findViewById(R.id.spinner_text_view);
-            deposit_channerl_.setText(spinnerArrayList.get(position).getName());
+            convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
+            TextView stateTxt = convertView.findViewById(R.id.spinner_text_view);
+            stateTxt.setText(spinnerList.get(position).getName());
             return convertView;
         }
     }
 
-    // -------------------MotherToungAdapter----------------
     public class MOtherToungAdapter extends BaseAdapter {
-        LayoutInflater inflator;
-        ArrayList<MotherToungModel> spinnerArrayList;
 
-        public MOtherToungAdapter(Context context, ArrayList<MotherToungModel> spinnerArrayList) {
-            inflator = LayoutInflater.from(context);
-            this.spinnerArrayList = spinnerArrayList;
+        private final LayoutInflater layoutInflater;
+        private List<MotherToungueDataModel.MotherToungueData> spinnerList;
+
+        public MOtherToungAdapter(Context context, List<MotherToungueDataModel.MotherToungueData> motherToungueDataList) {
+            layoutInflater = LayoutInflater.from(context);
+            this.spinnerList = motherToungueDataList;
         }
 
         @Override
         public int getCount() {
-            return spinnerArrayList.size();
+            return null == spinnerList ? 0 : spinnerList.size();
         }
 
         @Override
@@ -2158,21 +1666,22 @@ public class EditProfileActivity extends AppCompatActivity {
             return 0;
         }
 
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = inflator.inflate(R.layout.item_spinner, null);
-            TextView deposit_channerl_ = (TextView) convertView.findViewById(R.id.spinner_text_view);
-            deposit_channerl_.setText(spinnerArrayList.get(position).getMother_tongue());
+            convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
+            TextView stateTxt = convertView.findViewById(R.id.spinner_text_view);
+            stateTxt.setText(spinnerList.get(position).getMotherTongue());
             return convertView;
         }
     }
-
 
     public class CountryAdapter extends BaseAdapter {
         LayoutInflater inflator;
-        ArrayList<CountryModel> spinnerArrayList;
+        List<CountryDataModel.DataBean> spinnerArrayList;
 
-        public CountryAdapter(Context context, ArrayList<CountryModel> spinnerArrayList) {
+
+        public CountryAdapter(Context context, List<CountryDataModel.DataBean> spinnerArrayList) {
             inflator = LayoutInflater.from(context);
             this.spinnerArrayList = spinnerArrayList;
         }
@@ -2201,12 +1710,11 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
-    //----------------------------satate code--------------------------------
     public class StateAdapter extends BaseAdapter {
         LayoutInflater inflator;
-        ArrayList<StateModel> spinnerArrayList;
+        List<StateDataModel.DataEntity> spinnerArrayList;
 
-        public StateAdapter(Context context, ArrayList<StateModel> spinnerArrayList) {
+        public StateAdapter(Context context, List<StateDataModel.DataEntity> spinnerArrayList) {
             inflator = LayoutInflater.from(context);
             this.spinnerArrayList = spinnerArrayList;
         }
@@ -2235,12 +1743,11 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
-    //-------------------------city adapter---------------
     public class CityAdapter extends BaseAdapter {
         LayoutInflater inflator;
-        ArrayList<CityModel> spinnerArrayList;
+        List<CityDataModel.DataCity> spinnerArrayList;
 
-        public CityAdapter(Context context, ArrayList<CityModel> spinnerArrayList) {
+        public CityAdapter(Context context, List<CityDataModel.DataCity> spinnerArrayList) {
             inflator = LayoutInflater.from(context);
             this.spinnerArrayList = spinnerArrayList;
         }
@@ -2270,17 +1777,18 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public class EducationAdapter extends BaseAdapter {
-        LayoutInflater inflator;
-        ArrayList<EducationModel> spinnerArrayList;
 
-        public EducationAdapter(Context context, ArrayList<EducationModel> spinnerArrayList) {
-            inflator = LayoutInflater.from(context);
-            this.spinnerArrayList = spinnerArrayList;
+        private final LayoutInflater layoutInflater;
+        private List<EducationDataModel.EducationData> spinnerList;
+
+        public EducationAdapter(Context context, List<EducationDataModel.EducationData> educationDataArrayList) {
+            layoutInflater = LayoutInflater.from(context);
+            this.spinnerList = educationDataArrayList;
         }
 
         @Override
         public int getCount() {
-            return spinnerArrayList.size();
+            return null == spinnerList ? 0 : spinnerList.size();
         }
 
         @Override
@@ -2293,27 +1801,29 @@ public class EditProfileActivity extends AppCompatActivity {
             return 0;
         }
 
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = inflator.inflate(R.layout.item_spinner, null);
-            TextView deposit_channerl_ = (TextView) convertView.findViewById(R.id.spinner_text_view);
-            deposit_channerl_.setText(spinnerArrayList.get(position).getEducation());
+            convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
+            TextView stateTxt = convertView.findViewById(R.id.spinner_text_view);
+            stateTxt.setText(spinnerList.get(position).getEducation());
             return convertView;
         }
     }
 
-    public class ProfessionAdapter extends BaseAdapter {
-        LayoutInflater inflator;
-        ArrayList<ProfessionModel> spinnerArrayList;
+    public class OccupationAdapter extends BaseAdapter {
 
-        public ProfessionAdapter(Context context, ArrayList<ProfessionModel> spinnerArrayList) {
-            inflator = LayoutInflater.from(context);
-            this.spinnerArrayList = spinnerArrayList;
+        private final LayoutInflater layoutInflater;
+        private List<OccupationDataModel.OccupationData> spinnerList;
+
+        public OccupationAdapter(Context context, List<OccupationDataModel.OccupationData> occupationDataArrayList) {
+            layoutInflater = LayoutInflater.from(context);
+            this.spinnerList = occupationDataArrayList;
         }
 
         @Override
         public int getCount() {
-            return spinnerArrayList.size();
+            return null == spinnerList ? 0 : spinnerList.size();
         }
 
         @Override
@@ -2326,11 +1836,16 @@ public class EditProfileActivity extends AppCompatActivity {
             return 0;
         }
 
+//        public void addTaxRateList(List<String> spinnerList) {
+//            this.spinnerList = spinnerList;
+//            notifyDataSetChanged();
+//        }
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = inflator.inflate(R.layout.item_spinner, null);
-            TextView deposit_channerl_ = (TextView) convertView.findViewById(R.id.spinner_text_view);
-            deposit_channerl_.setText(spinnerArrayList.get(position).getOccupation());
+            convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
+            TextView stateTxt = convertView.findViewById(R.id.spinner_text_view);
+            stateTxt.setText(spinnerList.get(position).getOccupation());
             return convertView;
         }
     }

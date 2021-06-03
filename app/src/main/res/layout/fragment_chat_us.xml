@@ -11,190 +11,65 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-                   <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_chat_search_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="12dp"
-                    app:cardCornerRadius="18dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/bg_white_colour">
+          <androidx.cardview.widget.CardView
+              android:id="@+id/cv_chat_search_bar"
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:layout_marginStart="10dp"
+              android:layout_marginTop="12dp"
+              android:layout_marginEnd="10dp"
+              android:layout_marginBottom="10dp"
+              android:background="@drawable/bg_white_colour"
+              app:cardCornerRadius="18dp">
 
-                                          <LinearLayout
-                                           android:layout_width="match_parent"
-                                           android:layout_height="match_parent"
-                                           android:layout_margin="@dimen/dp_10"
-                                           android:orientation="horizontal"
-                                           android:weightSum="1">
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_margin="@dimen/dp_10"
+                  android:orientation="horizontal"
+                  android:weightSum="1">
 
-                                           <EditText
-                                               android:id="@+id/search_et"
-                                               android:layout_width="match_parent"
-                                               android:layout_height="match_parent"
-                                               android:background="@drawable/bg_white_colour"
-                                               android:drawableLeft="@drawable/search_icon_smal"
-                                               android:textSize="14sp"
-                                               android:drawablePadding="10dp"
-                                               android:hint="Search for chats and people" />
+                  <EditText
+                      android:id="@+id/search_et"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:background="@drawable/bg_white_colour"
+                      android:drawableLeft="@drawable/search_icon_smal"
+                      android:drawablePadding="10dp"
+                      android:hint="Search for chats and people"
+                      android:textSize="14sp" />
 
-                                       </LinearLayout>
+              </LinearLayout>
 
-                    </androidx.cardview.widget.CardView>
+          </androidx.cardview.widget.CardView>
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff">
+          <com.google.android.material.tabs.TabLayout
+              android:id="@+id/tabLayout"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="#fff">
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Accepted"
-                />
+              <com.google.android.material.tabs.TabItem
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Accepted" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Request" />
+              <com.google.android.material.tabs.TabItem
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="New Request" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pending"
-                />
+              <com.google.android.material.tabs.TabItem
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Pending" />
 
-        </com.google.android.material.tabs.TabLayout>
-
+          </com.google.android.material.tabs.TabLayout>
 
     <FrameLayout
-                android:id="@+id/frame"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
-
-    <!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical">-->
-
-<!--        <androidx.cardview.widget.CardView-->
-<!--                android:id="@+id/cv_chat_search_bar"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:layout_marginTop="12dp"-->
-<!--                app:cardCornerRadius="18dp"-->
-<!--                android:layout_marginStart="10dp"-->
-<!--                android:layout_marginEnd="10dp"-->
-<!--           android:background="@drawable/bg_white_colour"-->
-<!--               >-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_margin="@dimen/dp_10"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    android:weightSum="1">-->
-
-<!--                    <EditText-->
-<!--                        android:id="@+id/search_et"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:background="@drawable/bg_white_colour"-->
-<!--                        android:drawableLeft="@drawable/search_chat"-->
-<!--                        android:textSize="14sp"-->
-<!--                        android:drawablePadding="10dp"-->
-<!--                        android:hint="Search for chats and people" />-->
-
-<!--                </LinearLayout>-->
-<!--            </androidx.cardview.widget.CardView>-->
-
-<!--        <LinearLayout-->
-<!--                android:id="@+id/linear_requests"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="35dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:weightSum="3"-->
-
-<!--                >-->
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/linear_accepted"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:gravity="center"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    >-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txt_accepted"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:text="Accepted"/>-->
-
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/linear_new_request"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:gravity="center"-->
-<!--                    android:layout_height="wrap_content">-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txt_new_request"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:text="New Request"/>-->
-
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/linear_pending"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:gravity="center"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    >-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txt_pending"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:text="Pending"/>-->
-
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
-
-<!--&lt;!&ndash;        <androidx.recyclerview.widget.Recycl44erView&ndash;&gt;-->
-<!--&lt;!&ndash;            android:id="@+id/accepted_recy"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="match_parent" />&ndash;&gt;-->
-
-<!--        <FrameLayout-->
-<!--            android:id="@+id/frame"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"/>-->
-
-
-
-
-<!--    </LinearLayout>-->
-
-
-
 </FrameLayout>

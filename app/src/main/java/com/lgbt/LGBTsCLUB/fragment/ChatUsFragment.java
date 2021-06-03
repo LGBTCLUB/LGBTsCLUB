@@ -36,8 +36,6 @@ public class ChatUsFragment extends Fragment  {
     Fragment fragment = null;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
-//    TextView textViewAccepted, textViewNewRequest,textViewPending;
-//    private ApiInterface apiInterface;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
