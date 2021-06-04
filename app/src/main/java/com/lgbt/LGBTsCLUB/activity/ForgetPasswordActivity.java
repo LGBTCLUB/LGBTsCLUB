@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.lgbt.LGBTsCLUB.R;
 import com.lgbt.LGBTsCLUB.model.ForgotModel;
+import com.lgbt.LGBTsCLUB.model.ForgotPasswordModel;
+import com.lgbt.LGBTsCLUB.model.serachmodel.SpecialSearchModel;
 import com.lgbt.LGBTsCLUB.network.UtilsMethod;
 import com.lgbt.LGBTsCLUB.network.networking.ApiClient;
 import com.lgbt.LGBTsCLUB.network.networking.ApiInterface;
@@ -21,22 +23,27 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.lgbt.LGBTsCLUB.activity.BuyMemberShipPlanActivity.emailid;
+
 public class ForgetPasswordActivity extends AppCompatActivity {
-     ImageView imageView;
-     TextView textView;
+    private ImageView imageView;
+    private TextView textView;
+    private ApiInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
 
+        apiInterface = ApiClient.getInterface();
+        //ForgotPasswordApi(emailid);
         imageView = findViewById(R.id.img_close);
         textView = findViewById(R.id.txt_back_to_login);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ForgetPasswordActivity.this,LoginActivity.class);
+                Intent intent = new Intent(ForgetPasswordActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -44,10 +51,10 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ForgetPasswordActivity.this,LoginActivity.class);
+                Intent intent = new Intent(ForgetPasswordActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
     }
 
-}
+   }

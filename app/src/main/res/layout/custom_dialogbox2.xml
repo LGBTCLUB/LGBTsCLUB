@@ -41,41 +41,45 @@
 
             />
     -->
-    <TextView
-        android:id="@+id/b"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/a"
-        android:layout_marginHorizontal="@dimen/dp_10"
-        android:layout_marginTop="@dimen/margin_10"
-        android:padding="5dp"
-        android:text="Enter OTP"
-        android:textColor="@color/colorBlack"
-        android:textSize="14sp">
+<!--    <TextView-->
+<!--        android:id="@+id/b"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/a"-->
+<!--        android:layout_marginHorizontal="@dimen/dp_10"-->
+<!--        android:layout_marginTop="@dimen/margin_10"-->
+<!--        android:padding="5dp"-->
+<!--        android:text="Enter OTP"-->
+<!--        android:textColor="@color/colorBlack"-->
+<!--        android:textSize="14sp">-->
 
-    </TextView>
+<!--    </TextView>-->
 
     <TextView
         android:id="@+id/note_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/b"
+        android:layout_below="@+id/a"
         android:layout_marginStart="15dp"
+        android:layout_margin="8dp"
         android:text="* Please check your email / mobile inbox."
         android:textColor="@color/black"
         android:textSize="14sp">
 
     </TextView>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/text_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/note_tv"
         android:layout_margin="@dimen/dp_10"
+        android:hint="Enter OTP"
         android:background="@drawable/bg_rec_solid_gray"
         android:drawablePadding="6dp"
-        android:gravity="center_vertical"
+        android:gravity="center"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:inputType="number"
         android:padding="12dp"
         android:textColor="@color/red"

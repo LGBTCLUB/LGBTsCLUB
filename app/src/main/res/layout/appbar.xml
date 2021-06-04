@@ -37,21 +37,21 @@
 
             <ImageView
                 android:id="@+id/search"
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
                 android:layout_marginEnd="60dp"
-                android:src="@drawable/icon_search_home" />
+                android:src="@drawable/icon_search" />
 
             <ImageView
                 android:id="@+id/notification"
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
                 android:layout_marginEnd="20dp"
-                android:src="@drawable/bell" />
+                android:src="@drawable/icon_bell" />
 
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>

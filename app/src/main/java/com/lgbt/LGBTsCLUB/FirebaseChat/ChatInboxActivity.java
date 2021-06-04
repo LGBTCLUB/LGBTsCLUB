@@ -90,8 +90,7 @@ public class ChatInboxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_inbox);
         back_arrow = findViewById(R.id.back_arrow);
-       // iv_info = findViewById(R.id.iv_info);
-txt_designation=findViewById(R.id.txt_designation);
+        txt_designation=findViewById(R.id.txt_designation);
         Firebase.setAndroidContext(this);
 
         dialog = new Dialog(ChatInboxActivity.this);
@@ -229,9 +228,9 @@ txt_designation=findViewById(R.id.txt_designation);
 
     public void FirebasechatMethod() {
         //                                                                                      me               friend
-        reference1 = new Firebase("https://umeed-2d7e6.firebaseio.com/Chat_message/" + myId + "_" + userMatriId);
+        reference1 = new Firebase("https://lgbtsclub-7daec-default-rtdb.firebaseio.com/Chat_message/" + myId + "_" + userMatriId);
         //                                                                                      friend           me
-        reference2 = new Firebase("https://umeed-2d7e6.firebaseio.com/Chat_message/" + userMatriId + "_" + myId);
+        reference2 = new Firebase("https://lgbtsclub-7daec-default-rtdb.firebaseio.com/Chat_message/" + userMatriId + "_" + myId);
 
         final RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.chat_recyclerview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

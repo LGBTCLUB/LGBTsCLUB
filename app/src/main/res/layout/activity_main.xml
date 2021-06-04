@@ -27,7 +27,7 @@
     <LinearLayout
         android:id="@+id/linear_bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
         android:orientation="horizontal"
         android:elevation="6dp"
         android:background="@drawable/bg_bottom_linear"
@@ -47,10 +47,10 @@
 
             <ImageView
                 android:id="@+id/img_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
-                android:src="@drawable/home_icon"/>
+                android:src="@drawable/homefront__icon"/>
 
         </LinearLayout>
 
@@ -64,10 +64,10 @@
 
             <ImageView
                 android:id="@+id/img_chat"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
-                android:src="@drawable/chat_icon" />
+                android:src="@drawable/icon_chatbubbles" />
 
         </LinearLayout>
 
@@ -82,10 +82,10 @@
 
             <ImageView
                 android:id="@+id/img_like"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
-                android:src="@drawable/heart_icon" />
+                android:src="@drawable/heartfront_icon" />
 
         </LinearLayout>
 
@@ -100,10 +100,10 @@
 
             <ImageView
                 android:id="@+id/img_account"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
-                android:src="@drawable/icon_profile" />
+                android:src="@drawable/profilefront_icon" />
 
         </LinearLayout>
     </LinearLayout>

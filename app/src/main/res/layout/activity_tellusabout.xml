@@ -564,12 +564,13 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_getStart"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/bg_black_colour"
                 android:gravity="center"
-                android:padding="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:text="Get Started"
                 android:textAllCaps="true"
                 android:textColor="#fff"
