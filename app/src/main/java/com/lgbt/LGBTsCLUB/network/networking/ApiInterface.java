@@ -8,6 +8,7 @@ import com.lgbt.LGBTsCLUB.model.CityDataModel;
 import com.lgbt.LGBTsCLUB.model.ContactUsModel;
 import com.lgbt.LGBTsCLUB.model.EducationDataModel;
 import com.lgbt.LGBTsCLUB.model.ForgotModel;
+import com.lgbt.LGBTsCLUB.model.ForgotPasswordModel;
 import com.lgbt.LGBTsCLUB.model.HeartModel;
 import com.lgbt.LGBTsCLUB.model.HomeModel;
 import com.lgbt.LGBTsCLUB.model.LoginModel;
@@ -95,7 +96,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("forget_password")
-    Call<ForgotModel> forgetPass(@Field("emailid") String email);
+    Call<ForgotPasswordModel> forgetPass(@Field("emailid") String email);
 
     @FormUrlEncoded
     @POST("user_detail")

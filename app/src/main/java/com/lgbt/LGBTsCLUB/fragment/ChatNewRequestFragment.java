@@ -65,8 +65,8 @@ public class ChatNewRequestFragment extends Fragment {
         request_recy = view.findViewById(R.id.request_recy);
         iv_logo = view.findViewById(R.id.iv_logo);
         progress_bar = view.findViewById(R.id.progress_bar);
-       // search_iv = view.findViewById(R.id.search_iv);
-       // search_et = view.findViewById(R.id.search_et);
+        // search_iv = view.findViewById(R.id.search_iv);
+        // search_et = view.findViewById(R.id.search_et);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         request_recy.setLayoutManager(layoutManager);
@@ -157,7 +157,7 @@ public class ChatNewRequestFragment extends Fragment {
                         } else {
                             if (offset == 0) {
                                 iv_logo.setVisibility(View.VISIBLE);
-                            //    Toast.makeText(getActivity(), "No new request", Toast.LENGTH_LONG).show();
+                                //    Toast.makeText(getActivity(), "No new request", Toast.LENGTH_LONG).show();
                             }
                             if (offset > 0) {
                                 --offset;

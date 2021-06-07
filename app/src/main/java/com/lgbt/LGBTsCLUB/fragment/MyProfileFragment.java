@@ -58,8 +58,8 @@ import static com.lgbt.LGBTsCLUB.network.networking.Constant.LOGIN_ID;
 
 public class MyProfileFragment extends Fragment {
     GoogleSignInClient mGoogleSignInClient;
-    ImageView iv_back, iv_userprofile,bg_blur_iv;
-    Button bt_profile,bt_contactUs;
+    ImageView iv_back, iv_userprofile, bg_blur_iv;
+    Button bt_profile, bt_contactUs;
     ProgressBar progress_bar;
     TextView tv_contactUs, tv_aboutUs, tv_termsCondition, tv_Membership, tv_changePassword, tv_logout,
             tv_username, tv_professional, tv_deleteAccount, profile_visitor, visit_count;
@@ -85,8 +85,8 @@ public class MyProfileFragment extends Fragment {
         tv_username = view.findViewById(R.id.tv_username);
         tv_professional = view.findViewById(R.id.tv_professional);
         bt_profile = view.findViewById(R.id.bt_profile);
-        bt_contactUs=view.findViewById(R.id.bt_contactUs);
-        bg_blur_iv=view.findViewById(R.id.bg_blur_iv);
+        bt_contactUs = view.findViewById(R.id.bt_contactUs);
+        bg_blur_iv = view.findViewById(R.id.bg_blur_iv);
         tv_aboutUs = view.findViewById(R.id.tvv_about);
         tv_termsCondition = view.findViewById(R.id.tv_termsCondition);
         tv_changePassword = view.findViewById(R.id.tv_changePassword);

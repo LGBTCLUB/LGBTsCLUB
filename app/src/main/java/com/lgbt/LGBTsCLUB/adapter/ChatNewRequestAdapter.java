@@ -91,17 +91,6 @@ public class ChatNewRequestAdapter extends RecyclerView.Adapter<ChatNewRequestAd
                     .into(holder.user_image);
         }
 
-        holder.bt_request.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // ((ChatNewRequestFragment) fragment).acceptRequest(reqId);
-                try {
-                    acceptRequest(reqId, position);
-                } catch (Exception e) {
-
-                }
-            }
-        });
 
         holder.moreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +114,6 @@ public class ChatNewRequestAdapter extends RecyclerView.Adapter<ChatNewRequestAd
                 acceptRequest(customerList.getReq_id(), position);
             }
         });
-
 
 
         holder.layout_item.setOnClickListener(new View.OnClickListener() {
@@ -216,7 +204,7 @@ public class ChatNewRequestAdapter extends RecyclerView.Adapter<ChatNewRequestAd
         private final TextView name;
         private final TextView chat_message;
         private final LinearLayout layout_item;
-        private final Button bt_request;
+        //  private final Button bt_request;
         private final TextView moreInfo;
         private ImageView cancel, accept;
         private ImageView iv_heart;
@@ -229,7 +217,7 @@ public class ChatNewRequestAdapter extends RecyclerView.Adapter<ChatNewRequestAd
             name = itemView.findViewById(R.id.name);
             chat_message = itemView.findViewById(R.id.chat_message);
             layout_item = itemView.findViewById(R.id.layout_item);
-            bt_request = itemView.findViewById(R.id.bt_request);
+            //  bt_request = itemView.findViewById(R.id.bt_request);
             moreInfo = itemView.findViewById(R.id.more_info);
             cancel = itemView.findViewById(R.id.cancel);
             accept = itemView.findViewById(R.id.accept);

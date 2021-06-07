@@ -3,7 +3,7 @@ package com.lgbt.LGBTsCLUB.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public abstract class ForgotPasswordModel {
+public  class ForgotPasswordModel {
 
     @Expose
     @SerializedName("data")

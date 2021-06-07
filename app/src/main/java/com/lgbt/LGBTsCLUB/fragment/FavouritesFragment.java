@@ -55,6 +55,7 @@ public class FavouritesFragment extends Fragment {
     public FavouritesFragment() {
 
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -73,7 +74,7 @@ public class FavouritesFragment extends Fragment {
 
         //user_status(SharedPrefsManager.getInstance().getString(LOGIN_ID));
 
-        bookmarkAdapter = new BookmarkAdapter(getActivity(),FavouritesFragment.this, homeDataList);
+        bookmarkAdapter = new BookmarkAdapter(getActivity(), FavouritesFragment.this, homeDataList);
         bookmarked_recyclerview.setAdapter(bookmarkAdapter);
         apiInterface = ApiClient.getInterface();
 
@@ -113,7 +114,7 @@ public class FavouritesFragment extends Fragment {
                     } else {
                         if (offset == 0) {
                             progress_bar.setVisibility(View.GONE);
-                           // Toast.makeText(BookMarkedActivity.this, "No Data Found", Toast.LENGTH_LONG).show();
+                            // Toast.makeText(BookMarkedActivity.this, "No Data Found", Toast.LENGTH_LONG).show();
                             iv_logo.setVisibility(View.VISIBLE);
                         }
                         //  Toast.makeText(getContext(), "No pending request", Toast.LENGTH_LONG).show();
@@ -124,9 +125,6 @@ public class FavouritesFragment extends Fragment {
                     }
                 }
             }
-
-
-
 
 
 //            @Override
@@ -182,30 +180,30 @@ public class FavouritesFragment extends Fragment {
     }
 
     public void sendRequest(String matriId, String loginmatriid) {
-            apiInterface.sendFriendRequest(matriId, loginmatriid).enqueue(new Callback<LoginModel>() {
-                @Override
-                public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
-                    if (response.isSuccessful()) {
-                        LoginModel homeModel = response.body();
-                        if (homeModel != null) {
-                            boolean respnse = homeModel.isResponse();
-                            if (respnse) {
-                                // Toast.makeText(FavouritesFragment.this, "Sent Request", Toast.LENGTH_SHORT).show();
-                                bookmarkAdapter.notifyDataSetChanged();
-                                myHeartList(SharedPrefsManager.getInstance().getString(MATRI_ID), offset);
+        apiInterface.sendFriendRequest(matriId, loginmatriid).enqueue(new Callback<LoginModel>() {
+            @Override
+            public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
+                if (response.isSuccessful()) {
+                    LoginModel homeModel = response.body();
+                    if (homeModel != null) {
+                        boolean respnse = homeModel.isResponse();
+                        if (respnse) {
+                            Toast.makeText(getActivity(), "Sent Request", Toast.LENGTH_SHORT).show();
+                            bookmarkAdapter.notifyDataSetChanged();
+                            myHeartList(SharedPrefsManager.getInstance().getString(MATRI_ID), offset);
 
-                            } else {
-                                // Toast.makeText(BookMarkedActivity.this, "Already Sent Request", Toast.LENGTH_SHORT).show();
-                            }
+                        } else {
+                            Toast.makeText(getActivity(), "Already Sent Request", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
+            }
 
-                @Override
-                public void onFailure(Call<LoginModel> call, Throwable t) {
-                    // Toast.makeText(BookMarkedActivity.this, "something is wrong", Toast.LENGTH_LONG).show();
-                }
-            });
+            @Override
+            public void onFailure(Call<LoginModel> call, Throwable t) {
+                // Toast.makeText(BookMarkedActivity.this, "something is wrong", Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 }

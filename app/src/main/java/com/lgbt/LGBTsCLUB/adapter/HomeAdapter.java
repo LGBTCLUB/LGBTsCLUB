@@ -1,5 +1,6 @@
 package com.lgbt.LGBTsCLUB.adapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,8 +73,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
         holder.userId.setText(customerList.getMatriId());
         holder.totalVisit.setText(customerList.getTotalvisit());
 
-
-       // holder.tv_gender.setText(customerList.getGenderUser());
+        // holder.tv_gender.setText(customerList.getGenderUser());
         final String matriId = customerList.getMatriId();
         final String sendrequest = customerList.getSendrequest();
 
@@ -96,7 +96,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
 //        } else {
 ////            holder.gifDrawable.setVisibility(View.GONE);
 //        }
-    //    holder.total_visit_tv.setText(customerList.getTotalvisit() + " View");
+        //    holder.total_visit_tv.setText(customerList.getTotalvisit() + " View");
 
 //        if (verify_status.equals("0")) {
 //            holder.tv_verified.setText("Not Verified");
@@ -142,8 +142,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
                     .apply(options)
                     .into(holder.user_image);
         }
-
-
 //        if (profileStatus.equals("show")) {
 //            Glide.with(context)
 //                    .load(IMAGE_LOAD_USER + customerList.getPhoto1())
@@ -163,20 +161,21 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
 //            holder.bt_request.setText("Requested");
 //        }
 
-//        holder.bt_request.setOnClickListener(v -> {
-//            if (customerList.getSendrequest().equals("0")) {
-//                holder.bt_request.setText("Requested");
-//                sendRequest(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), position);
-//            }
-//        });
+        holder.iv_send_rqst.setOnClickListener(v -> {
+            if (customerList.getSendrequest().equals("0")) {
+                //   holder.iv_send_rqst.setText("Requested");
+                sendRequest(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), position);
+            }
+        });
 
-//        holder.likeBtn.setOnClickListener(v -> {
-//            // ((MainFragment) fragment).sendheartlist(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), "1");
-//            sendheartlist(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), "1", position);
-//            holder.likeBtn.setVisibility(View.GONE);
-//            holder.unlikeBtn.setVisibility(View.VISIBLE);
-//
-//        });
+        holder.iv_heart.setOnClickListener(v -> {
+            // ((MainFragment) fragment).sendheartlist(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), "1");
+            sendheartlist(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), "1", position);
+            //   holder.iv_heart.setVisibility(View.GONE);
+            holder.iv_heart.setVisibility(View.VISIBLE);
+
+
+        });
 
 //        holder.unlikeBtn.setOnClickListener(v -> {
 //            //   ((MainFragment) fragment).sendheartlist(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID), "1");
@@ -233,7 +232,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
             @Override
             public void onFailure(Call<LoginModel> call, Throwable t) {
                 Toast.makeText(context, "something is wrong", Toast.LENGTH_LONG).show();
-             //    progress.cancleDialog();
+                //    progress.cancleDialog();
             }
         });
     }
@@ -274,12 +273,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
     }
 
     class CustomerViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView user_image;
-//        private final ImageView iv_verified;
+        private final ImageView user_image, iv_heart, iv_send_rqst;
+        //        private final ImageView iv_verified;
         private final TextView name;
         private final TextView userId;
         private final TextView totalVisit;
-//        private final TextView tv_age;
+        //        private final TextView tv_age;
 //        private final TextView tv_verified;
 //        private final TextView tv_gender;
 //        private final LinearLayout layout_item;
@@ -293,9 +292,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
         CustomerViewHolder(@NonNull View itemView) {
             super(itemView);
             user_image = itemView.findViewById(R.id.user_image);
-            // iv_heart = itemView.findViewById(R.id.iv_heart);
-          //  unlikeBtn = itemView.findViewById(R.id.iv_unlike);
-         //   likeBtn = itemView.findViewById(R.id.iv_like);
+            iv_heart = itemView.findViewById(R.id.iv_heart);
+            iv_send_rqst = itemView.findViewById(R.id.iv_send_rqst);
+            //  unlikeBtn = itemView.findViewById(R.id.iv_unlike);
+            //   likeBtn = itemView.findViewById(R.id.iv_like);
 
 
             name = itemView.findViewById(R.id.user_name);
@@ -306,7 +306,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CustomerViewHo
 //            layout_item = itemView.findViewById(R.id.layout_item);
 //            bt_request = itemView.findViewById(R.id.bt_request);
 //            bt_moreInfo = itemView.findViewById(R.id.bt_moreInfo);
- //             tv_verified = itemView.findViewById(R.id.tv_verified);
+            //             tv_verified = itemView.findViewById(R.id.tv_verified);
 //            iv_verified = itemView.findViewById(R.id.iv_verified);
 //            rv_image = itemView.findViewById(R.id.rv_image);
 //          gifDrawable = itemView.findViewById(R.id.gif_iv);

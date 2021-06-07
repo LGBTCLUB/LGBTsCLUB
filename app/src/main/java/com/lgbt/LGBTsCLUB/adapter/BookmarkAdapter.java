@@ -41,7 +41,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Custom
     private final FragmentActivity context;
     private final FavouritesFragment fragment;
     private List<HeartModel.HeartData> homeDataList;
-   // private final Activity activity;
+    // private final Activity activity;
 
     public BookmarkAdapter(FragmentActivity context, FavouritesFragment fragment, List<HeartModel.HeartData> homeDataList) {
         this.context = context;
@@ -121,15 +121,6 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Custom
                 }
             }
         });
-
-
-
-//       holder.bt_request.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ((BookMarkedActivity) activity).sendRequest(matriId, SharedPrefsManager.getInstance().getString(MATRI_ID));
-//            }
-//        });
 
 
     }
