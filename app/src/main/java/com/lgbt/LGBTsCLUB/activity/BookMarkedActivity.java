@@ -73,7 +73,6 @@ public class BookMarkedActivity extends AppCompatActivity {
         });
 
 
-
         myHeartList(SharedPrefsManager.getInstance().getString(MATRI_ID), offset);
 
         AppHelper.setupLoadMore(bookmarked_recyclerview, new AppHelper.OnScrollToEnd() {

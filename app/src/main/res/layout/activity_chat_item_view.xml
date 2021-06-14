@@ -28,7 +28,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="4dp"
                 android:maxWidth="250dp"
-                android:padding="10dp"
+                android:padding="8dp"
                 android:text="Hi,I would like to see your Profile"
                 android:textColor="#000"
                 />
@@ -78,7 +78,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/text_message_time_sent"
                 android:gravity="top|left"
-                android:padding="7dp"
+                android:padding="8dp"
                 android:text="Definitely I can.Come to my"
                 android:textColor="#fff"
                 android:textSize="14sp"

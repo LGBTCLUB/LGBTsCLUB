@@ -40,7 +40,7 @@ public class AboutUsActivity extends AppCompatActivity {
         tv_contant = findViewById(R.id.tv_aboutUs);
 
         apiInterface = ApiClient.getInterface();
-      progress = new UtilsMethod(this);
+        progress = new UtilsMethod(this);
 
         aboutUsApi();
     }

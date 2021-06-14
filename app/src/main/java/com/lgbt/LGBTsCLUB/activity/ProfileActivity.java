@@ -76,9 +76,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     public static String profileDetailApiCall = "No";
     ImageView iv_back, iv_home, iv_image1, iv_image2, iv_image3, iv_image4, iv_image5, iv_image6,
-            iv_image7, iv_attachment,bg_blur_iv;
+            iv_image7, iv_attachment, bg_blur_iv;
     TextView tv_attachment;
-    TextView tv_namee,li_viewPlan,tv_account, tv_personal, tv_professional, tv_name, tv_gender, tv_hight, tv_dob, tv_age,
+    TextView tv_namee, li_viewPlan, tv_account, tv_personal, tv_professional, tv_name, tv_gender, tv_hight, tv_dob, tv_age,
             tv_material, tv_motherTongue, tv_interest, tv_country, tv_city, tv_nationality, tv_contact,
             tv_email, tv_education, tv_perofessions, tv_salary, tv_bio, tv_upgrade;
     //    LinearLayout li_viewPlan;
@@ -141,12 +141,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         apiInterface = ApiClient.getInterface();
         tv_account.performClick();
 
-        SpannableString content = new SpannableString("Account");
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-        tv_account.setText(content);
+//        SpannableString content = new SpannableString("Account");
+//        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+//        tv_account.setText(content);
 
         tv_account.setTextColor(getResources().getColor(R.color.navy_blue));
-        tv_account.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+        tv_account.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
         tv_personal.setTextColor(getResources().getColor(R.color.gray_light));
         tv_professional.setTextColor(getResources().getColor(R.color.gray_light));
 
@@ -165,12 +165,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 li_prfessional.setVisibility(GONE);
                 li_personal.setVisibility(GONE);
 
-                SpannableString content = new SpannableString("Account");
-                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                tv_account.setText(content);
+//                SpannableString content = new SpannableString("Account");
+//                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+//                tv_account.setText(content);
 
                 tv_account.setTextColor(getResources().getColor(R.color.navy_blue));
-                tv_account.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+                tv_account.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
                 tv_personal.setTextColor(getResources().getColor(R.color.gray_light));
                 tv_professional.setTextColor(getResources().getColor(R.color.gray_light));
             }
@@ -183,12 +183,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 li_account.setVisibility(GONE);
                 li_prfessional.setVisibility(GONE);
 
-                SpannableString content = new SpannableString("Personal");
-                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                tv_personal.setText(content);
+//                SpannableString content = new SpannableString("Personal");
+//                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+//                tv_personal.setText(content);
 
                 tv_account.setTextColor(getResources().getColor(R.color.gray_light));
-                tv_personal.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+                tv_personal.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
                 tv_personal.setTextColor(getResources().getColor(R.color.navy_blue));
                 tv_professional.setTextColor(getResources().getColor(R.color.gray_light));
             }
@@ -201,12 +201,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 li_account.setVisibility(GONE);
                 li_personal.setVisibility(GONE);
 
-                SpannableString content = new SpannableString("Professional");
-                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-                tv_professional.setText(content);
+//                SpannableString content = new SpannableString("Professional");
+//                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+//                tv_professional.setText(content);
 
                 tv_account.setTextColor(getResources().getColor(R.color.gray_light));
-                tv_professional.setTypeface(Typeface.SANS_SERIF,Typeface.BOLD);
+                tv_professional.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
                 tv_personal.setTextColor(getResources().getColor(R.color.gray_light));
                 tv_professional.setTextColor(getResources().getColor(R.color.navy_blue));
             }
@@ -464,6 +464,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             upload_document(filePath, SharedPrefsManager.getInstance().getString(MATRI_ID));
         }
     }
+
     private void updateProfileImage(String imageno, String user_id) {
 
         MultipartBody.Part imagenoPart = MultipartBody.Part.createFormData("imageno", imageno);
@@ -634,6 +635,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<UserStatusModel> call, Throwable t) {
                 Toast.makeText(ProfileActivity.this, "something is wrong", Toast.LENGTH_LONG).show();

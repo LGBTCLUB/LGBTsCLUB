@@ -26,26 +26,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4755558-08fa-467b-8a9b-4b76d2b3fed1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/arrow_drop.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/dob.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/gradient_blue_bg.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/hobbies.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_mail.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon_feather_lock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon_feather_mail.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon_user.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_13_2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/AboutUsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/AboutUsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/BookMarkedActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/BookMarkedActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/ForgetPasswordActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/ForgetPasswordActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/adapter/BookmarkAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/adapter/BookmarkAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/adapter/ChatNewRequestAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/adapter/ChatNewRequestAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/adapter/HomeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/adapter/HomeAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/ChatNewRequestFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/ChatNewRequestFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/FavouritesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/FavouritesFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/MyProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/MyProfileFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/model/ForgotPasswordModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/model/ForgotPasswordModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/network/networking/ApiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/network/networking/ApiInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/ProfileActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/ProfileActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/fb.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/fb.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/google.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/google.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat_item_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat_item_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_contact_us.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_contact_us.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_forget_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_forget_password.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_favourites.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_favourites.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/home_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/home_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_registration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_registration.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_second.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_second.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[ZHROEQ59HAKRNR59]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -68,8 +83,8 @@
       <list>
         <option value="valueResourceFile" />
         <option value="layoutResourceFile" />
-        <option value="resourceFile" />
         <option value="Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -114,9 +129,8 @@
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Umeed\app\src\main\res\drawable" />
-      <recent name="D:\Umeed\app" />
+    <key name="android.template.594270087">
+      <recent name="com.lgbt.LGBTsCLUB.activity" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.lgbt.LGBTsCLUB.network.networking" />
@@ -128,8 +142,9 @@
     <key name="android.template.1539421503">
       <recent name="com.lgbt.LGBTsCLUB.activity" />
     </key>
-    <key name="android.template.594270087">
-      <recent name="com.lgbt.LGBTsCLUB.activity" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Umeed\app\src\main\res\drawable" />
+      <recent name="D:\Umeed\app" />
     </key>
   </component>
   <component name="RunManager">
@@ -342,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622815972823</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="new commit">
+      <created>1623042940584</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1623042940585</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -400,18 +422,18 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="AVDManager/0.0.1280.680@0.0.1280.680" timestamp="1617793309641" />
-    <state x="221" y="95" key="AndroidCreateResourceFileDialog" timestamp="1621405336359">
+    <state x="221" y="95" key="AndroidCreateResourceFileDialog" timestamp="1623501291461">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="221" y="95" key="AndroidCreateResourceFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1621405336359" />
+    <state x="221" y="95" key="AndroidCreateResourceFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1623501291461" />
     <state x="438" y="87" key="AndroidProcessChooserDialog" timestamp="1622878503322">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="87" key="AndroidProcessChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1622878503322" />
-    <state x="50" y="0" key="CommitChangelistDialog2" timestamp="1622815968193">
+    <state x="50" y="0" key="CommitChangelistDialog2" timestamp="1623042936708">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="50" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1622815968193" />
+    <state x="50" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1623042936708" />
     <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1621574917360">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -420,22 +442,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="517" y="238" key="Github.ShareDialog/0.0.1280.680@0.0.1280.680" timestamp="1622292904861" />
-    <state width="1236" height="279" key="GridCell.Tab.0.bottom" timestamp="1622888704655">
+    <state width="1236" height="279" key="GridCell.Tab.0.bottom" timestamp="1623133510327">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="279" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1622888704655" />
-    <state width="1236" height="279" key="GridCell.Tab.0.center" timestamp="1622888704655">
+    <state width="1236" height="279" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1623133510327" />
+    <state width="1236" height="279" key="GridCell.Tab.0.center" timestamp="1623133510327">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="279" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1622888704655" />
-    <state width="1236" height="279" key="GridCell.Tab.0.left" timestamp="1622888704655">
+    <state width="1236" height="279" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1623133510327" />
+    <state width="1236" height="279" key="GridCell.Tab.0.left" timestamp="1623133510326">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="279" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1622888704655" />
-    <state width="1236" height="279" key="GridCell.Tab.0.right" timestamp="1622888704655">
+    <state width="1236" height="279" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1623133510326" />
+    <state width="1236" height="279" key="GridCell.Tab.0.right" timestamp="1623133510327">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="279" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1622888704655" />
+    <state width="1236" height="279" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1623133510327" />
     <state width="1236" height="163" key="GridCell.Tab.1.bottom" timestamp="1622878799468">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -460,14 +482,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1622204551185" />
-    <state x="233" y="73" key="Vcs.Push.Dialog.v2" timestamp="1622815998352">
+    <state x="233" y="73" key="Vcs.Push.Dialog.v2" timestamp="1623042954076">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1622815998352" />
-    <state x="451" y="118" key="chooseDestDirectoryDialog" timestamp="1622811956581">
+    <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1623042954076" />
+    <state x="451" y="118" key="chooseDestDirectoryDialog" timestamp="1623503311767">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="451" y="118" key="chooseDestDirectoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1622811956581" />
+    <state x="451" y="118" key="chooseDestDirectoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1623503311767" />
     <state x="100" y="100" width="1080" height="480" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1622269420067">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

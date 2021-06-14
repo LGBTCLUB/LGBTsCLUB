@@ -29,7 +29,7 @@ import retrofit2.Response;
 import static com.lgbt.LGBTsCLUB.activity.BuyMemberShipPlanActivity.emailid;
 
 public class ForgetPasswordActivity extends AppCompatActivity {
-    private ImageView imageView;
+    private ImageView imageView,img_close;
     private TextView textView;
     private EditText edtEmail;
     private Button ResetPassword;
@@ -45,7 +45,15 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.edt_email);
         ResetPassword = findViewById(R.id.btn_register);
 
+
         apiInterface = ApiClient.getInterface();
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ForgetPasswordActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,14 +69,6 @@ public class ForgetPasswordActivity extends AppCompatActivity {
             }
         });
 
-
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ForgetPasswordActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,10 +94,8 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
 
-                    }
-                    else
-                    {
-                        Toast.makeText(getApplicationContext(),"Invalid EmailId",Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Invalid EmailId", Toast.LENGTH_LONG).show();
                     }
 
                 }

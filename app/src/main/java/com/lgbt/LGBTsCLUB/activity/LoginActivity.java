@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -27,6 +29,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.lgbt.LGBTsCLUB.MainActivity;
 import com.lgbt.LGBTsCLUB.R;
+import com.lgbt.LGBTsCLUB.model.ForgotPasswordModel;
 import com.lgbt.LGBTsCLUB.model.LoginModel;
 import com.lgbt.LGBTsCLUB.model.usermodel.VeryfyEmailRegisterModel;
 import com.lgbt.LGBTsCLUB.network.database.SharedPrefsManager;
@@ -54,13 +57,15 @@ import static com.lgbt.LGBTsCLUB.network.networking.Constant.USER_GENDER;
 
 public class LoginActivity extends AppCompatActivity {
     TextView tv_forget_password, tv_register,txt_signup;
-    Button btn_login;
+    Button btn_login,ResetPassword;
     PopupWindow popupWindow;
     RelativeLayout relativeLayout;
-    EditText et_emailId,et_password;
+    EditText et_emailId,et_password,edtEmail;
     private ProgressBar progress;
     String newToken;
     String otp;
+    LinearLayout linearLayout;
+    ImageView imageView;
     private ApiInterface apiInterface;
 
     @Override
@@ -71,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         relativeLayout = findViewById(R.id.rel_layout);
         tv_forget_password = findViewById(R.id.txt_forgotpasssword);
         progress = findViewById(R.id.progress_bar);
+
 
         tv_register = findViewById(R.id.txt_sign_in);
         btn_login = findViewById(R.id.btn_login);
@@ -97,12 +103,10 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         tv_forget_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
-                startActivity(intent);
+                popUp();
             }
         });
         txt_signup.setOnClickListener(new View.OnClickListener() {
@@ -182,6 +186,75 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
+    private void popUp() {
+        final Dialog dialog = new Dialog(LoginActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_forget_password);
+        dialog.show();
+        imageView=dialog.findViewById(R.id.img_close);
+        ResetPassword = dialog.findViewById(R.id.btn_register);
+        edtEmail = dialog.findViewById(R.id.edt_email);
+        linearLayout=dialog.findViewById(R.id.linear_login);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        ResetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = edtEmail.getText().toString();
+                if (email.isEmpty()) {
+                    edtEmail.setError("Email Required");
+                    edtEmail.requestFocus();
+                    return;
+                } else {
+                    ForgotPasswordApi(email);
+                }
+            }
+        });
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void ForgotPasswordApi(String emailid) {
+
+        apiInterface.forgetPass(emailid).enqueue(new Callback<ForgotPasswordModel>() {
+            @Override
+            public void onResponse(Call<ForgotPasswordModel> call, Response<ForgotPasswordModel> response) {
+                ForgotPasswordModel forgotPasswordModel = response.body();
+                Log.d("TAG", "onResponse: " + forgotPasswordModel.getResponse());
+
+                if (forgotPasswordModel != null) {
+                    if (forgotPasswordModel.getResponse()) {
+                        if (response.isSuccessful()) {
+                            Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                        }
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Invalid EmailId", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ForgotPasswordModel> call, Throwable t) {
+                Log.d("TAG", "onResponse: Fail");
+            }
+        });
+    }
+
 
     private void LoginApi(String emailId, String passWord, String newToken) {
         Log.i("rhl....", emailId + "   " + passWord + "    " + newToken);
