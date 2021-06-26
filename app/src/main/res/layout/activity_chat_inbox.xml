@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/contentRoot"
     android:background="#151D32"
-    xmlns:emojicon="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:emojicon="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:id="@+id/chat_parent_view"
@@ -100,9 +99,9 @@
                             android:text="User Name"
                             android:padding="5dp"
                             android:layout_marginTop="25dp"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:fontFamily= "@font/roboto"
+                            android:textColor=" #ffffff"
+                            android:textFontWeight="400"/>
 
                         <TextView
                             android:id="@+id/txt_designation"
@@ -110,11 +109,12 @@
                             android:layout_height="wrap_content"
                             android:maxLines="1"
                             android:textSize="12sp"
-                            android:textColor="#fff"
                             android:layout_marginStart="15dp"
                             android:layout_toRightOf="@+id/sellerImage"
                             android:layout_below="@id/sellerUserName"
-                            android:textAllCaps="false"
+                            android:textAllCaps="false" android:fontFamily= "@font/roboto"
+                            android:textColor=" #ffffff"
+                            android:textFontWeight="400"
                             android:text="Designation"
                             />
 

@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.AccountSaveDetailsFragment">
+
+    <LinearLayout
+        android:id="@+id/li_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_10">
+
+
+        <EditText
+            android:id="@+id/et_firstName"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_border_grey"
+            android:drawablePadding="8dp"
+            android:textColorHint="#808080"
+            android:gravity="center_vertical"
+            android:hint="FirstName"
+            android:padding="8dp"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/et_lastName"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_border_grey"
+            android:drawablePadding="8dp"
+            android:textColorHint="#808080"
+            android:gravity="center_vertical"
+            android:hint="LastName"
+            android:padding="8dp"
+            android:textSize="14sp" />
+
+
+        <!--                        <RelativeLayout-->
+
+        <!--                            android:layout_width="match_parent"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:layout_marginStart="10dp"-->
+        <!--                            android:layout_marginEnd="10dp"-->
+        <!--                            android:background="@drawable/bg_rec_solid_gray"-->
+        <!--                            android:padding="5dp">-->
+
+        <!--                            <Spinner-->
+        <!--                                android:id="@+id/sp_gender"-->
+        <!--                                android:layout_width="match_parent"-->
+        <!--                                android:layout_height="match_parent"-->
+        <!--                                android:layout_centerVertical="true"-->
+        <!--                                android:background="@null"-->
+        <!--                                android:entries="@array/array_gender"-->
+        <!--                                android:padding="5dp"-->
+        <!--                                android:textSize="10sp"-->
+
+        <!--                                />-->
+
+        <!--                            <ImageView-->
+        <!--                                android:layout_width="wrap_content"-->
+        <!--                                android:layout_height="wrap_content"-->
+        <!--                                android:layout_alignParentRight="true"-->
+        <!--                                android:layout_alignParentBottom="true"-->
+        <!--                                android:layout_centerInParent="true"-->
+        <!--                                android:padding="10dp"-->
+        <!--                                app:srcCompat="@drawable/arrow_drop_down"-->
+        <!--                                tools:ignore="VectorDrawableCompat" />-->
+        <!--                        </RelativeLayout>-->
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_border_grey">
+
+            <Spinner
+                android:id="@+id/sp_gender"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:entries="@array/array_gender"
+                android:padding="5dp"
+                android:textSize="10sp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_border_grey"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:weightSum="1"
+            >
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/bg_border_grey"
+                android:orientation="horizontal"
+                >
+
+                <Spinner
+                    android:id="@+id/sp_feet"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:textSize="10sp"
+                    />
+
+                <!--                                                    <ImageView-->
+                <!--                                                        android:layout_width="wrap_content"-->
+                <!--                                                        android:layout_height="wrap_content"-->
+                <!--                                                        android:layout_alignParentRight="true"-->
+                <!--                                                        android:layout_alignParentBottom="true"-->
+                <!--                                                        app:srcCompat="@drawable/arrow_drop_down"-->
+                <!--                                                        android:padding="10dp"-->
+                <!--                                                        tools:ignore="VectorDrawableCompat" />-->
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:layout_weight=".50"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rec_solid_gray"
+                android:orientation="horizontal"
+                android:layout_marginLeft="5dp"
+                >
+
+                <Spinner
+                    android:id="@+id/sp_inch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:textSize="10sp"
+                    />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+
+
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            >
+            <RelativeLayout
+                android:layout_weight=".33"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rec_solid_gray"
+                android:orientation="horizontal"
+                android:layout_marginRight="5dp"
+                >
+
+                <Spinner
+                    android:id="@+id/sp_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:textSize="10sp"
+                    />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_weight=".33"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rec_solid_gray"
+                android:orientation="horizontal"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+
+                >
+
+                <Spinner
+                    android:id="@+id/sp_month"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:textSize="10sp"
+                    />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_weight=".33"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rec_solid_gray"
+                android:orientation="horizontal"
+                android:layout_marginLeft="5dp"
+                >
+
+                <Spinner
+                    android:id="@+id/sp_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:textSize="10sp"
+                    />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/li_dob"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_border_grey"
+            >
+
+            <TextView
+                android:id="@+id/et_dob"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:textSize="14sp"
+                android:padding="12dp"
+                android:textColor="@color/colorBlack"
+                />
+
+            <ImageView
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:padding="10dp"
+                app:srcCompat="@drawable/images"
+                tools:ignore="VectorDrawableCompat" />
+        </RelativeLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_border_grey">
+
+            <Spinner
+                android:id="@+id/sp_material"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:padding="5dp"
+                android:textSize="10sp"
+                />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/douc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:text="Do You Have Children?"
+            android:textColor="#808080"
+            android:textSize="14dp"
+            android:layout_marginStart="10dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/rb_typeYes"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_rec_solid_gray"
+                android:text="Yes"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_typeNo"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/bg_rec_solid_gray"
+                android:text="No" />
+        </RadioGroup>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_border_grey"
+            >
+
+            <Spinner
+                android:id="@+id/sp_religon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:padding="5dp"
+                android:textSize="10sp"
+                />
+
+
+        </RelativeLayout>
+
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_border_grey">
+
+            <Spinner
+                android:id="@+id/sp_country"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:padding="5dp"
+                android:textSize="10sp"
+                />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_border_grey">
+
+            <Spinner
+                android:id="@+id/sp_motherToung"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:padding="5dp"
+                android:textSize="10sp"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:id="@+id/bt_savedetails"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_height="50dp"
+            android:text="Save Details"
+            android:layout_marginBottom="10dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_black_colour"
+
+            />
+
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+</FrameLayout>

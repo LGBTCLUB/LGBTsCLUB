@@ -62,9 +62,9 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="John Doe"
-                        android:textColor="@color/navy_blue"
-                        android:textStyle="bold"
-                        android:textSize="16sp"
+                        android:fontFamily= "@font/roboto"
+                        android:textColor=" #1a2434"
+                        android:textFontWeight="400"
                         />
 
                 </RelativeLayout>
@@ -75,8 +75,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Chat Message"
-                    android:textColor="#C0C0C0"
-                    android:textSize="12sp"
+                    android:fontFamily= "@font/roboto"
+                    android:textColor=" #5d5d5d"
+                    android:textFontWeight="400"
                     android:visibility="visible" />
 
                 <LinearLayout
@@ -87,16 +88,16 @@
                     >
 
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/address"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Today 12:00 am"-->
-<!--                        android:textColor="@color/colorBlack"-->
-<!--                        android:textSize="14sp"-->
-<!--                        android:layout_gravity="right"-->
-<!--                        android:layout_marginRight="@dimen/dp_10"-->
-<!--                        />-->
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/address"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:text="Today 12:00 am"-->
+                    <!--                        android:textColor="@color/colorBlack"-->
+                    <!--                        android:textSize="14sp"-->
+                    <!--                        android:layout_gravity="right"-->
+                    <!--                        android:layout_marginRight="@dimen/dp_10"-->
+                    <!--                        />-->
 
                 </LinearLayout>
 
@@ -105,12 +106,12 @@
 
 
         </RelativeLayout>
-<!--
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#000" />
--->
+        <!--
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000" />
+        -->
 
     </androidx.cardview.widget.CardView>
 

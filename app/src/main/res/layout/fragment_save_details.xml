@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.SaveDetailsFragment">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.EditProfileActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <ImageView
+            android:id="@+id/iv_blur"
+            android:layout_width="match_parent"
+            android:scaleType="fitXY"
+            android:layout_height="match_parent"
+            />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:fillViewport="true"
+            android:layout_below="@+id/app_bar">
+
+
+            <!--    <com.google.android.material.appbar.AppBarLayout-->
+            <!--        android:id="@+id/app_bar"-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:layout_height="wrap_content"-->
+            <!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+
+            <!--        >-->
+
+            <!--        <androidx.appcompat.widget.Toolbar-->
+            <!--            android:id="@+id/toolbar"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="?attr/actionBarSize"-->
+            <!--            android:layout_gravity="center"-->
+            <!--            android:background="#151D32"-->
+            <!--            android:elevation="@dimen/dp_8"-->
+            <!--            app:layout_scrollFlags="scroll|enterAlways|snap"-->
+            <!--            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">-->
+
+            <!--           -->
+
+            <!--            <RelativeLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="horizontal">-->
+
+            <!--                <ImageView-->
+            <!--                    android:id="@+id/iv_back"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_alignParentStart="true"-->
+            <!--                    android:layout_centerInParent="true"-->
+            <!--                    app:srcCompat="@drawable/back_arrow"-->
+
+            <!--                    tools:ignore="VectorDrawableCompat" />-->
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/tv_test"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginStart="40dp"-->
+            <!--                    android:layout_marginLeft="20dp"-->
+            <!--                    android:text="Edit Profile"-->
+            <!--                    android:textColor="@color/white"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    android:textSize="20sp" />-->
+
+            <!--                &lt;!&ndash;                <ImageView&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    android:id="@+id/iv_home"&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    android:layout_alignParentEnd="true"&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    android:layout_marginRight="@dimen/dp_10"&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    app:srcCompat="@drawable/ic_home_pink"&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    tools:ignore="VectorDrawableCompat" />&ndash;&gt;-->
+
+
+            <!--            </RelativeLayout>-->
+
+            <!--        </androidx.appcompat.widget.Toolbar>-->
+
+            <!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <RelativeLayout
+                        android:id="@+id/rvuserImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        >
+                        <!--                <ImageView-->
+                        <!--                    android:id="@+id/iv_blur"-->
+                        <!--                    android:layout_width="match_parent"-->
+                        <!--                    android:scaleType="fitXY"-->
+                        <!--                    android:layout_height="match_parent"-->
+                        <!--                    />-->
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/iv_userprofile"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/logo_final" />
+
+                        <ImageView
+                            android:id="@+id/imgOnlineIndicator"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_alignRight="@+id/iv_userprofile"
+                            android:layout_alignBottom="@+id/iv_userprofile"
+                            android:layout_marginRight="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:visibility="visible"
+                            app:srcCompat="@drawable/edit_icon" />
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient_card"
+                    android:orientation="vertical"
+                    android:layout_marginTop="-35dp">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tabTextAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle">
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Account"/>
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Personal" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Professional" />
+
+                    </com.google.android.material.tabs.TabLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+        <ProgressBar
+            android:visibility="invisible"
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+</FrameLayout>

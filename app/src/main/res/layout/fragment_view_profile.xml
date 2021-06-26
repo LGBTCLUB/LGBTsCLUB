@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.ViewProfileFragment">
+
+    <ImageView
+        android:id="@+id/bg_blur_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+
+        />
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/rvuserImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/back_arrow">
+
+                    <!--                    <ImageView-->
+                    <!--                        android:id="@+id/bg_blur_iv"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:scaleType="fitXY"-->
+                    <!--                        android:layout_height="match_parent"-->
+                    <!--                        />-->
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_image1"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/logo_final" />
+
+                    <ImageView
+                        android:id="@+id/imgOnlineIndicator"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_alignRight="@+id/iv_image1"
+                        android:layout_alignBottom="@+id/iv_image1"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:visibility="visible"
+                        app:srcCompat="@drawable/edit_icon" />
+
+                    <TextView
+                        android:id="@+id/tv_namee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=""
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_below="@+id/iv_image1"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/lbt_member"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="LGBT Club membership"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_below="@+id/tv_namee"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:id="@+id/linear_plan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_margin="8dp"
+                        android:layout_below="@id/lbt_member">
+
+                        <TextView
+                            android:id="@+id/tv_upgrade"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/bg_rec_solid_gray"
+                            android:gravity="center"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="20dp"
+                            android:text="Upgrade Plan"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            />
+
+                        <TextView
+                            android:id="@+id/li_viewPlan"
+                            android:layout_width="90dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/bg_round_white"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/dp_10"
+                            android:text="View Plan"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-35dp"
+                android:background="@drawable/gradient_card"
+                android:orientation="vertical">
+
+                <HorizontalScrollView
+                    android:id="@+id/hsv"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:fillViewport="true"
+                    android:measureAllChildren="false"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <RelativeLayout
+                            android:id="@+id/rvvvvv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/back_arrow">
+
+                            <ImageView
+                                android:id="@+id/iv_closeone"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_alignTop="@+id/iv_image2"
+                                android:layout_alignRight="@+id/iv_image2"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:tint="@color/red"
+                                app:srcCompat="@drawable/ic_close_black_24dp" />
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/iv_image2"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_centerVertical="true"
+                                android:padding="5dp"
+                                android:src="@drawable/logo_final" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rvvvvv1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/back_arrow">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_alignTop="@+id/iv_image3"
+                                android:layout_alignRight="@+id/iv_image3"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:tint="@color/red"
+                                app:srcCompat="@drawable/ic_close_black_24dp" />
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/iv_image3"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:padding="5dp"
+                                android:src="@drawable/logo_final" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/back_arrow">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_alignTop="@+id/iv_image4"
+                                android:layout_alignRight="@+id/iv_image4"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:tint="@color/red"
+                                app:srcCompat="@drawable/ic_close_black_24dp" />
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/iv_image4"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:padding="5dp"
+                                android:src="@drawable/logo_final" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/back_arrow">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_alignTop="@+id/iv_image5"
+                                android:layout_alignRight="@+id/iv_image5"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:tint="@color/red"
+                                app:srcCompat="@drawable/ic_close_black_24dp" />
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/iv_image5"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:padding="5dp"
+                                android:src="@drawable/logo_final" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/back_arrow">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_alignTop="@+id/iv_image6"
+                                android:layout_alignRight="@+id/iv_image6"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:tint="@color/red"
+                                app:srcCompat="@drawable/ic_close_black_24dp" />
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/iv_image6"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:padding="5dp"
+                                android:src="@drawable/logo_final" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/back_arrow">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_alignTop="@+id/iv_image7"
+                                android:layout_alignRight="@+id/iv_image7"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:tint="@color/red"
+                                app:srcCompat="@drawable/ic_close_black_24dp" />
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/iv_image7"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:padding="5dp"
+                                android:src="@drawable/logo_final" />
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="#a9a9a9" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabTextAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Account" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Personal" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Professional" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <FrameLayout
+                    android:id="@+id/frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
+
+</FrameLayout>

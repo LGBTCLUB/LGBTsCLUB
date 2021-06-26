@@ -14,7 +14,6 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-
         <ImageView
             android:id="@+id/bg_blur_iv"
             android:layout_width="match_parent"
@@ -74,10 +73,12 @@
                         android:gravity="center"
                         android:text=""
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/white"
                         android:textStyle="bold"
                         android:layout_below="@+id/iv_userprofile"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:textColor="#ffffff"
+                        android:textFontWeight="700"
+                        android:fontFamily="@font/roboto"/>
 
                     <TextView
                         android:id="@+id/tv_professional"
@@ -86,10 +87,11 @@
                         android:gravity="center"
                         android:text=""
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
                         android:layout_below="@+id/tv_username"
-                        android:textSize="14sp" />
+                        android:textSize="12sp"
+                        android:textColor="#ffffff"
+                        android:textFontWeight="400"
+                        android:fontFamily="@font/roboto" />
 
 
                     <LinearLayout
@@ -112,8 +114,11 @@
                             android:text="View Profile"
                             android:textAllCaps="false"
                             android:layout_margin="5dp"
-                            android:textColor="@color/white"
                             android:textSize="12sp"
+                            android:textColor="#ffffff"
+                            android:textFontWeight="400"
+                            android:textAlignment="center"
+                            android:fontFamily="@font/roboto"
 
                             />
                         <Button
@@ -128,6 +133,10 @@
                             android:layout_margin="5dp"
                             android:textAllCaps="false"
                             android:textSize="12sp"
+                            android:textColor="#141414"
+                            android:textFontWeight="400"
+                            android:textAlignment="center"
+                            android:fontFamily="@font/roboto"
                             />
 
                     </LinearLayout>
@@ -157,8 +166,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:text="My Profile Visitors- "
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="18sp"
+                        android:textColor="#141414"
+                        android:textFontWeight="400"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/roboto"/>
 
                     <TextView
                         android:id="@+id/visit_count"
@@ -166,10 +178,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:text=""
-                        android:textColor="#000"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="#141414"
+                        android:textSize="18sp"
+                        android:textFontWeight="700"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/roboto" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -198,9 +214,11 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="10dp"
                             android:text="About Us"
-                            android:textColor="@color/navy_blue"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textColor="#1a2434"
+                            android:textSize="18sp"
+                            android:textFontWeight="700"
+                            android:fontFamily="@font/roboto"  />
 
 
                         <TextView
@@ -208,8 +226,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:textColor="#000"
-                            android:textSize="14sp" />
+                            android:textColor="#414141"
+                            android:textSize="14sp"
+                            android:textFontWeight="400"
+                            android:lineHeight="23px"
+                            android:fontFamily="@font/roboto"  />
 
                     </LinearLayout>
 
@@ -251,9 +272,12 @@
                             android:layout_marginStart="8dp"
                             android:text="Membership Plan"
                             android:textStyle="bold"
-                            android:textColor="@color/navy_blue"
+                            android:textColor="#141414"
                             android:layout_gravity="center_vertical"
-                            android:textSize="15sp" />
+                            android:textFontWeight="500"
+                            android:textSize="16sp"
+                            android:lineHeight="24px"
+                            android:fontFamily="@font/roboto"/>
 
                     </LinearLayout>
 
@@ -279,9 +303,12 @@
                             android:layout_marginStart="8dp"
                             android:text="Change Password"
                             android:textStyle="bold"
+                            android:textColor="#141414"
                             android:layout_gravity="center_vertical"
-                            android:textColor="@color/navy_blue"
-                            android:textSize="15sp" />
+                            android:textFontWeight="500"
+                            android:textSize="16sp"
+                            android:lineHeight="24px"
+                            android:fontFamily="@font/roboto" />
 
                     </LinearLayout>
 
@@ -308,19 +335,31 @@
                             android:layout_marginStart="8dp"
                             android:text="Delete Account"
                             android:textStyle="bold"
+                            android:textColor="#141414"
                             android:layout_gravity="center_vertical"
-                            android:textColor="@color/navy_blue"
-                            android:textSize="15sp" />
+                            android:textFontWeight="500"
+                            android:textSize="16sp"
+                            android:lineHeight="24px"
+                            android:fontFamily="@font/roboto" />
+
 
                     </LinearLayout>
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/linear_delete_account"
+                        android:layout_marginTop="18dp"
+                        android:background="#a9a9a9" />
 
                     <LinearLayout
                         android:id="@+id/linear_logout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/linear_delete_account"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_below="@+id/view2"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="18dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -338,10 +377,13 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="Logout"
-                            android:layout_gravity="center_vertical"
-                            android:textColor="@color/navy_blue"
                             android:textStyle="bold"
-                            android:textSize="15sp" />
+                            android:textColor="#141414"
+                            android:layout_gravity="center_vertical"
+                            android:textFontWeight="500"
+                            android:textSize="16sp"
+                            android:lineHeight="24px"
+                            android:fontFamily="@font/roboto" />
 
                     </LinearLayout>
 
@@ -351,10 +393,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/linear_logout"
-                        android:layout_marginStart="22dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="14dp"
                         android:text="Terms and condition"
-                        android:textColor="#000"
+                        android:textColor="#798bac"
+                        android:textFontWeight="700"
+                        android:fontFamily="@font/roboto"
+                        android:lineHeight="24px"
                         android:textSize="12sp" />
 
 

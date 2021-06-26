@@ -131,18 +131,19 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/logo_final" />
+                        android:src="@mipmap/ic_launcher_logo_f" />
 
                     <ImageView
                         android:id="@+id/imgOnlineIndicator"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
                         android:layout_alignRight="@+id/iv_userprofile"
                         android:layout_alignBottom="@+id/iv_userprofile"
                         android:layout_marginRight="0dp"
                         android:layout_marginBottom="0dp"
+                        android:padding="6dp"
                         android:visibility="visible"
-                        app:srcCompat="@drawable/edit_icon" />
+                        app:srcCompat="@drawable/icon_edit_final" />
 
 
                 </RelativeLayout>

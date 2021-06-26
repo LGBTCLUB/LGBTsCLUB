@@ -62,10 +62,11 @@
                         android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
                         android:gravity="center"
                         android:text="John Doe"
-                        android:textColor="@color/navy_blue"
-                        android:textSize="16sp" />
+                        android:textColor="#1a2434"
+                        android:textFontWeight="400" />
 
 
                 </RelativeLayout>
@@ -76,7 +77,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Chat Message"
-                    android:textSize="12sp"
+                    android:fontFamily= "@font/roboto"
+                    android:textColor="#5d5d5d"
+                    android:textFontWeight="400"
                     android:visibility="visible" />
 
                 <LinearLayout
@@ -89,8 +92,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="More Info"
-                    android:textColor="@color/navy_blue"
-                    android:textSize="14sp"
+                    android:fontFamily= "@font/roboto"
+                    android:textColor="#3c5d96"
+                    android:textFontWeight="400"
                     android:visibility="visible" />
 
                     <ImageView

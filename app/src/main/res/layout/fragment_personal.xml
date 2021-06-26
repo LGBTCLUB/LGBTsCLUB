@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.PersonalFragment">
+
+    <LinearLayout
+        android:id="@+id/li_personal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".50"
+                android:padding="@dimen/dp_10"
+                android:textColor="#000"
+                android:layout_marginStart="8dp"
+                android:textStyle="bold"
+                android:text="Hobbies and Interests"
+                android:textAllCaps="false"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_interest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".50"
+                android:padding="@dimen/dp_10"
+                android:text=""
+                android:textAllCaps="false"
+                />
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".50"
+                android:padding="@dimen/dp_10"
+                android:textColor="#000"
+                android:layout_marginStart="8dp"
+                android:textStyle="bold"
+                android:text="City"
+                android:textAllCaps="false" />
+
+            <TextView
+                android:id="@+id/tv_city"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".50"
+                android:padding="@dimen/dp_10"
+                android:text=""
+                android:textAllCaps="false"
+                />
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".50"
+                android:padding="@dimen/dp_10"
+                android:text="Country"
+                android:layout_marginStart="8dp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textAllCaps="false"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_country"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".50"
+                android:padding="@dimen/dp_10"
+                android:text=""
+                android:textAllCaps="false"
+                />
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".50"
+                android:padding="@dimen/dp_10"
+                android:textColor="#000"
+                android:layout_marginStart="8dp"
+                android:textStyle="bold"
+                android:text="Nationality"
+                android:textAllCaps="false"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_nationality"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".50"
+                android:padding="@dimen/dp_10"
+                android:text=" "
+                android:textAllCaps="false"
+                />
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".50"
+                android:padding="@dimen/dp_10"
+                android:text="Contact"
+                android:layout_marginStart="8dp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textAllCaps="false"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_contact"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".50"
+                android:padding="@dimen/dp_10"
+                android:text=""
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".50"
+                android:padding="@dimen/dp_10"
+                android:textColor="#000"
+                android:layout_marginStart="8dp"
+                android:textStyle="bold"
+                android:text="Email Id"
+                android:textAllCaps="false"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".50"
+                android:padding="@dimen/dp_10"
+                android:text="example@gmail.com "
+                android:textAllCaps="false"
+                />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/bt_editprofile"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_height="50dp"
+            android:text="Edit Profile"
+            android:layout_marginBottom="10dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_black_colour"
+
+            />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+</FrameLayout>

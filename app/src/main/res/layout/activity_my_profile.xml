@@ -646,7 +646,6 @@
 
                 </LinearLayout>
 
-
                 <LinearLayout
                     android:id="@+id/li_personal"
                     android:layout_width="match_parent"
@@ -853,9 +852,6 @@
 
 
                 </LinearLayout>
-
-
-
 
                 <LinearLayout
                     android:id="@+id/li_prfessional"

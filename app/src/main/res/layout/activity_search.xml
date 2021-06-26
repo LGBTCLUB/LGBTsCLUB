@@ -51,14 +51,11 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:hint="Member ID"
-                    android:inputType="text"
-                    android:maxLength="12"
                     android:padding="12dp"
                     android:singleLine="true"
-                    android:textColor="@color/red"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    tools:ignore="MissingConstraints"
+                    android:textColor=" #798dac"
+                    android:textFontWeight="400"
+                    android:fontFamily="@font/roboto"
 
                     />
 
@@ -89,8 +86,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Age"
-                        android:textColor="@color/red"
-                        android:textSize="14sp"
+                        android:textColor=" #182434"
+                        android:textFontWeight="700"
+                        android:fontFamily="@font/roboto"
                         android:textStyle="bold" />
 
 
@@ -104,8 +102,9 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
                             android:text="min 18 yrs"
-                            android:textColor="#C71585"
-                            android:textSize="12sp" />
+                            android:textColor=" #ff409f"
+                            android:textFontWeight="400"
+                            android:fontFamily="@font/roboto" />
 
                         <TextView
                             android:id="@+id/tv_max_age"
@@ -113,16 +112,17 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:text="max 60 yrs"
-                            android:textColor="#C71585"
-                            android:textSize="12sp" />
+                            android:textColor=" #ff409f"
+                            android:textFontWeight="400"
+                            android:fontFamily="@font/roboto" />
                     </RelativeLayout>
 
                     <com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar
                         android:id="@+id/age_selector_rsb"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        rsb:absoluteMaxValue="100"
-                        rsb:absoluteMinValue="0"
+                        rsb:absoluteMaxValue="60"
+                        rsb:absoluteMinValue="18"
                         rsb:rsb_progress_color="#C71585" />
 
 
@@ -145,8 +145,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_10"
                         android:text="Gender"
-                        android:textColor="@color/red"
-                        android:textSize="14sp"
+                        android:textColor=" #182434"
+                        android:textFontWeight="700"
+                        android:fontFamily="@font/roboto"
                         android:textStyle="bold" />
 
                     <RelativeLayout
@@ -182,8 +183,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_10"
                         android:text="Sexual Orientation"
-                        android:textColor="@color/red"
-                        android:textSize="14sp"
+                        android:textColor=" #182434"
+                        android:textFontWeight="700"
+                        android:fontFamily="@font/roboto"
                         android:textStyle="bold" />
 
                     <RelativeLayout
@@ -235,9 +237,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_10"
                         android:text="Location"
-                        android:textColor="@color/red"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textColor=" #182434"
+                        android:textFontWeight="700"
+                        android:fontFamily="@font/roboto"
+                        android:textStyle="bold"  />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -338,9 +341,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_10"
                         android:text="Special Case"
-                        android:textColor="@color/red"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textColor=" #182434"
+                        android:textFontWeight="700"
+                        android:fontFamily="@font/roboto"
+                        android:textStyle="bold"  />
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -373,9 +377,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_10"
                         android:text="Education"
-                        android:textColor="@color/red"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textColor=" #182434"
+                        android:textFontWeight="700"
+                        android:fontFamily="@font/roboto"
+                        android:textStyle="bold"  />
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -408,9 +413,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_10"
                         android:text="Occupation"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textColor=" #182434"
+                        android:textFontWeight="700"
+                        android:fontFamily="@font/roboto"
+                        android:textStyle="bold"  />
 
                     <RelativeLayout
                     android:layout_width="match_parent"
@@ -446,7 +452,11 @@
                         android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Search"/>
+                        android:text="Search"
+                        android:fontFamily= "@font/roboto"
+                        android:textColor=" #ffffff"
+                        android:textFontWeight="700"
+                        android:textAlignment="center"/>
 
                 </LinearLayout>
 

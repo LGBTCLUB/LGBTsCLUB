@@ -103,12 +103,14 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         tv_forget_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 popUp();
             }
         });
+
         txt_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

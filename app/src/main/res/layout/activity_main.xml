@@ -13,7 +13,7 @@
     >
 
     <include
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarr"
         layout="@layout/appbar" />
 
     <FrameLayout
@@ -21,13 +21,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/linear_bottom_bar"
-        android:layout_below="@+id/toolbar"/>
+        android:layout_below="@+id/toolbarr"/>
 
 
     <LinearLayout
         android:id="@+id/linear_bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:elevation="6dp"
         android:background="@drawable/bg_bottom_linear"

@@ -47,22 +47,32 @@
               android:id="@+id/tabLayout"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:background="#fff">
+              android:background="#fff"
+              app:tabTextAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle">>
 
               <com.google.android.material.tabs.TabItem
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="Accepted" />
+                  android:text="Accepted"
+                  android:fontFamily= "@font/roboto"
+                  android:textColor=" #1a2434"
+                  android:textFontWeight="700"/>
 
               <com.google.android.material.tabs.TabItem
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="New Request" />
+                  android:text="New Request"
+                  android:fontFamily= "@font/roboto"
+                  android:textColor=" #1a2434"
+                  android:textFontWeight="700"/>
 
               <com.google.android.material.tabs.TabItem
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="Pending" />
+                  android:text="Pending"
+                  android:fontFamily= "@font/roboto"
+                  android:textColor=" #1a2434"
+                  android:textFontWeight="700"/>
 
           </com.google.android.material.tabs.TabLayout>
 

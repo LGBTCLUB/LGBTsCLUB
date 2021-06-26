@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         apiInterface = ApiClient.getInterface();
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        toolbar.getBackground().setAlpha(10);
 //        setSupportActionBar(toolbar);
 
         notification = findViewById(R.id.notification);
@@ -452,29 +452,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.linear_home:
                 imageViewHome.setColorFilter(getResources().getColor(R.color.colorPrimaryDark));
-                imageViewChat.setColorFilter(getResources().getColor(R.color.navy_blue));
-                imageViewLike.setColorFilter(getResources().getColor(R.color.navy_blue));
-                imageViewAccount.setColorFilter(getResources().getColor(R.color.navy_blue));
+                imageViewChat.setColorFilter(getResources().getColor(R.color.blueyy));
+                imageViewLike.setColorFilter(getResources().getColor(R.color.blueyy));
+                imageViewAccount.setColorFilter(getResources().getColor(R.color.blueyy));
                 pushFragment(new MainFragment());
                 break;
             case R.id.linear_chat:
-                imageViewHome.setColorFilter(getResources().getColor(R.color.navy_blue));
+                imageViewHome.setColorFilter(getResources().getColor(R.color.blueyy));
                 imageViewChat.setColorFilter(getResources().getColor(R.color.colorPrimaryDark));
-                imageViewLike.setColorFilter(getResources().getColor(R.color.navy_blue));
-                imageViewAccount.setColorFilter(getResources().getColor(R.color.navy_blue));
+                imageViewLike.setColorFilter(getResources().getColor(R.color.blueyy));
+                imageViewAccount.setColorFilter(getResources().getColor(R.color.blueyy));
                 pushFragment(new ChatUsFragment());
+                Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+                toolbar.setTitle("jjj");
+                toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+                setSupportActionBar(toolbar);
                 break;
             case R.id.linear_like:
-                imageViewHome.setColorFilter(getResources().getColor(R.color.navy_blue));
-                imageViewChat.setColorFilter(getResources().getColor(R.color.navy_blue));
+                imageViewHome.setColorFilter(getResources().getColor(R.color.blueyy));
+                imageViewChat.setColorFilter(getResources().getColor(R.color.blueyy));
                 imageViewLike.setColorFilter(getResources().getColor(R.color.colorPrimaryDark));
-                imageViewAccount.setColorFilter(getResources().getColor(R.color.navy_blue));
+                imageViewAccount.setColorFilter(getResources().getColor(R.color.blueyy));
                 pushFragment(new FavouritesFragment());
                 break;
             case R.id.linear_account:
-                imageViewHome.setColorFilter(getResources().getColor(R.color.navy_blue));
-                imageViewChat.setColorFilter(getResources().getColor(R.color.navy_blue));
-                imageViewLike.setColorFilter(getResources().getColor(R.color.navy_blue));
+                imageViewHome.setColorFilter(getResources().getColor(R.color.blueyy));
+                imageViewChat.setColorFilter(getResources().getColor(R.color.blueyy));
+                imageViewLike.setColorFilter(getResources().getColor(R.color.blueyy));
                 imageViewAccount.setColorFilter(getResources().getColor(R.color.colorPrimaryDark));
                 pushFragment(new MyProfileFragment());
                 break;

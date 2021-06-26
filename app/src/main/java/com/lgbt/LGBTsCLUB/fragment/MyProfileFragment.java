@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -46,6 +47,8 @@ import com.lgbt.LGBTsCLUB.network.networking.ApiInterface;
 
 import java.util.Objects;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -64,6 +67,10 @@ public class MyProfileFragment extends Fragment {
     TextView tv_contactUs, tv_aboutUs, tv_termsCondition, tv_Membership, tv_changePassword, tv_logout,
             tv_username, tv_professional, tv_deleteAccount, profile_visitor, visit_count;
     private ApiInterface apiInterface;
+    Fragment fragment = null;
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
+    Toolbar toolbar;
 
     public MyProfileFragment() {
         // Required empty public constructor
@@ -98,6 +105,7 @@ public class MyProfileFragment extends Fragment {
         visit_count = view.findViewById(R.id.visit_count);
 
 
+        toolbar = view.findViewById(R.id.toolbar);
         SpannableString content = new SpannableString("Terms and condition");
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
         tv_termsCondition.setText(content);
@@ -116,8 +124,13 @@ public class MyProfileFragment extends Fragment {
         bt_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ProfileActivity.class);
-                startActivity(intent);
+                fragment = new ViewProfileFragment();
+                fragmentManager = getFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, fragment);
+                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                fragmentTransaction.commit();
+
             }
         });
 

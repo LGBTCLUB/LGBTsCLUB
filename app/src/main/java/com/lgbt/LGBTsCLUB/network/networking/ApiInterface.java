@@ -36,6 +36,7 @@ import com.lgbt.LGBTsCLUB.model.UserStatusModel;
 import com.lgbt.LGBTsCLUB.model.serachmodel.SmartSearchModel;
 import com.lgbt.LGBTsCLUB.model.serachmodel.SpecialSearchModel;
 import com.lgbt.LGBTsCLUB.model.usermodel.CountryModel;
+import com.lgbt.LGBTsCLUB.model.usermodel.SearchModel;
 import com.lgbt.LGBTsCLUB.model.usermodel.VeryfyEmailRegisterModel;
 
 import okhttp3.MultipartBody;
@@ -82,6 +83,12 @@ public interface ApiInterface {
 //            , @Part MultipartBody.Part genderPart, @Part MultipartBody.Part phonePart, @Part MultipartBody.Part emailPart,
 //                                     @Part MultipartBody.Part passwordPart);
 //
+    @FormUrlEncoded
+    @POST("filter_data")
+    Call<SearchModel> search(@Field("min_age") String minAge, @Field("max_age") String maxAge, @Field("gender") String gender
+            , @Field("Country") String country, @Field("State") String State, @Field("City") String City, @Field("spe_cases") String specialCases
+            , @Field("Education") String education, @Field("Occupation") String occupation);
+
 
     @FormUrlEncoded
     @POST("set_partner_prefrence")

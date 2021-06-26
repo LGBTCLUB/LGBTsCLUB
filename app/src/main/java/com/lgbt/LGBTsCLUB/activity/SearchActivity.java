@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -26,9 +28,11 @@ import com.lgbt.LGBTsCLUB.R;
 import com.lgbt.LGBTsCLUB.model.CityDataModel;
 import com.lgbt.LGBTsCLUB.model.EducationDataModel;
 import com.lgbt.LGBTsCLUB.model.OccupationDataModel;
+import com.lgbt.LGBTsCLUB.model.RegisterModel;
 import com.lgbt.LGBTsCLUB.model.StateDataModel;
 import com.lgbt.LGBTsCLUB.model.serachmodel.OccupicationModel;
 import com.lgbt.LGBTsCLUB.model.serachmodel.SpecialSearchModel;
+import com.lgbt.LGBTsCLUB.model.usermodel.SearchModel;
 import com.lgbt.LGBTsCLUB.network.networking.ApiClient;
 import com.lgbt.LGBTsCLUB.network.networking.ApiInterface;
 import com.lgbt.LGBTsCLUB.network.networking.CountryDataModel;
@@ -43,6 +47,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.view.View.GONE;
 import static com.paytm.pgsdk.easypay.manager.PaytmAssist.getContext;
 
 public class SearchActivity extends AppCompatActivity  {
@@ -56,6 +61,8 @@ public class SearchActivity extends AppCompatActivity  {
     private List<EducationDataModel.EducationData> educationDataArrayList;
     private List<OccupationDataModel.OccupationData> occupationDataArrayList;
     private List<SpecialSearchModel.SpecialData> specialDataArrayList;
+    private List<SearchModel.ResultEntity> searchArrayList;
+    private SeekBar age_selector_rsb;
 
     private GenderAdapter genderAdapter;
 
@@ -67,12 +74,15 @@ public class SearchActivity extends AppCompatActivity  {
 
     private final ArrayList<OccupicationModel> occupicationModelArrayList = new ArrayList<>();
     private ApiInterface apiInterface;
+    private EditText edtMID;
+    SearchhAdapter searchhAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        edtMID = findViewById(R.id.edt_matrimonial_id);
         sp_occupation = findViewById(R.id.sp_occupation);
         sp_gender = findViewById(R.id.sp_gender);
         sp_sexual_orientation = findViewById(R.id.sp_sexual_orientation);
@@ -81,17 +91,17 @@ public class SearchActivity extends AppCompatActivity  {
         sp_city = findViewById(R.id.sp_city);
         sp_education = findViewById(R.id.sp_education);
         sp_special_case = findViewById(R.id.sp_special_case);
-
         buttonSearch = findViewById(R.id.btn_search);
+//        age_selector_rsb = findViewById(R.id.age_selector_rsb);
 
         init();
         apiInterface = ApiClient.getInterface();
-
         countryModelArrayList = new ArrayList<>();
         stateModelArrayList = new ArrayList<>();
         cityModelArrayList = new ArrayList<>();
         educationDataArrayList = new ArrayList<>();
         occupationDataArrayList = new ArrayList<>();
+        searchArrayList = new ArrayList<>();
 
         CountryApi();
         EducationApi();
@@ -247,7 +257,7 @@ public class SearchActivity extends AppCompatActivity  {
                 if (countryDataModel != null) {
                     if (countryDataModel.getResponse()) {
                         countryModelArrayList = countryDataModel.getData();
-                        Log.d("TAG", "onResponse: " + countryModelArrayList.get(0).getCountry());
+                        //Log.d("TAG", "onResponse: " + countryModelArrayList.get(0).getCountry());
                         sp_country.setAdapter(new CountryAdapter(SearchActivity.this, countryModelArrayList));
                         StateApi(countryModelArrayList.get(0).getCountryId());
                     }
@@ -311,7 +321,60 @@ public class SearchActivity extends AppCompatActivity  {
 
         });
 
+        buttonSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String mid = edtMID.getText().toString();
+                String spgender=sp_gender.getSelectedItem().toString();
+                String spoccupation=sp_occupation.getSelectedItem().toString();
+                String spsexualorientation=sp_sexual_orientation.getSelectedItem().toString();
+                String spcountry=sp_country.getSelectedItem().toString();
+                String spstate=sp_state.getSelectedItem().toString();
+                String spcity=sp_city.getSelectedItem().toString();
+                String speducation=sp_education.getSelectedItem().toString();
+                String spspecialcase=sp_special_case.getSelectedItem().toString();
+               // int seekbar=age_selector_rsb.getProgress();
+
+              searchApi(mid,spgender,spoccupation,spsexualorientation,spcountry,spstate,spcity,speducation,spspecialcase);
+            }
+        });
+
     }
+
+    private void searchApi( String mid, String spgender, String spoccupation, String spsexualorientation, String spcountry, String spstate, String spcity, String speducation, String spspecialcase) {
+        apiInterface.search(mid,spgender,spoccupation,spsexualorientation,spcountry,spstate,spcity,speducation,spspecialcase).enqueue(
+                new Callback<SearchModel>() {
+                    @Override
+                    public void onResponse(Call<SearchModel> call, Response<SearchModel> response) {
+                       if (response.isSuccessful())
+                       {
+                           SearchModel searchModel = response.body();
+                           if (searchModel != null) {
+                               String respons = searchModel.getResponse();
+                               String message = searchModel.getMessage();
+                               if (respons.equals("true")) {
+                                   if (searchModel.getResult().size() > 0) {
+                                       searchArrayList.addAll(searchModel.getResult());
+                                       searchhAdapter.notifyDataSetChanged();
+                                   }
+                               }
+                               else
+                               {
+                                   Toast.makeText(SearchActivity.this, message, Toast.LENGTH_LONG).show();
+                               }
+                               }
+                       }
+                    }
+
+                    @Override
+                    public void onFailure(Call<SearchModel> call, Throwable t) {
+
+                    }
+                }
+        );
+    }
+
+
     private void init() {
 
         genderAdapter = new GenderAdapter(this);
@@ -699,6 +762,39 @@ public class SearchActivity extends AppCompatActivity  {
         }
     }
 
+    private class SearchhAdapter extends BaseAdapter {
+
+        private final LayoutInflater layoutInflater;
+        private  List<SearchModel.ResultEntity> spinnerList;
+
+        public SearchhAdapter(Context context, List<SearchModel.ResultEntity> searchArrayList) {
+            layoutInflater = LayoutInflater.from(context);
+            this.spinnerList=searchArrayList;
+        }
+
+        @Override
+        public int getCount() {
+            return null == spinnerList ? 0 : spinnerList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            convertView = layoutInflater.inflate(R.layout.item_spinner, parent, false);
+            TextView stateTxt = convertView.findViewById(R.id.spinner_text_view);
+            stateTxt.setText(spinnerList.get(position).getName());
+            return convertView;
+        }
+    }
 }
 
 
