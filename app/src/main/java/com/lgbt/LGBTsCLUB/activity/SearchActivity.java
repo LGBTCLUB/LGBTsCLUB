@@ -360,7 +360,6 @@ public class SearchActivity extends AppCompatActivity  {
                                if (respons.equals("true")) {
                                    if (searchModel.getResult().size() > 0) {
                                        searchArrayList.addAll(searchModel.getResult());
-                                       recyclerView.setAdapter(SearchhAdapter);
                                        searchhAdapter.notifyDataSetChanged();
                                    }
                                }
