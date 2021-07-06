@@ -26,61 +26,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4755558-08fa-467b-8a9b-4b76d2b3fed1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_13_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/AccountFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/AccountSaveDetailsFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/PersonalFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/ProfessionalFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/SaveDetailsFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/ViewProfileFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/model/usermodel/SearchModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/blurone.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon_edit_final.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/roboto.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_account.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_account_save_details.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_personal.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_professional.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_save_details.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_view_profile.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/font_certs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/preloaded_fonts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/SearchResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_search_result.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/NotificationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/NotificationActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/SearchActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/activity/SearchActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/MyProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/fragment/MyProfileFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/model/AboutUsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/model/AboutUsModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/network/networking/ApiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lgbt/LGBTsCLUB/network/networking/ApiInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat_inbox.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat_inbox.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat_item_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat_item_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_registration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_registration.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_setpreference.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_setpreference.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tellusabout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tellusabout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_terms_condition.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_terms_condition.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_verification.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/appbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/appbar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/chat_inbox_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/chat_inbox_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/chat_newrequest_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/chat_newrequest_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/chat_pending_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/chat_pending_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_chat_us.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_chat_us.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[ZHROEQ59HAKRNR59]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -155,17 +113,20 @@
       <recent name="D:\Umeed\app\src\main\res\drawable" />
       <recent name="D:\Umeed\app" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.lgbt.LGBTsCLUB.network.networking" />
-      <recent name="com.lgbt.LGBTsCLUB.activity" />
-    </key>
     <key name="android.template.-1751952821">
       <recent name="com.lgbt.LGBTsCLUB.activity" />
     </key>
     <key name="android.template.1539421503">
       <recent name="com.lgbt.LGBTsCLUB.activity" />
     </key>
+    <key name="android.template.1846548411">
+      <recent name="com.lgbt.LGBTsCLUB.activity" />
+    </key>
     <key name="android.template.594270087">
+      <recent name="com.lgbt.LGBTsCLUB.activity" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.lgbt.LGBTsCLUB.network.networking" />
       <recent name="com.lgbt.LGBTsCLUB.activity" />
     </key>
   </component>
@@ -393,7 +354,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623674829471</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="final commit">
+      <created>1624689141817</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1624689141817</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -460,10 +428,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="87" key="AndroidProcessChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1624167838420" />
-    <state x="50" y="0" key="CommitChangelistDialog2" timestamp="1623674824974">
+    <state x="50" y="0" key="CommitChangelistDialog2" timestamp="1624689133179">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="50" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1623674824974" />
+    <state x="50" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1624689133179" />
     <state x="321" y="95" key="Downloadable.Font.Dialog.Size" timestamp="1624082582686">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -476,22 +444,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="517" y="238" key="Github.ShareDialog/0.0.1280.680@0.0.1280.680" timestamp="1622292904861" />
-    <state width="1236" height="163" key="GridCell.Tab.0.bottom" timestamp="1624172734085">
+    <state width="1236" height="317" key="GridCell.Tab.0.bottom" timestamp="1624689409607">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1624172734085" />
-    <state width="1236" height="163" key="GridCell.Tab.0.center" timestamp="1624172734085">
+    <state width="1236" height="317" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1624689409607" />
+    <state width="1236" height="317" key="GridCell.Tab.0.center" timestamp="1624689409607">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1624172734085" />
-    <state width="1236" height="163" key="GridCell.Tab.0.left" timestamp="1624172734084">
+    <state width="1236" height="317" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1624689409607" />
+    <state width="1236" height="317" key="GridCell.Tab.0.left" timestamp="1624689409605">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1624172734084" />
-    <state width="1236" height="163" key="GridCell.Tab.0.right" timestamp="1624172734085">
+    <state width="1236" height="317" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1624689409605" />
+    <state width="1236" height="317" key="GridCell.Tab.0.right" timestamp="1624689409607">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1236" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1624172734085" />
+    <state width="1236" height="317" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1624689409607" />
     <state width="1236" height="163" key="GridCell.Tab.1.bottom" timestamp="1624172734086">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -508,18 +476,18 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1236" height="163" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1624172734086" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1622293772391">
+    <state x="142" y="0" key="SettingsEditor" timestamp="1624689361575">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1622293772391" />
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1624689361575" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1622204551185">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1622204551185" />
-    <state x="233" y="73" key="Vcs.Push.Dialog.v2" timestamp="1623674847527">
+    <state x="233" y="73" key="Vcs.Push.Dialog.v2" timestamp="1624689155893">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1623674847527" />
+    <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1624689155893" />
     <state x="451" y="118" key="chooseDestDirectoryDialog" timestamp="1624166341791">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

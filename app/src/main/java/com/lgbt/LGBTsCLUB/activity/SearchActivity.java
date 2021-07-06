@@ -1,6 +1,7 @@
 package com.lgbt.LGBTsCLUB.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -37,6 +39,7 @@ import com.lgbt.LGBTsCLUB.network.networking.ApiClient;
 import com.lgbt.LGBTsCLUB.network.networking.ApiInterface;
 import com.lgbt.LGBTsCLUB.network.networking.CountryDataModel;
 import com.lgbt.LGBTsCLUB.network.networking.MySingleton;
+import com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,7 +65,8 @@ public class SearchActivity extends AppCompatActivity  {
     private List<OccupationDataModel.OccupationData> occupationDataArrayList;
     private List<SpecialSearchModel.SpecialData> specialDataArrayList;
     private List<SearchModel.ResultEntity> searchArrayList;
-    private SeekBar age_selector_rsb;
+    RangeSeekBar ageSelectorRsb;
+    private RecyclerView recyclerView;
 
     private GenderAdapter genderAdapter;
 
@@ -92,7 +96,8 @@ public class SearchActivity extends AppCompatActivity  {
         sp_education = findViewById(R.id.sp_education);
         sp_special_case = findViewById(R.id.sp_special_case);
         buttonSearch = findViewById(R.id.btn_search);
-//        age_selector_rsb = findViewById(R.id.age_selector_rsb);
+        ageSelectorRsb = findViewById(R.id.age_selector_rsb);
+        recyclerView = findViewById(R.id.rv_search_result);
 
         init();
         apiInterface = ApiClient.getInterface();
@@ -355,6 +360,7 @@ public class SearchActivity extends AppCompatActivity  {
                                if (respons.equals("true")) {
                                    if (searchModel.getResult().size() > 0) {
                                        searchArrayList.addAll(searchModel.getResult());
+                                       recyclerView.setAdapter(SearchhAdapter);
                                        searchhAdapter.notifyDataSetChanged();
                                    }
                                }

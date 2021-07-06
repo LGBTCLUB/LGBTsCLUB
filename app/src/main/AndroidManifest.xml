@@ -16,7 +16,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
-        <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name=".activity.SearchResult"></activity>
+        <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.SecondActivity" />
         <activity android:name=".activity.CodeVerficationActivity" />
         <activity android:name=".activity.VerificationActivity" />
@@ -108,8 +109,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- <uses-permission -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- <uses-permission -->
     <!-- android:name="android.permission.RECEIVE_SMS" -->
     <!-- tools:node="remove" /> -->
     <!-- <uses-permission -->
@@ -121,6 +121,7 @@
     <!-- <uses-permission -->
     <!-- android:name="android.permission.WRITE_SMS" -->
     <!-- tools:node="remove" /> -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
